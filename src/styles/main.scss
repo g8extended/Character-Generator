@@ -1,0 +1,33 @@
+body {
+  padding-top: 30px;
+}
+
+$scale: 2;
+
+.character {
+  position: relative;
+  width: 516px / $scale;
+}
+
+.body {
+  position: absolute;
+  width: 516px / $scale;
+  left: 50%;
+  margin-left: -516px / $scale / 2;
+}
+
+.hairstyles {
+  position: absolute;
+  width: 346px / $scale;
+  top: -60px / $scale;
+  left: 50%;
+  margin-left: -346px / $scale / 2;
+}
+
+.shirts {
+  position: absolute;
+  width: 516px / $scale;
+  top: 330px / $scale;
+  left: 50%;
+  margin-left: -516px / $scale / 2;
+}
