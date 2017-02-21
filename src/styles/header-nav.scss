@@ -4,6 +4,17 @@
   li {
       display: inline-block;
       vertical-align: top;
-      padding: .2em 2em;
+      padding: .4em;
+      margin: 0 2em;
+      cursor: pointer;
+      border-bottom: solid 1px transparent;
+
+      &:hover {
+        border-bottom-color: #000;
+      }
+
+      &.active {
+        color: red;
+      }
   }
 }

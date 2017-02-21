@@ -8,12 +8,12 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-	switch (action.type) {
-	case HEADER_NAV_CLICK:
-		return { ...state, selected: action.payload };
-	default:
-		return state;
-	}
+  switch (action.type) {
+  case HEADER_NAV_CLICK:
+    return { ...state, selected: action.payload };
+  default:
+    return state;
+  }
 };
 
 export default reducer;
