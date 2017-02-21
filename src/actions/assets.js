@@ -2,8 +2,7 @@ import {
   FETCH_ASSETS,
   FETCH_ASSETS_FULFILLED,
   SET_CURRENT_ASSET,
-  INCREMENT_ASSET,
-  DECREMENT_ASSET
+  SET_ASSET_INDEX
 } from '../constants/assets';
 import axios from 'axios';
 
@@ -28,15 +27,21 @@ export const setCurrentAsset = id => dispatch => {
 };
 
 export const incAsset = () => (dispatch, getState) => {
+  const { assets, profile } = getState();
+  const length = assets.data[assets.current].files.length;
   dispatch({
-    type: INCREMENT_ASSET,
-    payload: getState().assets.current
+    type: SET_ASSET_INDEX,
+    key: assets.current,
+    payload: (profile[assets.current] + 1) % length
   });    
 };
 
 export const decAsset = () => (dispatch, getState) => {
+  const { assets, profile } = getState();
+  const length = assets.data[assets.current].files.length;
   dispatch({
-    type: DECREMENT_ASSET,
-    payload: getState().assets.current
+    type: SET_ASSET_INDEX,
+    key: assets.current,
+    payload: (length + profile[assets.current] - 1) % length
   });    
 };
