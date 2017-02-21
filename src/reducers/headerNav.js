@@ -3,7 +3,36 @@ import {
 } from '../constants/headerNav';
 
 const initialState = {
-	items: ['Hairstyles', 'Eyes', 'Mouth', 'Beards', 'Clothes', 'Accessories'],
+	items: [{
+		title: 'Hairstyles'
+	}, 
+	{
+		title: 'Eyes'
+	},
+	{
+		title: 'Mouth'
+	},
+	{
+		title: 'Beards'
+	},
+	{
+		title: 'Clothes'
+	},
+	{
+		title: 'Hairstyles'
+	},
+	{
+		title: 'Accessories', 
+		items: [{
+			title: 'Glasses'
+		},
+		{
+			title: 'Scarves'
+		},
+		{
+			title: 'Tiers'
+		}]
+	}],
 	selected: 0
 };
 
