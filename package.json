@@ -47,6 +47,7 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
+    "he": "^1.1.1",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-redux": "^5.0.2",
