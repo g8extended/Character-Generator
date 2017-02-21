@@ -19,8 +19,8 @@ const HeaderNav = (
 
 HeaderNav.propTypes = {
   data: PropTypes.shape({
-   selected: PropTypes.number.isRequired,
-   items: PropTypes.arrayOf(PropTypes.string).isRequired,
+    selected: PropTypes.number.isRequired,
+    items: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired
 };
 
