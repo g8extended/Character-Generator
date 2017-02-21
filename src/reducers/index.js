@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import headerNav from './headerNav';
+import assets from './assets';
 
 const rootReducer = combineReducers({
-	headerNav
+  headerNav,
+  assets
 });
 
 export default rootReducer;
