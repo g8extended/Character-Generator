@@ -4,15 +4,19 @@ import { setCurrentAsset } from '../actions/assets';
 import { connect } from 'react-redux';
 import styles from '../styles/header-nav.scss';
 import map from 'lodash/map';
+import classNames from 'classnames';
 
 class HeaderNav extends Component {
   
   render() {
-    
-    const items = map(this.props.data.items, (item, index) => {
+
+    const { data, dispatch } = this.props;
+    const items = map(data.items, (item, index) => {
       
+      const isActive = data.selected === item.id;
+      const classes = classNames('item', { active: isActive});
+
       let subitems, submenu;
-      let classes = this.props.data.selected === item.id ? 'item active' : 'item';
 
       if (item.items) {
         subitems = map(item.items, (subitem, index1) => {
@@ -24,9 +28,9 @@ class HeaderNav extends Component {
 
       return (
         <div key={item.id} className={classes} onClick={() => {
-          if (this.props.data.selected !== index) {
-            this.props.dispatch(headerNavClick(item.id));
-            item.assetID && this.props.dispatch(setCurrentAsset(item.assetID));
+          if (!isActive) {
+            dispatch(headerNavClick(item.id));
+            item.assetID && dispatch(setCurrentAsset(item.assetID));
           }
         }}> { item.title.toUpperCase()} {submenu} </div>
       );
