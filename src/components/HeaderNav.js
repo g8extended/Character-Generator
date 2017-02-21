@@ -1,29 +1,34 @@
 import React, { Component, PropTypes } from 'react';
 import { headerNavClick } from '../actions/headerNav';
+import { setCurrentAsset } from '../actions/assets';
 import { connect } from 'react-redux';
 import styles from '../styles/header-nav.scss';
+import map from 'lodash/map';
 
 class HeaderNav extends Component {
   
   render() {
     
-    const items = this.props.data.items.map((item, index) => {
+    const items = map(this.props.data.items, (item, index) => {
       
       let subitems, submenu;
-      let classes = this.props.data.selected === index ? 'item active' : 'item';
+      let classes = this.props.data.selected === item.id ? 'item active' : 'item';
 
       if (item.items) {
-        subitems = item.items.map((subitem, index1) => {
-          return (<div className="subitem" key={'' + index + index1} >{subitem.title.toUpperCase()}</div>)
+        subitems = map(item.items, (subitem, index1) => {
+          return (<div className="subitem" key={subitem.id} >{subitem.title.toUpperCase()}</div>)
         });
       }
 
-      submenu = subitems ? (<div className="submenu"> {subitems}</div>) : '';
+      submenu = subitems ? (<div className="submenu">{subitems}</div>) : '';
 
       return (
-        <div key={index} className={classes} onClick={() => (this.props.data.selected !== index) && this.props.dispatch(headerNavClick(index))}>
-          {item.title.toUpperCase()}{submenu}
-        </div>
+        <div key={item.id} className={classes} onClick={() => {
+          if (this.props.data.selected !== index) {
+            this.props.dispatch(headerNavClick(item.id));
+            item.assetID && this.props.dispatch(setCurrentAsset(item.assetID));
+          }
+        }}> { item.title.toUpperCase()} {submenu} </div>
       );
      
     });
@@ -35,7 +40,7 @@ class HeaderNav extends Component {
 HeaderNav.propTypes = {
   data: PropTypes.shape({
     selected: PropTypes.number.isRequired,
-    items: PropTypes.arrayOf(PropTypes.object).isRequired
+    items: PropTypes.object.isRequired
   }).isRequired
 };
 
