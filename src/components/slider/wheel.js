@@ -20,8 +20,8 @@ const getImg = (profile, assets, type, index) => {
 const Wheel = (
   ({ dispatch, assets, profile, type }) => {
 
-    const leftGrad = type === 'left' ? (<div className="grad gradL"></div>) : '';
-    const rightGrad = type === 'right' ? (<div className="grad gradR"></div>) : '';
+    const leftGrad = type === 'left'   ? (<div className="gradL"></div>) : '';
+    const rightGrad = type === 'right' ? (<div className="gradR"></div>) : '';
     
     return  (
       <div className="wheel">
