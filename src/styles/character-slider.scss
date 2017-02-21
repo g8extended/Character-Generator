@@ -30,13 +30,10 @@
   .arrow {
     color: #aaa;
     font-size: 1.5em;
-    padding: 3vw 0;
+    padding: 5vw 0;
     cursor: pointer;
     width: 5vw;
-  }
-
-  .character+.arrow {
-    text-align: right;
+    text-align: center;
   }
 }
 
