@@ -18,16 +18,24 @@ const getImg = (profile, assets, type, index) => {
 };
 
 const Wheel = (
-  ({ dispatch, assets, profile, type }) => (
-    <div className="wheel">
-      <div className="character">
-        {getImg(profile, assets, type, 0)}
+  ({ dispatch, assets, profile, type }) => {
+
+    const leftGrad = type === 'left' ? (<div className="grad gradL"></div>) : '';
+    const rightGrad = type === 'right' ? (<div className="grad gradR"></div>) : '';
+    
+    return  (
+      <div className="wheel">
+        <div className="character">
+          { leftGrad }
+          {getImg(profile, assets, type, 0)}
+        </div>
+        <div className="character">
+          { rightGrad }
+          {getImg(profile, assets, type, 1)}
+        </div>
       </div>
-      <div className="character">
-        {getImg(profile, assets, type, 1)}
-      </div>
-    </div>
-  )
+    )
+  }
 );
 
 const mapStateToProps = state => ({

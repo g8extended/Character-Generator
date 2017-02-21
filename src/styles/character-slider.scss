@@ -1,10 +1,27 @@
 .character-slider {
-  width: 80vw;
+  width: 99%;
   margin: auto;
   padding: 0;
 
   * {
     user-select: none;
+  }
+
+  .wheel .character {
+    .gradL, .gradR {
+      position: absolute;
+      width: 100%;
+      min-height: 260px;
+      z-index: 999;
+    }
+
+    .gradL {
+      background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 31%,rgba(255,255,255,0) 100%);
+    }
+
+    .gradR {
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 69%,rgba(255,255,255,1) 100%);
+    }
   }
 
   .wheel, .character, .arrow {
@@ -23,7 +40,7 @@
 .character {
   display: inline-block;
   position: relative;
-  width: 15vw;
+  width: 18vw;
 
   img {
     position: absolute;
