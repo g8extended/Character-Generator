@@ -1,0 +1,1 @@
+export const HEADER_NAV_CLICK = 'HEADER_NAV_CLICK';
