@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styles from '../styles/character-slider.scss';
+import styles from '../../styles/character-slider.scss';
+import Arrow from './arrow';
 
 export default class CharacterSlider extends Component {
   render() {
@@ -11,13 +12,13 @@ export default class CharacterSlider extends Component {
         <li className="character">
           <img src="svg/Hairstyles/hairstyle_02.svg" />
         </li>
-        <li className="arrow"> &#x276E; </li>
+        <Arrow type="left" />
         <li className="character">
           <img src="svg/Body/body.svg" />
           <img src="svg/Hairstyles/hairstyle_03.svg" />
           <img src="svg/Shirts/shirt_03.svg" />
         </li>
-        <li className="arrow"> &#x276F; </li>
+        <Arrow type="right" />
         <li className="character">
           <img src="svg/Hairstyles/hairstyle_04.svg" />
         </li>

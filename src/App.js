@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HeaderNav from './components/HeaderNav';
-import CharacterSlider from './components/CharacterSlider';
+import CharacterSlider from './components/slider/';
 import styles from './styles/app.scss';
 
 export default class App extends Component {
