@@ -30,7 +30,19 @@ const initialState = {
     },
     {
       id: 5,
-      title: 'Accessories'
+      title: 'Accessories',
+      items: [{
+      		id: 6,
+			title: 'Glasses'
+		},
+		{
+			id: 7,
+			title: 'Scarves'
+		},
+		{
+			id: 8,
+			title: 'Tiers'
+		}]
     }
   ], 'id'),
   selected: 0

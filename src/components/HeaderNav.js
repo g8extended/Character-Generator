@@ -1,26 +1,45 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { headerNavClick } from '../actions/headerNav';
 import { setCurrentAsset } from '../actions/assets';
 import { connect } from 'react-redux';
 import styles from '../styles/header-nav.scss';
 import map from 'lodash/map';
+import classNames from 'classnames';
 
-const HeaderNav = (
-  ({ dispatch, data }) => (
-    <ul className="header-nav">
-      {map(data.items, item => {
-        if (data.selected === item.id) {
-          return (<li key={item.id} className="active">{item.title}</li>);
-        } else {
-          return (<li key={item.id} onClick={() => {
+class HeaderNav extends Component {
+  
+  render() {
+
+    const { data, dispatch } = this.props;
+    const items = map(data.items, (item, index) => {
+      
+      const isActive = data.selected === item.id;
+      const classes = classNames('item', { active: isActive});
+
+      let subitems, submenu;
+
+      if (item.items) {
+        subitems = map(item.items, (subitem, index1) => {
+          return (<div className="subitem" key={subitem.id} >{subitem.title.toUpperCase()}</div>)
+        });
+      }
+
+      submenu = subitems ? (<div className="submenu">{subitems}</div>) : '';
+
+      return (
+        <div key={item.id} className={classes} onClick={() => {
+          if (!isActive) {
             dispatch(headerNavClick(item.id));
             item.assetID && dispatch(setCurrentAsset(item.assetID));
-          }}>{item.title}</li>);
-        }
-      })}
-    </ul>
-  )
-);
+          }
+        }}> { item.title.toUpperCase()} {submenu} </div>
+      );
+     
+    });
+
+    return <ul className="header-nav">{ items }</ul>;
+  }
+}
 
 HeaderNav.propTypes = {
   data: PropTypes.shape({
@@ -29,8 +48,4 @@ HeaderNav.propTypes = {
   }).isRequired
 };
 
-const mapStateToProps = state => ({
-  data: state.headerNav
-});
-
-export default connect(mapStateToProps)(HeaderNav);
+export default connect(state => ({data: state.headerNav}))(HeaderNav);

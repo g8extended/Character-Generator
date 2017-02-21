@@ -1,20 +1,65 @@
 .header-nav {
   text-align: center;
   margin: 2em auto; 
-  li {
+  .item {
       display: inline-block;
       vertical-align: top;
       padding: .4em;
       margin: 0 2em;
       cursor: pointer;
       border-bottom: solid 1px transparent;
+      font-size: .8em;
+      position: relative;
 
       &:hover {
-        border-bottom-color: #000;
+        color: red;
+        .submenu {
+          display: block;
+        }
       }
 
       &.active {
         color: red;
+        border-bottom-color: #000;
+      }
+
+      .submenu {
+        display: none;
+        position: absolute;
+        background-color: #38506C;
+        color: #fff;
+        padding: .5em 1.2em;
+        z-index: 9999;
+        border-radius: 0.3em;
+        margin-top: 0.5em;
+        box-shadow: 1px 1px 3px 1px #222;
+        
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 40%;
+            top: -20px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        &:after {
+            border-color: transparent transparent #38506C transparent;
+            border-width: 10px;
+        }
+        
+        .subitem {
+          font-size: .8em;
+          padding: .5em;
+          color: #95AFCB;
+          
+          &:hover {
+            color: #fff;
+          }
+        }
       }
   }
 }
+
