@@ -1,10 +1,25 @@
 .character-slider {
-  width: 80vw;
-  margin: auto;
   padding: 0;
 
   * {
     user-select: none;
+  }
+
+  .wheel {
+    .grad {
+      position: absolute;
+      width: 100%;
+      min-height: 260px;
+      z-index: 999;
+    }
+
+    &.left .character:first-child .grad {
+      background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 31%, rgba(255,255,255,0) 100%);
+    }
+
+    &.right .character:last-child .grad {
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 69%,rgba(255,255,255,1) 100%);
+    }
   }
 
   .wheel, .character, .arrow {
@@ -17,13 +32,18 @@
     font-size: 1.5em;
     padding: 3vw 0;
     cursor: pointer;
+    width: 5vw;
+  }
+
+  .character+.arrow {
+    text-align: right;
   }
 }
 
 .character {
   display: inline-block;
   position: relative;
-  width: 15vw;
+  width: 18vw;
 
   img {
     position: absolute;
