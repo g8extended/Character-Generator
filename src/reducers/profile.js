@@ -1,7 +1,6 @@
 import {
   FETCH_ASSETS_FULFILLED,
-  INCREMENT_ASSET,
-  DECREMENT_ASSET
+  SET_ASSET_INDEX,
 } from '../constants/assets';
 
 const initialState = {
@@ -12,10 +11,8 @@ const reducer = (state = initialState, action) => {
   case FETCH_ASSETS_FULFILLED:
     const data = action.payload.data.reduce((memo, asset) => ({ ...memo, [asset.id]: 0 }), {});
     return { ...state, ...data };
-  case INCREMENT_ASSET:
-    return { ...state, [action.payload]: state[action.payload] + 1 };
-  case DECREMENT_ASSET:
-    return { ...state, [action.payload]: state[action.payload] - 1 };
+  case SET_ASSET_INDEX:
+    return { ...state, [action.key]: action.payload };
   default:
     return state;
   }

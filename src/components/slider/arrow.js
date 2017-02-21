@@ -5,7 +5,7 @@ import { incAsset, decAsset } from '../../actions/assets';
 
 const Arrow = (
   ({ dispatch, type }) => (
-    <div className="arrow" onClick={() => dispatch(type !== 'left' ? incAsset() : decAsset())}>
+    <div className="arrow" onClick={() => dispatch(type === 'left' ? incAsset() : decAsset())}>
       {decode(type === 'left' ? '&#x276E;' : '&#x276F;')}
     </div>
   )
