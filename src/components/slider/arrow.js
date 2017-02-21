@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { decode } from 'he';
+import { incAsset, decAsset } from '../../actions/assets';
 
-export default class Arrow extends Component {
-  render() {
-    const text = this.props.type === 'left' ? '&#x276E;' : '&#x276F;';
-    
-    return (
-        <div className="arrow">{ decode(text) }</div>
-    );
-  }
-}
+const Arrow = (
+  ({ dispatch, type }) => (
+    <div className="arrow" onClick={() => dispatch(type !== 'left' ? incAsset() : decAsset())}>
+      {decode(type === 'left' ? '&#x276E;' : '&#x276F;')}
+    </div>
+  )
+);
+
+export default connect()(Arrow);
