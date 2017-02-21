@@ -2,32 +2,42 @@ body {
   padding-top: 30px;
 }
 
-$scale: 2;
+.character-slider {
+  li {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+$scale: 2.5;
 
 .character {
+  display: inline-block;
   position: relative;
   width: 516px / $scale;
-}
+  min-height: 600px / $scale;
 
-.body {
-  position: absolute;
-  width: 516px / $scale;
-  left: 50%;
-  margin-left: -516px / $scale / 2;
-}
+  .body {
+    position: absolute;
+    width: 516px / $scale;
+    left: 50%;
+    margin-left: -516px / $scale / 2;
+  }
 
-.hairstyles {
-  position: absolute;
-  width: 346px / $scale;
-  top: -60px / $scale;
-  left: 50%;
-  margin-left: -346px / $scale / 2;
-}
+  .hairstyles {
+    position: absolute;
+    width: 346px / $scale;
+    top: 0;
+    top: -60px / $scale;
+    left: 50%;
+    margin-left: -346px / $scale / 2;
+  }
 
-.shirts {
-  position: absolute;
-  width: 516px / $scale;
-  top: 330px / $scale;
-  left: 50%;
-  margin-left: -516px / $scale / 2;
+  .shirts {
+    position: absolute;
+    width: 516px / $scale;
+    top: 330px / $scale;
+    left: 50%;
+    margin-left: -516px / $scale / 2;
+  }
 }

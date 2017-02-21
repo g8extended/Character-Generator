@@ -7,11 +7,31 @@ import styles from './styles/main.scss';
 export default class App extends Component {
   render() {
     return (
-      <div className="character">
-        <Body className="body" />
-        <Hairstyles className="hairstyles" />
-        <Shirts className="shirts" />
-      </div>
+      <ul className="character-slider">
+        <li className="character">
+          <Hairstyles className="hairstyles" />
+        </li>
+        <li className="character">
+          <Hairstyles className="hairstyles" />
+        </li>
+        <li>
+          left arrow
+        </li>
+        <li className="character">
+          <Body className="body" />
+          <Hairstyles className="hairstyles" />
+          <Shirts className="shirts" />
+        </li>
+        <li>
+          right arrow
+        </li>
+        <li className="character">
+          <Hairstyles className="hairstyles" />
+        </li>
+        <li className="character">
+          <Hairstyles className="hairstyles" />
+        </li>
+      </ul>
     );
   }
 }
