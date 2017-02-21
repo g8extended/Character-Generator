@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { headerNavClick } from '../actions/headerNav';
 import { connect } from 'react-redux';
+import styles from '../styles/header-nav.scss';
 
 const HeaderNav = (
   ({ dispatch, data }) => (
