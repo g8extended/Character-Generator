@@ -16,13 +16,39 @@ app.use(express.static('public'));
 
 app.get('/api/assets/', function (req, res) {
   const svgPath = 'public/svg/';
-  const svgFolders = fs.readdirSync(svgPath).filter(name => (
-    fs.statSync(path.join(svgPath, name)).isDirectory()
+  const svgFolders = [
+    {
+      id: 'Beards',
+      sortOrder: 1
+    },
+    {
+      id: 'Body',
+      sortOrder: 0
+    },
+    {
+      id: 'Glasses',
+      sortOrder: 1
+    },
+    {
+      id: 'Hairstyles',
+      sortOrder: 1
+    },
+    {
+      id: 'Scarfes',
+      sortOrder: 3
+    },
+    {
+      id: 'Shirts',
+      sortOrder: 1
+    },
+    {
+      id: 'Tie',
+      sortOrder: 2
+    }
+  ];
+  const data = svgFolders.map(folder => Object.assign({}, folder,
+    { files: fs.readdirSync(path.join(svgPath, folder.id)) }
   ));
-  const data = svgFolders.map(name => ({
-    id: name,
-    files: fs.readdirSync(path.join(svgPath, name))
-  }));
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(data));
 });
