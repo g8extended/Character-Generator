@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
 const getNextIndex = (profile, assets, index) => {
   const length = assets.data[assets.current].files.length;
@@ -20,17 +21,19 @@ const getImg = (profile, assets, type, index) => {
 const Wheel = (
   ({ dispatch, assets, profile, type }) => {
 
-    const leftGrad = type === 'left'   ? (<div className="gradL"></div>) : '';
-    const rightGrad = type === 'right' ? (<div className="gradR"></div>) : '';
-    
+    const classes = classNames('wheel', 
+      { left:  type === 'left' },
+      { right: type === 'right'}
+    );
+
     return  (
-      <div className="wheel">
+      <div className={classes} >
         <div className="character">
-          { leftGrad }
+          <div className="grad"></div>
           {getImg(profile, assets, type, 0)}
         </div>
         <div className="character">
-          { rightGrad }
+          <div className="grad"></div>
           {getImg(profile, assets, type, 1)}
         </div>
       </div>
