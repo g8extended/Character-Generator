@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import Body from '../svg/Body/body.svg';
-import Hairstyles from '../svg/Hairstyles/hairstyle_01.svg';
-import Shirts from '../svg/Shirts/shirt_01.svg';
 import styles from '../styles/character-slider.scss';
 
 export default class CharacterSlider extends Component {
@@ -9,27 +6,27 @@ export default class CharacterSlider extends Component {
     return (
       <ul className="character-slider">
         <li className="character">
-          <Hairstyles className="hairstyles" />
+          <img src="svg/Hairstyles/hairstyle_01.svg" />
         </li>
         <li className="character">
-          <Hairstyles className="hairstyles" />
+          <img src="svg/Hairstyles/hairstyle_02.svg" />
         </li>
         <li>
           left arrow
         </li>
         <li className="character">
-          <Body className="body" />
-          <Hairstyles className="hairstyles" />
-          <Shirts className="shirts" />
+          <img src="svg/Body/body.svg" />
+          <img src="svg/Hairstyles/hairstyle_03.svg" />
+          <img src="svg/Shirts/shirt_03.svg" />
         </li>
         <li>
           right arrow
         </li>
         <li className="character">
-          <Hairstyles className="hairstyles" />
+          <img src="svg/Hairstyles/hairstyle_04.svg" />
         </li>
         <li className="character">
-          <Hairstyles className="hairstyles" />
+          <img src="svg/Hairstyles/hairstyle_05.svg" />
         </li>
       </ul>
     );
