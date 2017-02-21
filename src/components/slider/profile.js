@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import map from 'lodash/map';
 
-export default class extends Component {
+class Profile extends Component {
   render() {
+    const { profile, assets } = this.props;
+    if ( ! assets.data.Hairstyles) return <div />;
     return (
-        <div className="character">
-          <img src="svg/Body/body.svg" />
-          <img src="svg/Hairstyles/hairstyle_03.svg" />
-          <img src="svg/Shirts/shirt_03.svg" />
-        </div>
+      <div className="character">
+        {map(assets.data, asset => (
+          <img src={`svg/${asset.id}/${assets.data[asset.id].files[profile[asset.id]]}`} />
+        ))}
+      </div>
     );
   }
 }
+
+export default connect(({ profile, assets }) => ({ profile, assets }))(Profile);
