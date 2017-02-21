@@ -1,4 +1,8 @@
 .character-slider {
+  width: 80vw;
+  margin: auto;
+  padding: 0;
+
   * {
     user-select: none;
   }
@@ -9,10 +13,9 @@
   }
 
   .arrow {
-    font-weight: 100;
-    color: #AAA;
+    color: #aaa;
     font-size: 1.5em;
-    padding: 2em 0;
+    padding: 3vw 0;
     cursor: pointer;
   }
 }
@@ -20,8 +23,7 @@
 .character {
   display: inline-block;
   position: relative;
-  width: 200px;
-  min-height: 250px;
+  width: 15vw;
 
   img {
     position: absolute;
