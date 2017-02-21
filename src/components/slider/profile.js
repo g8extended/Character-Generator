@@ -6,10 +6,12 @@ class Profile extends Component {
   render() {
     const { profile, assets } = this.props;
     if ( ! assets.data.Hairstyles) return <div />;
+    const data = map(assets.data);
+    data.sort((a, b) => a.sortOrder - b.sortOrder);
     return (
       <div className="character">
-        {map(assets.data, asset => (
-          <img src={`svg/${asset.id}/${assets.data[asset.id].files[profile[asset.id]]}`} />
+        {map(data, asset => (
+          <img key={asset.id} src={`svg/${asset.id}/${assets.data[asset.id].files[profile[asset.id]]}`} />
         ))}
       </div>
     );
