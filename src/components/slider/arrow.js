@@ -6,7 +6,7 @@ export default class Arrow extends Component {
     const text = this.props.type === 'left' ? '&#x276E;' : '&#x276F;';
     
     return (
-        <li className="arrow">{ decode(text) }</li>
+        <div className="arrow">{ decode(text) }</div>
     );
   }
 }
