@@ -1,7 +1,9 @@
 import {
-  FETCH_ASSETS_FULFILLED,
-  SET_ASSET_INDEX,
+  FETCH_ASSETS_FULFILLED
 } from '../constants/assets';
+import {
+  UPDATE_PROFILE_ASSET
+} from '../constants/profile';
 
 const initialState = {
 };
@@ -17,7 +19,7 @@ const reducer = (state = initialState, action) => {
       }
     }), {});
     return { ...state, ...data };
-  case SET_ASSET_INDEX:
+  case UPDATE_PROFILE_ASSET:
     return {
       ...state,
       [action.payload.assetID]: {

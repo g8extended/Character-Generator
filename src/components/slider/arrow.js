@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { decode } from 'he';
-import { incAsset, decAsset } from '../../actions/assets';
+import { updateProfileByOffset } from '../../actions/profile';
 
 const Arrow = (
   ({ dispatch, type }) => (
-    <div className="arrow" onClick={() => dispatch(type === 'left' ? incAsset() : decAsset())}>
+    <div className="arrow" onClick={() => dispatch(updateProfileByOffset(type !== 'left' ? 1 : -1))}>
       {decode(type === 'left' ? '&#x276E;' : '&#x276F;')}
     </div>
   )
