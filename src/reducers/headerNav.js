@@ -6,46 +6,36 @@ import keyBy from 'lodash/keyBy';
 const initialState = {
   items: keyBy([
     {
-      id: 0,
-      title: 'Hairstyles',
-      assetID: 'Hairstyles'
+      title: 'Hairstyles'
     },
     {
-      id: 1,
-      title: 'Eyes',
-      assetID: 'Eyes'
+      title: 'Eyes'
     },
     {
-      id: 2,
       title: 'Mouth'
     },
     {
-      id: 3,
-      title: 'Beards',
-      assetID: 'Beards'
+      title: 'Beards'
     },
     {
-      id: 4,
       title: 'Clothes'
     },
     {
-      id: 5,
       title: 'Accessories',
-      items: [{
-      		id: 6,
-			title: 'Glasses'
-		},
-		{
-			id: 7,
-			title: 'Scarves'
-		},
-		{
-			id: 8,
-			title: 'Tiers'
-		}]
+      items: [
+        {
+          title: 'Glasses'
+        },
+        {
+          title: 'Scarves'
+        },
+        {
+          title: 'Tiers'
+        }
+      ]
     }
-  ], 'id'),
-  selected: 0
+  ], 'title'),
+  selected: 'Hairstyles'
 };
 
 const reducer = (state = initialState, action) => {
