@@ -19,7 +19,7 @@ app.get('/api/assets/', function (req, res) {
   const svgFolders = [
     {
       id: 'Beards',
-      sortOrder: 1
+      sortOrder: 4
     },
     {
       id: 'Body',

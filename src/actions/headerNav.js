@@ -1,10 +1,17 @@
 import {
-  HEADER_NAV_CLICK
+  SET_HEADER_NAV
 } from '../constants/headerNav';
+import { setCurrentAsset } from '../actions/assets';
+import keyBy from 'lodash/keyBy';
 
-export const headerNavClick = index => dispatch => {
+export const setCurrentHeaderNav = headerNavID => dispatch => {
   dispatch({
-    type: HEADER_NAV_CLICK,
-    payload: index
+    type: SET_HEADER_NAV,
+    payload: headerNavID
   });
+};
+
+export const headerNavClick = headerNavID => (dispatch, getState) => {
+  dispatch(setCurrentAsset(keyBy(getState().assetsToHeaderNavMapping, 'headerNavID')[headerNavID].assetID));
+  dispatch(setCurrentHeaderNav(headerNavID));
 };
