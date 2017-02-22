@@ -26,7 +26,7 @@ export const setCurrentAsset = assetID => dispatch => {
   dispatch({
     type: SET_CURRENT_ASSET,
     payload: assetID
-  });    
+  });
 };
 
 export const colorClick = colorID => dispatch => {
@@ -46,9 +46,12 @@ export const incAsset = () => (dispatch, getState) => {
   const length = assets.data[assets.current].colors[assets.currentColor].files.length;
   dispatch({
     type: SET_ASSET_INDEX,
-    key: assets.current,
-    payload: (profile[assets.current] + 1) % length
-  });    
+    payload: {
+      assetID: assets.current,
+      color: assets.currentColor,
+      fileIndex: (profile[assets.current].fileIndex + 1) % length
+    }
+  });
 };
 
 export const decAsset = () => (dispatch, getState) => {
@@ -56,7 +59,10 @@ export const decAsset = () => (dispatch, getState) => {
   const length = assets.data[assets.current].colors[assets.currentColor].files.length;
   dispatch({
     type: SET_ASSET_INDEX,
-    key: assets.current,
-    payload: (length + profile[assets.current] - 1) % length
-  });    
+    payload: {
+      assetID: assets.current,
+      color: assets.currentColor,
+      fileIndex: (length + profile[assets.current].fileIndex - 1) % length
+    }
+  });
 };
