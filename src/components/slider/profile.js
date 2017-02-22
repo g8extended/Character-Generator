@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { assetClick } from '../../actions/assets';
 import map from 'lodash/map';
+import ColorPicker from './colorpicker';
 
 class Profile extends Component {
   render() {
@@ -10,14 +11,17 @@ class Profile extends Component {
     const data = map(assets.data);
     data.sort((a, b) => a.sortOrder - b.sortOrder);
     return (
-      <div className="character">
-        {map(data, asset => (
-          <img
-            key={asset.id}
-            src={`svg/${asset.id}/${assets.data[asset.id].files[profile[asset.id]]}`}
-            onClick={() => dispatch(assetClick(asset.id))}
-          />
-        ))}
+      <div className="profile"> 
+        <div className="character">
+          {map(data, asset => (
+            <img
+              key={asset.id}
+              src={`svg/${asset.id}/${assets.data[asset.id].files[profile[asset.id]]}`}
+              onClick={() => dispatch(assetClick(asset.id))}
+            />
+          ))}
+        </div>
+        <ColorPicker />
       </div>
     );
   }
