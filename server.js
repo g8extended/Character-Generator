@@ -21,6 +21,9 @@ app.get('/api/assets/', function (req, res) {
       id: 'Beards',
       colors: [
         {
+          id: 'default',
+        },
+        {
           id: 'blond',
         },
         {
@@ -56,6 +59,9 @@ app.get('/api/assets/', function (req, res) {
     {
       id: 'Hairstyles',
       colors: [
+        {
+          id: 'default',
+        },
         {
           id: 'blond',
         },
