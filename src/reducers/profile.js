@@ -2,7 +2,7 @@ import {
   FETCH_ASSETS_FULFILLED
 } from '../constants/assets';
 import {
-  UPDATE_PROFILE_ASSET
+  UPDATE_PROFILE_ASSET_FILE_INDEX
 } from '../constants/profile';
 
 const initialState = {
@@ -19,11 +19,11 @@ const reducer = (state = initialState, action) => {
       }
     }), {});
     return { ...state, ...data };
-  case UPDATE_PROFILE_ASSET:
+  case UPDATE_PROFILE_ASSET_FILE_INDEX:
     return {
       ...state,
       [action.payload.assetID]: {
-        color: action.payload.color,
+        ...state[action.payload.assetID],
         fileIndex: action.payload.fileIndex
       }
     };
