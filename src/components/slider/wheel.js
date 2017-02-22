@@ -2,20 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
+const getImage = (assetID, color, fileIndex, assets) => {
+  const fileName = assets.data[assetID].colors[color].files[fileIndex];
+  return `svg/${assetID}/${color}/${fileName}`;
+};
+
 const getNextIndex = (profile, assets, index) => {
   const length = assets.data[assets.current].colors[assets.currentColor].files.length;
-  return (profile[assets.current] + 1 + index) % length;
+  return (profile[assets.current].fileIndex + 1 + index) % length;
 };
 
 const getPrevIndex = (profile, assets, index) => {
   const length = assets.data[assets.current].colors[assets.currentColor].files.length;
-  return (length + profile[assets.current] - 1 - (1 - index) % 2) % length;
+  return (length + profile[assets.current].fileIndex - 1 - (1 - index) % 2) % length;
 };
 
 const getImg = (profile, assets, type, index) => {
   if ( ! assets.data[assets.current]) return;
   const fileIndex = type !== 'left' ? getNextIndex(profile, assets, index) : getPrevIndex(profile, assets, index);
-  return <img src={`svg/${assets.current}/${assets.currentColor}/${assets.data[assets.current].colors[assets.currentColor].files[fileIndex]}`} />
+  return <img src={getImage(assets.current, assets.currentColor, fileIndex, assets)} />
 };
 
 const Wheel = (
