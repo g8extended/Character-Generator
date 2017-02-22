@@ -9,7 +9,7 @@
     .grad {
       position: absolute;
       width: 100%;
-      min-height: 260px;
+      min-height: 23vw;
       z-index: 999;
     }
 
@@ -22,7 +22,7 @@
     }
   }
 
-  .wheel, .character, .arrow {
+  .wheel, .character, .arrow, .profile {
     display: inline-block;
     vertical-align: top;
   }
@@ -35,12 +35,48 @@
     width: 5vw;
     text-align: center;
   }
+
+  .colorPicker {
+    text-align: center;
+    margin-top: 1.2vw;
+    .color {
+      width: 1.7vw;
+      height: 1.7vw;
+      display: inline-block;
+      border-radius: 50%;
+      
+      margin: .2vw;
+      border: solid 1px #fff;
+      cursor: pointer;
+
+      &.active {
+        border: solid 1px #472719;
+      }
+
+      &.black {
+        background-color: #383C45;
+      }
+
+      &.grey {
+        background-color: #DDDDDD;
+      }
+
+      &.brown {
+        background-color: #BB755A;
+      }
+
+      &.yellow {
+        background-color: #E5BB6D;
+      }
+    }
+  }
 }
 
 .character {
   display: inline-block;
   position: relative;
   width: 18vw;
+  min-height: 23vw;
 
   img {
     position: absolute;
