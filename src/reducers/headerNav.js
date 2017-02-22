@@ -1,5 +1,5 @@
 import {
-  HEADER_NAV_CLICK
+  SET_HEADER_NAV
 } from '../constants/headerNav';
 import keyBy from 'lodash/keyBy';
 
@@ -40,7 +40,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-  case HEADER_NAV_CLICK:
+  case SET_HEADER_NAV:
     return { ...state, selected: action.payload };
   default:
     return state;

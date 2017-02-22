@@ -4,6 +4,8 @@ import {
   SET_CURRENT_ASSET,
   SET_ASSET_INDEX
 } from '../constants/assets';
+import { setCurrentHeaderNav } from '../actions/headerNav';
+import keyBy from 'lodash/keyBy';
 import axios from 'axios';
 
 export const fetchAssets = () => dispatch => {
@@ -19,11 +21,16 @@ export const fetchAssets = () => dispatch => {
   });
 };
 
-export const setCurrentAsset = id => dispatch => {
+export const setCurrentAsset = assetID => dispatch => {
   dispatch({
     type: SET_CURRENT_ASSET,
-    payload: id
+    payload: assetID
   });    
+};
+
+export const assetClick = assetID => (dispatch, getState) => {
+  dispatch(setCurrentHeaderNav(keyBy(getState().assetsToHeaderNavMapping, 'assetID')[assetID].headerNavID));
+  dispatch(setCurrentAsset(assetID));
 };
 
 export const incAsset = () => (dispatch, getState) => {

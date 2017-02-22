@@ -1,1 +1,1 @@
-export const HEADER_NAV_CLICK = 'HEADER_NAV_CLICK';
+export const SET_HEADER_NAV = 'SET_HEADER_NAV';
