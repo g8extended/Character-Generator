@@ -21,16 +21,16 @@ app.get('/api/assets/', function (req, res) {
       id: 'Beards',
       colors: [
         {
-          id: 'default',
+          id: 'default'
         },
         {
-          id: 'blond',
+          id: 'blond'
         },
         {
-          id: 'brown-haired person',
+          id: 'brown-haired person'
         },
         {
-          id: 'brunet',
+          id: 'brunet'
         },
         {
           id: 'white'
@@ -42,7 +42,7 @@ app.get('/api/assets/', function (req, res) {
       id: 'Body',
       colors: [
         {
-          id: 'default',
+          id: 'default'
         }
       ],
       sortOrder: 0
@@ -51,7 +51,7 @@ app.get('/api/assets/', function (req, res) {
       id: 'Glasses',
       colors: [
         {
-          id: 'default',
+          id: 'default'
         }
       ],
       sortOrder: 1
@@ -60,16 +60,16 @@ app.get('/api/assets/', function (req, res) {
       id: 'Hairstyles',
       colors: [
         {
-          id: 'default',
+          id: 'default'
         },
         {
-          id: 'blond',
+          id: 'blond'
         },
         {
-          id: 'brown-haired person',
+          id: 'brown-haired person'
         },
         {
-          id: 'brunet',
+          id: 'brunet'
         },
         {
           id: 'white'
@@ -81,7 +81,7 @@ app.get('/api/assets/', function (req, res) {
       id: 'Scarfes',
       colors: [
         {
-          id: 'default',
+          id: 'default'
         }
       ],
       sortOrder: 3
@@ -90,7 +90,7 @@ app.get('/api/assets/', function (req, res) {
       id: 'Shirts',
       colors: [
         {
-          id: 'default',
+          id: 'default'
         }
       ],
       sortOrder: 1
@@ -99,7 +99,7 @@ app.get('/api/assets/', function (req, res) {
       id: 'Tie',
       colors: [
         {
-          id: 'default',
+          id: 'default'
         }
       ],
       sortOrder: 2
