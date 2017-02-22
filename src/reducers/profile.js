@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       [action.payload.assetID]: {
-        ...state[action.payload.assetID],
+        color: action.payload.color,
         fileIndex: action.payload.fileIndex
       }
     };

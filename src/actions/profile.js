@@ -10,6 +10,7 @@ export const updateProfileAssetFileIndex = offset => (dispatch, getState) => {
     type: UPDATE_PROFILE_ASSET_FILE_INDEX,
     payload: {
       assetID: assets.current,
+      color: assets.currentColor,
       fileIndex: (length + profile[assets.current].fileIndex + offset) % length
     }
   });
