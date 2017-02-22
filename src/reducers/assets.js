@@ -10,7 +10,6 @@ const initialState = {
   isLoading: false,
   data: {},
   current: 'Hairstyles',
-  colors: [{ id: 0, title: 'black'}, { id: 1, title: 'brown'}, { id: 2, title: 'yellow'}, { id: 3, title: 'grey'}],
   currentColor: 'default'
 };
 
