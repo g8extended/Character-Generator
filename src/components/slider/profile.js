@@ -16,7 +16,7 @@ class Profile extends Component {
           {map(data, asset => (
             <img
               key={asset.id}
-              src={`svg/${asset.id}/${assets.data[asset.id].files[profile[asset.id]]}`}
+              src={`svg/${asset.id}/${assets.currentColor}/${assets.data[asset.id].colors[assets.currentColor].files[profile[asset.id]]}`}
               onClick={() => dispatch(assetClick(asset.id))}
             />
           ))}
