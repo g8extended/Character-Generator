@@ -43,7 +43,7 @@ export const assetClick = assetID => (dispatch, getState) => {
 
 export const incAsset = () => (dispatch, getState) => {
   const { assets, profile } = getState();
-  const length = assets.data[assets.current].files.length;
+  const length = assets.data[assets.current].colors[assets.currentColor].files.length;
   dispatch({
     type: SET_ASSET_INDEX,
     key: assets.current,
@@ -53,7 +53,7 @@ export const incAsset = () => (dispatch, getState) => {
 
 export const decAsset = () => (dispatch, getState) => {
   const { assets, profile } = getState();
-  const length = assets.data[assets.current].files.length;
+  const length = assets.data[assets.current].colors[assets.currentColor].files.length;
   dispatch({
     type: SET_ASSET_INDEX,
     key: assets.current,
