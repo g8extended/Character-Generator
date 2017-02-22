@@ -5,6 +5,7 @@ import {
   SET_CURRENT_COLOR
 } from '../constants/assets';
 import { setCurrentHeaderNav } from '../actions/headerNav';
+import { updateProfileAssetColor } from '../actions/profile';
 import keyBy from 'lodash/keyBy';
 import axios from 'axios';
 
@@ -28,11 +29,12 @@ export const setCurrentAsset = assetID => dispatch => {
   });
 };
 
-export const colorClick = colorID => dispatch => {
+export const colorClick = color => dispatch => {
   dispatch({
     type: SET_CURRENT_COLOR,
-    payload: colorID
-  });    
+    payload: color
+  });
+  dispatch(updateProfileAssetColor(color));
 };
 
 export const assetClick = assetID => (dispatch, getState) => {
