@@ -15,27 +15,31 @@ class HeaderNav extends Component {
       const isActive = data.selected === item.title;
       const classes = classNames('item', { active: isActive});
 
-      let subitems, submenu;
+      let submenu;
 
       if (item.items) {
-        subitems = map(item.items, (subitem, index1) => {
-          return (<div className="subitem" key={subitem.title} >{subitem.title.toUpperCase()}</div>)
-        });
+        const subitems = map(item.items, (subitem) => (
+          <div className="subitem" key={subitem.title}>
+            {subitem.title}
+          </div>
+        ));
+        submenu = <div className="submenu">{subitems}</div>;
       }
 
-      submenu = subitems ? (<div className="submenu">{subitems}</div>) : '';
-
       return (
-        <div key={item.title} className={classes} onClick={() => {
-          if (!isActive) {
-            dispatch(headerNavClick(item.title));
-          }
-        }}> { item.title.toUpperCase()} {submenu} </div>
+        <div key={item.title} className={classes} onClick={() => isActive || dispatch(headerNavClick(item.title))}>
+          {item.title}
+          {submenu}
+        </div>
       );
      
     });
 
-    return <ul className="header-nav">{ items }</ul>;
+    return (
+      <ul className="header-nav">
+        {items}
+      </ul>
+    );
   }
 }
 
@@ -46,4 +50,4 @@ HeaderNav.propTypes = {
   }).isRequired
 };
 
-export default connect(state => ({data: state.headerNav}))(HeaderNav);
+export default connect(state => ({ data: state.headerNav }))(HeaderNav);
