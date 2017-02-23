@@ -30,7 +30,7 @@ class HeaderNav extends Component {
       return (
         <div key={item.title} className={classes}
           onMouseEnter={() => dispatch(headevNavMouseEnter(item.title))}
-          onMouseLeave={() => dispatch(headevNavMouseLeave(item.title))}
+          onMouseLeave={() => dispatch(headevNavMouseLeave())}
           onClick={() => isActive || item.items || dispatch(headerNavClick(item.title))}
         >
           {item.title}

@@ -20,10 +20,9 @@ export const headevNavMouseEnter = headerNavID => dispatch => {
   });
 };
 
-export const headevNavMouseLeave = headerNavID => dispatch => {
+export const headevNavMouseLeave = () => dispatch => {
   dispatch({
-    type: HEADER_NAV_MOUSE_LEAVE,
-    payload: headerNavID
+    type: HEADER_NAV_MOUSE_LEAVE
   });
 };
 
