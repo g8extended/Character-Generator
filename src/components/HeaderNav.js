@@ -10,14 +10,15 @@ class HeaderNav extends Component {
   render() {
 
     const { data, dispatch } = this.props;
-    const items = map(data.items, (item, index) => {
+    const items = map(data.items, item => {
       
       const isActive = data.selected === item.title;
+      const isHovered = data.hovered === item.title;
       const classes = classNames('item', { active: isActive});
 
       let submenu;
 
-      if (item.items) {
+      if (item.items && isHovered) {
         const subitems = map(item.items, (subitem) => (
           <div className="subitem" key={subitem.title} onClick={() => dispatch(headerNavClick(subitem.title))}>
             {subitem.title}
@@ -30,7 +31,7 @@ class HeaderNav extends Component {
         <div key={item.title} className={classes}
           onMouseEnter={() => dispatch(headevNavMouseEnter(item.title))}
           onMouseLeave={() => dispatch(headevNavMouseLeave(item.title))}
-          onClick={() => isActive || dispatch(headerNavClick(item.title))}
+          onClick={() => isActive || item.items || dispatch(headerNavClick(item.title))}
         >
           {item.title}
           {submenu}

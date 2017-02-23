@@ -13,15 +13,15 @@ const initialState = [
   },
   {
     assetID: 'Glasses',
-    headerNavID: 'Glasses'
+    headerNavID: 'Accessories'
   },
   {
     assetID: 'Scarfes',
-    headerNavID: 'Scarves'
+    headerNavID: 'Accessories'
   },
   {
     assetID: 'Tie',
-    headerNavID: 'Tiers'
+    headerNavID: 'Accessories'
   }
 ];
 
