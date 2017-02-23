@@ -2,6 +2,10 @@ body {
 	font-family: Tahoma;
 	margin: 0;
 	padding: 0;
+
+  * {
+    user-select: none;
+  }
 }
 
 .button {
