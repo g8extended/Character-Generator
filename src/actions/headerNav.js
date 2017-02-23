@@ -12,6 +12,7 @@ export const setCurrentHeaderNav = headerNavID => dispatch => {
 };
 
 export const headerNavClick = headerNavID => (dispatch, getState) => {
-  dispatch(setCurrentAsset(keyBy(getState().assetsToHeaderNavMapping, 'headerNavID')[headerNavID].assetID));
+  const mapping = keyBy(getState().assetsToHeaderNavMapping, 'headerNavID')[headerNavID];
+  mapping && dispatch(setCurrentAsset(mapping.assetID));
   dispatch(setCurrentHeaderNav(headerNavID));
 };
