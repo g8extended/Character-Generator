@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { headevNavMouseEnter, headevNavMouseLeave, headerNavClick } from '../actions/headerNav';
+import { headerNavMouseEnter, headerNavMouseLeave, headerNavClick } from '../actions/headerNav';
 import { connect } from 'react-redux';
 import styles from '../styles/header-nav.scss';
 import map from 'lodash/map';
@@ -29,8 +29,8 @@ class HeaderNav extends Component {
 
       return (
         <div key={item.title} className={classes}
-          onMouseEnter={() => dispatch(headevNavMouseEnter(item.title))}
-          onMouseLeave={() => dispatch(headevNavMouseLeave())}
+          onMouseEnter={() => dispatch(headerNavMouseEnter(item.title))}
+          onMouseLeave={() => dispatch(headerNavMouseLeave())}
           onClick={() => isActive || item.items || dispatch(headerNavClick(item.title))}
         >
           {item.title}

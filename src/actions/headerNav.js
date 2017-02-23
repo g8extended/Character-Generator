@@ -13,14 +13,14 @@ export const setCurrentHeaderNav = headerNavID => dispatch => {
   });
 };
 
-export const headevNavMouseEnter = headerNavID => dispatch => {
+export const headerNavMouseEnter = headerNavID => dispatch => {
   dispatch({
     type: HEADER_NAV_MOUSE_ENTER,
     payload: headerNavID
   });
 };
 
-export const headevNavMouseLeave = () => dispatch => {
+export const headerNavMouseLeave = () => dispatch => {
   dispatch({
     type: HEADER_NAV_MOUSE_LEAVE
   });
@@ -30,5 +30,5 @@ export const headerNavClick = headerNavID => (dispatch, getState) => {
   const mapping = keyBy(getState().assetsToHeaderNavMapping, 'headerNavID')[headerNavID];
   mapping && dispatch(setCurrentAsset(mapping.assetID));
   dispatch(setCurrentHeaderNav(headerNavID));
-  dispatch(headevNavMouseLeave());
+  dispatch(headerNavMouseLeave());
 };
