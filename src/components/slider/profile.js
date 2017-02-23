@@ -10,7 +10,7 @@ const getImage = (asset, profile, assets) => {
   const files = assets.data[asset.id].colors[color].files;
   const fileIndex = profile[asset.id].fileIndex % files.length;
   const fileName = files[fileIndex];
-  return `svg/${asset.id}/${color}/${fileName}`;
+  return fileName ? `svg/${asset.id}/${color}/${fileName}` : null;
 };
 
 class Profile extends Component {
@@ -24,11 +24,7 @@ class Profile extends Component {
       <div className="profile"> 
         <div className="character">
           {map(data, asset => (
-            <img
-              key={asset.id}
-              src={getImage(asset, profile, assets)}
-              onClick={() => dispatch(assetClick(asset.id))}
-            />
+            <img key={asset.id} src={getImage(asset, profile, assets)} />
           ))}
         </div>
         <ColorPicker />

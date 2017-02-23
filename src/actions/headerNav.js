@@ -1,4 +1,6 @@
 import {
+  HEADER_NAV_MOUSE_ENTER,
+  HEADER_NAV_MOUSE_LEAVE,
   SET_HEADER_NAV
 } from '../constants/headerNav';
 import { setCurrentAsset } from '../actions/assets';
@@ -11,7 +13,22 @@ export const setCurrentHeaderNav = headerNavID => dispatch => {
   });
 };
 
+export const headerNavMouseEnter = headerNavID => dispatch => {
+  dispatch({
+    type: HEADER_NAV_MOUSE_ENTER,
+    payload: headerNavID
+  });
+};
+
+export const headerNavMouseLeave = () => dispatch => {
+  dispatch({
+    type: HEADER_NAV_MOUSE_LEAVE
+  });
+};
+
 export const headerNavClick = headerNavID => (dispatch, getState) => {
-  dispatch(setCurrentAsset(keyBy(getState().assetsToHeaderNavMapping, 'headerNavID')[headerNavID].assetID));
+  const mapping = keyBy(getState().assetsToHeaderNavMapping, 'headerNavID')[headerNavID];
+  mapping && dispatch(setCurrentAsset(mapping.assetID));
   dispatch(setCurrentHeaderNav(headerNavID));
+  dispatch(headerNavMouseLeave());
 };

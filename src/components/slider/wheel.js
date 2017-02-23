@@ -5,7 +5,7 @@ import classNames from 'classnames';
 const getImage = (assetID, color, fileIndex, assets) => {
   if ( ! assets.data) return;
   const fileName = assets.data[assetID].colors[color].files[fileIndex];
-  return `svg/${assetID}/${color}/${fileName}`;
+  return fileName ? `svg/${assetID}/${color}/${fileName}` : null;
 };
 
 const getNextIndex = (profile, assets, index) => {
@@ -23,11 +23,11 @@ const getPrevIndex = (profile, assets, index) => {
 const getImg = (profile, assets, type, index) => {
   if ( ! assets.data) return;
   const fileIndex = type !== 'left' ? getNextIndex(profile, assets, index) : getPrevIndex(profile, assets, index);
-  return <img src={getImage(assets.current, assets.currentColor, fileIndex, assets)} />
+  return <img src={getImage(assets.current, assets.currentColor, fileIndex, assets)} />;
 };
 
 const Wheel = (
-  ({ dispatch, assets, profile, type }) => {
+  ({ assets, profile, type }) => {
 
     const classes = classNames('wheel', 
       { left:  type === 'left' },

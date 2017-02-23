@@ -12,12 +12,10 @@
       border-bottom: solid 1px transparent;
       font-size: .65em;
       position: relative;
+      text-transform: uppercase;
 
       &:hover {
         color: red;
-        .submenu {
-          display: block;
-        }
       }
 
       &.active {
@@ -26,17 +24,16 @@
       }
 
       .submenu {
-        display: none;
         position: absolute;
         background-color: #38506C;
         color: #fff;
         padding: .5em 1.2em;
         z-index: 9999;
         border-radius: 0.3em;
-        margin-top: 0.5em;
+        margin-top: 1.2em;
         box-shadow: 1px 1px 3px 1px #222;
         text-align: left;
-        
+
         &:after {
             content: '';
             display: block;

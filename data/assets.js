@@ -15,6 +15,7 @@ module.exports = [
         id: 'white'
       }
     ],
+    required: false,
     sortOrder: 1
   },
   {
@@ -33,6 +34,7 @@ module.exports = [
         id: 'white'
       }
     ],
+    required: false,
     sortOrder: 4
   },
   {
@@ -42,6 +44,7 @@ module.exports = [
         id: 'default'
       }
     ],
+    required: true,
     sortOrder: 0
   },
   {
@@ -51,6 +54,7 @@ module.exports = [
         id: 'default'
       }
     ],
+    required: false,
     sortOrder: 1
   },
   {
@@ -60,6 +64,7 @@ module.exports = [
         id: 'default'
       }
     ],
+    required: false,
     sortOrder: 3
   },
   {
@@ -69,6 +74,7 @@ module.exports = [
         id: 'default'
       }
     ],
+    required: false,
     sortOrder: 1
   },
   {
@@ -78,6 +84,7 @@ module.exports = [
         id: 'default'
       }
     ],
+    required: false,
     sortOrder: 2
   }
 ];

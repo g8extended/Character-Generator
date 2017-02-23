@@ -41,6 +41,7 @@ export const colorClick = color => dispatch => {
 };
 
 export const assetClick = assetID => (dispatch, getState) => {
-  dispatch(setCurrentHeaderNav(keyBy(getState().assetsToHeaderNavMapping, 'assetID')[assetID].headerNavID));
+  const mapping = keyBy(getState().assetsToHeaderNavMapping, 'assetID')[assetID];
+  mapping && dispatch(setCurrentHeaderNav(mapping.headerNavID));
   dispatch(setCurrentAsset(assetID));
 };

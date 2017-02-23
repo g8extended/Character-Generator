@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { headerNavClick } from '../actions/headerNav';
+import { headerNavMouseEnter, headerNavMouseLeave, headerNavClick } from '../actions/headerNav';
 import { connect } from 'react-redux';
 import styles from '../styles/header-nav.scss';
 import map from 'lodash/map';
@@ -10,32 +10,41 @@ class HeaderNav extends Component {
   render() {
 
     const { data, dispatch } = this.props;
-    const items = map(data.items, (item, index) => {
+    const items = map(data.items, item => {
       
       const isActive = data.selected === item.title;
+      const isHovered = data.hovered === item.title;
       const classes = classNames('item', { active: isActive});
 
-      let subitems, submenu;
+      let submenu;
 
-      if (item.items) {
-        subitems = map(item.items, (subitem, index1) => {
-          return (<div className="subitem" key={subitem.title} >{subitem.title.toUpperCase()}</div>)
-        });
+      if (item.items && isHovered) {
+        const subitems = map(item.items, (subitem) => (
+          <div className="subitem" key={subitem.title} onClick={() => dispatch(headerNavClick(subitem.title))}>
+            {subitem.title}
+          </div>
+        ));
+        submenu = <div className="submenu">{subitems}</div>;
       }
 
-      submenu = subitems ? (<div className="submenu">{subitems}</div>) : '';
-
       return (
-        <div key={item.title} className={classes} onClick={() => {
-          if (!isActive) {
-            dispatch(headerNavClick(item.title));
-          }
-        }}> { item.title.toUpperCase()} {submenu} </div>
+        <div key={item.title} className={classes}
+          onMouseEnter={() => dispatch(headerNavMouseEnter(item.title))}
+          onMouseLeave={() => dispatch(headerNavMouseLeave())}
+          onClick={() => isActive || item.items || dispatch(headerNavClick(item.title))}
+        >
+          {item.title}
+          {submenu}
+        </div>
       );
      
     });
 
-    return <ul className="header-nav">{ items }</ul>;
+    return (
+      <ul className="header-nav">
+        {items}
+      </ul>
+    );
   }
 }
 
@@ -46,4 +55,4 @@ HeaderNav.propTypes = {
   }).isRequired
 };
 
-export default connect(state => ({data: state.headerNav}))(HeaderNav);
+export default connect(state => ({ data: state.headerNav }))(HeaderNav);
