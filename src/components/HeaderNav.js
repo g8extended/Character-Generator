@@ -19,7 +19,7 @@ class HeaderNav extends Component {
 
       if (item.items) {
         const subitems = map(item.items, (subitem) => (
-          <div className="subitem" key={subitem.title}>
+          <div className="subitem" key={subitem.title} onClick={() => dispatch(headerNavClick(subitem.title))}>
             {subitem.title}
           </div>
         ));
