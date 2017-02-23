@@ -22,7 +22,7 @@ const reducer = (state = initialState, action) => {
       ...folder,
       colors: keyBy(folder.colors.map(color => ({
         ...color,
-        files: [null].concat(color.files)
+        files: folder.required ? color.files : [null].concat(color.files)
       })), 'id'),
     })), 'id');
     return {
