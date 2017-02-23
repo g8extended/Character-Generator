@@ -26,7 +26,6 @@ app.get('/api/assets/', function(req, res, next) {
 }, function (req, res) {
   const svgPath = 'public/svg/';
   const svgFolders = require('./data/assets');
-
   const data = svgFolders.map(folder => {
     const colors = folder.colors.map(color => {
       return Object.assign({}, color, {

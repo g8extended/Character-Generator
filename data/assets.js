@@ -9,9 +9,6 @@ module.exports = [
         id: 'blond'
       },
       {
-        id: 'brown-haired person'
-      },
-      {
         id: 'brunet'
       },
       {
@@ -46,9 +43,6 @@ module.exports = [
       },
       {
         id: 'blond'
-      },
-      {
-        id: 'brown-haired person'
       },
       {
         id: 'brunet'
