@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HeaderNav from './components/HeaderNav';
+import Footer from './components/Footer';
 import CharacterSlider from './components/slider/';
 import styles from './styles/app.scss';
 
@@ -9,6 +10,7 @@ export default class App extends Component {
       <div>
         <HeaderNav />
         <CharacterSlider />
+        <Footer />
       </div>
     );
   }

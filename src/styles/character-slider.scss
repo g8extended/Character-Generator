@@ -82,3 +82,35 @@
     position: absolute;
   }
 }
+
+.footer {
+  margin-top:3vw;
+  .content-wrapper {
+    width: 120px;
+    margin: auto;
+    padding-top:1.5vw;
+    text-align:center;
+    border-top: solid 1px #eee;
+
+    button {
+      background-color: #EE3C5D;
+      color: #fff;
+      border-radius: 20px;
+      font-size: 0.55em;
+      text-transform: uppercase;
+      border: solid 1px #CC6379;
+      padding: .85em 3em;
+      cursor: pointer;
+
+      &:active, &:hover, &:focus {
+        outline: none;
+      }
+    }
+
+    .text {
+      padding-top: .5vw;
+      color: #aaa;
+      font-size: 0.6em;
+    }
+  }
+}
