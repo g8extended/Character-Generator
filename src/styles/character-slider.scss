@@ -54,19 +54,19 @@
       }
 
       &.default {
-        background-color: #383C45;
-      }
-
-      &.blond {
-        background-color: #DDDDDD;
-      }
-
-      &.brunet {
         background-color: #BB755A;
       }
 
-      &.white {
+      &.blond {
         background-color: #E5BB6D;
+      }
+
+      &.brunet {
+        background-color: #383C45;
+      }
+
+      &.white {
+        background-color: #DDDDDD;
       }
     }
   }
