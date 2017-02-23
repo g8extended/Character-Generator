@@ -7,6 +7,8 @@ var config = require('./webpack.config');
 var app = express();
 var compiler = webpack(config);
 
+var trustedUri = 'localhost:3000';
+
 app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath
 }));
@@ -14,91 +16,16 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 app.use(express.static('public'));
 
-app.get('/api/assets/', function (req, res) {
+app.get('/api/assets/', function(req, res, next) {
+  /**
+   * надо понадежнее закрыть данные для скачек
+   */
+  if (req.headers.host === trustedUri) {
+    next();
+  }
+}, function (req, res) {
   const svgPath = 'public/svg/';
-  const svgFolders = [
-    {
-      id: 'Beards',
-      colors: [
-        {
-          id: 'default'
-        },
-        {
-          id: 'blond'
-        },
-        {
-          id: 'brunet'
-        },
-        {
-          id: 'white'
-        }
-      ],
-      sortOrder: 4
-    },
-    {
-      id: 'Body',
-      colors: [
-        {
-          id: 'default'
-        }
-      ],
-      sortOrder: 0
-    },
-    {
-      id: 'Glasses',
-      colors: [
-        {
-          id: 'default'
-        }
-      ],
-      sortOrder: 1
-    },
-    {
-      id: 'Hairstyles',
-      colors: [
-        {
-          id: 'default'
-        },
-        {
-          id: 'blond'
-        },
-        {
-          id: 'brunet'
-        },
-        {
-          id: 'white'
-        }
-      ],
-      sortOrder: 1
-    },
-    {
-      id: 'Scarfes',
-      colors: [
-        {
-          id: 'default'
-        }
-      ],
-      sortOrder: 3
-    },
-    {
-      id: 'Shirts',
-      colors: [
-        {
-          id: 'default'
-        }
-      ],
-      sortOrder: 1
-    },
-    {
-      id: 'Tie',
-      colors: [
-        {
-          id: 'default'
-        }
-      ],
-      sortOrder: 2
-    }
-  ];
+  const svgFolders = require('./data/assets');
   const data = svgFolders.map(folder => {
     const colors = folder.colors.map(color => {
       return Object.assign({}, color, {
