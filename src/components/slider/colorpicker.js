@@ -15,6 +15,6 @@ const ColorPicker = ({ assets, dispatch }) => {
   );
 }
 
-export default connect(store => ({
-  assets: store.assets
+export default connect(state => ({
+  assets: state.assets
 }))(ColorPicker);
