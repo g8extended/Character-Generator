@@ -27,7 +27,7 @@ const getImg = (profile, assets, type, index) => {
 };
 
 const Wheel = (
-  ({ dispatch, assets, profile, type }) => {
+  ({ assets, profile, type }) => {
 
     const classes = classNames('wheel', 
       { left:  type === 'left' },
