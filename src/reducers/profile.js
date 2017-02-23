@@ -15,7 +15,7 @@ const reducer = (state = initialState, action) => {
     const data = action.payload.data.reduce((memo, asset) => ({
       ...memo,
       [asset.id]: {
-        color: 'default',
+        color: asset.colors[0].id,
         fileIndex: 0
       }
     }), {});

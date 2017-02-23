@@ -5,16 +5,18 @@ import map from 'lodash/map';
 import ColorPicker from './colorpicker';
 
 const getImage = (asset, profile, assets) => {
+  if ( ! assets.data) return;
   const color = profile[asset.id].color;
-  const fileIndex = profile[asset.id].fileIndex;
-  const fileName = assets.data[asset.id].colors[color].files[fileIndex];
+  const files = assets.data[asset.id].colors[color].files;
+  const fileIndex = profile[asset.id].fileIndex % files.length;
+  const fileName = files[fileIndex];
   return `svg/${asset.id}/${color}/${fileName}`;
 };
 
 class Profile extends Component {
   render() {
     const { dispatch, profile, assets } = this.props;
-    if ( ! assets.data.Hairstyles) return <div />;
+    if ( ! assets.data) return <div />;
     const data = map(assets.data);
     data.sort((a, b) => a.sortOrder - b.sortOrder);
 

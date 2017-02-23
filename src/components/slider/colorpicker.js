@@ -5,7 +5,7 @@ import map from 'lodash/map';
 import classNames from 'classnames';
 
 const ColorPicker = ({ assets, dispatch }) => {
-	return (
+  return (
     <div className="colorPicker">
       {map(assets.data[assets.current].colors, color => {
        const className = classNames('color', color.id, { active: assets.currentColor === color.id });
@@ -16,5 +16,5 @@ const ColorPicker = ({ assets, dispatch }) => {
 }
 
 export default connect(store => ({
-	assets: store.assets
+  assets: store.assets
 }))(ColorPicker);
