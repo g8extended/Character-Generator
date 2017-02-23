@@ -3,19 +3,19 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 
 const getImage = (assetID, color, fileIndex, assets) => {
-  if ( ! assets.data || ! assets.current || ! assets.currentColor) return;
+  if ( ! assets.data) return;
   const fileName = assets.data[assetID].colors[color].files[fileIndex];
   return `svg/${assetID}/${color}/${fileName}`;
 };
 
 const getNextIndex = (profile, assets, index) => {
-  if ( ! assets.data || ! assets.current || ! assets.currentColor) return;
+  if ( ! assets.data) return;
   const length = assets.data[assets.current].colors[assets.currentColor].files.length;
   return (profile[assets.current].fileIndex + 1 + index) % length;
 };
 
 const getPrevIndex = (profile, assets, index) => {
-  if ( ! assets.data || ! assets.current || ! assets.currentColor) return;
+  if ( ! assets.data) return;
   const length = assets.data[assets.current].colors[assets.currentColor].files.length;
   return (length + profile[assets.current].fileIndex - 1 - (1 - index) % 2) % length;
 };
