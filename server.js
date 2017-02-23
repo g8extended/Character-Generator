@@ -27,9 +27,6 @@ app.get('/api/assets/', function (req, res) {
           id: 'blond'
         },
         {
-          id: 'brown-haired person'
-        },
-        {
           id: 'brunet'
         },
         {
@@ -64,9 +61,6 @@ app.get('/api/assets/', function (req, res) {
         },
         {
           id: 'blond'
-        },
-        {
-          id: 'brown-haired person'
         },
         {
           id: 'brunet'
