@@ -21,7 +21,11 @@ const reducer = (state = initialState, action) => {
     const data = keyBy(action.payload.data.map(folder => ({ ...folder, colors: keyBy(folder.colors, 'id') })), 'id');
     return { ...state, isLoading: false, data };
   case SET_CURRENT_ASSET:
-    return { ...state, current: action.payload };
+    return {
+      ...state,
+      current: action.payload,
+      currentColor: initialState.currentColor
+    };
   case SET_CURRENT_COLOR:
     return { ...state, currentColor: action.payload };
   default:
