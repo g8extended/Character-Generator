@@ -5,7 +5,7 @@ import map from 'lodash/map';
 import ColorPicker from './colorpicker';
 
 const getImage = (asset, profile, assets) => {
-  if ( ! assets.data || ! assets.current || ! assets.currentColor) return;
+  if ( ! assets.data) return;
   const color = profile[asset.id].color;
   const fileIndex = profile[asset.id].fileIndex;
   const fileName = assets.data[asset.id].colors[color].files[fileIndex];
