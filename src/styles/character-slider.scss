@@ -40,10 +40,10 @@
     text-align: center;
     margin-top: 1.2vw;
     .color {
-      width: 1.7vw;
-      height: 1.7vw;
+      width: 1.6vw;
+      height: 1.6vw;
       display: inline-block;
-      border-radius: 50%;
+      border-radius: 1.6vw;
       
       margin: .2vw;
       border: solid 1px #fff;
@@ -54,19 +54,23 @@
       }
 
       &.default {
-        background-color: #383C45;
-      }
-
-      &.blond {
-        background-color: #DDDDDD;
-      }
-
-      &.brunet {
         background-color: #BB755A;
       }
 
-      &.white {
+      &.blond {
         background-color: #E5BB6D;
+      }
+
+      &.brunet {
+        background-color: #4F5559;
+      }
+
+      &.white {
+        background-color: #DDDDDD;
+      }
+
+      &.brown-haired {
+        background-color: #BB755A;
       }
     }
   }
