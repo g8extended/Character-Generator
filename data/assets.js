@@ -1,9 +1,27 @@
 module.exports = [
   {
+    id: 'Hairstyles',
+    colors: [
+      {
+        id: 'brown'
+      },
+      {
+        id: 'blond'
+      },
+      {
+        id: 'brunet'
+      },
+      {
+        id: 'white'
+      }
+    ],
+    sortOrder: 1
+  },
+  {
     id: 'Beards',
     colors: [
       {
-        id: 'default'
+        id: 'brown'
       },
       {
         id: 'blond'
@@ -31,24 +49,6 @@ module.exports = [
     colors: [
       {
         id: 'default'
-      }
-    ],
-    sortOrder: 1
-  },
-  {
-    id: 'Hairstyles',
-    colors: [
-      {
-        id: 'default'
-      },
-      {
-        id: 'blond'
-      },
-      {
-        id: 'brunet'
-      },
-      {
-        id: 'white'
       }
     ],
     sortOrder: 1

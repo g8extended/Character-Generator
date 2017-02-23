@@ -8,9 +8,9 @@ import keyBy from 'lodash/keyBy';
 
 const initialState = {
   isLoading: false,
-  data: {},
-  current: 'Hairstyles',
-  currentColor: 'default'
+  data: null,
+  current: null,
+  currentColor: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,13 +18,22 @@ const reducer = (state = initialState, action) => {
   case FETCH_ASSETS:
     return { ...state, isLoading: true };
   case FETCH_ASSETS_FULFILLED:
-    const data = keyBy(action.payload.data.map(folder => ({ ...folder, colors: keyBy(folder.colors, 'id') })), 'id');
-    return { ...state, isLoading: false, data };
+    const data = keyBy(action.payload.data.map(folder => ({
+      ...folder,
+      colors: keyBy(folder.colors, 'id'),
+    })), 'id');
+    return {
+      ...state,
+      data,
+      isLoading: false,
+      current: action.payload.data[0].id,
+      currentColor: action.payload.data[0].colors[0].id
+    };
   case SET_CURRENT_ASSET:
     return {
       ...state,
-      current: action.payload,
-      currentColor: initialState.currentColor
+      current: action.payload.assetID,
+      currentColor: action.payload.color
     };
   case SET_CURRENT_COLOR:
     return { ...state, currentColor: action.payload };

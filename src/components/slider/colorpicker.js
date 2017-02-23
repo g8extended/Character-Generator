@@ -5,6 +5,7 @@ import map from 'lodash/map';
 import classNames from 'classnames';
 
 const ColorPicker = ({ assets, dispatch }) => {
+  if ( ! assets.data || ! assets.current || ! assets.currentColor) return <div/ >;
 	return (
     <div className="colorPicker">
       {map(assets.data[assets.current].colors, color => {

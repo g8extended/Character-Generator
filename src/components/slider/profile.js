@@ -5,6 +5,7 @@ import map from 'lodash/map';
 import ColorPicker from './colorpicker';
 
 const getImage = (asset, profile, assets) => {
+  if ( ! assets.data || ! assets.current || ! assets.currentColor) return;
   const color = profile[asset.id].color;
   const fileIndex = profile[asset.id].fileIndex;
   const fileName = assets.data[asset.id].colors[color].files[fileIndex];
@@ -14,7 +15,7 @@ const getImage = (asset, profile, assets) => {
 class Profile extends Component {
   render() {
     const { dispatch, profile, assets } = this.props;
-    if ( ! assets.data.Hairstyles) return <div />;
+    if ( ! assets.data) return <div />;
     const data = map(assets.data);
     data.sort((a, b) => a.sortOrder - b.sortOrder);
 
