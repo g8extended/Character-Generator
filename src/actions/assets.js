@@ -23,12 +23,11 @@ export const fetchAssets = () => dispatch => {
 };
 
 export const setCurrentAsset = assetID => (dispatch, getState) => {
-  const colors = getState().assets.data[assetID].colors;
   dispatch({
     type: SET_CURRENT_ASSET,
     payload: {
       assetID,
-      color: colors[Object.keys(colors)[0]].id
+      color: getState().profile[assetID].color
     }
   });
 };
