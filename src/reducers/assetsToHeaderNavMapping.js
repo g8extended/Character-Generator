@@ -6,6 +6,22 @@ const initialState = [
   {
     assetID: 'Hairstyles',
     headerNavID: 'Hairstyles'
+  },
+  {
+    assetID: 'Shirts',
+    headerNavID: 'Clothes'
+  },
+  {
+    assetID: 'Glasses',
+    headerNavID: 'Glasses'
+  },
+  {
+    assetID: 'Scarfes',
+    headerNavID: 'Scarves'
+  },
+  {
+    assetID: 'Tie',
+    headerNavID: 'Tiers'
   }
 ];
 
