@@ -20,7 +20,10 @@ const reducer = (state = initialState, action) => {
   case FETCH_ASSETS_FULFILLED:
     const data = keyBy(action.payload.data.map(folder => ({
       ...folder,
-      colors: keyBy(folder.colors, 'id'),
+      colors: keyBy(folder.colors.map(color => ({
+        ...color,
+        files: [null].concat(color.files)
+      })), 'id'),
     })), 'id');
     return {
       ...state,
