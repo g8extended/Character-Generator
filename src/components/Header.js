@@ -6,7 +6,7 @@ export default (
   () => (
     <div className="header">
       <div className="logo part">
-      	<a href="/"><img src="logo.svg" /></a>
+      	<a href="/"><img src="i/logo.svg" /></a>
       </div>
       <div className="part nav">
       	<HeaderNav />
