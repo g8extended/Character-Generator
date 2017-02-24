@@ -6,6 +6,8 @@ import {
 import { setCurrentAsset } from '../actions/assets';
 import keyBy from 'lodash/keyBy';
 
+let timeout;
+
 export const setCurrentHeaderNav = headerNavID => dispatch => {
   dispatch({
     type: SET_HEADER_NAV,
@@ -14,6 +16,8 @@ export const setCurrentHeaderNav = headerNavID => dispatch => {
 };
 
 export const headerNavMouseEnter = headerNavID => dispatch => {
+  clearTimeout(timeout);
+  
   dispatch({
     type: HEADER_NAV_MOUSE_ENTER,
     payload: headerNavID
@@ -21,9 +25,11 @@ export const headerNavMouseEnter = headerNavID => dispatch => {
 };
 
 export const headerNavMouseLeave = () => dispatch => {
-  dispatch({
-    type: HEADER_NAV_MOUSE_LEAVE
-  });
+  timeout = setTimeout(() => {
+    dispatch({
+      type: HEADER_NAV_MOUSE_LEAVE
+    });
+  }, 333);
 };
 
 export const headerNavClick = headerNavID => (dispatch, getState) => {
