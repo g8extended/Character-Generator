@@ -4,6 +4,7 @@ import {
   SET_CURRENT_ASSET,
   SET_CURRENT_COLOR
 } from '../constants/assets';
+import { push } from 'react-router-redux'
 import { setCurrentHeaderNav } from '../actions/headerNav';
 import { updateProfileAssetColor } from '../actions/profile';
 import keyBy from 'lodash/keyBy';
@@ -23,6 +24,7 @@ export const fetchAssets = () => dispatch => {
 };
 
 export const setCurrentAsset = assetID => (dispatch, getState) => {
+  dispatch(push(`/${assetID.toLowerCase()}`));
   dispatch({
     type: SET_CURRENT_ASSET,
     payload: {
