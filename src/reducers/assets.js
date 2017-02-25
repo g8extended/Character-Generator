@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
   case FETCH_ASSETS:
     return { ...state, isLoading: true };
   case FETCH_ASSETS_FULFILLED:
-    const data = keyBy(action.payload.data.map(folder => ({
+    const data = keyBy(action.payload.map(folder => ({
       ...folder,
       colors: keyBy(folder.colors.map(color => ({
         ...color,
@@ -29,8 +29,8 @@ const reducer = (state = initialState, action) => {
       ...state,
       data,
       isLoading: false,
-      current: action.payload.data[0].id,
-      currentColor: action.payload.data[0].colors[0].id
+      current: action.payload[0].id,
+      currentColor: action.payload[0].colors[0].id
     };
   case SET_CURRENT_ASSET:
     return {

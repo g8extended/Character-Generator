@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Boilerplate for ReactJS project with hot code reloading",
   "scripts": {
-    "start": "nodemon server/index.js -w server --exec babel-node",
+    "start": "webpack --progress --config webpack-server.config.js && node dist/server.js",
     "lint": "eslint src"
   },
   "repository": {
@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/gaearon/react-hot-boilerplate",
   "devDependencies": {
-    "babel-cli": "^6.23.0",
     "babel-core": "^6.0.20",
     "babel-eslint": "^4.1.3",
     "babel-loader": "^6.0.1",
@@ -39,8 +38,8 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.6.2",
     "express": "^4.13.4",
+    "ignore-loader": "^0.1.2",
     "node-sass": "^4.5.0",
-    "nodemon": "^1.11.0",
     "react-hot-loader": "^1.3.0",
     "sass-loader": "^6.0.1",
     "style-loader": "^0.13.1",
