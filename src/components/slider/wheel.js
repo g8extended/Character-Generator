@@ -5,7 +5,7 @@ import classNames from 'classnames';
 const getImage = (assetID, color, fileIndex, assets) => {
   if ( ! assets.data) return;
   const fileName = assets.data[assetID].colors[color].files[fileIndex];
-  return fileName ? `svg/${assetID}/${color}/${fileName}` : null;
+  return fileName ? `/svg/${assetID}/${color}/${fileName}` : null;
 };
 
 const getNextIndex = (profile, assets, index) => {
