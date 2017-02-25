@@ -10,7 +10,7 @@ const getImage = (asset, profile, assets) => {
   const files = assets.data[asset.id].colors[color].files;
   const fileIndex = profile[asset.id].fileIndex % files.length;
   const fileName = files[fileIndex];
-  return fileName ? `svg/${asset.id}/${color}/${fileName}` : null;
+  return fileName ? `/svg/${asset.id}/${color}/${fileName}` : null;
 };
 
 class Profile extends Component {

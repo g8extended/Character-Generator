@@ -4,7 +4,7 @@ import { updateProfileAssetFileIndex } from '../../actions/profile';
 
 const Arrow = (
   ({ dispatch, type }) => {
-      const url = `i/arrow_${type}.svg`;
+      const url = `/i/arrow_${type}.svg`;
       return (
         <div className="arrow" onClick={() => dispatch(updateProfileAssetFileIndex(type !== 'left' ? 1 : -1))}>
           <img src={url} />
