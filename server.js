@@ -1,13 +1,13 @@
-var path = require('path');
-var webpack = require('webpack');
-var express = require('express');
-var fs = require('fs');
-var config = require('./webpack.config');
+import path from 'path';
+import webpack from 'webpack';
+import express from 'express';
+import fs from 'fs';
+import config from './webpack.config';
 
-var app = express();
-var compiler = webpack(config);
+const app = express();
+const compiler = webpack(config);
 
-var trustedUri = 'localhost:3000';
+const trustedUri = 'localhost:3000';
 
 app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath
