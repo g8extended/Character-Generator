@@ -2,7 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import express from 'express';
 import fs from 'fs';
-import config from './webpack.config';
+import config from '../webpack.config';
 
 const app = express();
 const compiler = webpack(config);
@@ -25,18 +25,20 @@ app.get('/api/assets/', function(req, res, next) {
     next();
   }
 }, function (req, res) {
-  const svgPath = 'public/svg/';
-  const svgFolders = require('./data/assets');
+  const svgPath = './public/svg/';
+  const svgFolders = require('../data/assets');
   const data = svgFolders.map(folder => {
     const colors = folder.colors.map(color => {
-      return Object.assign({}, color, {
+      return {
+        ...color,
         files: fs.readdirSync(path.join(svgPath, folder.id, color.id))
-      });
+      };
     });
 
-    return Object.assign({}, folder, {
+    return {
+      ...folder,
       colors
-    });
+    };
   });
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(data));
