@@ -51,6 +51,7 @@
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
     "react": "^0.14.6",
+    "react-async-script-loader": "^0.2.2",
     "react-dom": "^0.14.6",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
