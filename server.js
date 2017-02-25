@@ -47,5 +47,5 @@ app.listen(port, function(err) {
     return console.error(err);
   }
 
-  console.log('Listening at http://' + trustedUri + '/');
+  console.log(`Listening at http://${trustedUri}/`);
 });
