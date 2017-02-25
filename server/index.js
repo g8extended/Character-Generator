@@ -17,10 +17,6 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 app.use(express.static('public'));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
-});
-
 app.get('/api/assets/', function(req, res, next) {
   /**
    * надо понадежнее закрыть данные для скачек
@@ -46,6 +42,10 @@ app.get('/api/assets/', function(req, res, next) {
   });
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(data));
+});
+
+app.get('/assets/:assetID/:color', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.listen(port, function(err) {

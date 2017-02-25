@@ -15,7 +15,7 @@ export const fetchAssets = () => dispatch => {
     type: FETCH_ASSETS
   });    
 
-  axios.get('api/assets/').then(res => {
+  axios.get('/api/assets/').then(res => {
     dispatch({
       type: FETCH_ASSETS_FULFILLED,
       payload: res
@@ -29,7 +29,7 @@ export const setCurrentAsset = assetID => (dispatch, getState) => {
   const state = getState();
   const profileAsset = state.profile[assetID];
   const color = profileAsset ? profileAsset.color : state.assets[assetID].colors[0];
-  dispatch(push(`/${assetID.toLowerCase()}/${color}`));
+  dispatch(push(`/assets/${assetID.toLowerCase()}/${color}`));
   dispatch({
     type: SET_CURRENT_ASSET,
     payload: {
@@ -41,7 +41,7 @@ export const setCurrentAsset = assetID => (dispatch, getState) => {
 
 export const setCurrentColor = color => (dispatch, getState) => {
   const assetID = getState().assets.current;
-  dispatch(push(`/${assetID.toLowerCase()}/${color}`));
+  dispatch(push(`/assets/${assetID.toLowerCase()}/${color}`));
   dispatch({
     type: SET_CURRENT_COLOR,
     payload: color
