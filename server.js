@@ -7,7 +7,8 @@ import config from './webpack.config';
 const app = express();
 const compiler = webpack(config);
 
-const trustedUri = 'localhost:3000';
+const port = 3000;
+const trustedUri = `localhost:${port}`;
 
 app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath
@@ -41,7 +42,7 @@ app.get('/api/assets/', function(req, res, next) {
   res.send(JSON.stringify(data));
 });
 
-app.listen(3000, function(err) {
+app.listen(port, function(err) {
   if (err) {
     return console.error(err);
   }
