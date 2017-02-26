@@ -8,13 +8,13 @@ export default connect()((
   ({ dispatch }) => (
     <div className="header">
       <div className="logo part">
-      	<a href="/" onClick={e => e.preventDefault() || dispatch(push('/'))}><img src="/i/logo.svg" /></a>
+        <a href="/assets/Hairstyles/brown" onClick={e => e.preventDefault() || dispatch(push('/assets/Hairstyles/brown'))}><img src="/i/logo.svg" /></a>
       </div>
       <div className="part nav">
-      	<HeaderNav />
+        <HeaderNav />
       </div>
       <div className="part btn">
-      	<button className="button" onClick={buyAll} >buy all for 28$</button>
+        <button className="button" onClick={buyAll} >buy all for 28$</button>
       </div>
     </div>
   )

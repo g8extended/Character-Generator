@@ -12,7 +12,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
   case FETCH_ASSETS_FULFILLED:
-    const data = action.payload.data.reduce((memo, asset) => ({
+    const data = action.payload.reduce((memo, asset) => ({
       ...memo,
       [asset.id]: {
         color: asset.colors[0].id,
