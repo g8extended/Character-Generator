@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { headerNavMouseEnter, headerNavMouseLeave, headerNavClick } from '../actions/headerNav';
 import { connect } from 'react-redux';
-import styles from '../styles/header-nav.scss';
+import '../styles/header-nav.scss';
 import map from 'lodash/map';
 import classNames from 'classnames';
 

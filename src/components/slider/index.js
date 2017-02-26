@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles  from '../../styles/character-slider.scss';
+import '../../styles/character-slider.scss';
 import Arrow   from './arrow';
 import Profile from './profile';
 import Wheel   from   './wheel';
