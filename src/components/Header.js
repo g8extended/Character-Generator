@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import { Link } from 'react-router';
 import HeaderNav from './HeaderNav';
 import { buyAll } from '../actions/sale';
 
@@ -8,7 +8,7 @@ export default connect()((
   ({ dispatch }) => (
     <div className="header">
       <div className="logo part">
-        <a href="/assets/Hairstyles/brown" onClick={e => e.preventDefault() || dispatch(push('/assets/Hairstyles/brown'))}><img src="/i/logo.svg" /></a>
+        <Link to="/assets/Hairstyles/brown"><img src="/i/logo.svg" /></Link>
       </div>
       <div className="part nav">
         <HeaderNav />
