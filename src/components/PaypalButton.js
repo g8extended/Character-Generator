@@ -20,11 +20,12 @@ const paymentCancelled = payment => dispatch => {
 class PayPalButton extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      showButton: false
+    }
+    if (typeof window === 'undefined') return;
     window.React = React
     window.ReactDOM = ReactDOM
-    this.state = {
-      showButton: false,
-    }
   }
 
   componentWillReceiveProps ({ isScriptLoaded, isScriptLoadSucceed }) {
