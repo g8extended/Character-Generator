@@ -13,6 +13,7 @@
       font-size: .65em;
       position: relative;
       text-transform: uppercase;
+      text-decoration: none;
 
       &:hover {
         color: red;
@@ -33,6 +34,11 @@
         margin-top: 1.2em;
         box-shadow: 1px 1px 3px 1px #222;
         text-align: left;
+
+        .subitem {
+          display: block;
+          text-decoration: none;
+        }
 
         &:after {
             content: '';
