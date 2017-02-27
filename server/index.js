@@ -71,7 +71,7 @@ const renderFullPage = (html, preloadedState) => (
 );
 
 // This is fired every time the server side receives a request
-app.use(['/assets/:assetID/:color', '/assets/:assetID', '/assets', '/'], (req, res) => {
+app.use(['/:assets?/:assetID?/:color?'], (req, res) => {
   const memoryHistory = createMemoryHistory(req.originalUrl);
 
   // Create a new Redux store instance
