@@ -8,7 +8,6 @@ import { persistStore, autoRehydrate } from 'redux-persist';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 import Router from './Router';
-// import { fetchAssets } from './actions/assets';
 
 const preloadedState = window.__PRELOADED_STATE__;
 
@@ -29,8 +28,6 @@ persistStore(store, {
 });
 
 const history = syncHistoryWithStore(browserHistory, store);
-
-// store.dispatch(fetchAssets());
 
 render(
   <Provider store={store}>
