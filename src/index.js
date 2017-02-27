@@ -2,13 +2,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
-import routes from './routes';
-import { fetchAssets } from './actions/assets';
+import Router from './Router';
+// import { fetchAssets } from './actions/assets';
 
 const preloadedState = window.__PRELOADED_STATE__;
 
@@ -34,7 +34,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 render(
   <Provider store={store}>
-    <Router history={history} routes={routes} />
+    <Router history={history} />
   </Provider>,
   document.getElementById('root')
 );

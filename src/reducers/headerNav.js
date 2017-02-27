@@ -1,7 +1,6 @@
 import {
   HEADER_NAV_MOUSE_ENTER,
-  HEADER_NAV_MOUSE_LEAVE,
-  SET_HEADER_NAV
+  HEADER_NAV_MOUSE_LEAVE
 } from '../constants/headerNav';
 import keyBy from 'lodash/keyBy';
 
@@ -11,16 +10,19 @@ const initialState = {
       title: 'Hairstyles'
     },
     {
-      title: 'Eyes'
+      title: 'Eyes',
+      path: 'Hairstyles'
     },
     {
-      title: 'Mouth'
+      title: 'Mouth',
+      path: 'Hairstyles'
     },
     {
       title: 'Beards'
     },
     {
-      title: 'Clothes'
+      title: 'Clothes',
+      path: 'Shirts'
     },
     {
       title: 'Accessories',
@@ -29,15 +31,16 @@ const initialState = {
           title: 'Glasses'
         },
         {
-          title: 'Scarves'
+          title: 'Scarves',
+          path: 'Scarfes'
         },
         {
-          title: 'Tiers'
+          title: 'Tiers',
+          path: 'Tie'
         }
       ]
     }
   ], 'title'),
-  selected: 'Hairstyles',
   hovered: null
 };
 
@@ -52,11 +55,6 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       hovered: null
-    };
-  case SET_HEADER_NAV:
-    return {
-      ...state,
-      selected: action.payload
     };
   default:
     return state;

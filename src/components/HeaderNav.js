@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { headerNavMouseEnter, headerNavMouseLeave, headerNavClick } from '../actions/headerNav';
+import { headerNavMouseEnter, headerNavMouseLeave } from '../actions/headerNav';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import '../styles/header-nav.scss';
 import map from 'lodash/map';
-import classNames from 'classnames';
 
 class HeaderNav extends Component {
   
@@ -12,30 +12,32 @@ class HeaderNav extends Component {
     const { data, dispatch } = this.props;
     const items = map(data.items, item => {
       
-      const isActive = data.selected === item.title;
       const isHovered = data.hovered === item.title;
-      const classes = classNames('item', { active: isActive});
 
       let submenu;
 
       if (item.items && isHovered) {
         const subitems = map(item.items, (subitem) => (
-          <div className="subitem" key={subitem.title} onClick={() => dispatch(headerNavClick(subitem.title))}>
+          <Link key={subitem.title}
+            to={`/assets/${subitem.path || subitem.title}`}
+            className="subitem" activeClassName="active"
+          >
             {subitem.title}
-          </div>
+          </Link>
         ));
         submenu = <div className="submenu">{subitems}</div>;
       }
 
       return (
-        <div key={item.title} className={classes}
+        <Link key={item.title}
+          to={item.items ? '' : `/assets/${item.path || item.title}`}
+          className="item" activeClassName="active"
           onMouseEnter={() => dispatch(headerNavMouseEnter(item.title))}
           onMouseLeave={() => dispatch(headerNavMouseLeave())}
-          onClick={() => isActive || item.items || dispatch(headerNavClick(item.title))}
         >
           {item.title}
           {submenu}
-        </div>
+        </Link>
       );
      
     });
@@ -50,7 +52,6 @@ class HeaderNav extends Component {
 
 HeaderNav.propTypes = {
   data: PropTypes.shape({
-    selected: PropTypes.string.isRequired,
     items: PropTypes.object.isRequired
   }).isRequired
 };
