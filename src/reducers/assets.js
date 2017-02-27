@@ -1,5 +1,4 @@
 import {
-  FETCH_ASSETS,
   FETCH_ASSETS_FULFILLED,
   SET_CURRENT_ASSET,
   SET_CURRENT_COLOR
@@ -7,7 +6,6 @@ import {
 import keyBy from 'lodash/keyBy';
 
 const initialState = {
-  isLoading: false,
   data: null,
   current: null,
   currentColor: null
@@ -15,8 +13,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-  case FETCH_ASSETS:
-    return { ...state, isLoading: true };
   case FETCH_ASSETS_FULFILLED:
     const data = keyBy(action.payload.map(folder => ({
       ...folder,
@@ -28,7 +24,6 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       data,
-      isLoading: false,
       current: action.payload[0].id,
       currentColor: action.payload[0].colors[0].id
     };

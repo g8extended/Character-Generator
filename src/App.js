@@ -4,14 +4,10 @@ import Footer from './components/Footer';
 import CharacterSlider from './components/slider/';
 import './styles/app.scss';
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <Header />
-        <CharacterSlider />
-        <Footer />
-      </div>
-    );
-  }
-}
+export default () => (
+  <div>
+    <Header />
+    <CharacterSlider />
+    <Footer />
+  </div>
+);

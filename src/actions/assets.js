@@ -1,39 +1,28 @@
 import {
-  FETCH_ASSETS,
   FETCH_ASSETS_FULFILLED,
   SET_CURRENT_ASSET,
   SET_CURRENT_COLOR
 } from '../constants/assets';
-import { push } from 'react-router-redux'
 import { setCurrentHeaderNav } from '../actions/headerNav';
-import { updateProfileAssetColor } from '../actions/profile';
 import keyBy from 'lodash/keyBy';
-import axios from 'axios';
-
-export const fetchAssets = () => dispatch => {
-  dispatch({
-    type: FETCH_ASSETS
-  });    
-
-  axios.get('/api/assets/').then(res => {
-    dispatch(fetchAssetsFulfilled(res.data));
-  });
-};
 
 export const fetchAssetsFulfilled = data => dispatch => {
   dispatch({
     type: FETCH_ASSETS_FULFILLED,
     payload: data
   });
-  dispatch(setCurrentAsset(data[0].id));
-  dispatch(setCurrentColor(data[0].colors[0].id));
+  dispatch(setCurrentAssetAndColor(data[0].id, data[0].colors[0].id));
+};
+
+export const setCurrentAssetAndColor = (assetID, color) => dispatch => {
+  assetID && dispatch(setCurrentAsset(assetID));
+  color && dispatch(setCurrentColor(color));
 };
 
 export const setCurrentAsset = assetID => (dispatch, getState) => {
   const state = getState();
   const profileAsset = state.profile[assetID];
   const color = profileAsset ? profileAsset.color : state.assets.data[assetID].colors[0];
-  dispatch(push(`/assets/${assetID}/${color}`));
   dispatch({
     type: SET_CURRENT_ASSET,
     payload: {
@@ -43,22 +32,9 @@ export const setCurrentAsset = assetID => (dispatch, getState) => {
   });
 };
 
-export const setCurrentColor = color => (dispatch, getState) => {
-  const assetID = getState().assets.current;
-  dispatch(push(`/assets/${assetID}/${color}`));
+export const setCurrentColor = color => dispatch => {
   dispatch({
     type: SET_CURRENT_COLOR,
     payload: color
   });
-};
-
-export const colorClick = color => dispatch => {
-  dispatch(setCurrentColor(color));
-  dispatch(updateProfileAssetColor(color));
-};
-
-export const assetClick = assetID => (dispatch, getState) => {
-  const mapping = keyBy(getState().assetsToHeaderNavMapping, 'assetID')[assetID];
-  mapping && dispatch(setCurrentHeaderNav(mapping.headerNavID));
-  dispatch(setCurrentAsset(assetID));
 };

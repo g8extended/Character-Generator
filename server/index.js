@@ -8,13 +8,12 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router';
 import createMemoryHistory from 'react-router/lib/createMemoryHistory';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../src/reducers';
 import { fetchAssetsFulfilled, setCurrentAsset, setCurrentColor } from '../src/actions/assets';
-import routes from '../src/routes';
+import Router from '../src/Router';
 
 const app = express();
 const compiler = webpack(config);
@@ -72,7 +71,7 @@ const renderFullPage = (html, preloadedState) => (
 );
 
 // This is fired every time the server side receives a request
-app.use(['/assets/:assetID/:color', '/'], (req, res) => {
+app.use(['/assets/:assetID/:color', '/assets/:assetID', '/assets', '/'], (req, res) => {
   const memoryHistory = createMemoryHistory(req.originalUrl);
 
   // Create a new Redux store instance
@@ -81,13 +80,11 @@ app.use(['/assets/:assetID/:color', '/'], (req, res) => {
   const history = syncHistoryWithStore(memoryHistory, store);
 
   store.dispatch(fetchAssetsFulfilled(getAssets()));
-  req.params.assetID && store.dispatch(setCurrentAsset(req.params.assetID));
-  req.params.color && store.dispatch(setCurrentColor(req.params.color));
 
   // Render the component to a string
   const html = renderToString(
     <Provider store={store}>
-      <Router history={history} routes={routes} />
+      <Router history={history} />
     </Provider>
   );
 

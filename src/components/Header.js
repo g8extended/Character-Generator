@@ -8,7 +8,7 @@ export default connect()((
   ({ dispatch }) => (
     <div className="header">
       <div className="logo part">
-        <Link to="/assets/Hairstyles/brown"><img src="/i/logo.svg" /></Link>
+        <Link to="/"><img src="/i/logo.svg" /></Link>
       </div>
       <div className="part nav">
         <HeaderNav />
