@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { updateProfileAssetColor } from '../../actions/profile';
 import { Link } from 'react-router';
 import map from 'lodash/map';
 import classNames from 'classnames';
 
-const ColorPicker = ({ assets, dispatch }) => {
+const ColorPicker = ({ colors, current, urlPrefix, onClick }) => {
   return (
     <div className="colorPicker">
-      {map(assets.data[assets.current].colors, color => {
+      {map(colors, color => {
         const className = classNames('color', color.id, {
-          active: assets.currentColor === color.id
+          active: current === color.id
         });
 
         return (
           <Link key={color.id}
-            to={`/assets/${assets.current}/${color.id}`}
+            to={`${urlPrefix}${color.id}`}
             className={className} activeClassName="active"
-            onClick={() => dispatch(updateProfileAssetColor(color.id))}
+            onClick={() => onClick(color.id)}
           >
           </Link>
         );
@@ -26,6 +24,4 @@ const ColorPicker = ({ assets, dispatch }) => {
   );
 }
 
-export default connect(state => ({
-  assets: state.assets
-}))(ColorPicker);
+export default ColorPicker;
