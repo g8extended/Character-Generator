@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-const getImage = (assetID, color, fileIndex, assets) => {
+const getImage = (assetID, color, subColor, fileIndex, assets) => {
   if ( ! assets.data) return;
-  const fileName = assets.data[assetID].colors[color].files[fileIndex];
-  return fileName ? `/svg/${assetID}/${color}/${fileName}` : null;
+  const assetColor = assets.data[assetID].colors[color];
+  const fileName = assets.data[assetID].subColors ? assetColor.colors[subColor].files[fileIndex] : assetColor.files[fileIndex];
+  if ( ! fileName) return;
+  return assets.data[assetID].subColors ? `/svg/${assetID}/${color}/${subColor}/${fileName}` : `/svg/${assetID}/${color}/${fileName}`;
 };
 
 const getNextIndex = (profile, assets, index) => {
@@ -23,7 +25,8 @@ const getPrevIndex = (profile, assets, index) => {
 const getImg = (profile, assets, type, index) => {
   if ( ! assets.data) return;
   const fileIndex = type !== 'left' ? getNextIndex(profile, assets, index) : getPrevIndex(profile, assets, index);
-  return <img src={getImage(assets.current, assets.currentColor, fileIndex, assets)} />;
+  const src = getImage(assets.current, assets.currentColor, assets.currentSubColor, fileIndex, assets);
+  return src ? <img src={src} /> : null;
 };
 
 const Wheel = (

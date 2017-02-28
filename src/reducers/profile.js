@@ -3,7 +3,8 @@ import {
 } from '../constants/assets';
 import {
   UPDATE_PROFILE_ASSET_FILE_INDEX,
-  UPDATE_PROFILE_ASSET_COLOR
+  UPDATE_PROFILE_ASSET_COLOR,
+  UPDATE_PROFILE_ASSET_SUB_COLOR
 } from '../constants/profile';
 
 const initialState = {
@@ -16,6 +17,7 @@ const reducer = (state = initialState, action) => {
       ...memo,
       [asset.id]: {
         color: asset.colors[0].id,
+        subColor: asset.subColors ? asset.colors[0].colors[0].id : null,
         fileIndex: 0
       }
     }), {});
@@ -24,7 +26,7 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       [action.payload.assetID]: {
-        color: action.payload.color,
+        ...state[action.payload.assetID],
         fileIndex: action.payload.fileIndex
       }
     };
@@ -34,6 +36,14 @@ const reducer = (state = initialState, action) => {
       [action.payload.assetID]: {
         ...state[action.payload.assetID],
         color: action.payload.color
+      }
+    };
+  case UPDATE_PROFILE_ASSET_SUB_COLOR:
+    return {
+      ...state,
+      [action.payload.assetID]: {
+        ...state[action.payload.assetID],
+        subColor: action.payload.subColor
       }
     };
   default:

@@ -6,10 +6,12 @@ import map from 'lodash/map';
 const getImage = (asset, profile, assets) => {
   if ( ! assets.data) return;
   const color = profile[asset.id].color;
-  const files = assets.data[asset.id].colors[color].files;
+  const subColor = profile[asset.id].subColor;
+  const files = asset.subColors ? assets.data[asset.id].colors[color].colors[subColor].files : assets.data[asset.id].colors[color].files;
   const fileIndex = profile[asset.id].fileIndex % files.length;
   const fileName = files[fileIndex];
-  return fileName ? `/svg/${asset.id}/${color}/${fileName}` : null;
+  if ( ! fileName) return;
+  return asset.subColors ? `/svg/${asset.id}/${color}/${subColor}/${fileName}` : `/svg/${asset.id}/${color}/${fileName}`;
 };
 
 class Profile extends Component {

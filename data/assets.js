@@ -37,7 +37,8 @@ module.exports = [
   {
     id: 'Eyes',
     required: true,
-    sortOrder: 1
+    sortOrder: 1,
+    subColors: true
   },
   {
     id: 'Jackets',

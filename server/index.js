@@ -35,11 +35,18 @@ const getAssets = () => {
     const colors = fs.readdirSync(path.join(svgPath, asset.id))
       .filter(color => fs.statSync(path.join(svgPath, asset.id, color)).isDirectory())
       .map(color => {
-      return {
-        id: color,
-        files: fs.readdirSync(path.join(svgPath, asset.id, color))
-      };
-    });
+        const subColors = asset.subColors ? fs.readdirSync(path.join(svgPath, asset.id, color)) : [];
+        return {
+          id: color,
+          files: fs.readdirSync(path.join(svgPath, asset.id, color)),
+          colors: subColors.map(subColor => {
+            return {
+              id: subColor,
+              files: fs.readdirSync(path.join(svgPath, asset.id, color, subColor))
+            }
+          })
+        };
+      });
 
     return {
       ...asset,

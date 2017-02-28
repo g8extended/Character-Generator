@@ -1,24 +1,30 @@
 import {
   FETCH_ASSETS_FULFILLED,
   SET_CURRENT_ASSET,
-  SET_CURRENT_COLOR
+  SET_CURRENT_COLOR,
+  SET_CURRENT_SUB_COLOR
 } from '../constants/assets';
 import keyBy from 'lodash/keyBy';
 
 const initialState = {
   data: null,
   current: null,
-  currentColor: null
+  currentColor: null,
+  currentSubColor: null
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
   case FETCH_ASSETS_FULFILLED:
-    const data = keyBy(action.payload.map(folder => ({
-      ...folder,
-      colors: keyBy(folder.colors.map(color => ({
+    const data = keyBy(action.payload.map(asset => ({
+      ...asset,
+      colors: keyBy(asset.colors.map(color => ({
         ...color,
-        files: folder.required ? color.files : [null].concat(color.files)
+        files: asset.required ? color.files : [null].concat(color.files),
+        colors: keyBy(color.colors.map(subColor => ({
+          ...subColor,
+          files: asset.required ? subColor.files : [null].concat(subColor.files)
+        })), 'id')
       })), 'id'),
     })), 'id');
     return {
@@ -31,10 +37,19 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       current: action.payload.assetID,
-      currentColor: action.payload.color
+      currentColor: action.payload.color,
+      currentSubColor: action.payload.subColor
     };
   case SET_CURRENT_COLOR:
-    return { ...state, currentColor: action.payload };
+    return {
+      ...state,
+      currentColor: action.payload
+    };
+  case SET_CURRENT_SUB_COLOR:
+    return {
+      ...state,
+      currentSubColor: action.payload
+    };
   default:
     return state;
   }
