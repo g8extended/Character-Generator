@@ -36,7 +36,7 @@ module.exports = [
   },
   {
     id: 'Eyes',
-    required: false,
+    required: true,
     sortOrder: 1
   },
   {
@@ -46,7 +46,7 @@ module.exports = [
   },
   {
     id: 'Mouths',
-    required: false,
+    required: true,
     sortOrder: 1
   }
 ];
