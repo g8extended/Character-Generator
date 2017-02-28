@@ -12,7 +12,7 @@ import createMemoryHistory from 'react-router/lib/createMemoryHistory';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../src/reducers';
-import { fetchAssetsFulfilled, setCurrentAsset, setCurrentColor } from '../src/actions/assets';
+import { fetchAssetsFulfilled } from '../src/actions/assets';
 import Router from '../src/Router';
 
 const app = express();
@@ -80,7 +80,7 @@ const renderFullPage = (html, preloadedState) => (
 );
 
 // This is fired every time the server side receives a request
-app.use(['/:assets?/:assetID?/:color?'], (req, res) => {
+app.use(['/:assets?/:assetID?/:color?/:subColor?'], (req, res) => {
   const memoryHistory = createMemoryHistory(req.originalUrl);
 
   // Create a new Redux store instance
