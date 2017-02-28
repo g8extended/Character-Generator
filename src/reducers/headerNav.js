@@ -11,18 +11,25 @@ const initialState = {
     },
     {
       title: 'Eyes',
-      path: 'Hairstyles'
+      path: 'Eyes'
     },
     {
       title: 'Mouth',
-      path: 'Hairstyles'
+      path: 'Mouths'
     },
     {
       title: 'Beards'
     },
     {
       title: 'Clothes',
-      path: 'Shirts'
+      items: [
+        {
+          title: 'Shirts'
+        },
+        {
+          title: 'Jackets'
+        }
+      ]
     },
     {
       title: 'Accessories',

@@ -3,6 +3,7 @@ import '../../styles/character-slider.scss';
 import Arrow   from './arrow';
 import Profile from './profile';
 import Wheel   from   './wheel';
+import ColorPicker from './colorpicker';
 
 export default class CharacterSlider extends Component {
   render() {
@@ -13,6 +14,7 @@ export default class CharacterSlider extends Component {
         <Profile />
         <Arrow type="right" />
         <Wheel type="right" />
+        <ColorPicker />
       </div>
     );
   }

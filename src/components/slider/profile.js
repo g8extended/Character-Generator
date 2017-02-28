@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { assetClick } from '../../actions/assets';
 import map from 'lodash/map';
-import ColorPicker from './colorpicker';
 
 const getImage = (asset, profile, assets) => {
   if ( ! assets.data) return;
@@ -27,7 +26,6 @@ class Profile extends Component {
             <img key={asset.id} src={getImage(asset, profile, assets)} />
           ))}
         </div>
-        <ColorPicker />
       </div>
     );
   }
