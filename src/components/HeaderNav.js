@@ -18,26 +18,30 @@ class HeaderNav extends Component {
 
       if (item.items && isHovered) {
         const subitems = map(item.items, (subitem) => (
-          <Link key={subitem.title}
-            to={`/assets/${subitem.path || subitem.title}`}
-            className="subitem" activeClassName="active"
-          >
-            {subitem.title}
-          </Link>
+          <li key={subitem.title}>
+            <Link
+              to={`/assets/${subitem.path || subitem.title}`}
+              className="subitem" activeClassName="active"
+            >
+              {subitem.title}
+            </Link>
+          </li>
         ));
-        submenu = <div className="submenu">{subitems}</div>;
+        submenu = <ul className="submenu">{subitems}</ul>;
       }
 
       return (
-        <Link key={item.title}
-          to={item.items ? '' : `/assets/${item.path || item.title}`}
-          className="item" activeClassName="active"
-          onMouseEnter={() => dispatch(headerNavMouseEnter(item.title))}
-          onMouseLeave={() => dispatch(headerNavMouseLeave())}
-        >
-          {item.title}
+        <li key={item.title}>
+          <Link
+            to={item.items ? '' : `/assets/${item.path || item.title}`}
+            className="item" activeClassName="active"
+            onMouseEnter={() => dispatch(headerNavMouseEnter(item.title))}
+            onMouseLeave={() => dispatch(headerNavMouseLeave())}
+          >
+            {item.title}
+          </Link>
           {submenu}
-        </Link>
+        </li>
       );
      
     });
