@@ -30,17 +30,19 @@ app.use(express.static('public'));
 
 const getAssets = () => {
   const svgPath = './public/svg/';
-  const svgFolders = require('../data/assets');
-  return svgFolders.map(folder => {
-    const colors = folder.colors.map(color => {
+  const assets = require('../data/assets');
+  return assets.map(asset => {
+    const colors = fs.readdirSync(path.join(svgPath, asset.id))
+      .filter(color => fs.statSync(path.join(svgPath, asset.id, color)).isDirectory())
+      .map(color => {
       return {
-        ...color,
-        files: fs.readdirSync(path.join(svgPath, folder.id, color.id))
+        id: color,
+        files: fs.readdirSync(path.join(svgPath, asset.id, color))
       };
     });
 
     return {
-      ...folder,
+      ...asset,
       colors
     };
   });
