@@ -5,6 +5,8 @@ import classNames from 'classnames';
 
 const ColorPicker = ({ colors, current, urlPrefix, onClick }) => {
   return (
+    Object.keys(colors).length > 1
+    ?
     <div className="colorPicker">
       {map(colors, color => {
         const className = classNames('color', color.id, {
@@ -21,6 +23,8 @@ const ColorPicker = ({ colors, current, urlPrefix, onClick }) => {
         );
       })}
     </div>
+    :
+    <div/>
   );
 }
 
