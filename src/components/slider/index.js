@@ -5,7 +5,7 @@ import Arrow   from './arrow';
 import Profile from './profile';
 import Wheel   from   './wheel';
 import ColorPicker from './colorpicker';
-import { updateProfileAssetColor, updateProfileAssetSubColor } from '../../actions/profile';
+import { updateProfileAssetColor, updateProfileAssetSubColor, toggleProfileAssetVisible } from '../../actions/profile';
 
 const Slider = ({ assets, dispatch }) => (
   <div className="character-slider">
@@ -20,6 +20,12 @@ const Slider = ({ assets, dispatch }) => (
     <Profile />
     <Arrow type="right" />
     <Wheel type="right" />
+    {
+      assets.data[assets.current].required ||
+      <button onClick={() => dispatch(toggleProfileAssetVisible())}>
+        toggle element visibility
+      </button>
+    }
     <ColorPicker
       colors={assets.data[assets.current].colors}
       current={assets.currentColor}
