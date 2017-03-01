@@ -17,7 +17,9 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
   case REHYDRATE:
+    if ( ! action.payload.profile) return state;
     const profileAsset = action.payload.profile[state.current];
+    if ( ! profileAsset) return state;
     let profileData = {}
     if (profileAsset && profileAsset.color) {
       profileData.currentColor = profileAsset.color;
