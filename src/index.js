@@ -22,6 +22,7 @@ const store = createStore(reducers, preloadedState, composeEnhancers(
 );
 
 persistStore(store, {
+  keyPrefix: 'v0.0.1:',
   whitelist: [
     'profile'
   ]
