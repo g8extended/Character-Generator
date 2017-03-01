@@ -27,8 +27,8 @@ const reducer = (state = initialState, action) => {
   case UPDATE_PROFILE_ASSET_FILE_INDEX:
     return {
       ...state,
-      [action.payload.assetID]: {
-        ...state[action.payload.assetID],
+      [action.payload.asset]: {
+        ...state[action.payload.asset],
         fileIndex: action.payload.fileIndex,
         visible: action.payload.visible
       }
@@ -36,24 +36,24 @@ const reducer = (state = initialState, action) => {
   case UPDATE_PROFILE_ASSET_COLOR:
     return {
       ...state,
-      [action.payload.assetID]: {
-        ...state[action.payload.assetID],
+      [action.payload.asset]: {
+        ...state[action.payload.asset],
         color: action.payload.color
       }
     };
   case UPDATE_PROFILE_ASSET_SUB_COLOR:
     return {
       ...state,
-      [action.payload.assetID]: {
-        ...state[action.payload.assetID],
+      [action.payload.asset]: {
+        ...state[action.payload.asset],
         subColor: action.payload.subColor
       }
     };
   case UPDATE_PROFILE_ASSET_VISIBILITY:
     return {
       ...state,
-      [action.payload.assetID]: {
-        ...state[action.payload.assetID],
+      [action.payload.asset]: {
+        ...state[action.payload.asset],
         visible: action.payload.visible
       }
     };

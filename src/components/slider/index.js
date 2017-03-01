@@ -10,9 +10,9 @@ import { updateProfileAssetColor, updateProfileAssetSubColor, toggleProfileAsset
 const Slider = ({ assets, dispatch }) => (
   <div className="character-slider">
     <ColorPicker
-      colors={assets.data[assets.current].colors[assets.currentColor].colors}
-      current={assets.currentSubColor}
-      urlPrefix={`/assets/${assets.current}/${assets.currentColor}/`}
+      colors={assets.items[assets.current.asset].colors[assets.current.color].colors}
+      current={assets.current.subColor}
+      urlPrefix={`/assets/${assets.current}/${assets.current.color}/`}
       onClick={color => dispatch(updateProfileAssetSubColor(color))}
     />
     <Wheel type="left" />
@@ -21,15 +21,15 @@ const Slider = ({ assets, dispatch }) => (
     <Arrow type="right" />
     <Wheel type="right" />
     {
-      assets.data[assets.current].required ||
+      assets.items[assets.current.asset].required ||
       <button onClick={() => dispatch(toggleProfileAssetVisible())}>
         toggle element visibility
       </button>
     }
     <ColorPicker
-      colors={assets.data[assets.current].colors}
-      current={assets.currentColor}
-      urlPrefix={`/assets/${assets.current}/`}
+      colors={assets.items[assets.current.asset].colors}
+      current={assets.current.color}
+      urlPrefix={`/assets/${assets.current.asset}/`}
       onClick={color => dispatch(updateProfileAssetColor(color))}
     />
   </div>

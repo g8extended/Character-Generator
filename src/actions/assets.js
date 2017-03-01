@@ -15,21 +15,21 @@ export const fetchAssetsFulfilled = data => dispatch => {
   dispatch(setCurrentAssetAndColor(data[0].id, data[0].colors[0].id));
 };
 
-export const setCurrentAssetAndColor = (assetID, color, subColor) => dispatch => {
-  assetID && dispatch(setCurrentAsset(assetID));
+export const setCurrentAssetAndColor = (asset, color, subColor) => dispatch => {
+  asset && dispatch(setCurrentAsset(asset));
   color && dispatch(setCurrentColor(color));
   subColor && dispatch(setCurrentSubColor(subColor));
 };
 
-export const setCurrentAsset = assetID => (dispatch, getState) => {
+export const setCurrentAsset = asset => (dispatch, getState) => {
   const state = getState();
-  const profileAsset = state.profile[assetID];
-  const color = profileAsset ? profileAsset.color : state.assets.data[assetID].colors[0];
-  const subColor = profileAsset ? profileAsset.subColor : state.assets.data[assetID].colors[color].colors[0];
+  const profileAsset = state.profile[asset];
+  const color = profileAsset ? profileAsset.color : state.assets.items[asset].colors[0];
+  const subColor = profileAsset ? profileAsset.subColor : state.assets.items[asset].colors[color].colors[0];
   dispatch({
     type: SET_CURRENT_ASSET,
     payload: {
-      assetID,
+      asset,
       color,
       subColor
     }

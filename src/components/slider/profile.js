@@ -4,10 +4,10 @@ import { assetClick } from '../../actions/assets';
 import map from 'lodash/map';
 
 const getImage = (asset, profile, assets) => {
-  if ( ! assets.data || ! profile[asset.id].visible) return;
+  if ( ! assets.items || ! profile[asset.id].visible) return;
   const color = profile[asset.id].color;
   const subColor = profile[asset.id].subColor;
-  const files = asset.subColors ? assets.data[asset.id].colors[color].colors[subColor].files : assets.data[asset.id].colors[color].files;
+  const files = asset.subColors ? assets.items[asset.id].colors[color].colors[subColor].files : assets.items[asset.id].colors[color].files;
   const fileIndex = profile[asset.id].fileIndex % files.length;
   const fileName = files[fileIndex];
   if ( ! fileName) return;
@@ -15,14 +15,14 @@ const getImage = (asset, profile, assets) => {
 };
 
 const Profile = ({ dispatch, profile, assets }) => {
-  if ( ! assets.data) return <div />;
-  const data = map(assets.data);
-  data.sort((a, b) => a.sortOrder - b.sortOrder);
+  if ( ! assets.items) return <div />;
+  const items = map(assets.items);
+  items.sort((a, b) => a.sortOrder - b.sortOrder);
 
   return (
     <div className="profile"> 
       <div className="character">
-        {map(data, asset => (
+        {map(items, asset => (
           <img key={asset.id} src={getImage(asset, profile, assets)} />
         ))}
       </div>

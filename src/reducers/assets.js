@@ -8,31 +8,36 @@ import { REHYDRATE } from 'redux-persist/constants';
 import keyBy from 'lodash/keyBy';
 
 const initialState = {
-  data: null,
-  current: null,
-  currentColor: null,
-  currentSubColor: null
+  items: {},
+  current: {
+    asset: null,
+    color: null,
+    subColor: null
+  }
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
   case REHYDRATE:
     if ( ! action.payload.profile) return state;
-    const profileAsset = action.payload.profile[state.current];
+    const profileAsset = action.payload.profile[state.current.asset];
     if ( ! profileAsset) return state;
-    let profileData = {}
+    let current = {}
     if (profileAsset && profileAsset.color) {
-      profileData.currentColor = profileAsset.color;
+      current.color = profileAsset.color;
     }
     if (profileAsset && profileAsset.subColor) {
-      profileData.currentSubColor = profileAsset.subColor;
+      current.subColor = profileAsset.subColor;
     }
     return {
       ...state,
-      ...profileData
+      current: {
+        ...state.current,
+        ...current
+      }
     };
   case FETCH_ASSETS_FULFILLED:
-    const data = keyBy(action.payload.map(asset => ({
+    const items = keyBy(action.payload.map(asset => ({
       ...asset,
       colors: keyBy(asset.colors.map(color => ({
         ...color,
@@ -43,26 +48,37 @@ const reducer = (state = initialState, action) => {
     })), 'id');
     return {
       ...state,
-      data,
-      current: action.payload[0].id,
-      currentColor: action.payload[0].colors[0].id
+      items,
+      current: {
+        ...state.current,
+        asset: action.payload[0].id,
+        color: action.payload[0].colors[0].id
+      }
     };
   case SET_CURRENT_ASSET:
     return {
       ...state,
-      current: action.payload.assetID,
-      currentColor: action.payload.color,
-      currentSubColor: action.payload.subColor
+      current: {
+        asset: action.payload.asset,
+        color: action.payload.color,
+        subColor: action.payload.subColor
+      }
     };
   case SET_CURRENT_COLOR:
     return {
       ...state,
-      currentColor: action.payload
+      current: {
+        ...state.current,
+        color: action.payload
+      }
     };
   case SET_CURRENT_SUB_COLOR:
     return {
       ...state,
-      currentSubColor: action.payload
+      current: {
+        ...state.current,
+        subColor: action.payload
+      }
     };
   default:
     return state;
