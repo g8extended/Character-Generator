@@ -4,6 +4,7 @@ import {
   SET_CURRENT_COLOR,
   SET_CURRENT_SUB_COLOR
 } from '../constants/assets';
+import { REHYDRATE } from 'redux-persist/constants';
 import keyBy from 'lodash/keyBy';
 
 const initialState = {
@@ -15,6 +16,19 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+  case REHYDRATE:
+    const profileAsset = action.payload.profile[state.current];
+    let profileData = {}
+    if (profileAsset && profileAsset.color) {
+      profileData.currentColor = profileAsset.color;
+    }
+    if (profileAsset && profileAsset.subColor) {
+      profileData.currentSubColor = profileAsset.subColor;
+    }
+    return {
+      ...state,
+      ...profileData
+    };
   case FETCH_ASSETS_FULFILLED:
     const data = keyBy(action.payload.map(asset => ({
       ...asset,
