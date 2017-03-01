@@ -12,7 +12,7 @@ const Slider = ({ assets, dispatch }) => (
     <ColorPicker
       colors={assets.items[assets.current.asset].colors[assets.current.color].colors}
       current={assets.current.subColor}
-      urlPrefix={`/assets/${assets.current}/${assets.current.color}/`}
+      urlPrefix={`/assets/${assets.current.asset}/${assets.current.color}/`}
       onClick={color => dispatch(updateProfileAssetSubColor(color))}
     />
     <Wheel type="left" />
