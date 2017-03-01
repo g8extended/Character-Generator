@@ -1,42 +1,49 @@
 import {
   FETCH_ASSETS_FULFILLED,
-  SET_CURRENT_ASSET,
+  SET_ROUTER,
+  SET_CURRENT,
   SET_CURRENT_COLOR,
   SET_CURRENT_SUB_COLOR
 } from '../constants/assets';
 import { setCurrentHeaderNav } from '../actions/headerNav';
 import keyBy from 'lodash/keyBy';
 
-export const fetchAssetsFulfilled = data => dispatch => {
+export const fetchAssetsFulfilled = items => dispatch => {
   dispatch({
     type: FETCH_ASSETS_FULFILLED,
-    payload: data
+    payload: items
   });
-  dispatch(setCurrentAssetAndColor(data[0].id, data[0].colors[0].id));
 };
 
-export const setCurrentAssetAndColor = (asset, color, subColor) => dispatch => {
-  asset && dispatch(setCurrentAsset(asset));
-  color && dispatch(setCurrentColor(color));
-  subColor && dispatch(setCurrentSubColor(subColor));
-};
-
-export const setCurrentAsset = asset => (dispatch, getState) => {
-  const state = getState();
-  const profileAsset = state.profile[asset];
-  const color = profileAsset ? profileAsset.color : state.assets.items[asset].colors[0];
-  const subColor = profileAsset ? profileAsset.subColor : state.assets.items[asset].colors[color].colors[0];
+export const setRouter = (asset, color, subColor) => dispatch => {
   dispatch({
-    type: SET_CURRENT_ASSET,
+    type: SET_ROUTER,
     payload: {
       asset,
       color,
       subColor
     }
   });
+  dispatch(setCurrent(asset, color, subColor));
+};
+
+export const setCurrent = (asset, color, subColor) => (dispatch, getState) => {
+  const state = getState();
+  const profile = state.profile[asset];
+  const profileColor = profile && profile.color ? profile.color : state.assets.items[asset].colors[0];
+  const profileSubColor = profile && profile.subColor ? profile.subColor : state.assets.items[asset].colors[profileColor].colors[0];
+  dispatch({
+    type: SET_CURRENT,
+    payload: {
+      asset,
+      color: color || profileColor,
+      subColor: subColor || profileSubColor
+    }
+  });
 };
 
 export const setCurrentColor = color => dispatch => {
+  if ( ! color) return;
   dispatch({
     type: SET_CURRENT_COLOR,
     payload: color
@@ -44,6 +51,7 @@ export const setCurrentColor = color => dispatch => {
 };
 
 export const setCurrentSubColor = color => dispatch => {
+  if ( ! color) return;
   dispatch({
     type: SET_CURRENT_SUB_COLOR,
     payload: color
