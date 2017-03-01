@@ -7,7 +7,7 @@ module.exports = [
   {
     id: 'Beards',
     required: false,
-    sortOrder: 4
+    sortOrder: 5
   },
   {
     id: 'Body',
@@ -22,7 +22,7 @@ module.exports = [
   {
     id: 'Scarfes',
     required: false,
-    sortOrder: 3
+    sortOrder: 4
   },
   {
     id: 'Shirts',
@@ -43,7 +43,7 @@ module.exports = [
   {
     id: 'Jackets',
     required: false,
-    sortOrder: 1
+    sortOrder: 3
   },
   {
     id: 'Mouths',
