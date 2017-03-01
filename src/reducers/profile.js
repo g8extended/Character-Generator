@@ -4,7 +4,8 @@ import {
 import {
   UPDATE_PROFILE_ASSET_FILE_INDEX,
   UPDATE_PROFILE_ASSET_COLOR,
-  UPDATE_PROFILE_ASSET_SUB_COLOR
+  UPDATE_PROFILE_ASSET_SUB_COLOR,
+  UPDATE_PROFILE_ASSET_VISIBILITY
 } from '../constants/profile';
 
 const initialState = {
@@ -18,7 +19,8 @@ const reducer = (state = initialState, action) => {
       [asset.id]: {
         color: asset.colors[0].id,
         subColor: asset.subColors ? asset.colors[0].colors[0].id : null,
-        fileIndex: 0
+        fileIndex: 0,
+        visible: asset.required
       }
     }), {});
     return { ...state, ...data };
@@ -27,7 +29,8 @@ const reducer = (state = initialState, action) => {
       ...state,
       [action.payload.assetID]: {
         ...state[action.payload.assetID],
-        fileIndex: action.payload.fileIndex
+        fileIndex: action.payload.fileIndex,
+        visible: action.payload.visible
       }
     };
   case UPDATE_PROFILE_ASSET_COLOR:
@@ -44,6 +47,14 @@ const reducer = (state = initialState, action) => {
       [action.payload.assetID]: {
         ...state[action.payload.assetID],
         subColor: action.payload.subColor
+      }
+    };
+  case UPDATE_PROFILE_ASSET_VISIBILITY:
+    return {
+      ...state,
+      [action.payload.assetID]: {
+        ...state[action.payload.assetID],
+        visible: action.payload.visible
       }
     };
   default:

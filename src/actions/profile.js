@@ -1,7 +1,8 @@
 import {
   UPDATE_PROFILE_ASSET_FILE_INDEX,
   UPDATE_PROFILE_ASSET_COLOR,
-  UPDATE_PROFILE_ASSET_SUB_COLOR
+  UPDATE_PROFILE_ASSET_SUB_COLOR,
+  UPDATE_PROFILE_ASSET_VISIBILITY
 } from '../constants/profile';
 
 export const updateProfileAssetFileIndex = offset => (dispatch, getState) => {
@@ -13,7 +14,8 @@ export const updateProfileAssetFileIndex = offset => (dispatch, getState) => {
       assetID: assets.current,
       color: assets.currentColor,
       subColor: assets.currentSubColor,
-      fileIndex: (length + profile[assets.current].fileIndex + offset) % length
+      fileIndex: (length + profile[assets.current].fileIndex + offset) % length,
+      visible: true
     }
   });
 };
@@ -34,6 +36,17 @@ export const updateProfileAssetSubColor = subColor => (dispatch, getState) => {
     payload: {
       assetID: getState().assets.current,
       subColor: subColor
+    }
+  });
+};
+
+export const toggleProfileAssetVisible = () => (dispatch, getState) => {
+  const { assets, profile } = getState();
+  dispatch({
+    type: UPDATE_PROFILE_ASSET_VISIBILITY,
+    payload: {
+      assetID: assets.current,
+      visible: ! profile[assets.current].visible
     }
   });
 };
