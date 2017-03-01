@@ -36,10 +36,8 @@ const reducer = (state = initialState, action) => {
       ...asset,
       colors: keyBy(asset.colors.map(color => ({
         ...color,
-        files: asset.required ? color.files : [null].concat(color.files),
         colors: keyBy(color.colors.map(subColor => ({
-          ...subColor,
-          files: asset.required ? subColor.files : [null].concat(subColor.files)
+          ...subColor
         })), 'id')
       })), 'id'),
     })), 'id');
