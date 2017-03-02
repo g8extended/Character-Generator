@@ -1,5 +1,5 @@
 import {
-  UPDATE_PROFILE_ASSET_FILE_INDEX,
+  UPDATE_PROFILE_ASSET,
   UPDATE_PROFILE_ASSET_COLOR,
   UPDATE_PROFILE_ASSET_SUB_COLOR,
   UPDATE_PROFILE_ASSET_VISIBILITY
@@ -9,7 +9,7 @@ export const updateProfileAssetFileIndex = offset => (dispatch, getState) => {
   const { assets, profile } = getState();
   const length = assets.items[assets.current.asset].colors[assets.current.color].files.length;
   dispatch({
-    type: UPDATE_PROFILE_ASSET_FILE_INDEX,
+    type: UPDATE_PROFILE_ASSET,
     payload: {
       asset: assets.current.asset,
       color: assets.current.color,

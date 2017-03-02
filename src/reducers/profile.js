@@ -2,7 +2,7 @@ import {
   FETCH_ASSETS_FULFILLED
 } from '../constants/assets';
 import {
-  UPDATE_PROFILE_ASSET_FILE_INDEX,
+  UPDATE_PROFILE_ASSET,
   UPDATE_PROFILE_ASSET_COLOR,
   UPDATE_PROFILE_ASSET_SUB_COLOR,
   UPDATE_PROFILE_ASSET_VISIBILITY
@@ -24,14 +24,10 @@ const reducer = (state = initialState, action) => {
       }
     }), {});
     return { ...state, ...data };
-  case UPDATE_PROFILE_ASSET_FILE_INDEX:
+  case UPDATE_PROFILE_ASSET:
     return {
       ...state,
-      [action.payload.asset]: {
-        ...state[action.payload.asset],
-        fileIndex: action.payload.fileIndex,
-        visible: action.payload.visible
-      }
+      [action.payload.asset]: action.payload
     };
   case UPDATE_PROFILE_ASSET_COLOR:
     return {
