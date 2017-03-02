@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { updateProfileAssetFileIndex } from '../../actions/profile';
+import { isConflicts } from '../../utils/conflicts';
 
 const getIndexByOffset = (length, index, offset) => {
   return (length + index + offset) % length;
@@ -25,10 +26,13 @@ const Wheel = (
 
     if ( ! assets.items) return <div />;
 
-    const classes = classNames('wheel', 
-      { left:  type === 'left' },
-      { right: type === 'right'}
-    );
+    const conflict = isConflicts(assets, profile);
+
+    const classeName = classNames('wheel', {
+      left:  type === 'left',
+      right: type === 'right',
+      disabled: conflict
+    });
 
     const files = getFiles(assets);
     const filePath = getFilePath(assets);
@@ -36,10 +40,10 @@ const Wheel = (
     const offsets = type === 'left' ? [-2, -1] : [1, 2];
 
     return (
-      <div className={classes}>
+      <div className={classeName}>
         {offsets.map((offset, index) => (
           <div key={index} className="character">
-            <div className="grad" onClick={() => dispatch(updateProfileAssetFileIndex(offset))}></div>
+            <div className="grad" onClick={() => conflict || dispatch(updateProfileAssetFileIndex(offset))}></div>
             {getImg(filePath, files, fileIndex, offset)}
           </div>
         ))}

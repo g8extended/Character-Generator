@@ -27,7 +27,14 @@ module.exports = [
   {
     id: 'Shirts',
     required: false,
-    sortOrder: 1
+    sortOrder: 1,
+    conflicts: {
+      white: {
+        indexes: [5 ,6],
+        assets: ['Tie'],
+        message: 'Sorry but you can\'t use ties with this shirt'
+      }
+    }
   },
   {
     id: 'Tie',

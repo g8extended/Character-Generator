@@ -6,35 +6,53 @@ import Profile from './profile';
 import Wheel   from   './wheel';
 import ColorPicker from './colorpicker';
 import { updateProfileAssetColor, updateProfileAssetSubColor, toggleProfileAssetVisible } from '../../actions/profile';
+import { isConflicts, getConflictMessages } from '../../utils/conflicts';
+import map from 'lodash/map';
 
-const Slider = ({ assets, dispatch }) => (
-  <div className="character-slider">
-    <ColorPicker
-      colors={assets.items[assets.current.asset].colors[assets.current.color].colors}
-      current={assets.current.subColor}
-      urlPrefix={`/assets/${assets.current.asset}/${assets.current.color}/`}
-      onClick={color => dispatch(updateProfileAssetSubColor(color))}
-    />
-    <Wheel type="left" />
-    <Arrow type="left" />
-    <Profile />
-    <Arrow type="right" />
-    <Wheel type="right" />
-    {
-      assets.items[assets.current.asset].required ||
-      <button onClick={() => dispatch(toggleProfileAssetVisible())}>
-        toggle element visibility
-      </button>
-    }
+const Slider = ({ assets, profile, dispatch }) => {
+  const conflicts = isConflicts(assets, profile);
+
+  const conflictsMessages = conflicts && map(getConflictMessages(assets, profile), message => {
+    return <div className="conflict-message">{message}</div>;
+  });
+
+  const visibilityButton = (assets.items[assets.current.asset].required ||
+    <button onClick={() => dispatch(toggleProfileAssetVisible())}>
+      toggle element visibility
+    </button>
+  );
+
+  const colorPicker = (
     <ColorPicker
       colors={assets.items[assets.current.asset].colors}
       current={assets.current.color}
       urlPrefix={`/assets/${assets.current.asset}/`}
       onClick={color => dispatch(updateProfileAssetColor(color))}
     />
-  </div>
-);
+  );
+
+  return (
+    <div className="character-slider">
+      <ColorPicker
+        colors={assets.items[assets.current.asset].colors[assets.current.color].colors}
+        current={assets.current.subColor}
+        urlPrefix={`/assets/${assets.current.asset}/${assets.current.color}/`}
+        onClick={color => dispatch(updateProfileAssetSubColor(color))}
+      />
+      <Wheel type="left" />
+      <Arrow type="left" />
+      <Profile />
+      <Arrow type="right" />
+      <Wheel type="right" />
+
+      {conflictsMessages}
+      {conflicts || visibilityButton}
+      {conflicts || colorPicker}
+    </div>
+  );
+};
 
 export default connect(state => ({
-  assets: state.assets
+  assets: state.assets,
+  profile: state.profile
 }))(Slider);
