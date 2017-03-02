@@ -16,9 +16,9 @@ const getFilePath = ({ current: { asset, color, subColor }, items }) => {
   return items[asset].subColors ? `/svg/${asset}/${color}/${subColor}/` : `/svg/${asset}/${color}/`;
 };
 
-const getImg = (filePath, files, fileIndex, offset) => {
+const getImg = (filePath, files, fileIndex, offset, onClick) => {
   const src = filePath + files[getIndexByOffset(files.length, fileIndex, offset)];
-  return src ? <img src={src} /> : null;
+  return src ? <img src={src} onClick={onClick} /> : null;
 };
 
 const Wheel = (
@@ -43,8 +43,7 @@ const Wheel = (
       <div className={classeName}>
         {offsets.map((offset, index) => (
           <div key={index} className="character">
-            <div className="grad" onClick={() => conflict || dispatch(updateProfileAssetFileIndex(offset))}></div>
-            {getImg(filePath, files, fileIndex, offset)}
+            {getImg(filePath, files, fileIndex, offset, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
           </div>
         ))}
       </div>

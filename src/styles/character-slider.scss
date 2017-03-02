@@ -1,23 +1,6 @@
 .character-slider {
   padding: 0;
 
-  .wheel {
-    .grad {
-      position: absolute;
-      width: 100%;
-      min-height: 23vw;
-      z-index: 999;
-    }
-
-    &.left .character:first-child .grad {
-      background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 31%, rgba(255,255,255,0) 100%);
-    }
-
-    &.right .character:last-child .grad {
-      background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 69%,rgba(255,255,255,1) 100%);
-    }
-  }
-
   .wheel, .character, .arrow, .profile {
     display: inline-block;
     vertical-align: top;
