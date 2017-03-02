@@ -7,7 +7,7 @@ import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
-import Router from './Router';
+import Router from './components/Router';
 
 const preloadedState = window.__PRELOADED_STATE__;
 

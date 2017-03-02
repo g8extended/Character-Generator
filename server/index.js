@@ -13,7 +13,7 @@ import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../src/reducers';
 import { fetchAssetsFulfilled } from '../src/actions/assets';
-import Router from '../src/Router';
+import Router from '../src/components/Router';
 
 const app = express();
 const compiler = webpack(config);

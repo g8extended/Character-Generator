@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Router, Route, IndexRedirect } from 'react-router';
 import App from './App';
-import { setRouter } from './actions/assets';
+import { setRouter } from '../actions/assets';
 
 export default connect()(
   ({ dispatch, history }) => (
