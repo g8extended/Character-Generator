@@ -2,30 +2,34 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-const getImage = ({ asset, color, subColor }, fileIndex, assets) => {
-  if ( ! assets.items) return;
-  const assetColor = assets.items[asset].colors[color];
-  const fileName = assets.items[asset].subColors ? assetColor.colors[subColor].files[fileIndex] : assetColor.files[fileIndex];
+const getImage = ({ current: { asset, color, subColor }, items }, fileIndex) => {
+  if ( ! items) return;
+  const assetColor = items[asset].colors[color];
+  const fileName = items[asset].subColors ? assetColor.colors[subColor].files[fileIndex] : assetColor.files[fileIndex];
   if ( ! fileName) return;
-  return assets.items[asset].subColors ? `/svg/${asset}/${color}/${subColor}/${fileName}` : `/svg/${asset}/${color}/${fileName}`;
+  return items[asset].subColors ? `/svg/${asset}/${color}/${subColor}/${fileName}` : `/svg/${asset}/${color}/${fileName}`;
 };
 
-const getNextIndex = (profile, assets, index) => {
-  if ( ! assets.items) return;
-  const length = assets.items[assets.current.asset].colors[assets.current.color].files.length;
-  return (profile[assets.current.asset].fileIndex + 1 + index) % length;
+const getNextIndex = (profile, { current: { asset, color, subColor }, items }, index) => {
+  if ( ! items) return;
+  const files = items[asset].subColors ? items[asset].colors[color].colors[subColor].files : items[asset].colors[color].files;
+  const fileIndex = profile[asset].fileIndex;
+  const length = files.length;
+  return (fileIndex + 1 + index) % length;
 };
 
-const getPrevIndex = (profile, assets, index) => {
-  if ( ! assets.items) return;
-  const length = assets.items[assets.current.asset].colors[assets.current.color].files.length;
-  return (length + profile[assets.current.asset].fileIndex - 1 - (1 - index) % 2) % length;
+const getPrevIndex = (profile, { current: { asset, color, subColor }, items }, index) => {
+  if ( ! items) return;
+  const files = items[asset].subColors ? items[asset].colors[color].colors[subColor].files : items[asset].colors[color].files;
+  const fileIndex = profile[asset].fileIndex;
+  const length = files.length;
+  return (length + fileIndex - 1 - (1 - index) % 2) % length;
 };
 
 const getImg = (profile, assets, type, index) => {
   if ( ! assets.items) return;
   const fileIndex = type !== 'left' ? getNextIndex(profile, assets, index) : getPrevIndex(profile, assets, index);
-  const src = getImage(assets.current, fileIndex, assets);
+  const src = getImage(assets, fileIndex);
   return src ? <img src={src} /> : null;
 };
 
