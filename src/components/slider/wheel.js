@@ -2,54 +2,51 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-const getImage = ({ current: { asset, color, subColor }, items }, fileIndex) => {
-  if ( ! items) return;
-  const assetColor = items[asset].colors[color];
-  const fileName = items[asset].subColors ? assetColor.colors[subColor].files[fileIndex] : assetColor.files[fileIndex];
-  if ( ! fileName) return;
-  return items[asset].subColors ? `/svg/${asset}/${color}/${subColor}/${fileName}` : `/svg/${asset}/${color}/${fileName}`;
+const getNextIndex = (length, index, offset) => {
+  return (index + 1 + offset) % length;
 };
 
-const getNextIndex = (profile, { current: { asset, color, subColor }, items }, index) => {
-  if ( ! items) return;
-  const files = items[asset].subColors ? items[asset].colors[color].colors[subColor].files : items[asset].colors[color].files;
-  const fileIndex = profile[asset].fileIndex;
-  const length = files.length;
-  return (fileIndex + 1 + index) % length;
+const getPrevIndex = (length, index, offset) => {
+  return (length + index - 1 - (1 - offset) % 2) % length;
 };
 
-const getPrevIndex = (profile, { current: { asset, color, subColor }, items }, index) => {
-  if ( ! items) return;
-  const files = items[asset].subColors ? items[asset].colors[color].colors[subColor].files : items[asset].colors[color].files;
-  const fileIndex = profile[asset].fileIndex;
-  const length = files.length;
-  return (length + fileIndex - 1 - (1 - index) % 2) % length;
+const getFiles = ({ current: {asset, color, subColor}, items }) => {
+  return items[asset].subColors ? items[asset].colors[color].colors[subColor].files : items[asset].colors[color].files;
 };
 
-const getImg = (profile, assets, type, index) => {
-  if ( ! assets.items) return;
-  const fileIndex = type !== 'left' ? getNextIndex(profile, assets, index) : getPrevIndex(profile, assets, index);
-  const src = getImage(assets, fileIndex);
+const getFilePath = ({ current: { asset, color, subColor }, items }) => {
+  return items[asset].subColors ? `/svg/${asset}/${color}/${subColor}/` : `/svg/${asset}/${color}/`;
+};
+
+const getImg = (filePath, files, fileIndex, getIndexFn, offset) => {
+  const src = filePath + files[getIndexFn(files.length, fileIndex, offset)];
   return src ? <img src={src} /> : null;
 };
 
 const Wheel = (
   ({ assets, profile, type }) => {
 
+    if ( ! assets.items) return <div />;
+
     const classes = classNames('wheel', 
       { left:  type === 'left' },
       { right: type === 'right'}
     );
 
-    return  (
+    const getIndexFn = type !== 'left' ? getNextIndex : getPrevIndex;
+    const files = getFiles(assets);
+    const filePath = getFilePath(assets);
+    const fileIndex = profile[assets.current.asset].fileIndex;
+
+    return (
       <div className={classes} >
         <div className="character">
           <div className="grad"></div>
-          {getImg(profile, assets, type, 0)}
+          {getImg(filePath, files, fileIndex, getIndexFn, 0)}
         </div>
         <div className="character">
           <div className="grad"></div>
-          {getImg(profile, assets, type, 1)}
+          {getImg(filePath, files, fileIndex, getIndexFn, 1)}
         </div>
       </div>
     )
