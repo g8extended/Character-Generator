@@ -40,13 +40,12 @@ const Wheel = (
     const offsets = type === 'left' ? [-2, -1] : [1, 2];
 
     const assetItem = assets.items[assets.current.asset];
-    const style = { width: assetItem.width, height: assetItem.height, left: assetItem.left, top: assetItem.top };
 
     return (
       <div className={classeName}>
         {offsets.map((offset, index) => (
           <div key={index} className="character">
-            {getImg(filePath, files, fileIndex, offset, style, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
+            {getImg(filePath, files, fileIndex, offset, assetItem.style, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
           </div>
         ))}
       </div>

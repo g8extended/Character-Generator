@@ -5,19 +5,23 @@ module.exports = [
     id: 'Hairstyles',
     required: false,
     sortOrder: 1,
-    width: 358 / width * 100 + '%',
-    height: 342.5 / height * 100 + '%',
-    left: 195 / width * 100 + '%',
-    top: 45 / height * 100 + '%'
+    style: {
+      width: 358 / width * 100 + '%',
+      height: 342.5 / height * 100 + '%',
+      left: 195 / width * 100 + '%',
+      top: 45 / height * 100 + '%'
+    }
   },
   {
     id: 'Beards',
     required: false,
     sortOrder: 5,
-    width: 323/ width * 100 + '%',
-    height: 353 / height * 100 + '%',
-    left: 209/ width * 100 + '%',
-    top: 313 / height * 100 + '%'
+    style: {
+      width: 323/ width * 100 + '%',
+      height: 353 / height * 100 + '%',
+      left: 209/ width * 100 + '%',
+      top: 313 / height * 100 + '%'
+    }
   },
   {
     id: 'Body',
@@ -60,10 +64,12 @@ module.exports = [
     required: true,
     sortOrder: 1,
     subColors: true,
-    width: 172 / width * 100 + '%',
-    height: 77 / height * 100 + '%',
-    left: 287 / width * 100 + '%',
-    top: 275 / height * 100 + '%'
+    style: {
+      width: 172 / width * 100 + '%',
+      height: 77 / height * 100 + '%',
+      left: 287 / width * 100 + '%',
+      top: 275 / height * 100 + '%'
+    }
   },
   {
     id: 'Jackets',

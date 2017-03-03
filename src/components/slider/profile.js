@@ -24,7 +24,7 @@ const Profile = ({ dispatch, profile, assets }) => {
       <div className="character">
         {map(items, assetItem => (
           <Link key={assetItem.id} to={`/assets/${assetItem.id}`}>
-            <img style={{ width: assetItem.width, height: assetItem.height, left: assetItem.left, top: assetItem.top }} src={getImage(assetItem, profile, assets)} />
+            <img style={assetItem.style} src={getImage(assetItem, profile, assets)} />
           </Link>
         ))}
       </div>
