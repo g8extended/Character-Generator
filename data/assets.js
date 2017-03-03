@@ -1,13 +1,29 @@
+const convert = base => value => value / base * 100 + '%';
+const width = value => convert(739.6)(value);
+const height = value => convert(909.9)(value);
+
 module.exports = [
   {
     id: 'Hairstyles',
     required: false,
-    sortOrder: 1
+    sortOrder: 1,
+    style: {
+      width: width(358),
+      height: height(342),
+      left: width(195),
+      top: height(45)
+    }
   },
   {
     id: 'Beards',
     required: false,
-    sortOrder: 5
+    sortOrder: 5,
+    style: {
+      width: width(323),
+      height: height(353),
+      left: width(209),
+      top: height(313)
+    }
   },
   {
     id: 'Body',
@@ -49,7 +65,13 @@ module.exports = [
     id: 'Eyes',
     required: true,
     sortOrder: 1,
-    subColors: true
+    subColors: true,
+    style: {
+      width: width(172),
+      height: height(77),
+      left: width(287),
+      top: height(275)
+    }
   },
   {
     id: 'Jackets',

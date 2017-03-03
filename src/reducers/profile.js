@@ -27,29 +27,29 @@ const reducer = (state = initialState, action) => {
   case UPDATE_PROFILE_ASSET:
     return {
       ...state,
-      [action.payload.asset]: action.payload
+      [action.asset]: action.payload
     };
   case UPDATE_PROFILE_ASSET_COLOR:
     return {
       ...state,
-      [action.payload.asset]: {
-        ...state[action.payload.asset],
+      [action.asset]: {
+        ...state[action.asset],
         color: action.payload.color
       }
     };
   case UPDATE_PROFILE_ASSET_SUB_COLOR:
     return {
       ...state,
-      [action.payload.asset]: {
-        ...state[action.payload.asset],
+      [action.asset]: {
+        ...state[action.asset],
         subColor: action.payload.subColor
       }
     };
   case UPDATE_PROFILE_ASSET_VISIBILITY:
     return {
       ...state,
-      [action.payload.asset]: {
-        ...state[action.payload.asset],
+      [action.asset]: {
+        ...state[action.asset],
         visible: action.payload.visible
       }
     };
