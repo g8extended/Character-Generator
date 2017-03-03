@@ -90,3 +90,33 @@
     position: absolute;
   }
 }
+
+@media(max-width: 1024px) {
+  .character {
+    width: 30vw;
+    min-height: 40vw;
+  }
+
+  .wheel.left .character:first-child {
+    display: none;
+  }
+
+  .wheel.right .character:last-child {
+    display: none;
+  }
+}
+
+@media(max-width: 640px) {
+  .character {
+    width: 90vw;
+    min-height: 110vw;
+  }
+
+  .wheel.left {
+    display: none;
+  }
+
+  .wheel.right {
+    display: none;
+  }
+}
