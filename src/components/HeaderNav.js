@@ -30,7 +30,7 @@ class HeaderNav extends Component {
       }
 
       return (
-        <li key={item.title} className="item"
+        <li key={item.title} className={classNames('item', item.title.toLowerCase())}
           onMouseEnter={() => dispatch(headerNavMouseEnter(item.title))}
           onMouseLeave={() => dispatch(headerNavMouseLeave())}
         >
