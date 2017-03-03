@@ -47,8 +47,8 @@ export const toggleProfileAssetVisible = () => (dispatch, getState) => {
   const { assets, profile } = getState();
   dispatch({
     type: UPDATE_PROFILE_ASSET_VISIBILITY,
+    asset: assets.current.asset,
     payload: {
-      asset: assets.current.asset,
       visible: ! profile[assets.current.asset].visible
     }
   });
