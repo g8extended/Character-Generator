@@ -1,4 +1,6 @@
-const { height, width } = { width: 739.6, height: 909.9 };
+const convert = base => value => value / base * 100 + '%';
+const width = value => convert(739.6)(value);
+const height = value => convert(909.9)(value);
 
 module.exports = [
   {
@@ -6,10 +8,10 @@ module.exports = [
     required: false,
     sortOrder: 1,
     style: {
-      width: 358 / width * 100 + '%',
-      height: 342.5 / height * 100 + '%',
-      left: 195 / width * 100 + '%',
-      top: 45 / height * 100 + '%'
+      width: width(358),
+      height: height(342),
+      left: width(195),
+      top: height(45)
     }
   },
   {
@@ -17,10 +19,10 @@ module.exports = [
     required: false,
     sortOrder: 5,
     style: {
-      width: 323/ width * 100 + '%',
-      height: 353 / height * 100 + '%',
-      left: 209/ width * 100 + '%',
-      top: 313 / height * 100 + '%'
+      width: width(323),
+      height: height(353),
+      left: width(209),
+      top: height(313)
     }
   },
   {
@@ -65,10 +67,10 @@ module.exports = [
     sortOrder: 1,
     subColors: true,
     style: {
-      width: 172 / width * 100 + '%',
-      height: 77 / height * 100 + '%',
-      left: 287 / width * 100 + '%',
-      top: 275 / height * 100 + '%'
+      width: width(172),
+      height: height(77),
+      left: width(287),
+      top: height(275)
     }
   },
   {
