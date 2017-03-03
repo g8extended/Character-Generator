@@ -17,17 +17,20 @@ module.exports = [
   {
     id: 'Glasses',
     required: false,
-    sortOrder: 2
+    sortOrder: 2,
+    menuItem: 'Accessories'
   },
   {
     id: 'Scarfes',
     required: false,
-    sortOrder: 4
+    sortOrder: 4,
+    menuItem: 'Accessories'
   },
   {
     id: 'Shirts',
     required: false,
     sortOrder: 1,
+    menuItem: 'Clothes',
     conflicts: {
       white: {
         indexes: [5 ,6],
@@ -39,7 +42,8 @@ module.exports = [
   {
     id: 'Tie',
     required: false,
-    sortOrder: 2
+    sortOrder: 2,
+    menuItem: 'Accessories'
   },
   {
     id: 'Eyes',
@@ -50,7 +54,8 @@ module.exports = [
   {
     id: 'Jackets',
     required: false,
-    sortOrder: 3
+    sortOrder: 3,
+    menuItem: 'Clothes'
   },
   {
     id: 'Mouths',
