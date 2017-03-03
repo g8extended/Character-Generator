@@ -17,9 +17,7 @@ const Slider = ({ assets, profile, dispatch }) => {
   });
 
   const visibilityButton = (assets.items[assets.current.asset].required ||
-    <button onClick={() => dispatch(toggleProfileAssetVisible())}>
-      toggle element visibility
-    </button>
+    <img src="/i/cancellation_icon.svg" className="visibilityButton" onClick={() => dispatch(toggleProfileAssetVisible())} />
   );
 
   const colorPicker = (
@@ -44,10 +42,11 @@ const Slider = ({ assets, profile, dispatch }) => {
       <Profile />
       <Arrow type="right" />
       <Wheel type="right" />
-
       {conflictsMessages}
-      {conflicts || visibilityButton}
-      {conflicts || colorPicker}
+      <div className="colorPickerContainer">
+        {conflicts || colorPicker}
+        {conflicts || visibilityButton}
+      </div>
     </div>
   );
 };
