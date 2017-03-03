@@ -14,7 +14,7 @@
   font-size: 0.65em;
   text-transform: uppercase;
   border: transparent;
-  padding: 1.3em 2.5em;
+  padding: 1.3em 2.1em;
   cursor: pointer;
 
   &:active, &:hover, &:focus {
@@ -23,7 +23,7 @@
 }
 
 .header {
-  padding: 1.5em 12.5vw;
+  padding: 1em 12.5vw;
   text-align: justify;
   .part {
     display: inline-block;
@@ -43,7 +43,7 @@
 
     &.btn {
       padding: .7em 0;
-      width: 17.5vw;
+      width: 170px;
       text-align: right;
     }
   }
