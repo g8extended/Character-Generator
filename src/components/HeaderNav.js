@@ -21,7 +21,7 @@ class HeaderNav extends Component {
       if (item.items && isHovered) {
         const subitems = map(item.items, (subitem) => (
           <li key={subitem.title} className="subitem" >
-            <Link to={`/assets/${subitem.path || subitem.title}`}>
+            <Link to={`/assets/${subitem.path || subitem.title}`} activeClassName="active">
               {subitem.title}
             </Link>
           </li>
@@ -34,7 +34,7 @@ class HeaderNav extends Component {
           onMouseEnter={() => dispatch(headerNavMouseEnter(item.title))}
           onMouseLeave={() => dispatch(headerNavMouseLeave())}
         >
-          <Link className={classNames({active: isActive})} to={item.items ? '' : `/assets/${item.path || item.title}`}>
+          <Link className={classNames({active: isActive})} to={item.items ? '' : `/assets/${item.path || item.title}`} activeClassName="active">
             {item.title}
           </Link>
           {submenu}

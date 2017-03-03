@@ -2,20 +2,17 @@ module.exports = [
   {
     id: 'Hairstyles',
     required: false,
-    sortOrder: 1,
-    menuItem: 'Hairstyles'
+    sortOrder: 1
   },
   {
     id: 'Beards',
     required: false,
-    sortOrder: 5,
-    menuItem: 'Beards'
+    sortOrder: 5
   },
   {
     id: 'Body',
     required: true,
-    sortOrder: 0,
-    menuItem: 'Body'
+    sortOrder: 0
   },
   {
     id: 'Glasses',
@@ -52,8 +49,7 @@ module.exports = [
     id: 'Eyes',
     required: true,
     sortOrder: 1,
-    subColors: true,
-    menuItem: 'Eyes'
+    subColors: true
   },
   {
     id: 'Jackets',
@@ -64,7 +60,6 @@ module.exports = [
   {
     id: 'Mouths',
     required: true,
-    sortOrder: 1,
-    menuItem: 'Mouth'
+    sortOrder: 1
   }
 ];
