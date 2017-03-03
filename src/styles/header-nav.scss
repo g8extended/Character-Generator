@@ -7,8 +7,8 @@
     vertical-align: top;
     a {
       color: #36516e;
-      padding: .4em 0 1em .4em;
-      margin: 0 .5em;
+      padding: 0 0 1.2em 0;
+      margin: 0 1em;
       cursor: pointer;
       border-bottom: solid 1px transparent;
       font-size: .65em;
@@ -27,23 +27,23 @@
     }
 
     .submenu {
-
       list-style: none;
       background-color: #38506C;
-      padding: .5em .5em;
+      padding: .4em 1em .7em 1em;
       /*z-index: 9999;*/
-      margin-top: 1.2em;
+      margin-top: 0.6em;
       text-align: left;
       border-radius: 5px;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.1) inset;
+      box-shadow: 0 0 0 rgba(9,26,45,0.95), 0 0 20px rgba(9,26,45,0.1) inset;
       position: absolute;
+      height: auto;
 
       &:after {
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 7px 16px;
+        box-shadow: rgba(9, 26, 45, 0.9) 0px 2px 36px;
         z-index: -1;
-        left: 10%;
+        left: 25%;
         bottom: 0px;
-        width: 80%;
+        width: 50%;
         height: 40%;
         border-radius: 50%;
         position: absolute;
@@ -55,24 +55,27 @@
           display: block;
           position: absolute;
           left: 40%;
-          top: -20px;
+          top: -14px;
           width: 0;
           height: 0;
           border-style: solid;
           border-color: transparent transparent #38506C transparent;
-          border-width: 10px;
+          border-width: 8px;
       }
       
+      .subitem {padding: .3em 0 .3em 0; }
+
       .subitem a {
-        padding: .8em .5em;
+        padding: 0 0 .6em 0;
         color: #95AFCB;
-        
+
         &:hover {
           color: #fff;
         }
 
         &.active {
-          border-bottom: none;
+          color: #fff;
+
         }
       }
     }

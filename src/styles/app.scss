@@ -17,9 +17,16 @@
   padding: 1.3em 2.1em;
   cursor: pointer;
 
-  &:active, &:hover, &:focus {
+  &:active, &:focus {
     outline: none;
   }
+
+  &:hover {
+    background-color:#e8304d;
+  }
+
+
+    
 }
 
 .header {
@@ -39,12 +46,12 @@
     &.nav {
       width: 60vw;
       text-align: right;
-      margin-top: 1.3em;
+      margin-top: .5em;
     }
 
     &.btn {
-      padding: .7em 0;
-      width: 10.675em;
+/*    padding: .7em 0;
+*/    width: 10.675em;
       text-align: right;
     }
   }
