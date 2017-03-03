@@ -1,12 +1,10 @@
 import some from 'lodash/some';
 import map from 'lodash/map';
 
-const getMessage = (asset, current, profile) => {
-  if ( ! asset.conflicts) return;
-  const conflicts = asset.conflicts[profile[asset.id].color];
+const getMessage = ({ conflicts, id }, current, profile) => {
   if ( ! conflicts) return;
   if ( ! conflicts.assets.includes(current.asset)) return;
-  if ( ! conflicts.indexes.includes(profile[asset.id].fileIndex)) return;
+  if ( ! conflicts.indexes.includes(profile[id].fileIndex)) return;
   return conflicts.message;
 };
 

@@ -42,8 +42,7 @@ const initialState = {
           path: 'Scarfes'
         },
         {
-          title: 'Tiers',
-          path: 'Tie'
+          title: 'Ties'
         }
       ]
     }

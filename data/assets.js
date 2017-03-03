@@ -46,19 +46,29 @@ module.exports = [
     id: 'Shirts',
     required: false,
     sortOrder: 1,
+    style: {
+      width: width(530),
+      height: height(300),
+      left: width(111),
+      top: height(473)
+    },
     menuItem: 'Clothes',
     conflicts: {
-      white: {
-        indexes: [5 ,6],
-        assets: ['Tie'],
-        message: 'Sorry but you can\'t use ties with this shirt'
-      }
+      indexes: [0 ,1, 2],
+      assets: ['Ties'],
+      message: 'Sorry but you can\'t use ties with this shirt'
     }
   },
   {
-    id: 'Tie',
+    id: 'Ties',
     required: false,
     sortOrder: 2,
+    style: {
+      width: width(130),
+      height: height(240),
+      left: width(300),
+      top: height(547)
+    },
     menuItem: 'Accessories'
   },
   {
