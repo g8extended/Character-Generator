@@ -15,14 +15,13 @@
 
   .colorPicker {
     text-align: center;
-    margin-top: 1.2vw;
     .color {
       width: 1.5em;
       height: 1.5em;
       display: inline-block;
       border-radius: 1em;
       
-      margin: .25vw;
+      margin: 0 .25vw;
       border: solid 1px #fff;
       cursor: pointer;
 
@@ -58,6 +57,24 @@
         background-color: #000;
       }
     }
+  }
+
+  .colorPickerContainer {
+    margin-top: 1.2vw;
+    text-align: center;
+    .colorPicker, .visibilityButton {
+      display: inline-block;
+    }
+
+    .visibilityButton {
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 1em;
+      margin: 0 .25vw;
+      border: solid 1px #fff;
+      cursor: pointer;
+    }
+
   }
 }
 
