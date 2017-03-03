@@ -2,13 +2,12 @@
   list-style: none;
   text-align: right;
   vertical-align: middle;
-  padding: 0;
   .item {
     display: inline-block;
     vertical-align: top;
     a {
       color: #36516e;
-      padding: .4em;
+      padding: .4em 0 1em .4em;
       margin: 0 .5em;
       cursor: pointer;
       border-bottom: solid 1px transparent;
@@ -23,7 +22,7 @@
 
       &.active {
         color: red;
-        border-bottom-color: #C2C2C2;
+        border-bottom-color: #36516e;
       }
     }
 
