@@ -8,7 +8,7 @@ const getIndexByOffset = (length, index, offset) => {
   return (length + index + offset) % length;
 };
 
-const getFiles = ({ current: {asset, color, subColor}, items }) => {
+const getFiles = ({ current: { asset, color, subColor }, items }) => {
   return items[asset].subColors ? items[asset].colors[color].colors[subColor].files : items[asset].colors[color].files;
 };
 
