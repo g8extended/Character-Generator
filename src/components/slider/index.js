@@ -29,6 +29,11 @@ const Slider = ({ assets, profile, dispatch }) => {
     />
   );
 
+  const UnderProfileContainer = conflicts ? conflictsMessages : <div className="colorPickerContainer">
+    {colorPicker}
+    {visibilityButton}
+  </div>
+
   return (
     <div className="character-slider">
       <ColorPicker
@@ -42,11 +47,7 @@ const Slider = ({ assets, profile, dispatch }) => {
       <Profile />
       <Arrow type="right" />
       <Wheel type="right" />
-      {conflictsMessages}
-      <div className="colorPickerContainer">
-        {conflicts || colorPicker}
-        {conflicts || visibilityButton}
-      </div>
+      {UnderProfileContainer}
     </div>
   );
 };
