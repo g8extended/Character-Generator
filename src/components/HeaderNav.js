@@ -4,14 +4,16 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import '../styles/header-nav.scss';
 import map from 'lodash/map';
+import classNames from 'classnames';
 
 class HeaderNav extends Component {
   
   render() {
 
-    const { data, dispatch } = this.props;
+    const { data, dispatch, assets } = this.props;
     const items = map(data.items, item => {
-      
+
+      const isActive = item.title === assets.items[assets.current.asset].menuItem;
       const isHovered = data.hovered === item.title;
 
       let submenu;
@@ -19,7 +21,7 @@ class HeaderNav extends Component {
       if (item.items && isHovered) {
         const subitems = map(item.items, (subitem) => (
           <li key={subitem.title} className="subitem" >
-            <Link to={`/assets/${subitem.path || subitem.title}`} activeClassName="active">
+            <Link to={`/assets/${subitem.path || subitem.title}`}>
               {subitem.title}
             </Link>
           </li>
@@ -32,7 +34,7 @@ class HeaderNav extends Component {
           onMouseEnter={() => dispatch(headerNavMouseEnter(item.title))}
           onMouseLeave={() => dispatch(headerNavMouseLeave())}
         >
-          <Link to={item.items ? '' : `/assets/${item.path || item.title}`} activeClassName="active">
+          <Link className={classNames({active: isActive})} to={item.items ? '' : `/assets/${item.path || item.title}`}>
             {item.title}
           </Link>
           {submenu}
@@ -55,4 +57,4 @@ HeaderNav.propTypes = {
   }).isRequired
 };
 
-export default connect(state => ({ data: state.headerNav }))(HeaderNav);
+export default connect(state => ({ assets: state.assets, data: state.headerNav }))(HeaderNav);
