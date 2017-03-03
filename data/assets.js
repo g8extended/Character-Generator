@@ -82,6 +82,12 @@ module.exports = [
   {
     id: 'Mouths',
     required: true,
-    sortOrder: 1
+    sortOrder: 1,
+    style: {
+      width: width(130),
+      height: height(59),
+      left: width(311),
+      top: height(405)
+    }
   }
 ];
