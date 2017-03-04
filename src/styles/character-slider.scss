@@ -6,7 +6,7 @@
   .arrow {
     padding-top: 4vw;
     cursor: pointer;
-    width: 3vw;
+    width: 1vw;
     text-align: center;
   }
 
@@ -16,7 +16,7 @@
 
   .character {
     position: relative;
-    width: 19vw;
+    width: 19.25vw;
     min-height: 23.5vw;
 
     img {
@@ -108,13 +108,13 @@
 @media(max-width: 1024px) {
   .character-slider {
     .character {
-      width: 28vw;
-      min-height: 34.6vw;
+      width: 32vw;
+      min-height: 40vw;
     }
 
     .arrow {
       padding-top: 8vw;
-      width: 8vw;
+      width: 2vw;
     }
 
     .wheel.left .character:first-child {
@@ -129,14 +129,17 @@
 
 @media(max-width: 640px) {
   .character-slider {
+    width: 90vw;
+    margin: auto;
+
     .character {
-      width: 76vw;
-      min-height: 94vw;
+      width: 82vw;
+      min-height: 101.2vw;
     }
 
     .arrow {
       padding-top: 22vw;
-      width: 12vw;
+      width: 4vw;
     }
 
     .wheel.left {
