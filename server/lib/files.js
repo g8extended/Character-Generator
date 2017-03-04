@@ -7,7 +7,7 @@ const getViewBoxDimensions = dir => file => {
   if ( ! matches) return;
   return {
     width: parseFloat(matches[1]),
-    heigth: parseFloat(matches[2])
+    height: parseFloat(matches[2])
   }
 };
 
