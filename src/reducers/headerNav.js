@@ -2,51 +2,10 @@ import {
   HEADER_NAV_MOUSE_ENTER,
   HEADER_NAV_MOUSE_LEAVE
 } from '../constants/headerNav';
-import keyBy from 'lodash/keyBy';
+import menuItems from '../configs/menu';
 
 const initialState = {
-  items: keyBy([
-    {
-      title: 'Hairstyles'
-    },
-    {
-      title: 'Eyes',
-      path: 'Eyes'
-    },
-    {
-      title: 'Mouth',
-      path: 'Mouths'
-    },
-    {
-      title: 'Beards'
-    },
-    {
-      title: 'Clothes',
-      items: [
-        {
-          title: 'Shirts'
-        },
-        {
-          title: 'Jackets'
-        }
-      ]
-    },
-    {
-      title: 'Accessories',
-      items: [
-        {
-          title: 'Glasses'
-        },
-        {
-          title: 'Scarves',
-          path: 'Scarfes'
-        },
-        {
-          title: 'Ties'
-        }
-      ]
-    }
-  ], 'title'),
+  items: menuItems,
   hovered: null
 };
 
