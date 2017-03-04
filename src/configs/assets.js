@@ -8,6 +8,7 @@ export default keyBy([
   {
     id: 'Hairstyles',
     required: false,
+    clickable: true,
     sortOrder: 1,
     style: {
       width: width(358),
@@ -19,6 +20,7 @@ export default keyBy([
   {
     id: 'Beards',
     required: false,
+    clickable: true,
     sortOrder: 5,
     style: {
       width: width(323),
@@ -30,23 +32,27 @@ export default keyBy([
   {
     id: 'Body',
     required: true,
+    clickable: false,
     sortOrder: 0
   },
   {
     id: 'Glasses',
     required: false,
+    clickable: true,
     sortOrder: 2,
     menuItem: 'Accessories'
   },
   {
     id: 'Scarfes',
     required: false,
+    clickable: true,
     sortOrder: 4,
     menuItem: 'Accessories'
   },
   {
     id: 'Shirts',
     required: false,
+    clickable: true,
     sortOrder: 1,
     style: {
       width: width(530),
@@ -64,6 +70,7 @@ export default keyBy([
   {
     id: 'Ties',
     required: false,
+    clickable: true,
     sortOrder: 2,
     style: {
       width: width(130),
@@ -76,6 +83,7 @@ export default keyBy([
   {
     id: 'Eyes',
     required: true,
+    clickable: true,
     sortOrder: 1,
     subColors: true,
     style: {
@@ -88,12 +96,14 @@ export default keyBy([
   {
     id: 'Jackets',
     required: false,
+    clickable: true,
     sortOrder: 3,
     menuItem: 'Clothes'
   },
   {
     id: 'Mouths',
     required: true,
+    clickable: true,
     sortOrder: 1,
     style: {
       width: width(130),

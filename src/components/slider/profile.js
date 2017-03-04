@@ -16,7 +16,7 @@ const getImage = (assetItem, profile, assets) => {
 };
 
 // needs for hot reload when change styles
-const remap = (asset) => ({
+const remap = asset => ({
   ...asset,
   ...assetsConfig[asset.id]
 });
@@ -30,10 +30,12 @@ const Profile = ({ dispatch, profile, assets }) => {
   return (
     <div className="profile"> 
       <div className="character">
-        {map(items, assetItem => (
+        {map(items, assetItem => assetItem.clickable ? (
           <Link key={assetItem.id} to={`/assets/${assetItem.id}`}>
             <img style={assetItem.style} src={getImage(assetItem, profile, assets)} />
           </Link>
+        ) : (
+          <img key={assetItem.id} style={assetItem.style} src={getImage(assetItem, profile, assets)} />
         ))}
       </div>
     </div>
