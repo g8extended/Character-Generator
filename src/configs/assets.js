@@ -153,17 +153,19 @@ export default keyBy([
     style: {
       left: 63,
       top: 411
-    }
+    },
+    menuItem: 'Clothes'
   },
   {
     id: 'Hats',
     required: false,
     clickable: true,
-    sortOrder: 40,
+    sortOrder: 80,
     style: {
       left: 113,
       top: -78
-    }
+    },
+    menuItem: 'Clothes'
   },
   {
     id: 'Suits',
@@ -173,6 +175,7 @@ export default keyBy([
     style: {
       left: 63,
       top: 411
-    }
+    },
+    menuItem: 'Clothes'
   }
 ], 'id');
