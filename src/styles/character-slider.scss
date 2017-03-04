@@ -2,6 +2,7 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  margin-bottom: 2em;
 
   .arrow {
     padding-top: 4vw;
@@ -130,7 +131,7 @@
 @media(max-width: 640px) {
   .character-slider {
     width: 90vw;
-    margin: auto;
+    margin: 0 auto 2em;
 
     .character {
       width: 82vw;
