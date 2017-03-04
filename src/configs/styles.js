@@ -60,6 +60,12 @@ export default keyBy([
     required: false,
     clickable: true,
     sortOrder: 80,
+    style: {
+      width: width(739.6),
+      height: height(909.9),
+      left: width(0),
+      top: height(0)
+    },
     menuItem: 'Accessories'
   },
   {
@@ -67,6 +73,12 @@ export default keyBy([
     required: false,
     clickable: true,
     sortOrder: 40,
+    style: {
+      width: width(739.6),
+      height: height(909.9),
+      left: width(0),
+      top: height(0)
+    },
     menuItem: 'Accessories'
   },
   {
