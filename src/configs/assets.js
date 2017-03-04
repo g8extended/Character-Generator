@@ -26,7 +26,7 @@ export default keyBy([
       width: width(323),
       height: height(353),
       left: width(209),
-      top: height(313)
+      top: height(310)
     }
   },
   {
@@ -45,12 +45,12 @@ export default keyBy([
     id: 'Coats',
     required: false,
     clickable: true,
-    sortOrder: 1,
+    sortOrder: 4,
     style: {
       width: width(630),
       height: height(410),
       left: width(60),
-      top: height(414)
+      top: height(400)
     },
     menuItem: 'Clothes'
   },
@@ -76,8 +76,8 @@ export default keyBy([
     style: {
       width: width(530),
       height: height(300),
-      left: width(111),
-      top: height(473)
+      left: width(110),
+      top: height(465)
     },
     menuItem: 'Clothes',
     conflicts: {
@@ -90,12 +90,12 @@ export default keyBy([
     id: 'Sweatshirts',
     required: false,
     clickable: true,
-    sortOrder: 1,
+    sortOrder: 3,
     style: {
       width: width(520),
       height: height(330),
-      left: width(116),
-      top: height(455)
+      left: width(114),
+      top: height(445)
     },
     menuItem: 'Clothes'
   },
@@ -120,8 +120,8 @@ export default keyBy([
     style: {
       width: width(130),
       height: height(240),
-      left: width(300),
-      top: height(547)
+      left: width(307),
+      top: height(539)
     },
     menuItem: 'Accessories'
   },
@@ -134,20 +134,20 @@ export default keyBy([
     style: {
       width: width(172),
       height: height(77),
-      left: width(287),
-      top: height(275)
+      left: width(286),
+      top: height(290)
     }
   },
   {
     id: 'Jackets',
     required: false,
     clickable: true,
-    sortOrder: 3,
+    sortOrder: 4,
     style: {
       width: width(620),
       height: height(400),
-      left: width(63),
-      top: height(413)
+      left: width(62),
+      top: height(406)
     },
     menuItem: 'Clothes'
   },
@@ -160,7 +160,7 @@ export default keyBy([
       width: width(130),
       height: height(59),
       left: width(311),
-      top: height(405)
+      top: height(407)
     }
   }
 ], 'id');
