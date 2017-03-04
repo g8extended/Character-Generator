@@ -13,7 +13,7 @@ const Slider = ({ assets, profile, dispatch }) => {
   const conflicts = isConflicts(assets, profile);
 
   const conflictsMessages = conflicts && map(getConflictMessages(assets, profile), message => {
-    return <div className="conflict-message">{message}</div>;
+    return <div key="conflicts" className="conflict-message">{message}</div>;
   });
 
   const visibilityButton = (assets.items[assets.current.asset].required ||
