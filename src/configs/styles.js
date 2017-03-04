@@ -10,7 +10,7 @@ export default keyBy([
     id: 'Hairstyles',
     required: false,
     clickable: true,
-    sortOrder: 1,
+    sortOrder: 10,
     style: {
       width: width(358),
       height: height(342),
@@ -22,7 +22,7 @@ export default keyBy([
     id: 'Beards',
     required: false,
     clickable: true,
-    sortOrder: 5,
+    sortOrder: 50,
     style: {
       width: width(323),
       height: height(353),
@@ -46,7 +46,7 @@ export default keyBy([
     id: 'Coats',
     required: false,
     clickable: true,
-    sortOrder: 4,
+    sortOrder: 40,
     style: {
       width: width(630),
       height: height(410),
@@ -59,21 +59,21 @@ export default keyBy([
     id: 'Glasses',
     required: false,
     clickable: true,
-    sortOrder: 2,
+    sortOrder: 80,
     menuItem: 'Accessories'
   },
   {
     id: 'Scarfes',
     required: false,
     clickable: true,
-    sortOrder: 4,
+    sortOrder: 40,
     menuItem: 'Accessories'
   },
   {
     id: 'Shirts',
     required: false,
     clickable: true,
-    sortOrder: 1,
+    sortOrder: 10,
     style: {
       width: width(530),
       height: height(300),
@@ -91,7 +91,7 @@ export default keyBy([
     id: 'Sweatshirts',
     required: false,
     clickable: true,
-    sortOrder: 3,
+    sortOrder: 30,
     style: {
       width: width(520),
       height: height(330),
@@ -104,7 +104,7 @@ export default keyBy([
     id: 'T-shirts',
     required: false,
     clickable: true,
-    sortOrder: 1,
+    sortOrder: 10,
     style: {
       width: width(530),
       height: height(300),
@@ -117,7 +117,7 @@ export default keyBy([
     id: 'Ties',
     required: false,
     clickable: true,
-    sortOrder: 2,
+    sortOrder: 20,
     style: {
       width: width(130),
       height: height(240),
@@ -130,7 +130,7 @@ export default keyBy([
     id: 'Eyes',
     required: true,
     clickable: true,
-    sortOrder: 1,
+    sortOrder: 70,
     subColors: true,
     style: {
       width: width(172),
@@ -143,7 +143,7 @@ export default keyBy([
     id: 'Jackets',
     required: false,
     clickable: true,
-    sortOrder: 4,
+    sortOrder: 40,
     style: {
       width: width(620),
       height: height(400),
@@ -156,7 +156,7 @@ export default keyBy([
     id: 'Mouths',
     required: true,
     clickable: true,
-    sortOrder: 1,
+    sortOrder: 20,
     style: {
       width: width(130),
       height: height(59),
