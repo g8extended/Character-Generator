@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { assetClick } from '../../actions/assets';
 import map from 'lodash/map';
+import assetsConfig from '../../configs/styles';
 
 const getImage = (assetItem, profile, assets) => {
   if ( ! assets.items || ! profile[assetItem.id].visible) return;
@@ -14,9 +15,16 @@ const getImage = (assetItem, profile, assets) => {
   return assetItem.subColors ? `/svg/${assetItem.id}/${color}/${subColor}/${fileName}` : `/svg/${assetItem.id}/${color}/${fileName}`;
 };
 
+// needs for hot reload when change styles
+const remap = (asset) => ({
+  ...asset,
+  ...assetsConfig[asset.id]
+});
+
 const Profile = ({ dispatch, profile, assets }) => {
   if ( ! assets.items) return <div />;
-  const items = map(assets.items).filter(assetItem => profile[assetItem.id].visible);
+  
+  const items = map(assets.items).map(remap).filter(assetItem => profile[assetItem.id].visible);
   items.sort((a, b) => a.sortOrder - b.sortOrder);
 
   return (
