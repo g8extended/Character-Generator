@@ -1,8 +1,10 @@
+import keyBy from 'lodash/keyBy';
+
 const convert = base => value => value / base * 100 + '%';
 const width = value => convert(739.6)(value);
 const height = value => convert(909.9)(value);
 
-module.exports = [
+export default keyBy([
   {
     id: 'Hairstyles',
     required: false,
@@ -100,4 +102,4 @@ module.exports = [
       top: height(405)
     }
   }
-];
+], 'id');

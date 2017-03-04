@@ -1,4 +1,3 @@
-import path from 'path';
 import webpack from 'webpack';
 import express from 'express';
 import fs from 'fs';
@@ -12,6 +11,7 @@ import createMemoryHistory from 'react-router/lib/createMemoryHistory';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../src/reducers';
+import { getFiles } from './lib/files';
 import { fetchAssetsFulfilled } from '../src/actions/assets';
 import Router from '../src/components/Router';
 
@@ -27,33 +27,6 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 app.use(express.static('public'));
-
-const getAssets = () => {
-  const svgPath = './public/svg/';
-  const assets = require('../data/assets');
-  return assets.map(asset => {
-    const colors = fs.readdirSync(path.join(svgPath, asset.id))
-      .filter(color => fs.statSync(path.join(svgPath, asset.id, color)).isDirectory())
-      .map(color => {
-        const subColors = asset.subColors ? fs.readdirSync(path.join(svgPath, asset.id, color)).filter(subColor => fs.statSync(path.join(svgPath, asset.id, color, subColor)).isDirectory()) : [];
-        return {
-          id: color,
-          files: fs.readdirSync(path.join(svgPath, asset.id, color)).filter(file => file.match(/\.svg$/)),
-          colors: subColors.map(subColor => {
-            return {
-              id: subColor,
-              files: fs.readdirSync(path.join(svgPath, asset.id, color, subColor)).filter(file => file.match(/\.svg$/))
-            }
-          })
-        };
-      });
-
-    return {
-      ...asset,
-      colors
-    };
-  });
-};
 
 app.get('/api/assets/', function(req, res, next) {
   /**
@@ -88,7 +61,7 @@ app.use(['/:assets?/:assetID?/:color?/:subColor?'], (req, res) => {
 
   const history = syncHistoryWithStore(memoryHistory, store);
 
-  store.dispatch(fetchAssetsFulfilled(getAssets()));
+  store.dispatch(fetchAssetsFulfilled(getFiles()));
 
   // Render the component to a string
   const html = renderToString(
