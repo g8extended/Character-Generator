@@ -1,132 +1,146 @@
 .character-slider {
-  padding: 0;
-  margin-top: 4em;
-
-  .wheel, .character, .arrow, .profile {
-    display: inline-block;
-    vertical-align: top;
-  }
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 
   .arrow {
-    padding: 4vw 1vw;
+    padding-top: 4vw;
     cursor: pointer;
     width: 3vw;
     text-align: center;
   }
 
-  .colorPicker {
-    text-align: center;
-    margin-top: 1.2vw;
-    .color {
-      width: 1.5em;
-      height: 1.5em;
-      display: inline-block;
-      border-radius: 1em;
-      
-      margin: 0 .25vw;
-      border: solid 1px #fff;
-      cursor: pointer;
-
-      &.active {
-        border: solid 1px #472719;
-      }
-
-      &.brown {
-        background-color: #BB755A;
-      }
-
-      &.blond {
-        background-color: #E5BB6D;
-      }
-
-      &.brunet {
-        background-color: #383C45;
-      }
-
-      &.white {
-        background-color: #DDDDDD;
-      }
-
-      &.green {
-        background-color: #85AA5E;
-      }
-
-      &.blue {
-        background-color: #509CC7;
-      },
-
-      &.black {
-        background-color: #000;
-      }
-    }
+  .wheel {
+    display: flex;
   }
 
-  .colorPickerContainer {
-    margin-top: 1.2vw;
-    text-align: center;
-    .colorPicker, .visibilityButton {
-      display: inline-block;
-    }
+  .character {
+    position: relative;
+    width: 19vw;
+    min-height: 23.5vw;
 
-    .visibilityButton {
-      width: 1.5em;
-      height: 1.5em;
-      border-radius: 1em;
-      margin: 0 .25vw;
-      border: solid 0px #fff;
-      cursor: pointer;
+    img {
+      position: absolute;
     }
-  }
-
-  .conflict-message {
-    text-align: center;
-    background: blue;
-    width: 15vw;
-    margin: auto;
-    padding: 1em;
-    color: #fff;
-    border-radius: .5em;
-    font-size: 0.8em;
   }
 }
 
-.character {
-  display: inline-block;
-  position: relative;
-  width: 17.75vw;
-  min-height: 23vw;
+.colorPicker {
+  text-align: center;
+  margin-top: 1.2vw;
+  .color {
+    width: 1.5em;
+    height: 1.5em;
+    display: inline-block;
+    border-radius: 1em;
+    
+    margin: 0 .25vw;
+    border: solid 1px #fff;
+    cursor: pointer;
 
-  img {
-    position: absolute;
+    &.active {
+      border: solid 1px #472719;
+    }
+
+    &.brown {
+      background-color: #BB755A;
+    }
+
+    &.blond {
+      background-color: #E5BB6D;
+    }
+
+    &.brunet {
+      background-color: #383C45;
+    }
+
+    &.white {
+      background-color: #DDDDDD;
+    }
+
+    &.green {
+      background-color: #85AA5E;
+    }
+
+    &.blue {
+      background-color: #509CC7;
+    },
+
+    &.black {
+      background-color: #000;
+    }
   }
 }
+
+.colorPickerContainer {
+  margin-top: 1.2vw;
+  text-align: center;
+  .colorPicker, .visibilityButton {
+    display: inline-block;
+  }
+
+  .visibilityButton {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 1em;
+    margin: 0 .25vw;
+    border: solid 0px #fff;
+    cursor: pointer;
+  }
+}
+
+.conflict-message {
+  text-align: center;
+  background: blue;
+  width: 15vw;
+  margin: auto;
+  padding: 1em;
+  color: #fff;
+  border-radius: .5em;
+  font-size: 0.8em;
+}
+
 
 @media(max-width: 1024px) {
-  .character {
-    width: 30vw;
-    min-height: 40vw;
-  }
+  .character-slider {
+    .character {
+      width: 28vw;
+      min-height: 34.6vw;
+    }
 
-  .wheel.left .character:first-child {
-    display: none;
-  }
+    .arrow {
+      padding-top: 8vw;
+      width: 8vw;
+    }
 
-  .wheel.right .character:last-child {
-    display: none;
+    .wheel.left .character:first-child {
+      display: none;
+    }
+
+    .wheel.right .character:last-child {
+      display: none;
+    }
   }
 }
 
 @media(max-width: 640px) {
-  .character {
-    width: 90vw;
-    min-height: 110vw;
-  }
+  .character-slider {
+    .character {
+      width: 76vw;
+      min-height: 94vw;
+    }
 
-  .wheel.left {
-    display: none;
-  }
+    .arrow {
+      padding-top: 22vw;
+      width: 12vw;
+    }
 
-  .wheel.right {
-    display: none;
+    .wheel.left {
+      display: none;
+    }
+
+    .wheel.right {
+      display: none;
+    }
   }
 }
