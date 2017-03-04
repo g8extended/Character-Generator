@@ -9,6 +9,16 @@ import { REHYDRATE } from 'redux-persist/constants';
 import keyBy from 'lodash/keyBy';
 import assetsConfig from '../configs/assets';
 
+const mergeStyle = style => file => {
+  return {
+    ...file,
+    style: {
+      ...file.style,
+      ...style
+    }
+  }
+};
+
 const initialState = {
   items: {},
   router: {
@@ -53,10 +63,10 @@ const reducer = (state = initialState, action) => {
       ...assetsConfig[asset.id],
       colors: keyBy(asset.colors.map(color => ({
         ...color,
-        files: color.colors[0].isFile ? color.colors : [],
+        files: color.colors[0].isFile ? color.colors.map(mergeStyle(assetsConfig[asset.id].style)) : [],
         colors: color.colors[0].isFile ? [] : keyBy(color.colors.map(subColor => ({
           id: subColor.id,
-          files: subColor.colors
+          files: subColor.colors.map(mergeStyle(assetsConfig[asset.id].style))
         })), 'id')
       })), 'id')
     })), 'id');

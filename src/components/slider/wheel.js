@@ -16,9 +16,22 @@ const getFilePath = ({ current: { asset, color, subColor }, items }) => {
   return items[asset].subColors ? `/svg/${asset}/${color}/${subColor}/` : `/svg/${asset}/${color}/`;
 };
 
+const convert = base => value => value / base * 100 + '%';
+const width = value => convert(739.6)(value);
+const height = value => convert(909.9)(value);
+
 const getImg = (filePath, files, fileIndex, offset, style, onClick) => {
-  const src = filePath + files[getIndexByOffset(files.length, fileIndex, offset)].id;
-  return src ? <img src={src} style={style} onClick={onClick} /> : null;
+  const file = files[getIndexByOffset(files.length, fileIndex, offset)];
+  const img = {
+    src: filePath + file.id,
+    style: {
+      width: width(file.style.width),
+      height: height(file.style.height),
+      left: width(style.left),
+      top: height(style.top)
+    }
+  };
+  return file ? <img {...img} onClick={onClick} /> : null;
 };
 
 const Wheel = (

@@ -5,26 +5,33 @@ import { assetClick } from '../../actions/assets';
 import map from 'lodash/map';
 import assetsConfig from '../../configs/styles';
 
+const convert = base => value => value / base * 100 + '%';
+const width = value => convert(739.6)(value);
+const height = value => convert(909.9)(value);
+
 const getImage = (assetItem, profile, assets) => {
   if ( ! assets.items || ! profile[assetItem.id].visible) return;
   const { color, subColor } = profile[assetItem.id];
   const files = assetItem.subColors ? assets.items[assetItem.id].colors[color].colors[subColor].files : assets.items[assetItem.id].colors[color].files;
   const fileIndex = profile[assetItem.id].fileIndex % files.length;
-  const fileName = files[fileIndex].id;
-  if ( ! fileName) return;
-  return assetItem.subColors ? `/svg/${assetItem.id}/${color}/${subColor}/${fileName}` : `/svg/${assetItem.id}/${color}/${fileName}`;
+  const file = files[fileIndex];
+  if ( ! file.id) return;
+  const style = assetsConfig[assetItem.id].style;
+  return {
+    src: assetItem.subColors ? `/svg/${assetItem.id}/${color}/${subColor}/${file.id}` : `/svg/${assetItem.id}/${color}/${file.id}`,
+    style: {
+      width: width(file.style.width),
+      height: height(file.style.height),
+      left: width(style.left),
+      top: height(style.top)
+    }
+  }
 };
-
-// needs for hot reload when change styles
-const remap = asset => ({
-  ...asset,
-  ...assetsConfig[asset.id]
-});
 
 const Profile = ({ dispatch, profile, assets }) => {
   if ( ! assets.items) return <div />;
 
-  const items = map(assets.items).map(remap).filter(assetItem => profile[assetItem.id].visible);
+  const items = map(assets.items).filter(assetItem => profile[assetItem.id].visible);
   items.sort((a, b) => a.sortOrder - b.sortOrder);
 
   return (
@@ -32,10 +39,10 @@ const Profile = ({ dispatch, profile, assets }) => {
       <div className="character">
         {map(items, assetItem => assetItem.clickable ? (
           <Link key={assetItem.id} to={`/assets/${assetItem.id}`}>
-            <img style={assetItem.style} src={getImage(assetItem, profile, assets)} />
+            <img {...getImage(assetItem, profile, assets)} />
           </Link>
         ) : (
-          <img key={assetItem.id} style={assetItem.style} src={getImage(assetItem, profile, assets)} />
+          <img key={assetItem.id} {...getImage(assetItem, profile, assets)} />
         ))}
       </div>
     </div>

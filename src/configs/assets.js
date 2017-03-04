@@ -1,9 +1,5 @@
 import keyBy from 'lodash/keyBy';
 
-const convert = base => value => value / base * 100 + '%';
-const width = value => convert(739.6)(value);
-const height = value => convert(909.9)(value);
-
 export default keyBy([
   {
     id: 'Hairstyles',
@@ -11,10 +7,8 @@ export default keyBy([
     clickable: true,
     sortOrder: 10,
     style: {
-      width: width(358),
-      height: height(342),
-      left: width(195),
-      top: height(45)
+      left: 195,
+      top: 45
     }
   },
   {
@@ -23,10 +17,8 @@ export default keyBy([
     clickable: true,
     sortOrder: 50,
     style: {
-      width: width(323),
-      height: height(353),
-      left: width(209),
-      top: height(310)
+      left: 209,
+      top: 310
     }
   },
   {
@@ -35,10 +27,8 @@ export default keyBy([
     clickable: false,
     sortOrder: 0,
     style: {
-      width: width(739.6),
-      height: height(909.9),
-      left: width(0),
-      top: height(0)
+      left: 0,
+      top: 0
     }
   },
   {
@@ -47,10 +37,8 @@ export default keyBy([
     clickable: true,
     sortOrder: 40,
     style: {
-      width: width(630),
-      height: height(410),
-      left: width(60),
-      top: height(400)
+      left: 60,
+      top: 400
     },
     menuItem: 'Clothes'
   },
@@ -60,10 +48,8 @@ export default keyBy([
     clickable: true,
     sortOrder: 80,
     style: {
-      width: width(739.6),
-      height: height(909.9),
-      left: width(0),
-      top: height(0)
+      left: 0,
+      top: 0
     },
     menuItem: 'Accessories'
   },
@@ -73,10 +59,8 @@ export default keyBy([
     clickable: true,
     sortOrder: 40,
     style: {
-      width: width(739.6),
-      height: height(909.9),
-      left: width(0),
-      top: height(0)
+      left: 0,
+      top: 0
     },
     menuItem: 'Accessories'
   },
@@ -86,10 +70,8 @@ export default keyBy([
     clickable: true,
     sortOrder: 10,
     style: {
-      width: width(530),
-      height: height(300),
-      left: width(110),
-      top: height(465)
+      left: 110,
+      top: 465
     },
     menuItem: 'Clothes',
     conflicts: {
@@ -104,10 +86,8 @@ export default keyBy([
     clickable: true,
     sortOrder: 30,
     style: {
-      width: width(520),
-      height: height(330),
-      left: width(114),
-      top: height(445)
+      left: 114,
+      top: 445
     },
     menuItem: 'Clothes'
   },
@@ -117,10 +97,8 @@ export default keyBy([
     clickable: true,
     sortOrder: 10,
     style: {
-      width: width(530),
-      height: height(300),
-      left: width(111),
-      top: height(473)
+      left: 111,
+      top: 473
     },
     menuItem: 'Clothes'
   },
@@ -130,10 +108,8 @@ export default keyBy([
     clickable: true,
     sortOrder: 20,
     style: {
-      width: width(130),
-      height: height(240),
-      left: width(307),
-      top: height(539)
+      left: 307,
+      top: 539
     },
     menuItem: 'Accessories'
   },
@@ -144,10 +120,8 @@ export default keyBy([
     sortOrder: 70,
     subColors: true,
     style: {
-      width: width(172),
-      height: height(77),
-      left: width(286),
-      top: height(290)
+      left: 286,
+      top: 290
     }
   },
   {
@@ -156,10 +130,8 @@ export default keyBy([
     clickable: true,
     sortOrder: 40,
     style: {
-      width: width(620),
-      height: height(400),
-      left: width(62),
-      top: height(406)
+      left: 62,
+      top: 406
     },
     menuItem: 'Clothes'
   },
@@ -169,10 +141,8 @@ export default keyBy([
     clickable: true,
     sortOrder: 20,
     style: {
-      width: width(130),
-      height: height(59),
-      left: width(311),
-      top: height(407)
+      left: 311,
+      top: 407
     }
   }
 ], 'id');
