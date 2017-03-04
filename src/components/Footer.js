@@ -7,12 +7,12 @@ export default (
     <div>
       <div className="footer">
         <div className="content-wrapper">
-          <span>buy for <strong>$10</strong></span>
-          <PaypalButton />
-          {/*<button className="button" onClick={buyCurrentProfile} >buy for 10$</button>*/}
-          <p className="text">You buy only one character (svg, png) </p>
+          {/*<PaypalButton />*/}
+          <button className="button" onClick={buyCurrentProfile} >buy for 10$</button>
         </div>
+        <p className="text">You buy only one character (svg, png) </p>
       </div>
+      <div className="hr" />
       <div className="links">
         <a href="http://soryan.me">
           Developed by <i>G8.extented</i>

@@ -52,20 +52,26 @@
 }
 
 .footer {
-  margin-top: 2vw;
+  text-align:center;
+  margin-top: 3em;
   .content-wrapper {
     width: 150px;
     margin: auto;
-    padding-top:1.5vw;
-    text-align:center;
+    padding-top: 1.5em;
     border-top: solid 1px #eee;
-
-    .text {
-      padding-top: .5vw;
-      color: #aaa;
-      font-size: 0.6em;
-    }
   }
+
+  .text {
+    margin-top: 2em;
+    padding-top: .5vw;
+    color: #aaa;
+    font-size: 0.7em;
+  }
+}
+
+.hr {
+  margin: 2em 5em;
+  border-top: solid 1px #eee;
 }
 
 .links {
@@ -73,7 +79,7 @@
   align-items: center;
   flex-wrap: nowrap;
   justify-content: space-around;
-  padding: 2em 5em;
+  padding: 3em 5em 2em;
   
   a {
     flex: 0 0 auto;
