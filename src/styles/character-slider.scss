@@ -1,132 +1,153 @@
 .character-slider {
-  padding: 0;
-  margin-top: 4em;
-
-  .wheel, .character, .arrow, .profile {
-    display: inline-block;
-    vertical-align: top;
-  }
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 
   .arrow {
-    padding: 4vw 1vw;
+    padding-top: 4vw;
     cursor: pointer;
-    width: 3vw;
+    width: 1vw;
     text-align: center;
   }
 
-  .colorPicker {
-    text-align: center;
-    margin-top: 1.2vw;
-    .color {
-      width: 1.5em;
-      height: 1.5em;
-      display: inline-block;
-      border-radius: 1em;
-      
-      margin: 0 .25vw;
-      border: solid 1px #fff;
-      cursor: pointer;
-
-      &.active {
-        border: solid 1px #472719;
-      }
-
-      &.brown {
-        background-color: #BB755A;
-      }
-
-      &.blond {
-        background-color: #E5BB6D;
-      }
-
-      &.brunet {
-        background-color: #383C45;
-      }
-
-      &.white {
-        background-color: #DDDDDD;
-      }
-
-      &.green {
-        background-color: #85AA5E;
-      }
-
-      &.blue {
-        background-color: #509CC7;
-      },
-
-      &.black {
-        background-color: #000;
-      }
-    }
+  .wheel {
+    display: flex;
   }
 
-  .colorPickerContainer {
-    margin-top: 1.2vw;
-    text-align: center;
-    .colorPicker, .visibilityButton {
-      display: inline-block;
-    }
+  .character {
+    position: relative;
+    width: 19.25vw;
+    min-height: 23.5vw;
 
-    .visibilityButton {
-      width: 1.5em;
-      height: 1.5em;
-      border-radius: 1em;
-      margin: 0 .25vw;
-      border: solid 0px #fff;
-      cursor: pointer;
+    img {
+      position: absolute;
     }
-  }
-
-  .conflict-message {
-    text-align: center;
-    background: blue;
-    width: 15vw;
-    margin: auto;
-    padding: 1em;
-    color: #fff;
-    border-radius: .5em;
-    font-size: 0.8em;
   }
 }
 
-.character {
-  display: inline-block;
-  position: relative;
-  width: 17.75vw;
-  min-height: 23vw;
+.colorPickerContainer {
+  min-height: 1.7em;
+}
 
-  img {
-    position: absolute;
+.colorPicker {
+  text-align: center;
+  .color {
+    width: 1.5em;
+    height: 1.5em;
+    display: inline-block;
+    border-radius: 1em;
+    vertical-align: middle;
+    
+    margin: 0 .25vw;
+    border: solid 1px #fff;
+    cursor: pointer;
+
+    &.active {
+      border: solid 1px #472719;
+    }
+
+    &.brown {
+      background-color: #BB755A;
+    }
+
+    &.blond {
+      background-color: #E5BB6D;
+    }
+
+    &.brunet {
+      background-color: #383C45;
+    }
+
+    &.white {
+      background-color: #DDDDDD;
+    }
+
+    &.green {
+      background-color: #85AA5E;
+    }
+
+    &.blue {
+      background-color: #509CC7;
+    },
+
+    &.black {
+      background-color: #000;
+    }
   }
 }
+
+.colorPickerContainer {
+  text-align: center;
+  .colorPicker, .visibilityButton {
+    display: inline-block;
+  }
+
+  .visibilityButton {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 1em;
+    margin: 0 .25vw;
+    border: solid 0px #fff;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+}
+
+.conflict-message {
+  text-align: center;
+  background: blue;
+  width: 15vw;
+  margin: auto;
+  padding: 1em;
+  color: #fff;
+  border-radius: .5em;
+  font-size: 0.8em;
+}
+
 
 @media(max-width: 1024px) {
-  .character {
-    width: 30vw;
-    min-height: 40vw;
-  }
+  .character-slider {
+    .character {
+      width: 32vw;
+      min-height: 40vw;
+    }
 
-  .wheel.left .character:first-child {
-    display: none;
-  }
+    .arrow {
+      padding-top: 8vw;
+      width: 2vw;
+    }
 
-  .wheel.right .character:last-child {
-    display: none;
+    .wheel.left .character:first-child {
+      display: none;
+    }
+
+    .wheel.right .character:last-child {
+      display: none;
+    }
   }
 }
 
 @media(max-width: 640px) {
-  .character {
+  .character-slider {
     width: 90vw;
-    min-height: 110vw;
-  }
+    margin: auto;
 
-  .wheel.left {
-    display: none;
-  }
+    .character {
+      width: 82vw;
+      min-height: 101.2vw;
+    }
 
-  .wheel.right {
-    display: none;
+    .arrow {
+      padding-top: 22vw;
+      width: 4vw;
+    }
+
+    .wheel.left {
+      display: none;
+    }
+
+    .wheel.right {
+      display: none;
+    }
   }
 }
