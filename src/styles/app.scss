@@ -67,6 +67,35 @@
   }
 }
 
+.links {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  padding: 2em 5em;
+  
+  a {
+    flex: 0 0 auto;
+    text-decoration: none;
+    font-size: .65em;
+    color: #36516e;
+    line-height: 1.5em;
+    &:active, &:focus {
+      outline: none;
+    }
+
+    img {
+      width: 1.5em;
+      height: 1.5em;
+      margin-right: .5em;
+    }
+
+    * {
+      vertical-align: middle;
+    }
+  }
+}
+
 @media(max-width: 640px) {
   .header {
     padding: 2em;
@@ -76,6 +105,21 @@
     }
     .nav, .btn {
       display: none;
+    }
+  }
+
+  .links {
+    flex-wrap: wrap;
+    
+    a {
+      &:first-child {
+        width: 100%;
+        text-align: center;
+      }
+
+      width: 50%;
+      line-height: 4em;
+      font-size: .9em;
     }
   }
 }
