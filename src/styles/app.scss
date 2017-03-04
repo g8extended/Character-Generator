@@ -17,34 +17,41 @@
   padding: 1.3em 2.1em;
   cursor: pointer;
 
-  &:active, &:hover, &:focus {
+  &:active, &:focus {
     outline: none;
   }
+
+  &:hover {
+    background-color:#e8304d;
+  }
+
+
+    
 }
 
 .header {
-  padding: 1em 12.5vw;
+  padding: 2.5em;
   text-align: justify;
   .part {
     display: inline-block;
     vertical-align: top;
 
     &.logo {
-      width: 12.5vw;
+      width: 12.75em;
       img {
         max-width: 100%;
       }
     }
 
     &.nav {
-      width: 45vw;
+      width: 60vw;
       text-align: right;
-      margin-top: 1.3em;
+      margin-top: .5em;
     }
 
     &.btn {
-      padding: .7em 0;
-      width: 170px;
+/*    padding: .7em 0;
+*/    width: 10.675em;
       text-align: right;
     }
   }
@@ -66,3 +73,49 @@
     }
   }
 }
+
+@media(max-width: 320px) {
+  .header {
+    .part.nav, .part.btn {
+      display: none;
+    }
+  }
+}
+
+@media(min-width: 768px) {
+  .header {
+    width: 700px;
+    padding: 2.5em 0;
+    margin: auto;
+
+    .part.logo {
+      width: 8.125em;
+    }
+  }
+}
+
+@media(min-width: 1024px) {
+  .header {
+    width: 960px;
+    padding: 2.5em 0;
+    margin: auto;
+
+    .part.logo {
+      width: 8.125em;
+    }
+  }
+}
+
+@media(min-width: 1280px) {
+  .header {
+    width: 1170px;
+    padding: 2.5em 0;
+    margin: auto;
+
+    .part.logo {
+      width: 8.125em;
+    }
+  }
+}
+
+
