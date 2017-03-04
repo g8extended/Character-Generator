@@ -32,6 +32,15 @@ export default keyBy([
       },
       {
         title: 'Coats'
+      },
+      {
+        title: 'Vests'
+      },
+      {
+        title: 'Suits'
+      },
+      {
+        title: 'Hats'
       }
     ]
   },
@@ -42,8 +51,7 @@ export default keyBy([
         title: 'Glasses'
       },
       {
-        title: 'Scarves',
-        path: 'Scarfes'
+        title: 'Scarves'
       },
       {
         title: 'Ties'

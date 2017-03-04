@@ -55,13 +55,13 @@ export default keyBy([
     menuItem: 'Accessories'
   },
   {
-    id: 'Scarfes',
+    id: 'Scarves',
     required: false,
     clickable: true,
     sortOrder: 40,
     style: {
-      left: 0,
-      top: 0
+      left: 155,
+      top: 436
     },
     menuItem: 'Accessories'
   },
@@ -144,6 +144,36 @@ export default keyBy([
     style: {
       left: 311,
       top: 407
+    }
+  },
+  {
+    id: 'Vests',
+    required: false,
+    clickable: true,
+    sortOrder: 40,
+    style: {
+      left: 63,
+      top: 411
+    }
+  },
+  {
+    id: 'Hats',
+    required: false,
+    clickable: true,
+    sortOrder: 40,
+    style: {
+      left: 113,
+      top: -78
+    }
+  },
+  {
+    id: 'Suits',
+    required: false,
+    clickable: true,
+    sortOrder: 40,
+    style: {
+      left: 63,
+      top: 411
     }
   }
 ], 'id');
