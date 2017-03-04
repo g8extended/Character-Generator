@@ -25,14 +25,18 @@
   }
 }
 
+.colorPickerContainer {
+  min-height: 1.7em;
+}
+
 .colorPicker {
   text-align: center;
-  margin-top: 1.2vw;
   .color {
     width: 1.5em;
     height: 1.5em;
     display: inline-block;
     border-radius: 1em;
+    vertical-align: middle;
     
     margin: 0 .25vw;
     border: solid 1px #fff;
@@ -73,7 +77,6 @@
 }
 
 .colorPickerContainer {
-  margin-top: 1.2vw;
   text-align: center;
   .colorPicker, .visibilityButton {
     display: inline-block;
@@ -86,6 +89,7 @@
     margin: 0 .25vw;
     border: solid 0px #fff;
     cursor: pointer;
+    vertical-align: middle;
   }
 }
 

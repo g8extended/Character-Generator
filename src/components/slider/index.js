@@ -36,12 +36,14 @@ const Slider = ({ assets, profile, dispatch }) => {
 
   return (
     <div>
-      <ColorPicker
-          colors={assets.items[assets.current.asset].colors[assets.current.color].colors}
-          current={assets.current.subColor}
-          urlPrefix={`/assets/${assets.current.asset}/${assets.current.color}/`}
-          onClick={color => dispatch(updateProfileAssetSubColor(color))}
-      />
+      <div className="colorPickerContainer">
+        <ColorPicker
+            colors={assets.items[assets.current.asset].colors[assets.current.color].colors}
+            current={assets.current.subColor}
+            urlPrefix={`/assets/${assets.current.asset}/${assets.current.color}/`}
+            onClick={color => dispatch(updateProfileAssetSubColor(color))}
+        />
+      </div>
       <div className="character-slider">
         <Wheel type="left" />
         <Arrow type="left" />
