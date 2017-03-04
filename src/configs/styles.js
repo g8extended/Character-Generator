@@ -34,7 +34,13 @@ export default keyBy([
     id: 'Body',
     required: true,
     clickable: false,
-    sortOrder: 0
+    sortOrder: 0,
+    style: {
+      width: width(739.6),
+      height: height(909.9),
+      left: width(0),
+      top: height(0)
+    }
   },
   {
     id: 'Coats',
