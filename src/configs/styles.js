@@ -37,6 +37,19 @@ export default keyBy([
     sortOrder: 0
   },
   {
+    id: 'Coats',
+    required: false,
+    clickable: true,
+    sortOrder: 1,
+    style: {
+      width: width(630),
+      height: height(410),
+      left: width(60),
+      top: height(414)
+    },
+    menuItem: 'Clothes'
+  },
+  {
     id: 'Glasses',
     required: false,
     clickable: true,
@@ -69,6 +82,32 @@ export default keyBy([
     }
   },
   {
+    id: 'Sweatshirts',
+    required: false,
+    clickable: true,
+    sortOrder: 1,
+    style: {
+      width: width(520),
+      height: height(330),
+      left: width(116),
+      top: height(455)
+    },
+    menuItem: 'Clothes'
+  },
+  {
+    id: 'T-shirts',
+    required: false,
+    clickable: true,
+    sortOrder: 1,
+    style: {
+      width: width(530),
+      height: height(300),
+      left: width(111),
+      top: height(473)
+    },
+    menuItem: 'Clothes'
+  },
+  {
     id: 'Ties',
     required: false,
     clickable: true,
@@ -99,6 +138,12 @@ export default keyBy([
     required: false,
     clickable: true,
     sortOrder: 3,
+    style: {
+      width: width(620),
+      height: height(400),
+      left: width(63),
+      top: height(413)
+    },
     menuItem: 'Clothes'
   },
   {

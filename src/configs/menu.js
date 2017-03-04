@@ -22,7 +22,16 @@ export default keyBy([
         title: 'Shirts'
       },
       {
+        title: 'Sweatshirts'
+      },
+      {
+        title: 'T-shirts'
+      },
+      {
         title: 'Jackets'
+      },
+      {
+        title: 'Coats'
       }
     ]
   },
