@@ -17,7 +17,7 @@ const getFilePath = ({ current: { asset, color, subColor }, items }) => {
 };
 
 const getImg = (filePath, files, fileIndex, offset, style, onClick) => {
-  const src = filePath + files[getIndexByOffset(files.length, fileIndex, offset)];
+  const src = filePath + files[getIndexByOffset(files.length, fileIndex, offset)].id;
   return src ? <img src={src} style={style} onClick={onClick} /> : null;
 };
 

@@ -10,7 +10,7 @@ const getImage = (assetItem, profile, assets) => {
   const { color, subColor } = profile[assetItem.id];
   const files = assetItem.subColors ? assets.items[assetItem.id].colors[color].colors[subColor].files : assets.items[assetItem.id].colors[color].files;
   const fileIndex = profile[assetItem.id].fileIndex % files.length;
-  const fileName = files[fileIndex];
+  const fileName = files[fileIndex].id;
   if ( ! fileName) return;
   return assetItem.subColors ? `/svg/${assetItem.id}/${color}/${subColor}/${fileName}` : `/svg/${assetItem.id}/${color}/${fileName}`;
 };

@@ -7,7 +7,6 @@ import {
 } from '../constants/assets';
 import { REHYDRATE } from 'redux-persist/constants';
 import keyBy from 'lodash/keyBy';
-import isString from 'lodash/isString';
 import assetsConfig from '../configs/assets';
 
 const initialState = {
@@ -54,8 +53,8 @@ const reducer = (state = initialState, action) => {
       ...assetsConfig[asset.id],
       colors: keyBy(asset.colors.map(color => ({
         ...color,
-        files: isString(color.colors[0]) ? color.colors : [],
-        colors: isString(color.colors[0]) ? [] : keyBy(color.colors.map(subColor => ({
+        files: color.colors[0].isFile ? color.colors : [],
+        colors: color.colors[0].isFile ? [] : keyBy(color.colors.map(subColor => ({
           id: subColor.id,
           files: subColor.colors
         })), 'id')
