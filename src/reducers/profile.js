@@ -7,6 +7,7 @@ import {
   UPDATE_PROFILE_ASSET_SUB_COLOR,
   UPDATE_PROFILE_ASSET_VISIBILITY
 } from '../constants/profile';
+import assetsConfig from '../configs/assets';
 
 const initialState = {
 };
@@ -18,9 +19,9 @@ const reducer = (state = initialState, action) => {
       ...memo,
       [asset.id]: {
         color: asset.colors[0].id,
-        subColor: asset.subColors ? asset.colors[0].colors[0].id : null,
+        subColor: assetsConfig[asset.id].subColors ? asset.colors[0].colors[0].id : null,
         fileIndex: 0,
-        visible: asset.required
+        visible: assetsConfig[asset.id].required
       }
     }), {});
     return { ...state, ...data };

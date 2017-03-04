@@ -23,7 +23,7 @@ const remap = asset => ({
 
 const Profile = ({ dispatch, profile, assets }) => {
   if ( ! assets.items) return <div />;
-  
+
   const items = map(assets.items).map(remap).filter(assetItem => profile[assetItem.id].visible);
   items.sort((a, b) => a.sortOrder - b.sortOrder);
 
