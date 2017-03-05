@@ -13,7 +13,7 @@ html, body {
 
 .page-wrap {
 	min-height: 100%;
-	margin-bottom: -6em; 
+	margin-bottom: -8em; 
 }
 
 .page-wrap:after {
@@ -26,7 +26,7 @@ html, body {
 }
 
 .site-footer .hr {
-	margin: 2em 5em;
+	margin: 2em 5em 0;
 	border-top: solid 1px #eee;
 }
 
