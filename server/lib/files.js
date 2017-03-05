@@ -3,11 +3,11 @@ import fs from 'fs';
 
 const getViewBoxDimensions = dir => file => {
   const fileContent = fs.readFileSync(path.join(dir, file), 'utf-8');
-  const matches = fileContent.match(/viewBox=\"0 0 (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)\"/);
+  const matches = fileContent.match(/viewBox=\"(\d+(?:\.\d+)?) (\d+(?:\.\d+)?) (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)\"/);
   if ( ! matches) return;
   return {
-    width: parseFloat(matches[1]),
-    height: parseFloat(matches[2])
+    width: parseFloat(matches[3]),
+    height: parseFloat(matches[4])
   }
 };
 
