@@ -3,27 +3,38 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { updateProfileAssetFileIndex } from '../../actions/profile';
 import { isConflicts } from '../../utils/conflicts';
+import map from 'lodash/map';
 
 const getIndexByOffset = (length, index, offset) => {
   return (length + index + offset) % length;
 };
 
 const getFiles = ({ current: { asset, type, color }, items }) => {
-  return items[asset].types[type].colors[color].files;
-};
+  const colorFiles = map(items[asset].types[type].colors[color].files, file => ({
+    ...file,
+    src: `/svg/${asset}/${type}/${color}/${file.id}`
+  }));
 
-const getFilePath = ({ current: { asset, type, color }, items }) => {
-  return `/svg/${asset}/${type}/${color}/`;
+  if (colorFiles.length < 2) {
+    const typeFiles = map(items[asset].types, type => ({
+      ...type.colors[color].files[0],
+      src: `/svg/${asset}/${type.id}/${color}/${type.colors[color].files[0].id}`
+    }));
+
+    return typeFiles;
+  }
+
+  return colorFiles;
 };
 
 const convert = base => value => value / base * 100 + '%';
 const width = value => convert(739.6)(value);
 const height = value => convert(909.9)(value);
 
-const getImg = (filePath, files, fileIndex, offset, style, onClick) => {
+const getImg = (files, fileIndex, offset, style, onClick) => {
   const file = files[getIndexByOffset(files.length, fileIndex, offset)];
   const img = {
-    src: filePath + file.id,
+    src: file.src,
     style: {
       width: width(file.style.width),
       height: height(file.style.height),
@@ -48,7 +59,6 @@ const Wheel = (
     });
 
     const files = getFiles(assets);
-    const filePath = getFilePath(assets);
     const fileIndex = profile[assets.current.asset].fileIndex;
     const offsets = type === 'left' ? [-2, -1] : [1, 2];
 
@@ -58,7 +68,7 @@ const Wheel = (
       <div className={classeName}>
         {offsets.map((offset, index) => (
           <div key={index} className="character">
-            {getImg(filePath, files, fileIndex, offset, assetItem.style, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
+            {getImg(files, fileIndex, offset, assetItem.style, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
           </div>
         ))}
       </div>
