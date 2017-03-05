@@ -11,14 +11,14 @@ const height = value => convert(909.9)(value);
 
 const getImage = (assetItem, profile, assets) => {
   if ( ! assets.items || ! profile[assetItem.id].visible) return;
-  const { color, subColor } = profile[assetItem.id];
-  const files = assetItem.subColors ? assets.items[assetItem.id].colors[color].colors[subColor].files : assets.items[assetItem.id].colors[color].files;
+  const { type, color } = profile[assetItem.id];
+  const files = assets.items[assetItem.id].types[type].colors[color].files;
   const fileIndex = profile[assetItem.id].fileIndex % files.length;
   const file = files[fileIndex];
   if ( ! file.id) return;
   const style = assetsConfig[assetItem.id].style;
   return {
-    src: assetItem.subColors ? `/svg/${assetItem.id}/${color}/${subColor}/${file.id}` : `/svg/${assetItem.id}/${color}/${file.id}`,
+    src: `/svg/${assetItem.id}/${type}/${color}/${file.id}`,
     style: {
       width: width(file.style.width),
       height: height(file.style.height),

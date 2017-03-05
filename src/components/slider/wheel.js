@@ -8,12 +8,12 @@ const getIndexByOffset = (length, index, offset) => {
   return (length + index + offset) % length;
 };
 
-const getFiles = ({ current: { asset, color, subColor }, items }) => {
-  return items[asset].subColors ? items[asset].colors[color].colors[subColor].files : items[asset].colors[color].files;
+const getFiles = ({ current: { asset, type, color }, items }) => {
+  return items[asset].types[type].colors[color].files;
 };
 
-const getFilePath = ({ current: { asset, color, subColor }, items }) => {
-  return items[asset].subColors ? `/svg/${asset}/${color}/${subColor}/` : `/svg/${asset}/${color}/`;
+const getFilePath = ({ current: { asset, type, color }, items }) => {
+  return `/svg/${asset}/${type}/${color}/`;
 };
 
 const convert = base => value => value / base * 100 + '%';

@@ -3,8 +3,8 @@ import {
 } from '../constants/assets';
 import {
   UPDATE_PROFILE_ASSET,
+  UPDATE_PROFILE_ASSET_TYPE,
   UPDATE_PROFILE_ASSET_COLOR,
-  UPDATE_PROFILE_ASSET_SUB_COLOR,
   UPDATE_PROFILE_ASSET_VISIBILITY
 } from '../constants/profile';
 import assetsConfig from '../configs/assets';
@@ -18,8 +18,8 @@ const reducer = (state = initialState, action) => {
     const data = action.payload.reduce((memo, asset) => ({
       ...memo,
       [asset.id]: {
-        color: asset.colors[0].id,
-        subColor: assetsConfig[asset.id].subColors ? asset.colors[0].colors[0].id : null,
+        type: asset.items[0].id,
+        color: asset.items[0].items[0].id,
         fileIndex: 0,
         visible: assetsConfig[asset.id].required
       }
@@ -30,20 +30,20 @@ const reducer = (state = initialState, action) => {
       ...state,
       [action.asset]: action.payload
     };
+  case UPDATE_PROFILE_ASSET_TYPE:
+    return {
+      ...state,
+      [action.asset]: {
+        ...state[action.asset],
+        type: action.payload.type
+      }
+    };
   case UPDATE_PROFILE_ASSET_COLOR:
     return {
       ...state,
       [action.asset]: {
         ...state[action.asset],
         color: action.payload.color
-      }
-    };
-  case UPDATE_PROFILE_ASSET_SUB_COLOR:
-    return {
-      ...state,
-      [action.asset]: {
-        ...state[action.asset],
-        subColor: action.payload.subColor
       }
     };
   case UPDATE_PROFILE_ASSET_VISIBILITY:

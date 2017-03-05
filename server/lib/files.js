@@ -17,13 +17,11 @@ const walkSync = function(dir) {
   return fs.readdirSync(dir).filter(filter(dir)).map(function(file) {
     if (isDirectory(dir)(file)) {
       return {
-        isFile: false,
         id: file,
-        colors: walkSync(path.join(dir, file))
+        items: walkSync(path.join(dir, file))
       };
     } else {
       return {
-        isFile: true,
         id: file,
         style: getViewBoxDimensions(dir)(file)
       };
