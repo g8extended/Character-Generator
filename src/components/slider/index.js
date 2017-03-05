@@ -20,7 +20,18 @@ const Slider = ({ assets, profile, dispatch }) => {
     <img src="/i/cancellation_icon.svg" className="visibilityButton" onClick={() => dispatch(toggleProfileAssetVisible())} />
   );
 
+  const isColorPickerOnly = assets.items[assets.current.asset].types[assets.current.type].colors[assets.current.color].files.length < 2;
+
   const colorPicker = (
+    <ColorPicker
+        colors={assets.items[assets.current.asset].types[assets.current.type].colors}
+        current={assets.current.color}
+        urlPrefix={`/assets/${assets.current.asset}/${assets.current.type}/`}
+        onClick={color => dispatch(updateProfileAssetColor(color))}
+    />
+  );
+
+  const typePicker = (
     <ColorPicker
       colors={assets.items[assets.current.asset].types}
       current={assets.current.type}
@@ -30,19 +41,14 @@ const Slider = ({ assets, profile, dispatch }) => {
   );
 
   const UnderProfileContainer = conflicts ? conflictsMessages : <div className="colorPickerContainer">
-    {colorPicker}
+    {isColorPickerOnly ? colorPicker : typePicker}
     {visibilityButton}
   </div>
 
   return (
     <div>
       <div className="colorPickerContainer">
-        <ColorPicker
-            colors={assets.items[assets.current.asset].types[assets.current.type].colors}
-            current={assets.current.color}
-            urlPrefix={`/assets/${assets.current.asset}/${assets.current.type}/`}
-            onClick={color => dispatch(updateProfileAssetColor(color))}
-        />
+        {isColorPickerOnly || colorPicker}
       </div>
       <div className="character-slider">
         <Wheel type="left" />
