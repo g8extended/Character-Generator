@@ -29,12 +29,12 @@
 .colorPickerContainer {
   min-height: 1.7em;
   position:relative;
-  background-color: rgba(255,255,255,0.8);
   z-index: 10;
 }
 
 .colorPicker {
   text-align: center;
+  background-color: rgba(255,255,255,0.8);
   .color {
     width: 1.5em;
     height: 1.5em;
