@@ -17,7 +17,7 @@ const Slider = ({ assets, profile, dispatch }) => {
   });
 
   const visibilityButton = (assets.items[assets.current.asset].required ||
-    <img src="/i/cancellation_icon.svg" className="visibilityButton" onClick={() => dispatch(toggleProfileAssetVisible())} />
+    <img src={profile[assets.current.asset].visible ? `/i/cancellation_icon.svg` : `/i/return_icon.svg`} className="visibilityButton" onClick={() => dispatch(toggleProfileAssetVisible())} />
   );
 
   const isColorPickerOnly = assets.items[assets.current.asset].types[assets.current.type].colors[assets.current.color].files.length < 2;
