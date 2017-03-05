@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { assetClick } from '../../actions/assets';
 import map from 'lodash/map';
 import assetsConfig from '../../configs/styles';
+import { getIndexByOffset, getFiles } from '../../utils/files';
 
 const convert = base => value => value / base * 100 + '%';
 const width = value => convert(739.6)(value);
@@ -11,14 +12,22 @@ const height = value => convert(909.9)(value);
 
 const getImage = (assetItem, profile, assets) => {
   if ( ! assets.items || ! profile[assetItem.id].visible) return;
-  const { type, color } = profile[assetItem.id];
-  const files = assets.items[assetItem.id].types[type].colors[color].files;
-  const fileIndex = profile[assetItem.id].fileIndex % files.length;
+
+  const files = getFiles({
+    ...assets,
+    current:{
+      ...profile[assetItem.id],
+      asset: assetItem.id
+    }
+  });
+
+  const fileIndex = profile[assetItem.id].fileIndex;
   const file = files[fileIndex];
+
   if ( ! file.id) return;
   const style = assetsConfig[assetItem.id].style;
   return {
-    src: `/svg/${assetItem.id}/${type}/${color}/${file.id}`,
+    src: file.src,
     style: {
       width: width(file.style.width),
       height: height(file.style.height),
