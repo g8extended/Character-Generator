@@ -119,7 +119,6 @@ export default keyBy([
     required: true,
     clickable: true,
     sortOrder: 70,
-    subColors: true,
     style: {
       left: 286,
       top: 290
