@@ -31,10 +31,10 @@ export const setCurrent = (asset, type, color) => (dispatch, getState) => {
   const state = getState();
   const profile = state.profile[asset];
   const current = {
-    asset
+    asset,
+    type: type || profile.type || Object.keys(state.assets.items[asset].types)[0],
+    color: color || profile.color || Object.keys(state.assets.items[asset].types[current.type].colors)[0]
   };
-  current.type = profile && profile.type || Object.keys(state.assets.items[asset].types)[0];
-  current.color = profile && profile.color || Object.keys(state.assets.items[asset].types[current.type].colors)[0];
   dispatch({
     type: SET_CURRENT,
     payload: current
