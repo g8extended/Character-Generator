@@ -3,29 +3,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { updateProfileAssetFileIndex } from '../../actions/profile';
 import { isConflicts } from '../../utils/conflicts';
-import map from 'lodash/map';
-
-const getIndexByOffset = (length, index, offset) => {
-  return (length + index + offset) % length;
-};
-
-const getFiles = ({ current: { asset, type, color }, items }) => {
-  const colorFiles = map(items[asset].types[type].colors[color].files, file => ({
-    ...file,
-    src: `/svg/${asset}/${type}/${color}/${file.id}`
-  }));
-
-  if (colorFiles.length < 2) {
-    const typeFiles = map(items[asset].types, type => ({
-      ...type.colors[color].files[0],
-      src: `/svg/${asset}/${type.id}/${color}/${type.colors[color].files[0].id}`
-    }));
-
-    return typeFiles;
-  }
-
-  return colorFiles;
-};
+import { getIndexByOffset, getFiles } from '../../utils/files';
 
 const convert = base => value => value / base * 100 + '%';
 const width = value => convert(739.6)(value);
