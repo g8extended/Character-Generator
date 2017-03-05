@@ -3,12 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { assetClick } from '../../actions/assets';
 import map from 'lodash/map';
-import assetsConfig from '../../configs/styles';
 import { getIndexByOffset, getFiles } from '../../utils/files';
-
-const convert = base => value => value / base * 100 + '%';
-const width = value => convert(739.6)(value);
-const height = value => convert(909.9)(value);
 
 const getImage = (assetItem, profile, assets) => {
   if ( ! assets.items || ! profile[assetItem.id].visible) return;
@@ -25,16 +20,11 @@ const getImage = (assetItem, profile, assets) => {
   const file = files[fileIndex];
 
   if ( ! file.id) return;
-  const style = assetsConfig[assetItem.id].style;
+
   return {
     src: file.src,
-    style: {
-      width: width(file.style.width),
-      height: height(file.style.height),
-      left: width(style.left),
-      top: height(style.top)
-    }
-  }
+    style: file.style
+  };
 };
 
 const Profile = ({ dispatch, profile, assets }) => {

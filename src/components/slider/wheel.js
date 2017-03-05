@@ -5,20 +5,11 @@ import { updateProfileAssetFileIndex } from '../../actions/profile';
 import { isConflicts } from '../../utils/conflicts';
 import { getIndexByOffset, getFiles } from '../../utils/files';
 
-const convert = base => value => value / base * 100 + '%';
-const width = value => convert(739.6)(value);
-const height = value => convert(909.9)(value);
-
 const getImg = (files, fileIndex, offset, style, onClick) => {
   const file = files[getIndexByOffset(files.length, fileIndex, offset)];
   const img = {
     src: file.src,
-    style: {
-      width: width(file.style.width),
-      height: height(file.style.height),
-      left: width(style.left),
-      top: height(style.top)
-    }
+    style: file.style
   };
   return file ? <img {...img} onClick={onClick} /> : null;
 };
