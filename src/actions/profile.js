@@ -1,24 +1,34 @@
 import {
   UPDATE_PROFILE_ASSET,
+  UPDATE_PROFILE_ASSET_TYPE,
   UPDATE_PROFILE_ASSET_COLOR,
-  UPDATE_PROFILE_ASSET_SUB_COLOR,
   UPDATE_PROFILE_ASSET_VISIBILITY
 } from '../constants/profile';
+import { getIndexByOffset, getFiles } from '../utils/files';
 
 export const updateProfileAssetFileIndex = offset => (dispatch, getState) => {
   const { assets, profile } = getState();
-  const currentAsset = assets.items[assets.current.asset];
-  const { asset, color, subColor } = assets.current;
-  const files = currentAsset.subColors ? currentAsset.colors[color].colors[subColor].files : currentAsset.colors[color].files;
-  const length = files.length;
+  const files = getFiles(assets);
+  const fileIndex = profile[assets.current.asset].fileIndex;
+  const newIndex = getIndexByOffset(files.length, fileIndex, offset);
   dispatch({
     type: UPDATE_PROFILE_ASSET,
     asset: assets.current.asset,
     payload: {
-      color: color,
-      subColor: subColor,
-      fileIndex: (length + profile[assets.current.asset].fileIndex + offset) % length,
+      type: files[newIndex].type,
+      color: files[newIndex].color,
+      fileIndex: newIndex,
       visible: true
+    }
+  });
+};
+
+export const updateProfileAssetType = type => (dispatch, getState) => {
+  dispatch({
+    type: UPDATE_PROFILE_ASSET_TYPE,
+    asset: getState().assets.current.asset,
+    payload: {
+      type
     }
   });
 };
@@ -28,17 +38,7 @@ export const updateProfileAssetColor = color => (dispatch, getState) => {
     type: UPDATE_PROFILE_ASSET_COLOR,
     asset: getState().assets.current.asset,
     payload: {
-      color: color
-    }
-  });
-};
-
-export const updateProfileAssetSubColor = subColor => (dispatch, getState) => {
-  dispatch({
-    type: UPDATE_PROFILE_ASSET_SUB_COLOR,
-    asset: getState().assets.current.asset,
-    payload: {
-      subColor: subColor
+      color
     }
   });
 };

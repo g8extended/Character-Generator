@@ -3,29 +3,28 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { assetClick } from '../../actions/assets';
 import map from 'lodash/map';
-import assetsConfig from '../../configs/styles';
-
-const convert = base => value => value / base * 100 + '%';
-const width = value => convert(739.6)(value);
-const height = value => convert(909.9)(value);
+import { getIndexByOffset, getFiles } from '../../utils/files';
 
 const getImage = (assetItem, profile, assets) => {
   if ( ! assets.items || ! profile[assetItem.id].visible) return;
-  const { color, subColor } = profile[assetItem.id];
-  const files = assetItem.subColors ? assets.items[assetItem.id].colors[color].colors[subColor].files : assets.items[assetItem.id].colors[color].files;
-  const fileIndex = profile[assetItem.id].fileIndex % files.length;
-  const file = files[fileIndex];
-  if ( ! file.id) return;
-  const style = assetsConfig[assetItem.id].style;
-  return {
-    src: assetItem.subColors ? `/svg/${assetItem.id}/${color}/${subColor}/${file.id}` : `/svg/${assetItem.id}/${color}/${file.id}`,
-    style: {
-      width: width(file.style.width),
-      height: height(file.style.height),
-      left: width(style.left),
-      top: height(style.top)
+
+  const files = getFiles({
+    ...assets,
+    current:{
+      ...profile[assetItem.id],
+      asset: assetItem.id
     }
-  }
+  });
+
+  const fileIndex = profile[assetItem.id].fileIndex;
+  const file = files[fileIndex];
+
+  if ( ! file.id) return;
+
+  return {
+    src: file.src,
+    style: file.style
+  };
 };
 
 const Profile = ({ dispatch, profile, assets }) => {

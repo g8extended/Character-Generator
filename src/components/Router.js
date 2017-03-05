@@ -12,8 +12,8 @@ export default connect()(
         <Route path="assets" component={App}>
           <IndexRedirect to="/assets/Hairstyles" />
           <Route path=":asset" component={App} onEnter={route => dispatch(setRouter(route.params.asset, null, null))}>
-            <Route path=":color" component={App} onEnter={route => dispatch(setRouter(route.params.asset, route.params.color, null))}>
-              <Route path=":subColor" component={App} onEnter={route => dispatch(setRouter(route.params.asset, route.params.color, route.params.subColor))}>
+            <Route path=":type" component={App} onEnter={route => dispatch(setRouter(route.params.asset, route.params.type, null))}>
+              <Route path=":color" component={App} onEnter={route => dispatch(setRouter(route.params.asset, route.params.type, route.params.color))}>
               </Route>
             </Route>
           </Route>

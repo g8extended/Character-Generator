@@ -2,8 +2,8 @@ import {
   FETCH_ASSETS_FULFILLED,
   SET_ROUTER,
   SET_CURRENT,
-  SET_CURRENT_COLOR,
-  SET_CURRENT_SUB_COLOR
+  SET_CURRENT_TYPE,
+  SET_CURRENT_COLOR
 } from '../constants/assets';
 import { REHYDRATE } from 'redux-persist/constants';
 import keyBy from 'lodash/keyBy';
@@ -23,13 +23,13 @@ const initialState = {
   items: {},
   router: {
     asset: null,
-    color: null,
-    subColor: null
+    type: null,
+    color: null
   },
   current: {
     asset: null,
-    color: null,
-    subColor: null
+    type: null,
+    color: null
   }
 };
 
@@ -40,15 +40,15 @@ const reducer = (state = initialState, action) => {
     const profile = action.payload.profile[state.current.asset];
     if ( ! profile) return state;
     let current = {}
+    if (profile && profile.type) {
+      current.type = profile.type;
+    }
     if (profile && profile.color) {
       current.color = profile.color;
     }
-    if (profile && profile.subColor) {
-      current.subColor = profile.subColor;
-    }
     if (state.router.asset === state.current.asset) {
+      current.type = state.router.type || current.type;
       current.color = state.router.color || current.color;
-      current.subColor = state.router.subColor || current.subColor;
     }
     return {
       ...state,
@@ -61,12 +61,11 @@ const reducer = (state = initialState, action) => {
     const items = keyBy(action.payload.map(asset => ({
       ...asset,
       ...assetsConfig[asset.id],
-      colors: keyBy(asset.colors.map(color => ({
-        ...color,
-        files: color.colors[0].isFile ? color.colors.map(mergeStyle(assetsConfig[asset.id].style)) : [],
-        colors: color.colors[0].isFile ? [] : keyBy(color.colors.map(subColor => ({
-          id: subColor.id,
-          files: subColor.colors.map(mergeStyle(assetsConfig[asset.id].style))
+      types: keyBy(asset.items.map(type => ({
+        ...type,
+        colors: keyBy(type.items.map(color => ({
+          id: color.id,
+          files: color.items.map(mergeStyle(assetsConfig[asset.id].style))
         })), 'id')
       })), 'id')
     })), 'id');
@@ -75,7 +74,8 @@ const reducer = (state = initialState, action) => {
       current: {
         ...state.current,
         asset: action.payload[0].id,
-        color: action.payload[0].colors[0].id
+        type: action.payload[0].items[0].id,
+        color: action.payload[0].items[0].items[0].id
       }
     };
   case SET_ROUTER:
@@ -88,20 +88,20 @@ const reducer = (state = initialState, action) => {
       ...state,
       current: action.payload
     };
+  case SET_CURRENT_TYPE:
+    return {
+      ...state,
+      current: {
+        ...state.current,
+        type: action.payload
+      }
+    };
   case SET_CURRENT_COLOR:
     return {
       ...state,
       current: {
         ...state.current,
         color: action.payload
-      }
-    };
-  case SET_CURRENT_SUB_COLOR:
-    return {
-      ...state,
-      current: {
-        ...state.current,
-        subColor: action.payload
       }
     };
   default:
