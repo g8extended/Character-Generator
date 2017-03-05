@@ -13,7 +13,7 @@ html, body {
 
 .page-wrap {
 	min-height: 100%;
-	margin-bottom: -8em; 
+	margin-bottom: -4em; 
 }
 
 .page-wrap:after {
@@ -26,7 +26,7 @@ html, body {
 }
 
 .site-footer .hr {
-	margin: 2em 5em 0;
+	margin: 2px 5em 0;
 	border-top: solid 1px #eee;
 }
 
@@ -50,12 +50,31 @@ html, body {
 	outline: none;
 }
 
-.site-footer .links a img {
-	width: 1.5em;
-	height: 1.5em;
-	margin-right: .5em;
+.site-footer .links a i {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin-right: .4em;
 }
 
 .site-footer .links a * {
 	vertical-align: middle;
 }
+
+.site-footer .links a .twitter { background: url('/i/web/twitter.svg'); }
+.site-footer .links a:hover .twitter { background: url('/i/web/twitter-hov.svg'); }
+
+.site-footer .links a .dribbble { background: url('/i/web/drb.svg'); }
+.site-footer .links a:hover .dribbble { background: url('/i/web/drb-hov.svg'); }
+
+.site-footer .links a .facebook { background: url('/i/web/fb.svg'); }
+.site-footer .links a:hover .facebook { background: url('/i/web/fb-hov.svg'); }
+
+.site-footer .links a .creativemarket { background: url('/i/web/CM.svg'); }
+.site-footer .links a:hover .creativemarket { background: url('/i/web/CM-hov.svg'); }
+
+.site-footer .links a .behance { background: url('/i/web/be.svg'); }
+.site-footer .links a:hover .behance { background: url('/i/web/be-hov.svg'); }
+
+.site-footer .links a .kavoon { background: url('/i/web/mail.svg'); }
+.site-footer .links a:hover .kavoon { background: url('/i/web/mail-hov.svg'); }
