@@ -49,7 +49,8 @@ class AssetsConfig extends Component {
 
     const updatedAssetsConfig = map(assetsConfig, assetItem => ({
       ...assetItem,
-      styles: fromPairs(map(assetItem.styles, (style, type) => [type, getStyle(assetItem, type, profile, assets)]))
+      styles: fromPairs(map(assetItem.styles, (style, type) => [type, getStyle(assetItem, type, profile, assets)])),
+      sortOrder: assets.items[assetItem.id].sortOrder
     }));
 
     const json = JSON.stringify(updatedAssetsConfig, null, '  ').replace(/'/g, '\\\'').replace(/\"/g, '\'').replace(/'([a-z]\w+)':/g, '\$1:');
