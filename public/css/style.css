@@ -13,7 +13,7 @@ html, body {
 
 .page-wrap {
 	min-height: 100%;
-	margin-bottom: -6em; 
+	margin-bottom: -6em;
 }
 
 .page-wrap:after {
@@ -30,12 +30,9 @@ html, body {
 	box-sizing: border-box;
 }
 
-// .site-footer .hr {
-// 	margin: 2px 5em 0;
-// 	border-top: solid 1px #eee;
-// }
-
 .site-footer .links {
+	margin: auto;
+	max-width: 1200px;
 	display: flex;
 	align-items: center;
 	flex-wrap: nowrap;
