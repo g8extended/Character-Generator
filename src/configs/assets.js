@@ -48,8 +48,8 @@ export default keyBy([
     clickable: true,
     sortOrder: 80,
     style: {
-      left: 0,
-      top: 0
+      left: 228,
+      top: 295
     },
     menuItem: 'Accessories'
   },

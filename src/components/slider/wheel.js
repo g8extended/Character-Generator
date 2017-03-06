@@ -9,7 +9,7 @@ const getImg = (files, fileIndex, offset, style, onClick) => {
   const file = files[getIndexByOffset(files.length, fileIndex, offset)];
   const img = {
     src: file.src,
-    style: file.style
+    style: file.computedStyle
   };
   return file ? <img {...img} onClick={onClick} /> : null;
 };

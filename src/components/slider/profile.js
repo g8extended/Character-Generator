@@ -5,9 +5,7 @@ import { assetClick } from '../../actions/assets';
 import map from 'lodash/map';
 import { getIndexByOffset, getFiles } from '../../utils/files';
 
-const getImage = (assetItem, profile, assets) => {
-  if ( ! assets.items || ! profile[assetItem.id].visible) return;
-
+const getFile = (assetItem, profile, assets) => {
   const files = getFiles({
     ...assets,
     current:{
@@ -17,13 +15,19 @@ const getImage = (assetItem, profile, assets) => {
   });
 
   const fileIndex = profile[assetItem.id].fileIndex;
-  const file = files[fileIndex];
+  return files[fileIndex];
+};
+
+const getImage = (assetItem, profile, assets) => {
+  if ( ! assets.items || ! profile[assetItem.id].visible) return;
+
+  const file = getFile(assetItem, profile, assets);
 
   if ( ! file.id) return;
 
   return {
     src: file.src,
-    style: file.style
+    style: file.computedStyle
   };
 };
 
