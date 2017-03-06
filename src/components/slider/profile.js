@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { assetClick } from '../../actions/assets';
 import map from 'lodash/map';
-import { getIndexByOffset, getFiles } from '../../utils/files';
+import { getFiles } from '../../utils/files';
 
 const getFile = (assetItem, profile, assets) => {
   const files = getFiles({

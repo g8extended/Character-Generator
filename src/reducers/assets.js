@@ -6,7 +6,11 @@ import {
   SET_CURRENT_COLOR
 } from '../constants/assets';
 import { REHYDRATE } from 'redux-persist/constants';
+import {
+  MOVE_PROFILE_ASSET_TYPE
+} from '../constants/profile';
 import keyBy from 'lodash/keyBy';
+import map from 'lodash/map';
 import assetsConfig from '../configs/assets';
 
 const mergeStyle = style => file => {
@@ -65,7 +69,7 @@ const reducer = (state = initialState, action) => {
         ...type,
         colors: keyBy(type.items.map(color => ({
           id: color.id,
-          files: color.items.map(mergeStyle(assetsConfig[asset.id].style))
+          files: color.items.map(mergeStyle(assetsConfig[asset.id].styles[type.id]))
         })), 'id')
       })), 'id')
     })), 'id');
@@ -102,6 +106,26 @@ const reducer = (state = initialState, action) => {
       current: {
         ...state.current,
         color: action.payload
+      }
+    };
+  case MOVE_PROFILE_ASSET_TYPE:
+    return {
+      ...state,
+      items: {
+        ...state.items,
+        [action.current.asset]: {
+          ...state.items[action.current.asset],
+          types: {
+            ...state.items[action.current.asset].types,
+            [action.current.type]: {
+              ...state.items[action.current.asset].types[action.current.type],
+              colors: keyBy(map(state.items[action.current.asset].types[action.current.type].colors, color => ({
+                ...color,
+                files: color.files.map(mergeStyle(action.payload))
+              })), 'id')
+            }
+          }
+        }
       }
     };
   default:
