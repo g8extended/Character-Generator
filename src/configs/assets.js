@@ -26,7 +26,7 @@ export default keyBy([
       '05': {
         left: 195,
         top: 45
-      },
+      }
     }
   },
   {
@@ -120,6 +120,10 @@ export default keyBy([
     clickable: true,
     sortOrder: 80,
     styles: {
+      '10': {
+        left: 228,
+        top: 295
+      },
       '01': {
         left: 228,
         top: 295
@@ -153,10 +157,6 @@ export default keyBy([
         top: 295
       },
       '09': {
-        left: 228,
-        top: 295
-      },
-      '10': {
         left: 228,
         top: 295
       }
@@ -229,8 +229,14 @@ export default keyBy([
     },
     menuItem: 'Clothes',
     conflicts: {
-      indexes: [0 ,1, 2],
-      assets: ['Ties'],
+      indexes: [
+        0,
+        1,
+        2
+      ],
+      assets: [
+        'Ties'
+      ],
       message: 'Sorry but you can\'t use ties with this shirt'
     }
   },
@@ -315,15 +321,15 @@ export default keyBy([
     clickable: true,
     sortOrder: 70,
     styles: {
-      'blue': {
+      blue: {
         left: 286,
         top: 290
       },
-      'brown': {
+      brown: {
         left: 286,
         top: 290
       },
-      'green': {
+      green: {
         left: 286,
         top: 290
       }
