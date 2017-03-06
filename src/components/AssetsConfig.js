@@ -15,6 +15,12 @@ const getStyle = (assetItem, type, profile, assets) => {
   };
 };
 
+const keydownHandler = dispatch => e => {
+  if ( ! [37, 38, 39, 40].includes(e.which)) return;
+  e.preventDefault();
+  dispatch(moveProfileAssetType(e.which, e.shiftKey));
+};
+
 class AssetsConfig extends Component {
   constructor() {
     super();
@@ -22,11 +28,12 @@ class AssetsConfig extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    document.addEventListener('keydown', e => {
-      if ( ! [37, 38, 39, 40].includes(e.which)) return;
-      e.preventDefault();
-      dispatch(moveProfileAssetType(e.which));
-    });
+    this.keydownHandler = keydownHandler(dispatch);
+    document.addEventListener('keydown', this.keydownHandler);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.keydownHandler);
   }
 
   render() {
