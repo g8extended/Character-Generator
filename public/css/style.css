@@ -13,7 +13,7 @@ html, body {
 
 .page-wrap {
 	min-height: 100%;
-	margin-bottom: -4em; 
+	margin-bottom: -6em; 
 }
 
 .page-wrap:after {
@@ -25,17 +25,21 @@ html, body {
 	height: 6em; 
 }
 
-.site-footer .hr {
-	margin: 2px 5em 0;
-	border-top: solid 1px #eee;
+.site-footer {
+	padding: 3em 5em 2em;
+	box-sizing: border-box;
 }
+
+// .site-footer .hr {
+// 	margin: 2px 5em 0;
+// 	border-top: solid 1px #eee;
+// }
 
 .site-footer .links {
 	display: flex;
 	align-items: center;
 	flex-wrap: nowrap;
 	justify-content: space-around;
-	padding: 3em 5em 2em;
 }
   
 .site-footer .links a {
