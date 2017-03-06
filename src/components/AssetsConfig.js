@@ -43,7 +43,7 @@ class AssetsConfig extends Component {
 
     return (
       <div className="positions">
-        <textarea>{`import keyBy from 'lodash/keyBy';\n\nexport default keyBy(${json}, 'id');\n`}</textarea>
+        <textarea value={`import keyBy from 'lodash/keyBy';\n\nexport default keyBy(${json}, 'id');\n`} onChange={() => {}} />
       </div>
     );
   }
