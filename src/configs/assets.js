@@ -9,23 +9,23 @@ export default keyBy([
     styles: {
       '01': {
         left: 195,
-        top: 45
+        top: 36
       },
       '02': {
         left: 195,
-        top: 45
+        top: 35
       },
       '03': {
         left: 195,
-        top: 45
+        top: 30
       },
       '04': {
         left: 195,
-        top: 45
+        top: 36
       },
       '05': {
         left: 195,
-        top: 45
+        top: 39
       }
     }
   },
@@ -37,19 +37,19 @@ export default keyBy([
     styles: {
       '01': {
         left: 209,
-        top: 310
+        top: 313
       },
       '02': {
         left: 209,
-        top: 310
+        top: 315
       },
       '03': {
         left: 209,
-        top: 310
+        top: 312
       },
       '04': {
         left: 209,
-        top: 310
+        top: 313
       },
       '05': {
         left: 209,
@@ -57,15 +57,15 @@ export default keyBy([
       },
       '06': {
         left: 209,
-        top: 310
+        top: 312
       },
       '07': {
         left: 209,
-        top: 310
+        top: 313
       },
       '08': {
         left: 209,
-        top: 310
+        top: 312
       }
     }
   },
@@ -89,26 +89,26 @@ export default keyBy([
     styles: {
       '01': {
         left: 60,
-        top: 400
+        top: 411
       },
       '02': {
         left: 60,
         top: 400
       },
       '03': {
-        left: 60,
+        left: 61,
         top: 400
       },
       '04': {
-        left: 60,
+        left: 61,
         top: 400
       },
       '05': {
         left: 60,
-        top: 400
+        top: 403
       },
       '06': {
-        left: 60,
+        left: 61,
         top: 400
       }
     },
@@ -122,15 +122,15 @@ export default keyBy([
     styles: {
       '10': {
         left: 228,
-        top: 295
+        top: 296
       },
       '01': {
         left: 228,
-        top: 295
+        top: 296
       },
       '02': {
-        left: 228,
-        top: 295
+        left: 227,
+        top: 296
       },
       '03': {
         left: 228,
@@ -141,20 +141,20 @@ export default keyBy([
         top: 295
       },
       '05': {
-        left: 228,
-        top: 295
+        left: 227,
+        top: 293
       },
       '06': {
         left: 228,
-        top: 295
+        top: 293
       },
       '07': {
         left: 228,
         top: 295
       },
       '08': {
-        left: 228,
-        top: 295
+        left: 227,
+        top: 293
       },
       '09': {
         left: 228,
@@ -199,27 +199,27 @@ export default keyBy([
     sortOrder: 10,
     styles: {
       '01': {
-        left: 110,
+        left: 111,
         top: 465
       },
       '02': {
-        left: 110,
+        left: 112,
         top: 465
       },
       '03': {
-        left: 110,
+        left: 112,
         top: 465
       },
       '04': {
-        left: 110,
+        left: 112,
         top: 465
       },
       '05': {
-        left: 110,
+        left: 111,
         top: 465
       },
       '06': {
-        left: 110,
+        left: 111,
         top: 465
       },
       '07': {
@@ -248,15 +248,15 @@ export default keyBy([
     styles: {
       '01': {
         left: 114,
-        top: 445
+        top: 453
       },
       '02': {
-        left: 114,
-        top: 445
+        left: 115,
+        top: 451
       },
       '03': {
-        left: 114,
-        top: 445
+        left: 117,
+        top: 447
       }
     },
     menuItem: 'Clothes'
@@ -272,7 +272,7 @@ export default keyBy([
         top: 473
       },
       '02': {
-        left: 111,
+        left: 113,
         top: 473
       },
       '03': {
@@ -281,7 +281,7 @@ export default keyBy([
       },
       '04': {
         left: 111,
-        top: 473
+        top: 471
       }
     },
     menuItem: 'Clothes'
@@ -293,23 +293,23 @@ export default keyBy([
     sortOrder: 20,
     styles: {
       '01': {
-        left: 307,
-        top: 539
+        left: 308,
+        top: 536
       },
       '02': {
-        left: 307,
+        left: 309,
         top: 539
       },
       '03': {
-        left: 307,
-        top: 539
+        left: 310,
+        top: 536
       },
       '04': {
-        left: 307,
+        left: 310,
         top: 539
       },
       '05': {
-        left: 307,
+        left: 310,
         top: 539
       }
     },
@@ -323,15 +323,15 @@ export default keyBy([
     styles: {
       blue: {
         left: 286,
-        top: 290
+        top: 284
       },
       brown: {
         left: 286,
-        top: 290
+        top: 284
       },
       green: {
         left: 286,
-        top: 290
+        top: 284
       }
     }
   },
@@ -347,7 +347,7 @@ export default keyBy([
       },
       '02': {
         left: 62,
-        top: 406
+        top: 411
       },
       '03': {
         left: 62,
@@ -358,7 +358,7 @@ export default keyBy([
         top: 406
       },
       '05': {
-        left: 62,
+        left: 64,
         top: 406
       },
       '06': {
@@ -376,7 +376,7 @@ export default keyBy([
     styles: {
       '01': {
         left: 311,
-        top: 407
+        top: 405
       },
       '02': {
         left: 311,
@@ -395,20 +395,20 @@ export default keyBy([
     sortOrder: 40,
     styles: {
       '01': {
-        left: 63,
+        left: 62,
         top: 411
       },
       '02': {
         left: 63,
-        top: 411
+        top: 408
       },
       '03': {
         left: 63,
-        top: 411
+        top: 404
       },
       '04': {
         left: 63,
-        top: 411
+        top: 404
       }
     },
     menuItem: 'Clothes'
@@ -424,36 +424,36 @@ export default keyBy([
         top: -78
       },
       '02': {
-        left: 113,
+        left: 116,
         top: -78
       },
       '03': {
-        left: 113,
+        left: 121,
         top: -78
       },
       '04': {
-        left: 113,
-        top: -78
+        left: 116,
+        top: -67
       },
       '05': {
-        left: 113,
+        left: 119,
         top: -78
       },
       '06': {
-        left: 113,
+        left: 119,
         top: -78
       },
       '07': {
-        left: 113,
+        left: 121,
         top: -78
       },
       '08': {
-        left: 113,
+        left: 122,
         top: -78
       },
       '09': {
-        left: 113,
-        top: -78
+        left: 116,
+        top: -68
       }
     },
     menuItem: 'Clothes'
@@ -469,8 +469,8 @@ export default keyBy([
         top: 411
       },
       '02': {
-        left: 63,
-        top: 411
+        left: 64,
+        top: 406
       }
     },
     menuItem: 'Clothes'
