@@ -79,3 +79,20 @@ html, body {
 
 .site-footer .links a .kavoon { background: url('/i/web/mail.svg'); }
 .site-footer .links a:hover .kavoon { background: url('/i/web/mail-hov.svg'); }
+
+@media(max-width: 640px) {
+	.site-footer .links {
+    	flex-wrap: wrap;
+    }
+
+	.site-footer .links a:first-child {
+		width: 100%;
+		text-align: center;
+	}
+
+	.site-footer .links a {
+		width: 50%;
+		line-height: 4em;
+		font-size: .9em;
+	}
+}
