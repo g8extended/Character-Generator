@@ -1,17 +1,15 @@
-import assetsConfig from '../configs/styles';
 import map from 'lodash/map';
 
 const convert = base => value => value / base * 100 + '%';
 const width = value => convert(739.6)(value);
 const height = value => convert(909.9)(value);
 
-const getStyle = (asset, style) => {
-  const configStyle = assetsConfig[asset].style;
+const getComputedStyle = (asset, style) => {
   return {
     width: width(style.width),
     height: height(style.height),
-    left: width(configStyle.left),
-    top: height(configStyle.top)
+    left: width(style.left),
+    top: height(style.top)
   };
 };
 
@@ -25,7 +23,7 @@ export const getFiles = ({ current: { asset, type, color }, items }) => {
     type,
     color,
     src: `/svg/${asset}/${type}/${color}/${file.id}`,
-    style: getStyle(asset, file.style)
+    computedStyle: getComputedStyle(asset, file.style)
   }));
 
   if (colorFiles.length < 2) {
@@ -34,7 +32,7 @@ export const getFiles = ({ current: { asset, type, color }, items }) => {
       type: type.id,
       color,
       src: `/svg/${asset}/${type.id}/${color}/${type.colors[color].files[0].id}`,
-      style: getStyle(asset, type.colors[color].files[0].style)
+      computedStyle: getComputedStyle(asset, type.colors[color].files[0].style)
     }));
     return typeFiles;
   }
