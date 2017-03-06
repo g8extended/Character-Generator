@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import map from 'lodash/map';
 import fromPairs from 'lodash/fromPairs';
 import { getIndexByOffset, getFiles } from '../utils/files';
-import { moveProfileAssetType } from '../actions/profile';
+import { changeProfileAssetTypeStyle, changeProfileAssetTypeSortOrder } from '../actions/profile';
 import assetsConfig from '../configs/assets';
 
 const getStyle = (assetItem, type, profile, assets) => {
@@ -17,8 +17,14 @@ const getStyle = (assetItem, type, profile, assets) => {
 
 const keydownHandler = dispatch => e => {
   if ( ! [37, 38, 39, 40].includes(e.which)) return;
+
   e.preventDefault();
-  dispatch(moveProfileAssetType(e.which, e.shiftKey));
+
+  if (e.metaKey) {
+    dispatch(changeProfileAssetTypeSortOrder(e.which, e.shiftKey));
+  } else {
+    dispatch(changeProfileAssetTypeStyle(e.which, e.shiftKey));
+  }
 };
 
 class AssetsConfig extends Component {

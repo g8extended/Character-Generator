@@ -3,7 +3,8 @@ import {
   UPDATE_PROFILE_ASSET_TYPE,
   UPDATE_PROFILE_ASSET_COLOR,
   UPDATE_PROFILE_ASSET_VISIBILITY,
-  MOVE_PROFILE_ASSET_TYPE
+  CHANGE_PROFILE_ASSET_TYPE_STYLE,
+  CHANGE_PROFILE_ASSET_SORT_ORDER
 } from '../constants/profile';
 import { getIndexByOffset, getFiles } from '../utils/files';
 
@@ -55,7 +56,7 @@ export const toggleProfileAssetVisible = () => (dispatch, getState) => {
   });
 };
 
-export const moveProfileAssetType = (which, shift) => (dispatch, getState) => {
+export const changeProfileAssetTypeStyle = (which, shift) => (dispatch, getState) => {
   const { assets: { items, current: { asset } }, profile } = getState();
   const { type, color } = profile[asset];
   const { left, top } = items[asset].types[type].colors[color].files[0].style;
@@ -65,11 +66,23 @@ export const moveProfileAssetType = (which, shift) => (dispatch, getState) => {
     top: which % 2 ? top : top + (1 - which % 4) * k
   };
   dispatch({
-    type: MOVE_PROFILE_ASSET_TYPE,
+    type: CHANGE_PROFILE_ASSET_TYPE_STYLE,
     current: {
       asset,
       type,
     },
+    payload
+  });
+};
+
+export const changeProfileAssetTypeSortOrder = (which, shift) => (dispatch, getState) => {
+  const { assets: { items, current: { asset } }, profile } = getState();
+  const { sortOrder } = items[asset];
+  const k = shift ? 10 : 1;
+  const payload = which % 2 ? sortOrder : sortOrder - (1 - which % 4) * k;
+  dispatch({
+    type: CHANGE_PROFILE_ASSET_SORT_ORDER,
+    asset,
     payload
   });
 };

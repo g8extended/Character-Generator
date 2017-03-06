@@ -7,7 +7,8 @@ import {
 } from '../constants/assets';
 import { REHYDRATE } from 'redux-persist/constants';
 import {
-  MOVE_PROFILE_ASSET_TYPE
+  CHANGE_PROFILE_ASSET_TYPE_STYLE,
+  CHANGE_PROFILE_ASSET_SORT_ORDER
 } from '../constants/profile';
 import keyBy from 'lodash/keyBy';
 import map from 'lodash/map';
@@ -108,7 +109,7 @@ const reducer = (state = initialState, action) => {
         color: action.payload
       }
     };
-  case MOVE_PROFILE_ASSET_TYPE:
+  case CHANGE_PROFILE_ASSET_TYPE_STYLE:
     return {
       ...state,
       items: {
@@ -125,6 +126,17 @@ const reducer = (state = initialState, action) => {
               })), 'id')
             }
           }
+        }
+      }
+    };
+  case CHANGE_PROFILE_ASSET_SORT_ORDER:
+    return {
+      ...state,
+      items: {
+        ...state.items,
+        [action.asset]: {
+          ...state.items[action.asset],
+          sortOrder: action.payload
         }
       }
     };
