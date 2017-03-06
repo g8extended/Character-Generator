@@ -73,19 +73,4 @@
       display: none;
     }
   }
-
-  .links {
-    flex-wrap: wrap;
-    
-    a {
-      &:first-child {
-        width: 100%;
-        text-align: center;
-      }
-
-      width: 50%;
-      line-height: 4em;
-      font-size: .9em;
-    }
-  }
 }
