@@ -21,11 +21,13 @@ const compiler = webpack(config);
 const port = 3000;
 const trustedUri = `localhost:${port}`;
 
-app.use(require('webpack-dev-middleware')(compiler, {
-  publicPath: config.output.publicPath
-}));
+if (process.env.NODE_ENV !== 'production') {
+  app.use(require('webpack-dev-middleware')(compiler, {
+    publicPath: config.output.publicPath
+  }));
+  app.use(require('webpack-hot-middleware')(compiler));
+}
 
-app.use(require('webpack-hot-middleware')(compiler));
 app.use(express.static('public'));
 
 app.get('/api/assets/', function(req, res, next) {

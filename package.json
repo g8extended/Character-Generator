@@ -4,6 +4,12 @@
   "description": "Boilerplate for ReactJS project with hot code reloading",
   "scripts": {
     "start": "nodemon server/server.js -w server",
+    "dev": "nodemon server/server.js -w server",
+    "build:client": "NODE_ENV=production webpack --config webpack-client.config.js --progress --colors -p",
+    "build:server": "NODE_ENV=production webpack --config webpack-server.config.js --progress --colors -p",
+    "build": "npm run build:client && npm run build:server",
+    "server": "node server/server-bundle.js",
+    "all": "npm run build && npm run server",
     "lint": "eslint src"
   },
   "repository": {
@@ -40,6 +46,7 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.6.2",
     "express": "^4.13.4",
+    "extract-text-webpack-plugin": "^1.0.1",
     "ignore-loader": "^0.1.2",
     "node-sass": "^4.5.0",
     "nodemon": "^1.11.0",
