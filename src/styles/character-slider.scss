@@ -60,12 +60,12 @@ $characterLeft: -($characterWidth - $characterWrapperWidth) / 2;
     border-radius: 1em;
     vertical-align: middle;
     
-    margin: 0 .25vw;
-    border: solid 1px #fff;
+    margin: 0 .4em;
+    border: solid 0.13em transparent;
     cursor: pointer;
 
     &.active {
-      border: solid 1px #472719;
+      border: solid 0.13em #472719;
     }
 
     &.brown {
