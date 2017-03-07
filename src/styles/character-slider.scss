@@ -27,6 +27,7 @@ $characterLeft: -($characterWidth - $characterWrapperWidth) / 2;
     .character-wrapper {
       width: $characterWrapperWidth;
       padding: $characterWrapperPadding;
+      overflow: hidden;
       .character {
         left: $characterLeft;
       }
@@ -126,50 +127,26 @@ $characterLeft: -($characterWidth - $characterWrapperWidth) / 2;
   font-size: 0.8em;
 }
 
-
-@media(max-width: 1024px) {
+@media(max-width: 640px) {
   .character-slider {
-    .character {
-      width: 32vw;
-      min-height: 40vw;
-    }
-
-    .arrow {
-      padding-top: 8vw;
-      width: 2vw;
-    }
-
-    .wheel.left .character:first-child {
-      display: none;
-    }
-
-    .wheel.right .character:last-child {
-      display: none;
-    }
+    font-size: 0.2em;
   }
 }
 
-@media(max-width: 640px) {
+@media(max-width: 1024px) {
   .character-slider {
-    width: 90vw;
-    margin: 0 auto 2em;
+    font-size: 0.3em;
+  }
+}
 
-    .character {
-      width: 82vw;
-      min-height: 101.2vw;
-    }
+@media(max-width: 1600px) {
+  .character-slider {
+    font-size: 0.65em;
+  }
+}
 
-    .arrow {
-      padding-top: 22vw;
-      width: 4vw;
-    }
-
-    .wheel.left {
-      display: none;
-    }
-
-    .wheel.right {
-      display: none;
-    }
+@media(max-width: 1920px) {
+  .character-slider {
+    font-size: 0.8em;
   }
 }
