@@ -36,7 +36,7 @@ html, body {
 	display: flex;
 	align-items: center;
 	flex-wrap: nowrap;
-	justify-content: space-around;
+	justify-content: space-between;
 }
   
 .site-footer .links a {
