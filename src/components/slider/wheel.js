@@ -50,9 +50,6 @@ const Wheel = (
         <Media query={{ minWidth: 1600 }}>
           {getWheel(offsets[1])}
         </Media>
-        <Media query={{ minWidth: 2200 }}>
-          {getWheel(offsets[2])}
-        </Media>
       </div>
     )
   }
