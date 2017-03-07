@@ -37,8 +37,6 @@ const Wheel = (
       const offset = (type === 'left' ? -2 : 1) + index;
       return (
         <div key={index} className="character-wrapper">
-          <div>index: {index}</div>
-          <div>offset: {offset}</div>
           <div className="character">
             {getImg(files, fileIndex, offset, assetItem.style, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
           </div>
