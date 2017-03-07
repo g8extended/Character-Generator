@@ -1,6 +1,6 @@
 $characterWidth: 33.3em;
-$characterWrapperWidth: 14em;
-$characterWrapperPadding: 0 3em;
+$characterWrapperWidth: $characterWidth / 1.2;
+$characterWrapperPadding: 0 0em;
 $characterLeft: -($characterWidth - $characterWrapperWidth) / 2;
 
 .character-slider {
@@ -127,26 +127,38 @@ $characterLeft: -($characterWidth - $characterWrapperWidth) / 2;
   font-size: 0.8em;
 }
 
-@media(max-width: 640px) {
+$bp-small : 24em;
+$bp-med : 46.8em;
+$bp-large : 50em;
+$bp-xl : 73em;
+$bp-xxl : 100em;
+
+@media(min-width: $bp-small) {
   .character-slider {
-    font-size: 0.2em;
+    font-size: 5em;
   }
 }
 
-@media(max-width: 1024px) {
+@media(min-width: $bp-med) {
   .character-slider {
-    font-size: 0.3em;
+    font-size: 2em;
   }
 }
 
-@media(max-width: 1600px) {
+@media(min-width: $bp-large) {
   .character-slider {
-    font-size: 0.65em;
+    font-size: 1.4em;
   }
 }
 
-@media(max-width: 1920px) {
+@media(min-width: $bp-xl) {
   .character-slider {
-    font-size: 0.8em;
+    font-size: .8em;
+  }
+}
+
+@media(min-width: $bp-xxl) {
+  .character-slider {
+    font-size: .7em;
   }
 }
