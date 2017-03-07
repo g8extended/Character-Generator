@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import map from 'lodash/map';
 import { getFiles } from '../../utils/files';
+import Arrow from './arrow';
 
 const getFile = (assetItem, profile, assets) => {
   const files = getFiles({
@@ -38,6 +39,7 @@ const Profile = ({ dispatch, profile, assets }) => {
 
   return (
     <div className="profile"> 
+      <Arrow type="left" />
       <div className="character">
         {map(items, assetItem => assetItem.clickable ? (
           <Link key={assetItem.id} to={`/assets/${assetItem.id}`}>
@@ -47,6 +49,7 @@ const Profile = ({ dispatch, profile, assets }) => {
           <img key={assetItem.id} {...getImage(assetItem, profile, assets)} />
         ))}
       </div>
+      <Arrow type="right" />
     </div>
   );
 };

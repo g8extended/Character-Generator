@@ -36,8 +36,10 @@ const Wheel = (
     return (
       <div className={classeName}>
         {offsets.map((offset, index) => (
-          <div key={index} className="character">
-            {getImg(files, fileIndex, offset, assetItem.style, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
+          <div className="character-wrapper">
+            <div key={index} className="character">
+              {getImg(files, fileIndex, offset, assetItem.style, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
+            </div>
           </div>
         ))}
       </div>
