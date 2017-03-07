@@ -5,6 +5,7 @@ import { updateProfileAssetFileIndex } from '../../actions/profile';
 import { isConflicts } from '../../utils/conflicts';
 import { getIndexByOffset, getFiles } from '../../utils/files';
 import Media from 'react-media';
+import range from 'lodash/range';
 
 const getImg = (files, fileIndex, offset, style, onClick) => {
   const file = files[getIndexByOffset(files.length, fileIndex, offset)];
@@ -30,7 +31,9 @@ const Wheel = (
 
     const files = getFiles(assets);
     const fileIndex = profile[assets.current.asset].fileIndex;
-    const offsets = type === 'left' ? [-3, -2, -1] : [1, 2, 3];
+    const count = 3;
+    const start = type === 'left' ? -1 * count : 1;
+    const offsets = range(start, start + count);
 
     const assetItem = assets.items[assets.current.asset];
 
