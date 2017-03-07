@@ -5,7 +5,7 @@ import { updateProfileAssetFileIndex } from '../../actions/profile';
 import { isConflicts } from '../../utils/conflicts';
 import { getIndexByOffset, getFiles } from '../../utils/files';
 import Media from 'react-media';
-import range from 'lodash/range';
+import reverse from 'lodash/reverse';
 
 const getImg = (files, fileIndex, offset, style, onClick) => {
   const file = files[getIndexByOffset(files.length, fileIndex, offset)];
@@ -31,28 +31,31 @@ const Wheel = (
 
     const files = getFiles(assets);
     const fileIndex = profile[assets.current.asset].fileIndex;
-    const count = 3;
-    const start = type === 'left' ? -1 * count : 1;
-    const offsets = range(start, start + count);
-
     const assetItem = assets.items[assets.current.asset];
 
-    const getWheel = offset => (
-      <div key={offset} className="character-wrapper">
-        <div className="character">
-          {getImg(files, fileIndex, offset, assetItem.style, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
+    const getCharacterWrapper = (type, index) => {
+      const offset = (type === 'left' ? -2 : 1) + index;
+      return (
+        <div key={index} className="character-wrapper">
+          <div>index: {index}</div>
+          <div>offset: {offset}</div>
+          <div className="character">
+            {getImg(files, fileIndex, offset, assetItem.style, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+
+    const breakpoints = [1024, 1600];
+    const breakpointsSorted = type === 'left' ? reverse(breakpoints) : breakpoints;
 
     return (
       <div className={classeName}>
-        <Media query={{ minWidth: 1024 }}>
-          {getWheel(offsets[0])}
-        </Media>
-        <Media query={{ minWidth: 1600 }}>
-          {getWheel(offsets[1])}
-        </Media>
+        {breakpointsSorted.map((width, index) => (
+          <Media key={index} query={{ minWidth: width }}>
+            {matches => matches && getCharacterWrapper(type, index)}
+          </Media>
+        ))}
       </div>
     )
   }
