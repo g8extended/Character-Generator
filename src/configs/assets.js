@@ -77,7 +77,7 @@ export default keyBy([
     styles: {
       '01': {
         left: 148,
-        top: 164
+        top: 155
       }
     }
   },
