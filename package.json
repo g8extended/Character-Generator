@@ -57,6 +57,7 @@
     "react": "^0.14.6",
     "react-async-script-loader": "^0.2.2",
     "react-dom": "^0.14.6",
+    "react-media": "^1.5.1",
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
     "react-router-redux": "^4.0.8",

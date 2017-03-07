@@ -76,8 +76,8 @@ export default keyBy([
     sortOrder: 0,
     styles: {
       '01': {
-        left: 0,
-        top: 0
+        left: 148,
+        top: 155
       }
     }
   },

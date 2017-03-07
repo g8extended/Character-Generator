@@ -14,7 +14,7 @@ const getComputedStyle = (asset, style) => {
 };
 
 export const getIndexByOffset = (length, index, offset) => {
-  return (length + index + offset) % length;
+  return (length + index + offset % length) % length;
 };
 
 export const getFiles = ({ current: { asset, type, color }, items }) => {

@@ -6,7 +6,7 @@
   background-color: #EE3C5D;
   color: #fff;
   border-radius: 55px;
-  font-size: 0.65em;
+  font-size: .7em;
   text-transform: uppercase;
   border: transparent;
   padding: 1.3em 2.1em;
@@ -25,8 +25,7 @@
   max-width: 1200px;
   margin: auto;
   display: flex;
-  align-items: center;
-  padding: 2em 5em;
+  padding: 2.9em 5em 5.3em 5em;
   flex-wrap: nowrap;
   
   .logo {
@@ -44,7 +43,7 @@
 
   .btn {
     flex: 0 0 auto;
-    width: 10.675em;
+    margin-top: -.6em;
   }
 }
 

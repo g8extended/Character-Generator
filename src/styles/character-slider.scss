@@ -1,24 +1,43 @@
+$characterWidth: 33.3em;
+$characterWrapperWidth: $characterWidth / 1.2;
+$characterWrapperPadding: 0 0em;
+$characterLeft: -($characterWidth - $characterWrapperWidth) / 2;
+
 .character-slider {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 2em;
 
+  .profile {
+    display: flex;
+    padding: $characterWrapperPadding;
+  }
+
   .arrow {
-    padding-top: 4vw;
+    padding-top: 8em;
     cursor: pointer;
-    width: 1vw;
+    width: 1.13em;
     text-align: center;
+    z-index: 9999;
   }
 
   .wheel {
     display: flex;
+    .character-wrapper {
+      width: $characterWrapperWidth;
+      padding: $characterWrapperPadding;
+      overflow: hidden;
+      .character {
+        left: $characterLeft;
+      }
+    }
   }
 
   .character {
     position: relative;
-    width: 19.25vw;
-    min-height: 23.5vw;
+    width: $characterWidth;
+    min-height: $characterWidth;
 
     img {
       position: absolute;
@@ -42,12 +61,12 @@
     border-radius: 1em;
     vertical-align: middle;
     
-    margin: 0 .25vw;
-    border: solid 1px #fff;
+    margin: 0 .4em;
+    border: solid 0.13em transparent;
     cursor: pointer;
 
     &.active {
-      border: solid 1px #472719;
+      border: solid 0.13em #472719;
     }
 
     &.brown {
@@ -108,50 +127,38 @@
   font-size: 0.8em;
 }
 
+$bp-small : 24em;
+$bp-med : 46.8em;
+$bp-large : 50em;
+$bp-xl : 73em;
+$bp-xxl : 100em;
 
-@media(max-width: 1024px) {
+@media(min-width: $bp-small) {
   .character-slider {
-    .character {
-      width: 32vw;
-      min-height: 40vw;
-    }
-
-    .arrow {
-      padding-top: 8vw;
-      width: 2vw;
-    }
-
-    .wheel.left .character:first-child {
-      display: none;
-    }
-
-    .wheel.right .character:last-child {
-      display: none;
-    }
+    font-size: 5em;
   }
 }
 
-@media(max-width: 640px) {
+@media(min-width: $bp-med) {
   .character-slider {
-    width: 90vw;
-    margin: 0 auto 2em;
+    font-size: 2em;
+  }
+}
 
-    .character {
-      width: 82vw;
-      min-height: 101.2vw;
-    }
+@media(min-width: $bp-large) {
+  .character-slider {
+    font-size: 1.4em;
+  }
+}
 
-    .arrow {
-      padding-top: 22vw;
-      width: 4vw;
-    }
+@media(min-width: $bp-xl) {
+  .character-slider {
+    font-size: .8em;
+  }
+}
 
-    .wheel.left {
-      display: none;
-    }
-
-    .wheel.right {
-      display: none;
-    }
+@media(min-width: $bp-xxl) {
+  .character-slider {
+    font-size: 1em;
   }
 }
