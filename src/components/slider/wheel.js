@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { updateProfileAssetFileIndex } from '../../actions/profile';
 import { isConflicts } from '../../utils/conflicts';
 import { getIndexByOffset, getFiles } from '../../utils/files';
+import Media from 'react-media';
 
 const getImg = (files, fileIndex, offset, style, onClick) => {
   const file = files[getIndexByOffset(files.length, fileIndex, offset)];
@@ -29,19 +30,26 @@ const Wheel = (
 
     const files = getFiles(assets);
     const fileIndex = profile[assets.current.asset].fileIndex;
-    const offsets = type === 'left' ? [-2, -1] : [1, 2];
+    const offsets = type === 'left' ? [-3, -2, -1] : [1, 2, 3];
 
     const assetItem = assets.items[assets.current.asset];
 
+    const getWheel = offset => (
+      <div key={offset} className="character-wrapper">
+        <div className="character">
+          {getImg(files, fileIndex, offset, assetItem.style, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
+        </div>
+      </div>
+    );
+
     return (
       <div className={classeName}>
-        {offsets.map((offset, index) => (
-          <div key={index} className="character-wrapper">
-            <div className="character">
-              {getImg(files, fileIndex, offset, assetItem.style, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
-            </div>
-          </div>
-        ))}
+        <Media query={{ minWidth: 1024 }}>
+          {getWheel(offsets[0])}
+        </Media>
+        <Media query={{ minWidth: 1600 }}>
+          {getWheel(offsets[1])}
+        </Media>
       </div>
     )
   }
