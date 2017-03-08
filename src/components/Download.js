@@ -4,7 +4,6 @@ import mapValues from 'lodash/mapValues';
 import filter from 'lodash/filter';
 import omit from 'lodash/omit';
 import { sendProfile } from '../actions/profile';
-// import PaypalButton from './PaypalButton';
 
 const onClick = (dispatch, profile, assets) => () => {
   const visibleProfile = filter(mapValues(profile, (item, asset) => ({
@@ -16,9 +15,8 @@ const onClick = (dispatch, profile, assets) => () => {
 
 const Download = ({ dispatch, profile, assets }) => (
   <div>
-    {/*<PaypalButton />*/}
     <button className="button" onClick={onClick(dispatch, profile, assets)}>
-      buy for 10$
+      Download Character
     </button>
   </div>
 );

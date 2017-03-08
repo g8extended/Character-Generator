@@ -88,7 +88,7 @@ class PayPalButton extends Component {
       this.props.dispatch(paymentCancelled())
     }
 
-    if ( ! this.state.showButton) return null;
+    if ( ! this.state.showButton) return <div>Loading paypal button...</div>;
 
     return (
         <paypal.Button.react
