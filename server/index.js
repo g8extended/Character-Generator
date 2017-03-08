@@ -40,7 +40,7 @@ app.post('/api/profile/', function(req, res, next) {
   /**
    * надо понадежнее закрыть данные для скачек
    */
-  if (req.headers.host === trustedUri) {
+  if ([trustedUri, 'char.soryan.me'].includes(req.headers.host)) {
     next();
   }
 }, function (req, res) {
