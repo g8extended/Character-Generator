@@ -4,9 +4,9 @@ import map from 'lodash/map';
 import classNames from 'classnames';
 
 const ColorPicker = ({ colors, current, urlPrefix, onClick }) => {
+  if (Object.keys(colors).length < 2) return <div />;
+
   return (
-    Object.keys(colors).length > 1
-    ?
     <div className="colorPicker">
       {map(colors, color => {
         const className = classNames('color', color.id, {
@@ -23,8 +23,6 @@ const ColorPicker = ({ colors, current, urlPrefix, onClick }) => {
         );
       })}
     </div>
-    :
-    <div/>
   );
 }
 
