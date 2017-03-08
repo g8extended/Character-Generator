@@ -39,3 +39,17 @@ export const getFiles = ({ current: { asset, type, color }, items }) => {
 
   return colorFiles;
 };
+
+export const getFile = (assetItem, profile, assets) => {
+  if ( ! profile[assetItem.id]) return;
+  const files = getFiles({
+    ...assets,
+    current:{
+      ...profile[assetItem.id],
+      asset: assetItem.id
+    }
+  });
+
+  const fileIndex = profile[assetItem.id].fileIndex;
+  return files[fileIndex];
+};

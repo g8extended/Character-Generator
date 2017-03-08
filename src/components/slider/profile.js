@@ -2,25 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import map from 'lodash/map';
-import { getFiles } from '../../utils/files';
+import { getFile } from '../../utils/files';
 import Arrow from './arrow';
 
-const getFile = (assetItem, profile, assets) => {
-  const files = getFiles({
-    ...assets,
-    current:{
-      ...profile[assetItem.id],
-      asset: assetItem.id
-    }
-  });
-
-  const fileIndex = profile[assetItem.id].fileIndex;
-  return files[fileIndex];
-};
-
 const getImage = (assetItem, profile, assets) => {
-  if ( ! assets.items || ! profile[assetItem.id].visible) return;
-
   const file = getFile(assetItem, profile, assets);
 
   if ( ! file.id) return;

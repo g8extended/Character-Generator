@@ -14,6 +14,8 @@ import rootReducer from '../src/reducers';
 import { getFiles } from './lib/files';
 import { fetchAssetsFulfilled } from '../src/actions/assets';
 import Router from '../src/components/Router';
+import bodyParser from 'body-parser';
+import { generateSVG } from './lib/profile';
 
 const app = express();
 const compiler = webpack(config);
@@ -30,7 +32,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use(express.static('public'));
 
-app.get('/api/assets/', function(req, res, next) {
+app.use(bodyParser.json());
+
+const files = getFiles();
+
+app.post('/api/profile/', function(req, res, next) {
   /**
    * надо понадежнее закрыть данные для скачек
    */
@@ -39,7 +45,9 @@ app.get('/api/assets/', function(req, res, next) {
   }
 }, function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify(getAssets()));
+  res.send(JSON.stringify({
+    url: generateSVG(req.body.profile, files)
+  }));
 });
 
 const indexHtmlTemplate = fs.readFileSync('index.html', 'utf8');
@@ -63,7 +71,7 @@ app.use(['/:assets?/:asset?/:type?/:color?'], (req, res) => {
 
   const history = syncHistoryWithStore(memoryHistory, store);
 
-  store.dispatch(fetchAssetsFulfilled(getFiles()));
+  store.dispatch(fetchAssetsFulfilled(files));
 
   // Render the component to a string
   const html = renderToString(

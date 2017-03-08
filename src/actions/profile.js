@@ -7,6 +7,7 @@ import {
   CHANGE_PROFILE_ASSET_SORT_ORDER
 } from '../constants/profile';
 import { getIndexByOffset, getFiles } from '../utils/files';
+import axios from 'axios';
 
 export const updateProfileAssetFileIndex = offset => (dispatch, getState) => {
   const { assets, profile } = getState();
@@ -85,4 +86,10 @@ export const changeProfileAssetTypeSortOrder = (which, shift) => (dispatch, getS
     asset,
     payload
   });
+};
+
+export const sendProfile = profile => dispatch => {
+  axios.post('/api/profile', {
+    profile: btoa(JSON.stringify(profile))
+  }).then(data => window.location.assign(`/${data.data.url}`));
 };
