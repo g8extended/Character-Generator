@@ -7,16 +7,22 @@ import ColorPicker from './colorpicker';
 import { updateProfileAssetType, updateProfileAssetColor, toggleProfileAssetVisible } from '../../actions/profile';
 import { isConflicts, getConflictMessages } from '../../utils/conflicts';
 import map from 'lodash/map';
+import LinkToAsset from './LinkToAsset';
 
-const Slider = ({ assets, profile, dispatch }) => {
+const Slider = ({ dispatch, assets, profile }) => {
   const conflicts = isConflicts(assets, profile);
 
   const conflictsMessages = conflicts && map(getConflictMessages(assets, profile), message => {
     return <div key="conflicts" className="conflict-message">{message}</div>;
   });
 
-  const visibilityButton = (assets.items[assets.current.asset].required ||
-    <img src={profile[assets.current.asset].visible ? `/i/cancellation_icon.svg` : `/i/return_icon.svg`} className="visibilityButton" onClick={() => dispatch(toggleProfileAssetVisible())} />
+  const required = assets.items[assets.current.asset].required;
+  const visible = profile[assets.current.asset].visible;
+
+  const visibilityButton = (required ||
+    <LinkToAsset offset={0} visible={ ! visible} onClick={() => visible && dispatch(toggleProfileAssetVisible())}>
+      <img src={visible ? `/i/cancellation_icon.svg` : `/i/return_icon.svg`} className="visibilityButton" />
+    </LinkToAsset>
   );
 
   const isColorPickerOnly = assets.items[assets.current.asset].types[assets.current.type].colors[assets.current.color].files.length < 2;
