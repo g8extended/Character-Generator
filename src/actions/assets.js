@@ -5,7 +5,6 @@ import {
   SET_CURRENT_TYPE,
   SET_CURRENT_COLOR
 } from '../constants/assets';
-import { setCurrentHeaderNav } from '../actions/headerNav';
 import keyBy from 'lodash/keyBy';
 
 export const fetchAssetsFulfilled = items => dispatch => {
