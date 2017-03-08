@@ -13,9 +13,11 @@ export default connect()(
         <IndexRedirect to="/assets" />
         <Route path="assets" component={Assets}>
           <IndexRedirect to="/assets/Hairstyles" />
-          <Route path=":asset" component={Assets} onEnter={route => dispatch(setRouter(route.params.asset, null, null))}>
-            <Route path=":type" component={Assets} onEnter={route => dispatch(setRouter(route.params.asset, route.params.type, null))}>
+          <Route path=":asset" component={Assets} onEnter={route => dispatch(setRouter(route.params.asset))}>
+            <Route path=":type" component={Assets} onEnter={route => dispatch(setRouter(route.params.asset, route.params.type))}>
               <Route path=":color" component={Assets} onEnter={route => dispatch(setRouter(route.params.asset, route.params.type, route.params.color))}>
+                <Route path=":visible" component={Assets} onEnter={route => dispatch(setRouter(route.params.asset, route.params.type, route.params.color, route.params.visible))}>
+                </Route>
               </Route>
             </Route>
           </Route>

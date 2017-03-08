@@ -8,7 +8,7 @@ import Arrow from './arrow';
 const getImage = (assetItem, profile, assets) => {
   const file = getFile(assetItem, profile, assets);
 
-  if ( ! file.id) return;
+  if ( ! file) return;
 
   return {
     src: file.src,

@@ -1,44 +1,22 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import classNames from 'classnames';
-import { updateProfileAssetFileIndex } from '../../actions/profile';
-import { isConflicts } from '../../utils/conflicts';
-import { getIndexByOffset, getFiles } from '../../utils/files';
 import Media from 'react-media';
 import reverse from 'lodash/reverse';
-
-const getImg = (files, fileIndex, offset, style, onClick) => {
-  const file = files[getIndexByOffset(files.length, fileIndex, offset)];
-  const img = {
-    src: file.src,
-    style: file.computedStyle
-  };
-  return file ? <img {...img} onClick={onClick} /> : null;
-};
+import LinkToAsset from './LinkToAsset';
 
 const Wheel = (
-  ({ dispatch, assets, profile, type }) => {
-
-    if ( ! assets.items) return <div />;
-
-    const conflict = isConflicts(assets, profile);
-
+  ({ type }) => {
     const classeName = classNames('wheel', {
       left:  type === 'left',
-      right: type === 'right',
-      disabled: conflict
+      right: type === 'right'
     });
-
-    const files = getFiles(assets);
-    const fileIndex = profile[assets.current.asset].fileIndex;
-    const assetItem = assets.items[assets.current.asset];
 
     const getCharacterWrapper = (type, index) => {
       const offset = (type === 'left' ? -2 : 1) + index;
       return (
         <div key={index} className="character-wrapper">
           <div className="character">
-            {getImg(files, fileIndex, offset, assetItem.style, () => conflict || dispatch(updateProfileAssetFileIndex(offset)))}
+            <LinkToAsset className="arrow" offset={offset} img={true} />
           </div>
         </div>
       );
@@ -59,9 +37,4 @@ const Wheel = (
   }
 );
 
-const mapStateToProps = state => ({
-  assets: state.assets,
-  profile: state.profile
-});
-
-export default connect(mapStateToProps)(Wheel);
+export default Wheel;
