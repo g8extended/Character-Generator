@@ -229,10 +229,10 @@ export default keyBy([
     },
     menuItem: 'Clothes',
     conflicts: {
-      indexes: [
-        0,
-        1,
-        2
+      types: [
+        '01',
+        '02',
+        '03'
       ],
       assets: [
         'Ties'
