@@ -7,6 +7,9 @@ import {
   CHANGE_PROFILE_ASSET_SORT_ORDER
 } from '../constants/profile';
 import { getIndexByOffset, getFiles } from '../utils/files';
+import mapValues from 'lodash/mapValues';
+import filter from 'lodash/filter';
+import omit from 'lodash/omit';
 import axios from 'axios';
 
 export const updateProfileAssetFileIndex = offset => (dispatch, getState) => {
@@ -88,8 +91,14 @@ export const changeProfileAssetTypeSortOrder = (which, shift) => (dispatch, getS
   });
 };
 
-export const sendProfile = profile => dispatch => {
+export const downloadProfile = () => (dispatch, getState) => {
+  const { profile } = getState();
+  const visibleProfile = filter(mapValues(profile, (item, asset) => ({
+    ...item,
+    asset
+  })), item => item.visible).map(item => omit(item, 'visible'));
+
   axios.post('/api/profile', {
-    profile: btoa(JSON.stringify(profile))
+    profile: btoa(JSON.stringify(visibleProfile))
   }).then(data => window.location.assign(`/${data.data.url}`));
 };

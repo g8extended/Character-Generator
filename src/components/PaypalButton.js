@@ -2,12 +2,10 @@ import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import scriptLoader from 'react-async-script-loader'
+import { downloadProfile } from '../actions/profile'
 
 const paymentAuthorized = payment => dispatch => {
-  dispatch({
-    type: 'paymentAuthorized',
-    payload: payment
-  });
+  dispatch(downloadProfile(payment));
 };
 
 const paymentCancelled = payment => dispatch => {
