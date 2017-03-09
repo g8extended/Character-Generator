@@ -12,6 +12,7 @@ const Arrow = (
 
     current = current || assets.current;
 
+    const required = assets.items[current.asset].required;
     const files = getFiles(assets.items, current);
     const profileIndex = profile[current.asset].index;
     const index = getIndexByOffset(files.length, profileIndex, offset);
@@ -34,7 +35,7 @@ const Arrow = (
     }
 
     return (
-      <Link to={url} className={classNames(className, { disabled: files.length < 2 || conflict })} onClick={(e) => onClick() || conflict && e.preventDefault()}>
+      <Link to={url} className={classNames(className, { disabled: files.length < 2 || conflict })} onClick={(e) => onClick() || conflict && e.preventDefault()} onDoubleClick={() => required || dispatch(toggleProfileAssetVisible())}>
         {img ? <img src={file.src} style={file.computedStyle} /> : children}
       </Link>
     );  
