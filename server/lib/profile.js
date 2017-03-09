@@ -7,6 +7,7 @@ import { getFile } from '../../src/utils/files';
 import path from 'path';
 import fs from 'fs';
 import md5 from 'md5';
+import svg2png from 'svg2png';
 
 export const generateSVG = (profileEncoded, payload) => {
   const profile = keyBy(JSON.parse(atob(profileEncoded)), 'asset');
@@ -40,7 +41,11 @@ export const generateSVG = (profileEncoded, payload) => {
     `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 ${viewBoxWidth} ${viewBoxHeight}" xml:space="preserve">`
   ].concat(svgs).concat(['</svg>']).join('\n');
   const id = md5(svgContent);
-  const file = `files/${id}.svg`;
-  fs.writeFileSync(path.join('public', file), svgContent);
+  const svgFile = `public/files/${id}.svg`;
+  fs.writeFileSync(svgFile, svgContent);
+  const pngFile = `public/files/${id}.png`;
+  const sourceBuffer = fs.readFileSync(svgFile);
+  const outputBuffer = svg2png.sync(sourceBuffer, { width: viewBoxWidth, height: viewBoxHeight });
+  fs.writeFileSync(pngFile, outputBuffer);
   return id;
 };
