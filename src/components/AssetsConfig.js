@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import map from 'lodash/map';
 import fromPairs from 'lodash/fromPairs';
-import { getIndexByOffset, getFiles } from '../utils/files';
 import { changeProfileAssetTypeStyle, changeProfileAssetTypeSortOrder } from '../actions/profile';
 import assetsConfig from '../configs/assets';
 

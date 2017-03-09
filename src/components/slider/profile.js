@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import map from 'lodash/map';
 import { getFile } from '../../utils/files';
 import Arrow from './arrow';
+import LinkToAsset from './LinkToAsset';
 
 const getImage = (assetItem, profile, assets) => {
   const file = getFile(assetItem, profile, assets);
@@ -19,17 +20,15 @@ const getImage = (assetItem, profile, assets) => {
 const Profile = ({ dispatch, profile, assets }) => {
   if ( ! assets.items) return <div />;
 
-  const items = map(assets.items).filter(assetItem => profile[assetItem.id].visible);
+  const items = map(assets.items).filter(item => profile[item.id].visible);
   items.sort((a, b) => a.sortOrder - b.sortOrder);
 
   return (
-    <div className="profile"> 
+    <div className="profile">
       <Arrow type="left" />
       <div className="character">
         {map(items, assetItem => assetItem.clickable ? (
-          <Link key={assetItem.id} to={`/assets/${assetItem.id}`}>
-            <img {...getImage(assetItem, profile, assets)} />
-          </Link>
+          <LinkToAsset key={assetItem.id} current={profile[assetItem.id]} offset={0} img={true} />
         ) : (
           <img key={assetItem.id} {...getImage(assetItem, profile, assets)} />
         ))}

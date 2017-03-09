@@ -17,9 +17,10 @@ export const getIndexByOffset = (length, index, offset) => {
   return (length + index + offset % length) % length;
 };
 
-export const getFiles = ({ current: { asset, type, color }, items }) => {
+export const getFiles = (items, { asset, type, color }) => {
   const colorFiles = map(items[asset].types[type].colors[color].files, file => ({
     ...file,
+    asset,
     type,
     color,
     src: `/svg/${asset}/${type}/${color}/${file.id}`,
@@ -42,13 +43,7 @@ export const getFiles = ({ current: { asset, type, color }, items }) => {
 
 export const getFile = (assetItem, profile, assets) => {
   if ( ! profile[assetItem.id]) return;
-  const files = getFiles({
-    ...assets,
-    current:{
-      ...profile[assetItem.id],
-      asset: assetItem.id
-    }
-  });
+  const files = getFiles(assets.items, profile[assetItem.id]);
 
   const fileIndex = profile[assetItem.id].fileIndex;
   return files[fileIndex];

@@ -18,6 +18,7 @@ const reducer = (state = initialState, action) => {
     const data = action.payload.reduce((memo, asset) => ({
       ...memo,
       [asset.id]: {
+        asset: asset.id,
         type: asset.items[0].id,
         color: asset.items[0].items[0].id,
         fileIndex: 0,
@@ -26,32 +27,14 @@ const reducer = (state = initialState, action) => {
     }), {});
     return { ...state, ...data };
   case UPDATE_PROFILE_ASSET:
-    return {
-      ...state,
-      [action.asset]: action.payload
-    };
   case UPDATE_PROFILE_ASSET_TYPE:
-    return {
-      ...state,
-      [action.asset]: {
-        ...state[action.asset],
-        type: action.payload.type
-      }
-    };
   case UPDATE_PROFILE_ASSET_COLOR:
-    return {
-      ...state,
-      [action.asset]: {
-        ...state[action.asset],
-        color: action.payload.color
-      }
-    };
   case UPDATE_PROFILE_ASSET_VISIBILITY:
     return {
       ...state,
       [action.asset]: {
         ...state[action.asset],
-        visible: action.payload.visible
+        ...action.payload
       }
     };
   default:

@@ -6,7 +6,7 @@ import {
   CHANGE_PROFILE_ASSET_TYPE_STYLE,
   CHANGE_PROFILE_ASSET_SORT_ORDER
 } from '../constants/profile';
-import { getIndexByOffset, getFiles } from '../utils/files';
+import { getFiles } from '../utils/files';
 import mapValues from 'lodash/mapValues';
 import filter from 'lodash/filter';
 import omit from 'lodash/omit';
@@ -14,10 +14,7 @@ import axios from 'axios';
 
 export const updateProfileAsset = (asset, type, color) => (dispatch, getState) => {
   const { assets, profile } = getState();
-  const files = getFiles({
-    ...assets,
-    current: { asset, type, color }
-  });
+  const files = getFiles(assets.items, { asset, type, color });
   const newIndex = files.indexOf(files.find(file => file.type === type && file.color === color));
   dispatch({
     type: UPDATE_PROFILE_ASSET,
