@@ -36,18 +36,26 @@ app.use(bodyParser.json());
 
 const files = getFiles();
 
-app.post('/api/profile/', function(req, res, next) {
+const securityMidleware = (req, res, next) => {
   /**
    * надо понадежнее закрыть данные для скачек
    */
   if ([trustedUri, 'char.soryan.me'].includes(req.headers.host)) {
     next();
   }
-}, function (req, res) {
+}
+
+app.post('/api/profile/', securityMidleware, function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify({
-    url: generateSVG(req.body.profile, files)
+    id: generateSVG(req.body.profile, files)
   }));
+});
+
+app.get('/api/profile/:id', securityMidleware, function (req, res) {
+  res.setHeader('Content-Type', 'image/svg+xml');
+  res.setHeader('Content-disposition', 'attachment; filename=character.svg');
+  fs.createReadStream(`${__dirname}/../public/files/${req.params.id}.svg`).pipe(res);
 });
 
 const indexHtmlTemplate = fs.readFileSync('index.html', 'utf8');

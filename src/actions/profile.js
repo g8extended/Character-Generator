@@ -102,5 +102,5 @@ export const downloadProfile = () => (dispatch, getState) => {
 
   axios.post('/api/profile', {
     profile: btoa(JSON.stringify(visibleProfile))
-  }).then(data => window.location.assign(`/${data.data.url}`));
+  }).then(data => window.location.assign(`/api/profile/${data.data.id}`));
 };
