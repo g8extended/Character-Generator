@@ -48,14 +48,8 @@ const securityMidleware = (req, res, next) => {
 app.post('/api/profile/', securityMidleware, function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify({
-    id: generateSVG(req.body.profile, files)
+    url: generateSVG(req.body.profile, files)
   }));
-});
-
-app.get('/api/profile/:id', securityMidleware, function (req, res) {
-  res.setHeader('Content-Type', 'image/svg+xml');
-  res.setHeader('Content-disposition', 'attachment; filename=character.svg');
-  fs.createReadStream(`${__dirname}/../public/files/${req.params.id}.svg`).pipe(res);
 });
 
 const indexHtmlTemplate = fs.readFileSync('index.html', 'utf8');

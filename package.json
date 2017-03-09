@@ -67,6 +67,7 @@
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
     "md5": "^2.2.1",
+    "node-zip": "^1.1.1",
     "react": "^0.14.6",
     "react-async-script-loader": "^0.2.2",
     "react-dom": "^0.14.6",
