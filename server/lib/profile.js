@@ -46,7 +46,7 @@ export const generateSVG = (profileEncoded, payload) => {
   zip.file('character.svg', svgContent);
   zip.file('character.png', pngContent);
   const data = zip.generate({ base64: false, compression: 'DEFLATE' });
-  const zipFile = `public/files/${md5(svgContent)}.zip`;
-  fs.writeFileSync(zipFile, data, 'binary');
+  const zipFile = `/files/${md5(svgContent)}.zip`;
+  fs.writeFileSync(path.join('public', zipFile), data, 'binary');
   return zipFile;
 };
