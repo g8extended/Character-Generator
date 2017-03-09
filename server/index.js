@@ -68,8 +68,17 @@ const renderFullPage = (html, preloadedState) => (
 app.use(['/:assets?/:asset?/:type?/:color?'], (req, res) => {
   const memoryHistory = createMemoryHistory(req.originalUrl);
 
+  let midleware = [thunk, routerMiddleware(memoryHistory)];
+
+  if (process.env.NODE_ENV !== 'production') {
+    midleware = [
+      ...midleware,
+      store => next => action => console.log(action) || next(action)
+    ];
+  }
+
   // Create a new Redux store instance
-  const store = createStore(rootReducer, applyMiddleware(thunk, routerMiddleware(memoryHistory)));
+  const store = createStore(rootReducer, applyMiddleware(...midleware));
 
   const history = syncHistoryWithStore(memoryHistory, store);
 
