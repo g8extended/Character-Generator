@@ -5,7 +5,6 @@ import {
   SET_CURRENT_TYPE,
   SET_CURRENT_COLOR
 } from '../constants/assets';
-import { updateProfileAsset } from '../actions/profile';
 import keyBy from 'lodash/keyBy';
 
 export const fetchAssetsFulfilled = items => dispatch => {
@@ -15,28 +14,27 @@ export const fetchAssetsFulfilled = items => dispatch => {
   });
 };
 
-export const setRouter = (asset, type, color, visible) => dispatch => {
+export const setRouter = (asset, type, color, index) => dispatch => {
   dispatch({
     type: SET_ROUTER,
     payload: {
       asset,
       type,
       color,
-      visible
+      index
     }
   });
-  dispatch(setCurrent(asset, type, color));
-  visible && dispatch(updateProfileAsset(asset, type, color))
-
+  dispatch(setCurrent(asset, type, color, index));
 };
 
-export const setCurrent = (asset, type, color) => (dispatch, getState) => {
+export const setCurrent = (asset, type, color, index) => (dispatch, getState) => {
   const state = getState();
   const profile = state.profile[asset];
   const current = {
     asset,
     type: type || profile.type || Object.keys(state.assets.items[asset].types)[0],
-    color: color || profile.color || Object.keys(state.assets.items[asset].types[current.type].colors)[0]
+    color: color || profile.color || Object.keys(state.assets.items[asset].types[current.type].colors)[0],
+    index: index || 0
   };
   dispatch({
     type: SET_CURRENT,

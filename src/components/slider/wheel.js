@@ -16,7 +16,7 @@ const Wheel = (
       return (
         <div key={index} className="character-wrapper">
           <div className="character">
-            <LinkToAsset offset={offset} img={true} />
+            <LinkToAsset offset={offset} apply={true} img={true} />
           </div>
         </div>
       );

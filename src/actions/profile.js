@@ -12,17 +12,17 @@ import filter from 'lodash/filter';
 import omit from 'lodash/omit';
 import axios from 'axios';
 
-export const updateProfileAsset = (asset, type, color) => (dispatch, getState) => {
+export const updateProfileAsset = ({ asset, type, color, index }) => (dispatch, getState) => {
   const { assets, profile } = getState();
   const files = getFiles(assets.items, { asset, type, color });
-  const newIndex = files.indexOf(files.find(file => file.type === type && file.color === color));
+  const newIndex = files.fileType === 'type' ? files.indexOf(files.find(file => file.type === type && file.color === color)) : index;
   dispatch({
     type: UPDATE_PROFILE_ASSET,
     asset,
     payload: {
       type: type,
       color: color,
-      fileIndex: newIndex,
+      index: newIndex,
       visible: true
     }
   });
