@@ -6,6 +6,7 @@ import atob from 'atob';
 import { getFile } from '../../src/utils/files';
 import path from 'path';
 import fs from 'fs';
+import md5 from 'md5';
 
 export const generateSVG = (profileEncoded, payload) => {
   const profile = keyBy(JSON.parse(atob(profileEncoded)), 'asset');
@@ -22,7 +23,8 @@ export const generateSVG = (profileEncoded, payload) => {
     '<?xml version="1.0" encoding="utf-8"?>',
     '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 900 900" xml:space="preserve">'
   ].concat(svgs).concat(['</svg>']).join('\n');
-  const file = 'files/test.svg';
+  const name = md5(profileEncoded);
+  const file = `files/${name}.svg`;
   fs.writeFileSync(path.join('public', file), svgContent);
   return file;
 };
