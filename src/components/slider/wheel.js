@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import Media from 'react-media';
 import reverse from 'lodash/reverse';
 import LinkToAsset from './LinkToAsset';
 
@@ -22,15 +21,10 @@ const Wheel = (
       );
     }
 
-    const breakpoints = [1024, 1600];
-    const breakpointsSorted = type === 'left' ? reverse(breakpoints) : breakpoints;
-
     return (
       <div className={classeName}>
-        {breakpointsSorted.map((width, index) => (
-          <Media key={index} query={{ minWidth: width }}>
-            {matches => matches && getCharacterWrapper(type, index)}
-          </Media>
+        {[0, 1].map((width, index) => (
+          getCharacterWrapper(type, index)
         ))}
       </div>
     )
