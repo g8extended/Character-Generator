@@ -3,7 +3,7 @@ import map from 'lodash/map';
 
 const getMessage = ({ conflicts, id }, current, profile) => {
   if ( ! conflicts) return;
-  if ( ! conflicts.assets.includes(current.asset)) return;
+  if ( ! conflicts.assets.includes(current.asset) || ! profile[id].visible) return;
   if ( ! conflicts.types.includes(profile[id].type)) return;
   return conflicts.message;
 };
