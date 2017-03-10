@@ -3,6 +3,7 @@ import {
   UPDATE_PROFILE_ASSET_TYPE,
   UPDATE_PROFILE_ASSET_COLOR,
   UPDATE_PROFILE_ASSET_VISIBILITY,
+  UPDATE_PROFILE_ASSET_TRANSITION_CLASSNAME,
   CHANGE_PROFILE_ASSET_TYPE_STYLE,
   CHANGE_PROFILE_ASSET_SORT_ORDER
 } from '../constants/profile';
@@ -12,20 +13,34 @@ import filter from 'lodash/filter';
 import omit from 'lodash/omit';
 import axios from 'axios';
 
-export const updateProfileAsset = ({ asset, type, color, index }) => (dispatch, getState) => {
-  const { assets, profile } = getState();
-  const files = getFiles(assets.items, { asset, type, color });
-  const newIndex = files.fileType === 'type' ? files.indexOf(files.find(file => file.type === type && file.color === color)) : index;
+const updateProfileAssetImmediately = ({ asset, type, color, index }) => dispatch => {
   dispatch({
     type: UPDATE_PROFILE_ASSET,
     asset,
     payload: {
       type: type,
       color: color,
-      index: newIndex,
+      index: index,
       visible: true
     }
-  });
+  })
+};
+
+export const updateProfileAsset = ({ asset, type, color, index, transitionClassName }) => (dispatch, getState) => {
+  const { assets, profile } = getState();
+  const files = getFiles(assets.items, { asset, type, color });
+  const newIndex = files.fileType === 'type' ? files.indexOf(files.find(file => file.type === type && file.color === color)) : index;
+
+  if ( ! transitionClassName) {
+    dispatch(updateProfileAssetImmediately({ asset, type, color, index }))
+    return;
+  }
+
+  dispatch(updateProfileAssetTransitionClassName(asset, transitionClassName));
+  setTimeout(() => {
+    dispatch(updateProfileAssetTransitionClassName(asset, ''));
+    dispatch(updateProfileAssetImmediately({ asset, type, color, index }))
+  }, 150)
 };
 
 export const updateProfileAssetType = type => (dispatch, getState) => {
@@ -57,6 +72,14 @@ export const toggleProfileAssetVisible = () => (dispatch, getState) => {
       visible: ! profile[assets.current.asset].visible
     }
   });
+};
+
+export const updateProfileAssetTransitionClassName = (asset, transitionClassName) => dispatch => {
+  dispatch({
+    type: UPDATE_PROFILE_ASSET_TRANSITION_CLASSNAME,
+    asset,
+    payload: transitionClassName
+  })
 };
 
 export const changeProfileAssetTypeStyle = (which, shift) => (dispatch, getState) => {

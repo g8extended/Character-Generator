@@ -15,7 +15,7 @@ const Wheel = (
       const offset = (type === 'left' ? -2 : 1) + index;
       return (
         <div key={index} className="character-wrapper">
-          <div className="character">
+          <div key={index} className="character">
             <LinkToAsset offset={offset} apply={true} img={true} />
           </div>
         </div>

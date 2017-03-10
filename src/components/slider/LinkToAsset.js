@@ -6,12 +6,13 @@ import { Link } from 'react-router';
 import { getIndexByOffset, getFiles } from '../../utils/files';
 import { updateProfileAsset, toggleProfileAssetVisible } from '../../actions/profile';
 
-const Arrow = (
+const LinkToAsset = (
   ({ dispatch, current, assets, profile, offset, children, className, img, apply, toggleVisible }) => {
     const conflict = isConflicts(assets, profile);
 
     current = current || assets.current;
 
+    const clickable = assets.items[current.asset].clickable;
     const required = assets.items[current.asset].required;
     const files = getFiles(assets.items, current);
     const profileIndex = profile[current.asset].index;
@@ -26,7 +27,8 @@ const Arrow = (
       onClick = () => dispatch(updateProfileAsset({
         ...current,
         type: file.type,
-        index
+        index,
+        transitionClassName: offset < 0 ? 'slide-left' : 'slide-right'
       }));
     }
 
@@ -35,12 +37,12 @@ const Arrow = (
     }
 
     return (
-      <Link to={url} className={classNames(className, { disabled: files.length < 2 || conflict })} onClick={(e) => onClick() || conflict && e.preventDefault()} onDoubleClick={() => required || dispatch(toggleProfileAssetVisible())}>
+      <Link to={url} className={classNames(className, img ? profile[current.asset].transitionClassName : '', { disabled: files.length < 2 || conflict })} onClick={(e) => onClick() || conflict && e.preventDefault()} onDoubleClick={() => required || dispatch(toggleProfileAssetVisible())}>
         {img ? <img src={file.src} style={file.computedStyle} /> : children}
       </Link>
     );  
   }
 );
 
-export default connect(({ profile, assets }) => ({ profile, assets }))(Arrow);
+export default connect(({ profile, assets }) => ({ profile, assets }))(LinkToAsset);
 

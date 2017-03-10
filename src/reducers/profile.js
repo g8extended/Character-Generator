@@ -5,7 +5,8 @@ import {
   UPDATE_PROFILE_ASSET,
   UPDATE_PROFILE_ASSET_TYPE,
   UPDATE_PROFILE_ASSET_COLOR,
-  UPDATE_PROFILE_ASSET_VISIBILITY
+  UPDATE_PROFILE_ASSET_VISIBILITY,
+  UPDATE_PROFILE_ASSET_TRANSITION_CLASSNAME
 } from '../constants/profile';
 import assetsConfig from '../configs/assets';
 
@@ -35,6 +36,14 @@ const reducer = (state = initialState, action) => {
       [action.asset]: {
         ...state[action.asset],
         ...action.payload
+      }
+    };
+  case UPDATE_PROFILE_ASSET_TRANSITION_CLASSNAME:
+    return {
+      ...state,
+      [action.asset]: {
+        ...state[action.asset],
+        transitionClassName: action.payload
       }
     };
   default:

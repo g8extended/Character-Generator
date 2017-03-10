@@ -25,15 +25,15 @@ const Profile = ({ dispatch, profile, assets }) => {
 
   return (
     <div className="profile">
-      <Arrow type="left" />
-      <div className="character">
-        {map(items, assetItem => assetItem.clickable ? (
-          <LinkToAsset key={assetItem.id} current={profile[assetItem.id]} offset={0} img={true} />
-        ) : (
-          <img key={assetItem.id} {...getImage(assetItem, profile, assets)} />
-        ))}
+      <div className="character-wrapper">
+        <div className="character">
+          {map(items, assetItem => (
+            <LinkToAsset key={assetItem.id} current={profile[assetItem.id]} offset={0} img={true} />
+          ))}
+        </div>
+        <Arrow type="left" />
+        <Arrow type="right" />
       </div>
-      <Arrow type="right" />
     </div>
   );
 };
