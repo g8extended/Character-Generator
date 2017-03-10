@@ -37,7 +37,7 @@ const LinkToAsset = (
     }
 
     return (
-      <Link to={url} className={classNames(className, img ? profile[current.asset].transitionClassName : '', { disabled: files.length < 2 || conflict })} onClick={(e) => onClick() || conflict && e.preventDefault()} onDoubleClick={() => required || dispatch(toggleProfileAssetVisible())}>
+      <Link to={clickable ? url : ''} className={classNames(className, img ? profile[current.asset].transitionClassName : '', { disabled: files.length < 2 || conflict })} onClick={(e) => onClick() || conflict && e.preventDefault()} onDoubleClick={() => required || dispatch(toggleProfileAssetVisible())}>
         {img ? <img src={file.src} style={file.computedStyle} /> : children}
       </Link>
     );  
