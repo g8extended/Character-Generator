@@ -23,7 +23,7 @@ const LinkToAsset = (
 
     let onClick = () => {};
 
-    if (apply) {
+    if (apply && ! conflict) {
       onClick = () => dispatch(updateProfileAsset({
         ...current,
         type: file.type,
@@ -37,7 +37,7 @@ const LinkToAsset = (
     }
 
     return (
-      <Link to={clickable ? url : ''} className={classNames(className, img ? profile[current.asset].transitionClassName : '', { disabled: files.length < 2 || conflict })} onClick={(e) => onClick() || conflict && e.preventDefault()} onDoubleClick={() => required || dispatch(toggleProfileAssetVisible())}>
+      <Link to={clickable ? url : ''} className={classNames(className, img ? profile[current.asset].transitionClassName : '', { disabled: files.length < 2 || conflict })} onClick={(e) => onClick() || (conflict || toggleVisible) && e.preventDefault()} onDoubleClick={() => required || dispatch(toggleProfileAssetVisible())}>
         {img ? <img src={file.src} style={file.computedStyle} /> : children}
       </Link>
     );  

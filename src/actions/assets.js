@@ -6,6 +6,7 @@ import {
   SET_CURRENT_COLOR
 } from '../constants/assets';
 import keyBy from 'lodash/keyBy';
+import { updateProfileAsset } from './profile';
 
 export const fetchAssetsFulfilled = items => dispatch => {
   dispatch({
@@ -34,12 +35,13 @@ export const setCurrent = (asset, type, color, index) => (dispatch, getState) =>
     asset,
     type: type || profile.type || Object.keys(state.assets.items[asset].types)[0],
     color: color || profile.color || Object.keys(state.assets.items[asset].types[current.type].colors)[0],
-    index: index || 0
+    index: index || profile.index || 0
   };
   dispatch({
     type: SET_CURRENT,
     payload: current
   });
+  dispatch(updateProfileAsset(current));
 };
 
 export const setCurrentType = type => dispatch => {
