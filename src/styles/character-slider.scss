@@ -1,7 +1,8 @@
 $characterWidth: 33.3em;
-$characterWrapperWidth: $characterWidth / 1.2;
-$characterWrapperPadding: 0 0em;
-$characterLeft: -($characterWidth - $characterWrapperWidth) / 2;
+
+@mixin breakpoint($point) {
+   @media (max-width: $point) { @content ; }
+}
 
 .character-slider {
   display: flex;
@@ -9,6 +10,23 @@ $characterLeft: -($characterWidth - $characterWrapperWidth) / 2;
   justify-content: center;
   margin-bottom: 2em;
 
+  @include breakpoint(1441px) {
+    font-size: .54em;
+  }
+  @include breakpoint(1281px) {
+    font-size: .48em;
+  }
+  @include breakpoint(1025px) {
+    font-size: 7.6px;
+    .wheel.left .character-wrapper:first-child,
+    .wheel.right .character-wrapper:last-child {
+      display: none;
+    }
+  }
+  @include breakpoint(376px) {
+    font-size: 3.7px;
+  }
+  
   .character-wrapper {
     width: $characterWidth;
     min-height: $characterWidth;
@@ -141,40 +159,4 @@ $characterLeft: -($characterWidth - $characterWrapperWidth) / 2;
   color: #fff;
   border-radius: .5em;
   font-size: 0.8em;
-}
-
-$bp-small : 24em;
-$bp-med : 46.8em;
-$bp-large : 50em;
-$bp-xl : 73em;
-$bp-xxl : 100em;
-
-@media(min-width: $bp-small) {
-  .character-slider {
-    font-size: 5em;
-  }
-}
-
-@media(min-width: $bp-med) {
-  .character-slider {
-    font-size: 2em;
-  }
-}
-
-@media(min-width: $bp-large) {
-  .character-slider {
-    font-size: 1.4em;
-  }
-}
-
-@media(min-width: $bp-xl) {
-  .character-slider {
-    font-size: .8em;
-  }
-}
-
-@media(min-width: $bp-xxl) {
-  .character-slider {
-    font-size: 1em;
-  }
 }

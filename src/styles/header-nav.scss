@@ -1,7 +1,16 @@
+@mixin breakpoint($point) {
+   @media (max-width: $point) { @content ; }
+}
+
 .header-nav {
   list-style: none;
   .item {
     display: inline-block;
+
+    @include breakpoint(376px) {
+      display: block;
+    }
+
     a {
       color: #36516e;
       padding: 0 0 1em 0;

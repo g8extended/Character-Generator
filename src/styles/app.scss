@@ -1,3 +1,7 @@
+@mixin breakpoint($point) {
+   @media (max-width: $point) { @content ; }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -122,12 +126,23 @@ html, body {
 }
 
 .header {
-  max-width: 1200px;
+  max-width: 75em;
   margin: auto;
   display: flex;
   padding: 2.9em 5em 5.3em 5em;
   flex-wrap: nowrap;
   
+  @include breakpoint(769px) {
+    font-size: .7em;
+    padding: 2em;
+  }
+
+  @include breakpoint(376px) {
+    display: block;
+    font-size: .5em;
+    max-width: none;
+  }
+
   .logo {
     flex: 0 0 auto;
     width: 8.125em;
@@ -139,6 +154,14 @@ html, body {
     margin: 0 1em;
     min-width: 30em;
     z-index: 9999;
+
+    @include breakpoint(769px) {
+      min-width: 25em;
+    }
+
+    @include breakpoint(376px) {
+      min-width: auto;
+    }
   }
 
   .btn {
@@ -150,6 +173,7 @@ html, body {
 .footer {
   text-align:center;
   margin-top: 3em;
+
   .content-wrapper {
     width: 150px;
     margin: auto;
@@ -162,18 +186,5 @@ html, body {
     padding-top: .5vw;
     color: #aaa;
     font-size: 0.7em;
-  }
-}
-
-@media(max-width: 640px) {
-  .header {
-    padding: 2em;
-    
-    .logo {
-      width: 12.75em;
-    }
-    .nav, .btn {
-      display: none;
-    }
   }
 }
