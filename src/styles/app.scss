@@ -1,3 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  letter-spacing: .1em;
+}
+
+html, body {
+  height: 100%;
+}
+
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -6em;
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+.site-footer, .page-wrap:after {
+  height: 6em; 
+}
+
+.site-footer {
+  padding: 3em 5em 2em;
+  box-sizing: border-box;
+
+  @include breakpoint(376px) {
+    padding: 0;
+  }
+}
+
+.site-footer .links {
+  margin: auto;
+  max-width: 75em;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  @include breakpoint(769px) {
+    font-size: .7em;
+    padding: 2em;
+  }
+
+  @include breakpoint(376px) {
+    display: block;
+    font-size: .5em;
+    max-width: none;
+  }
+}
+  
+.site-footer .links a {
+  display: block;
+  flex: 0 0 auto;
+  text-decoration: none;
+  font-size: .65em;
+  color: #36516e;
+  line-height: 1.5em;
+}
+
+.site-footer .links a:active, .links a:focus {
+  outline: none;
+}
+
+.site-footer .links a i {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: .4em;
+}
+
+.site-footer .links a * {
+  vertical-align: middle;
+}
+
+.site-footer .links a .twitter { background: url('/i/web/twitter.svg'); }
+.site-footer .links a:hover .twitter { background: url('/i/web/twitter-hov.svg'); }
+
+.site-footer .links a .dribbble { background: url('/i/web/drb.svg'); }
+.site-footer .links a:hover .dribbble { background: url('/i/web/drb-hov.svg'); }
+
+.site-footer .links a .facebook { background: url('/i/web/fb.svg'); }
+.site-footer .links a:hover .facebook { background: url('/i/web/fb-hov.svg'); }
+
+.site-footer .links a .creativemarket { background: url('/i/web/CM.svg'); }
+.site-footer .links a:hover .creativemarket { background: url('/i/web/CM-hov.svg'); }
+
+.site-footer .links a .behance { background: url('/i/web/be.svg'); }
+.site-footer .links a:hover .behance { background: url('/i/web/be-hov.svg'); }
+
+.site-footer .links a .kavoon { background: url('/i/web/mail.svg'); }
+.site-footer .links a:hover .kavoon { background: url('/i/web/mail-hov.svg'); }
+
 #content-zone {
   position: relative;  
 }
