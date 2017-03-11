@@ -1,33 +1,37 @@
 $characterWidth: 320px;
+$characterHeight: 400px;
+$arrow-width: 180px;
+$arrow-image-width: 32px;
+$sliderWidth: 7 * $characterWidth + 2 * $arrow-width;
 
 .character-slider {
   display: flex;
-  width: 2600px;
+  width: $sliderWidth;
   justify-content: center;
-  margin-left: calc((100vw - 2600px) / 2); 
+  margin-left: calc((100vw - #{$sliderWidth}) / 2); 
   
   .arrow {
-    width: 180px;
-    line-height: $characterWidth;
+    width: $arrow-width;
+    line-height: $characterHeight;
     text-align: center;
   
     img {
       vertical-align: middle;
       display: inline-block;
-      width: 32px;
-      height: 32px;
+      width: $arrow-image-width;
+      height: $arrow-image-width;
       margin: auto;
     }
   }
   
   .character-wrapper {
     width: $characterWidth;
-    min-height: $characterWidth;
+    min-height: $characterHeight;
 
     .character {
       position: relative;
       width: $characterWidth;
-      min-height: $characterWidth;
+      min-height: $characterHeight;
 
       img {
         position: absolute;
