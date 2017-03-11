@@ -8,24 +8,24 @@ export default keyBy([
     sortOrder: 10,
     styles: {
       '01': {
-        left: 195,
+        left: 194,
         top: 36
       },
       '02': {
-        left: 195,
-        top: 35
+        left: 194,
+        top: 48
       },
       '03': {
-        left: 195,
-        top: 30
+        left: 194,
+        top: 28
       },
       '04': {
-        left: 195,
-        top: 36
+        left: 194,
+        top: 38
       },
       '05': {
-        left: 195,
-        top: 39
+        left: 193,
+        top: 32
       }
     }
   },
