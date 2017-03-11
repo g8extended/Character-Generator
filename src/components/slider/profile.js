@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import map from 'lodash/map';
 import { getFile } from '../../utils/files';
-import Arrow from './arrow';
 import LinkToAsset from './LinkToAsset';
 
 const getImage = (assetItem, profile, assets) => {
@@ -31,8 +30,6 @@ const Profile = ({ dispatch, profile, assets }) => {
             <LinkToAsset key={assetItem.id} current={profile[assetItem.id]} offset={0} img={true} />
           ))}
         </div>
-        <Arrow type="left" />
-        <Arrow type="right" />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import '../../styles/character-slider.scss';
 import Profile from './profile';
 import Wheel   from   './wheel';
+import Arrow from './arrow';
 import ColorPicker from './colorpicker';
 import { updateProfileAssetType, updateProfileAssetColor } from '../../actions/profile';
 import { isConflicts, getConflictMessages } from '../../utils/conflicts';
@@ -57,7 +58,9 @@ const Slider = ({ dispatch, assets, profile }) => {
       </div>
       <div className="character-slider">
         <Wheel type="left" />
+        <Arrow type="left" />
         <Profile />
+        <Arrow type="right" />
         <Wheel type="right" />
       </div>
       {UnderProfileContainer}
