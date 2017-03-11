@@ -1,4 +1,5 @@
-$characterWidth: 400px;
+$characterWidth: 320px;
+$characterHeight: 400px;
 $arrow-width: 180px;
 $arrow-image-width: 32px;
 $sliderWidth: 7 * $characterWidth + 2 * $arrow-width;
@@ -11,7 +12,7 @@ $sliderWidth: 7 * $characterWidth + 2 * $arrow-width;
   
   .arrow {
     width: $arrow-width;
-    line-height: $characterWidth;
+    line-height: $characterHeight;
     text-align: center;
   
     img {
@@ -25,12 +26,12 @@ $sliderWidth: 7 * $characterWidth + 2 * $arrow-width;
   
   .character-wrapper {
     width: $characterWidth;
-    min-height: $characterWidth;
+    min-height: $characterHeight;
 
     .character {
       position: relative;
       width: $characterWidth;
-      min-height: $characterWidth;
+      min-height: $characterHeight;
 
       img {
         position: absolute;
