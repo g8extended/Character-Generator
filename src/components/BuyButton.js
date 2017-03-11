@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 export default (
   () => (
-    <div className="footer">
+    <div className="buy-button">
       <div className="content-wrapper">
         <Link to="/payment" className="button">
           buy for 10$

@@ -1,13 +1,13 @@
 import React from 'react';
 import CharacterSlider from './slider/';
-import Footer from './Footer';
+import BuyButton from './BuyButton';
 import AssetsConfig from './AssetsConfig';
 
 export default (
   () => (
     <div>
       <CharacterSlider />
-      <Footer />
+      <BuyButton />
       <AssetsConfig />
     </div>
   )
