@@ -3,7 +3,7 @@ import SvgIcons from './SvgIcons';
 
 export default (
   () => (
-    <div className="site-footer">
+    <div className="footer">
       <SvgIcons />
       <ul className="links">
         <li>

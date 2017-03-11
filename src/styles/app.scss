@@ -11,25 +11,21 @@
   letter-spacing: .1em;
 }
 
-html, body {
+html {
   height: 100%;
 }
 
-.page-wrap {
+body, #root, .app {
   min-height: 100%;
-  margin-bottom: -6em;
+  display: flex;
+  flex-direction: column;
 }
 
-.page-wrap:after {
-  content: "";
-  display: block;
+.content, #root, .app {
+  flex: 1;
 }
 
-.site-footer, .page-wrap:after {
-  height: 6em; 
-}
-
-.site-footer {
+.footer {
   padding: 3em 5em 2em;
   box-sizing: border-box;
 
@@ -38,7 +34,7 @@ html, body {
   }
 }
 
-.site-footer .links {
+.footer .links {
   margin: auto;
   max-width: 75em;
   display: flex;
@@ -58,7 +54,7 @@ html, body {
   }
 }
   
-.site-footer .links a {
+.footer .links a {
   display: block;
   flex: 0 0 auto;
   text-decoration: none;
@@ -67,22 +63,15 @@ html, body {
   line-height: 1.5em;
 }
 
-.site-footer .links a:active, .links a:focus {
+.footer .links a:active, .links a:focus {
   outline: none;
 }
 
-.site-footer .links a i {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-right: .4em;
-}
-
-.site-footer .links a * {
+.footer .links a * {
   vertical-align: middle;
 }
 
-.site-footer {
+.footer {
   .links {
     list-style: none;
     a {

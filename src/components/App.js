@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import Footer from './SiteFooter';
+import Footer from './Footer';
 import '../styles/app.scss';
 
 function centurion () {
@@ -23,10 +23,12 @@ export default class HeaderNav extends Component {
 
   render() {
     return (
-      <div>
-        <Header />
-        <div id="content-zone">
-          {this.props.children}
+      <div className="app">
+        <div className="content">
+          <Header />
+          <div id="content-zone">
+            {this.props.children}
+          </div>
         </div>
         <Footer />
       </div>
