@@ -1,5 +1,5 @@
-$characterWidth: 320px;
-$characterHeight: 400px;
+$characterWidth: 360px;
+$characterHeight: $characterWidth * 1.25;
 $arrow-width: 180px;
 $arrow-image-width: 32px;
 $sliderWidth: 7 * $characterWidth + 2 * $arrow-width;
