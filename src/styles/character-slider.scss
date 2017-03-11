@@ -14,6 +14,17 @@ $sliderWidth: 7 * $characterWidth + 2 * $arrow-width;
     width: $arrow-width;
     line-height: $characterHeight;
     text-align: center;
+    .character-wrapper {
+      width: 100%;
+      .character {
+        width: 100%;
+        text-align: center;
+        a {
+          display: inline-block;
+        }
+      }
+    }
+
   
     img {
       vertical-align: middle;
