@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import map from 'lodash/map';
-import { getFile } from '../../utils/files';
 import LinkToAsset from './LinkToAsset';
-
-const getImage = (assetItem, profile, assets) => {
-  const file = getFile(assetItem, profile, assets);
-
-  if ( ! file) return;
-
-  return {
-    src: file.src,
-    style: file.computedStyle
-  };
-};
+import AssetImage from './AssetImage';
 
 const Profile = ({ dispatch, profile, assets }) => {
   if ( ! assets.items) return <div />;
@@ -27,7 +15,9 @@ const Profile = ({ dispatch, profile, assets }) => {
       <div className="character-wrapper">
         <div className="character">
           {map(items, assetItem => (
-            <LinkToAsset key={assetItem.id} current={profile[assetItem.id]} offset={0} img={true} />
+            <LinkToAsset key={assetItem.id} current={profile[assetItem.id]} offset={0}>
+              <AssetImage />
+            </LinkToAsset>
           ))}
         </div>
       </div>
