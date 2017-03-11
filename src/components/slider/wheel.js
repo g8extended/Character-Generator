@@ -12,7 +12,7 @@ const Wheel = (
     });
 
     const getCharacterWrapper = (type, index) => {
-      const offset = (type === 'left' ? -2 : 1) + index;
+      const offset = (type === 'left' ? -3 : 1) + index;
       return (
         <div key={index} className="character-wrapper">
           <div key={index} className="character">
@@ -26,7 +26,7 @@ const Wheel = (
 
     return (
       <div className={classeName}>
-        {[0, 1].map((width, index) => (
+        {[0, 1, 2].map((width, index) => (
           getCharacterWrapper(type, index)
         ))}
       </div>
