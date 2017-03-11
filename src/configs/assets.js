@@ -21,11 +21,11 @@ export default keyBy([
       },
       '04': {
         left: 194,
-        top: 38
+        top: 42
       },
       '05': {
         left: 193,
-        top: 32
+        top: 38
       }
     }
   },
@@ -36,16 +36,16 @@ export default keyBy([
     sortOrder: 50,
     styles: {
       '01': {
-        left: 209,
-        top: 313
+        left: 208,
+        top: 310
       },
       '02': {
         left: 209,
-        top: 315
+        top: 312
       },
       '03': {
-        left: 209,
-        top: 312
+        left: 208,
+        top: 311
       },
       '04': {
         left: 209,
@@ -85,7 +85,7 @@ export default keyBy([
     id: 'Coats',
     required: false,
     clickable: true,
-    sortOrder: 40,
+    sortOrder: 42,
     styles: {
       '01': {
         left: 60,
@@ -96,20 +96,20 @@ export default keyBy([
         top: 400
       },
       '03': {
-        left: 61,
+        left: 59,
         top: 400
       },
       '04': {
-        left: 61,
-        top: 400
+        left: 58,
+        top: 397
       },
       '05': {
         left: 60,
         top: 403
       },
       '06': {
-        left: 61,
-        top: 400
+        left: 60,
+        top: 399
       }
     },
     menuItem: 'Clothes'
@@ -167,27 +167,27 @@ export default keyBy([
     id: 'Scarves',
     required: false,
     clickable: true,
-    sortOrder: 40,
+    sortOrder: 42,
     styles: {
       '01': {
         left: 155,
-        top: 436
+        top: 434
       },
       '02': {
-        left: 155,
-        top: 436
+        left: 153,
+        top: 426
       },
       '03': {
-        left: 155,
-        top: 436
+        left: 154,
+        top: 426
       },
       '04': {
         left: 155,
-        top: 436
+        top: 429
       },
       '05': {
         left: 155,
-        top: 436
+        top: 426
       }
     },
     menuItem: 'Accessories'
@@ -199,27 +199,27 @@ export default keyBy([
     sortOrder: 10,
     styles: {
       '01': {
-        left: 111,
+        left: 110,
         top: 465
       },
       '02': {
-        left: 112,
+        left: 111,
         top: 465
       },
       '03': {
-        left: 112,
+        left: 111,
         top: 465
       },
       '04': {
-        left: 112,
+        left: 110,
         top: 465
       },
       '05': {
-        left: 111,
+        left: 109,
         top: 465
       },
       '06': {
-        left: 111,
+        left: 110,
         top: 465
       },
       '07': {
@@ -395,11 +395,11 @@ export default keyBy([
     sortOrder: 40,
     styles: {
       '01': {
-        left: 62,
+        left: 61,
         top: 411
       },
       '02': {
-        left: 63,
+        left: 62,
         top: 408
       },
       '03': {
@@ -462,7 +462,7 @@ export default keyBy([
     id: 'Suits',
     required: false,
     clickable: true,
-    sortOrder: 40,
+    sortOrder: 41,
     styles: {
       '01': {
         left: 63,
