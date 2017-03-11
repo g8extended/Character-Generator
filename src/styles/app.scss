@@ -164,13 +164,17 @@ body, #root, .app {
 
 .buy-button {
   text-align:center;
-  margin-top: 3em;
+  margin-top: 2.1875em;
 
   .content-wrapper {
     width: 150px;
     margin: auto;
-    padding-top: 1.5em;
+    padding-top: 1.5625em;
     border-top: solid 1px #eee;
+
+    .button {
+      display: inline-block;
+    }
   }
 
   .text {
