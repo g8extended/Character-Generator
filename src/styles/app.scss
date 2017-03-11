@@ -33,49 +33,38 @@ body, #root, .app {
   @include breakpoint(376px) {
     padding: 0;
   }
-}
 
-.footer .links {
-  margin: auto;
-  max-width: 75em;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-
-  @include breakpoint(769px) {
-    font-size: .7em;
-    padding: 2em;
-  }
-
-  @include breakpoint(376px) {
-    display: block;
-    font-size: .5em;
-    max-width: none;
-  }
-}
-  
-.footer .links a {
-  display: block;
-  flex: 0 0 auto;
-  text-decoration: none;
-  font-size: .65em;
-  color: #36516e;
-  line-height: 1.5em;
-}
-
-.footer .links a:active, .links a:focus {
-  outline: none;
-}
-
-.footer .links a * {
-  vertical-align: middle;
-}
-
-.footer {
   .links {
     list-style: none;
+    margin: auto;
+    max-width: 75em;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    @include breakpoint(769px) {
+      font-size: .7em;
+      padding: 2em;
+    }
+
+    @include breakpoint(376px) {
+      display: block;
+      font-size: .5em;
+      max-width: none;
+    }
+
     a {
+      display: block;
+      flex: 0 0 auto;
+      text-decoration: none;
+      font-size: .65em;
+      color: #36516e;
+      line-height: 1.5em;
+
+      * {
+        vertical-align: middle;
+      }
       .icon {
         width: 26px;
         height: 26px;
@@ -87,6 +76,10 @@ body, #root, .app {
       span {
         color: #B1AFB0;
         transition: all 200ms ease-in-out;
+      }
+
+      &:active, &:focus {
+        outline: none;
       }
 
       &:hover {
