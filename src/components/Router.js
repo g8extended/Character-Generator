@@ -16,7 +16,7 @@ export default connect()(
           <Route path=":asset" component={Assets} onEnter={route => dispatch(setRouter(route.params.asset))}>
             <Route path=":type" component={Assets} onEnter={route => dispatch(setRouter(route.params.asset, route.params.type))}>
               <Route path=":color" component={Assets} onEnter={route => dispatch(setRouter(route.params.asset, route.params.type, route.params.color))}>
-                <Route path=":index" component={Assets} onEnter={route => dispatch(setRouter(route.params.asset, route.params.type, route.params.color, route.params.index))}>
+                <Route path=":index" component={Assets} onEnter={route => dispatch(setRouter(route.params.asset, route.params.type, route.params.color, parseInt(route.params.index, 10)))}>
                 </Route>
               </Route>
             </Route>
