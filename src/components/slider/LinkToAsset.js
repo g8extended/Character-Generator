@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children, cloneElement } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { isConflicts } from '../../utils/conflicts';
@@ -7,7 +7,7 @@ import { getIndexByOffset, getFiles } from '../../utils/files';
 import { updateProfileAsset, toggleProfileAssetVisible } from '../../actions/profile';
 
 const LinkToAsset = (
-  ({ dispatch, current, assets, profile, offset, children, className, img, apply, toggleVisible }) => {
+  ({ dispatch, current, assets, profile, offset, children, className, apply, toggleVisible }) => {
     const conflict = isConflicts(assets, profile);
 
     current = current || assets.current;
@@ -37,8 +37,8 @@ const LinkToAsset = (
     }
 
     return (
-      <Link to={clickable ? url : ''} className={classNames(className, img ? profile[current.asset].transitionClassName : '', { disabled: files.length < 2 || conflict })} onClick={(e) => onClick() || (conflict || toggleVisible) && e.preventDefault()} onDoubleClick={() => required || dispatch(toggleProfileAssetVisible())}>
-        {img ? <img src={file.src} style={file.computedStyle} /> : children}
+      <Link to={clickable ? url : ''} className={classNames(className, profile[current.asset].transitionClassName, { disabled: files.length < 2 || conflict })} onClick={(e) => onClick() || (conflict || toggleVisible) && e.preventDefault()} onDoubleClick={() => required || dispatch(toggleProfileAssetVisible())}>
+        {Children.map(children, child => cloneElement(child, { file }))}
       </Link>
     );  
   }

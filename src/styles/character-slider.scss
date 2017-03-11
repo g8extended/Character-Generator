@@ -57,6 +57,12 @@ $sliderWidth: 7 * $characterWidth + 2 * $arrow-width;
   .wheel {
     display: flex;
   }
+
+  .arrow {
+    img {
+      width: 1.13em;
+    }
+  }
 }
 
 .colorPickerContainer {
