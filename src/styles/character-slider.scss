@@ -1,30 +1,23 @@
-$characterWidth: 33.3em;
-
-@mixin breakpoint($point) {
-   @media (max-width: $point) { @content ; }
-}
+$characterWidth: 320px;
 
 .character-slider {
   display: flex;
-  width: 100%;
+  width: 2600px;
   justify-content: center;
-  margin-bottom: 2em;
-
-  @include breakpoint(1441px) {
-    font-size: .54em;
-  }
-  @include breakpoint(1281px) {
-    font-size: .48em;
-  }
-  @include breakpoint(1025px) {
-    font-size: 7.6px;
-    .wheel.left .character-wrapper:first-child,
-    .wheel.right .character-wrapper:last-child {
-      display: none;
+  margin-left: calc((100vw - 2600px) / 2); 
+  
+  .arrow {
+    width: 180px;
+    line-height: $characterWidth;
+    text-align: center;
+  
+    img {
+      vertical-align: middle;
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      margin: auto;
     }
-  }
-  @include breakpoint(376px) {
-    font-size: 3.7px;
   }
   
   .character-wrapper {
@@ -57,23 +50,6 @@ $characterWidth: 33.3em;
     }
   }
 
-  .profile {
-    display: flex;
-
-    .arrow {
-
-      img {
-        width: 1.13em;
-        position: absolute;
-        top: $characterWidth / 2 - 2em;
-      }
-
-      &.right img {
-        margin-left: $characterWidth - 1.13em;
-      }
-    }
-  }
-
   .wheel {
     display: flex;
   }
@@ -83,60 +59,57 @@ $characterWidth: 33.3em;
   min-height: 1.7em;
   position:relative;
   z-index: 10;
-}
-
-.colorPicker {
-  text-align: center;
-  background-color: rgba(255,255,255,0.8);
-  .color {
-    width: 1.5em;
-    height: 1.5em;
-    display: inline-block;
-    border-radius: 1em;
-    vertical-align: middle;
-    
-    margin: 0 .4em;
-    border: solid 0.13em transparent;
-    cursor: pointer;
-
-    &.active {
-      border: solid 0.13em #472719;
-    }
-
-    &.brown {
-      background-color: #BB755A;
-    }
-
-    &.blond {
-      background-color: #E5BB6D;
-    }
-
-    &.brunet {
-      background-color: #383C45;
-    }
-
-    &.white {
-      background-color: #DDDDDD;
-    }
-
-    &.green {
-      background-color: #85AA5E;
-    }
-
-    &.blue {
-      background-color: #509CC7;
-    },
-
-    &.black {
-      background-color: #000;
-    }
-  }
-}
-
-.colorPickerContainer {
   text-align: center;
   .colorPicker, .visibilityButton {
     display: inline-block;
+  }
+
+  .colorPicker {
+    text-align: center;
+    background-color: rgba(255,255,255,0.8);
+    .color {
+      width: 1.5em;
+      height: 1.5em;
+      display: inline-block;
+      border-radius: 1em;
+      vertical-align: middle;
+      
+      margin: 0 .4em;
+      border: solid 0.13em transparent;
+      cursor: pointer;
+
+      &.active {
+        border: solid 0.13em #472719;
+      }
+
+      &.brown {
+        background-color: #BB755A;
+      }
+
+      &.blond {
+        background-color: #E5BB6D;
+      }
+
+      &.brunet {
+        background-color: #383C45;
+      }
+
+      &.white {
+        background-color: #DDDDDD;
+      }
+
+      &.green {
+        background-color: #85AA5E;
+      }
+
+      &.blue {
+        background-color: #509CC7;
+      },
+
+      &.black {
+        background-color: #000;
+      }
+    }
   }
 
   .visibilityButton {

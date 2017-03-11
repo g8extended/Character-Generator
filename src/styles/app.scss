@@ -23,6 +23,7 @@ body, #root, .app {
 
 .content, #root, .app {
   flex: 1;
+  overflow-x: hidden;
 }
 
 .footer {
