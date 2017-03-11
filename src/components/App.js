@@ -6,7 +6,7 @@ import '../styles/app.scss';
 function centurion () {
   const cont     = document.querySelector('#content-zone');
   const header_h = document.querySelector('.header').clientHeight;
-  const foot_h   = document.querySelector('.site-footer').clientHeight;
+  const foot_h   = document.querySelector('.footer').clientHeight;
   const cont_h   = cont.clientHeight;
   const body_h   = document.body.clientHeight;
   const body_hh  = cont_h + header_h + foot_h;
