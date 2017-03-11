@@ -55,7 +55,7 @@ app.post('/api/profile/', securityMidleware, function (req, res) {
 const indexHtmlTemplate = fs.readFileSync('index.html', 'utf8');
 
 const renderFullPage = (html, preloadedState) => (
-  indexHtmlTemplate.replace('<div id="root" class="page-wrap"></div>', `<div id="root" class="page-wrap">${html}</div>
+  indexHtmlTemplate.replace('<div id="root"></div>', `<div id="root">${html}</div>
     <script>
       // WARNING: See the following for security issues around embedding JSON in HTML:
       // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
