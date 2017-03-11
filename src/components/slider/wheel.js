@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import reverse from 'lodash/reverse';
 import LinkToAsset from './LinkToAsset';
+import AssetImage from './AssetImage';
 
 const Wheel = (
   ({ type }) => {
@@ -15,7 +16,9 @@ const Wheel = (
       return (
         <div key={index} className="character-wrapper">
           <div key={index} className="character">
-            <LinkToAsset offset={offset} apply={true} img={true} />
+            <LinkToAsset offset={offset} apply={true}>
+              <AssetImage />
+            </LinkToAsset>
           </div>
         </div>
       );

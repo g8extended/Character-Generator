@@ -8,6 +8,7 @@ import { updateProfileAssetType, updateProfileAssetColor } from '../../actions/p
 import { isConflicts, getConflictMessages } from '../../utils/conflicts';
 import map from 'lodash/map';
 import LinkToAsset from './LinkToAsset';
+import Arrow from './arrow';
 
 const Slider = ({ dispatch, assets, profile }) => {
   const conflicts = isConflicts(assets, profile);
@@ -57,7 +58,9 @@ const Slider = ({ dispatch, assets, profile }) => {
       </div>
       <div className="character-slider">
         <Wheel type="left" />
+        <Arrow type="left" />
         <Profile />
+        <Arrow type="right" />
         <Wheel type="right" />
       </div>
       {UnderProfileContainer}

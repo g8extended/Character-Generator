@@ -7,6 +7,7 @@ $characterWidth: 33.3em;
 .character-slider {
   display: flex;
   width: 100%;
+  overflow-x: hidden;
   justify-content: center;
   margin-bottom: 2em;
 
@@ -59,23 +60,16 @@ $characterWidth: 33.3em;
 
   .profile {
     display: flex;
-
-    .arrow {
-
-      img {
-        width: 1.13em;
-        position: absolute;
-        top: $characterWidth / 2 - 2em;
-      }
-
-      &.right img {
-        margin-left: $characterWidth - 1.13em;
-      }
-    }
   }
 
   .wheel {
     display: flex;
+  }
+
+  .arrow {
+    img {
+      width: 1.13em;
+    }
   }
 }
 
