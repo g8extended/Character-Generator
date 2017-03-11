@@ -83,7 +83,17 @@ body, #root, .app {
         fill: #B1AFB0;
         transition: all 200ms ease-in-out;
       }
+
+      span {
+        color: #B1AFB0;
+        transition: all 200ms ease-in-out;
+      }
+
       &:hover {
+        span {
+          color: #36516e;
+        }
+
         .icon {
           fill: #EF4964;
         }
