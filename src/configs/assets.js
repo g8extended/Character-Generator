@@ -402,16 +402,16 @@ export default keyBy([
     sortOrder: 70,
     styles: {
       '01': {
-        left: 285,
-        top: 291
+        left: 286,
+        top: 288
       },
       '02': {
-        left: 285,
-        top: 292
+        left: 286,
+        top: 285
       },
       '03': {
-        left: 285,
-        top: 292
+        left: 284,
+        top: 294
       }
     }
   },
