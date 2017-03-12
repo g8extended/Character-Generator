@@ -401,15 +401,15 @@ export default keyBy([
     clickable: true,
     sortOrder: 70,
     styles: {
-      blue: {
+      '01': {
         left: 285,
         top: 291
       },
-      brown: {
+      '02': {
         left: 285,
         top: 292
       },
-      green: {
+      '03': {
         left: 285,
         top: 292
       }

@@ -26,8 +26,6 @@ const Slider = ({ dispatch, assets, profile }) => {
     </LinkToAsset>
   );
 
-  const isColorPickerOnly = assets.items[assets.current.asset].types[assets.current.type].colors[assets.current.color].files.length < 2;
-
   const colorPicker = (
     <ColorPicker
         colors={assets.items[assets.current.asset].types[assets.current.type].colors}
@@ -37,25 +35,13 @@ const Slider = ({ dispatch, assets, profile }) => {
     />
   );
 
-  const typePicker = (
-    <ColorPicker
-      colors={assets.items[assets.current.asset].types}
-      current={assets.current.type}
-      urlPrefix={`/assets/${assets.current.asset}/`}
-      onClick={type => dispatch(updateProfileAssetType(type))}
-    />
-  );
-
   const UnderProfileContainer = conflicts ? conflictsMessages : <div className="colorPickerContainer">
-    {isColorPickerOnly ? colorPicker : typePicker}
+    {colorPicker}
     {visibilityButton}
   </div>
 
   return (
     <div>
-      <div className="colorPickerContainer">
-        {isColorPickerOnly || colorPicker}
-      </div>
       <div className="character-slider">
         <Wheel type="left" />
         <Arrow type="left" />
