@@ -3,20 +3,20 @@ import { Link } from 'react-router';
 import map from 'lodash/map';
 import classNames from 'classnames';
 
-const ColorPicker = ({ asset, colors, current, urlPrefix, onClick }) => {
+const ColorPicker = ({ colors, current: { asset, type, color }, urlPrefix, onClick }) => {
   if (Object.keys(colors).length < 2) return <div />;
 
   return (
     <div className="colorPicker">
-      {map(colors, color => {
-        const isActive = current === color.id;
-        const className = classNames('color', color.id, {
+      {map(colors, colorItem => {
+        const isActive = color === colorItem.id;
+        const className = classNames('color', colorItem.id, {
           active: isActive
         });
 
-        const file = color.files[0];
-        const color1 = asset === 'Eyes' ? ! color.id.indexOf('brown_') ? file.svgColors[2] : file.svgColors[2] : file.svgColors[0];
-        const color2 = asset === 'Eyes' ? ! color.id.indexOf('brown_') ? file.svgColors[3] : file.svgColors[5] : file.svgColors[1];
+        const file = colorItem.files[0];
+        const color1 = asset === 'Eyes' ? ! colorItem.id.indexOf('brown_') && type != '03' ? file.svgColors[2] : file.svgColors[2] : file.svgColors[0];
+        const color2 = asset === 'Eyes' ? ! colorItem.id.indexOf('brown_') && type != '03' ? file.svgColors[3] : file.svgColors[5] : file.svgColors[1];
         const borderColor = file.svgColors[file.svgColors.length - 1];
 
         const style = {
@@ -25,11 +25,11 @@ const ColorPicker = ({ asset, colors, current, urlPrefix, onClick }) => {
         };
 
         return (
-          <Link key={color.id}
-            to={`${urlPrefix}${color.id}`}
+          <Link key={colorItem.id}
+            to={`${urlPrefix}${colorItem.id}`}
             style={style}
             className={className} activeClassName="active"
-            onClick={() => onClick(color.id)}
+            onClick={() => onClick(colorItem.id)}
           >
           </Link>
         );
