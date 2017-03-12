@@ -81,6 +81,13 @@ $sliderWidth: 7 * $characterWidth + 2 * $arrow-width;
   position:relative;
   z-index: 10;
   text-align: center;
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+
+  &.fade {
+    opacity: 0;
+  }
+
   .colorPicker, .visibilityButton {
     display: inline-block;
   }

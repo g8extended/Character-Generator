@@ -4,6 +4,7 @@ import {
   UPDATE_PROFILE_ASSET_COLOR,
   UPDATE_PROFILE_ASSET_VISIBILITY,
   UPDATE_PROFILE_ASSET_TRANSITION_CLASSNAME,
+  UPDATE_COLORPICKER_CONT_CLASSNAME,
   CHANGE_PROFILE_ASSET_TYPE_STYLE,
   CHANGE_PROFILE_ASSET_SORT_ORDER
 } from '../constants/profile';
@@ -37,10 +38,16 @@ export const updateProfileAsset = ({ asset, type, color, index, transitionClassN
   }
 
   dispatch(updateProfileAssetTransitionClassName(asset, transitionClassName));
+  dispatch(updateColPickContClassName('animationClass'));
+
   setTimeout(() => {
     dispatch(updateProfileAssetTransitionClassName(asset, ''));
     dispatch(updateProfileAssetImmediately({ asset, type, color, index }))
-  }, 150)
+  }, 150);
+
+  setTimeout(() => {
+    dispatch(updateColPickContClassName(''));
+  }, 500);
 };
 
 export const updateProfileAssetType = type => (dispatch, getState) => {
@@ -79,6 +86,13 @@ export const updateProfileAssetTransitionClassName = (asset, transitionClassName
     type: UPDATE_PROFILE_ASSET_TRANSITION_CLASSNAME,
     asset,
     payload: transitionClassName
+  })
+};
+
+export const updateColPickContClassName = payload => dispatch => {
+  dispatch({
+    type: UPDATE_COLORPICKER_CONT_CLASSNAME,
+    payload
   })
 };
 
