@@ -15,8 +15,8 @@ const ColorPicker = ({ asset, colors, current, urlPrefix, onClick }) => {
         });
 
         const file = color.files[0];
-        const color1 = asset === 'Eyes' ? file.svgColors[2] : file.svgColors[0];
-        const color2 = asset === 'Eyes' ? file.svgColors[5] : file.svgColors[1];
+        const color1 = asset === 'Eyes' ? ! color.id.indexOf('brown_') ? file.svgColors[2] : file.svgColors[2] : file.svgColors[0];
+        const color2 = asset === 'Eyes' ? ! color.id.indexOf('brown_') ? file.svgColors[3] : file.svgColors[5] : file.svgColors[1];
         const borderColor = file.svgColors[file.svgColors.length - 1];
 
         const style = {
