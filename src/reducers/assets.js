@@ -19,7 +19,7 @@ const mergeStyle = style => file => {
     ...file,
     style: {
       ...file.style,
-      ...style
+      ...(style || { left: 0, top: 0 })
     }
   }
 };

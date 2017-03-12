@@ -6,7 +6,8 @@ import { changeProfileAssetTypeStyle, changeProfileAssetTypeSortOrder } from '..
 import assetsConfig from '../configs/assets';
 
 const getStyle = (assetItem, type, profile, assets) => {
-  const color = profile[assetItem.id].color;
+  // const color = profile[assetItem.id].color;
+  const color = Object.keys(assets.items[assetItem.id].types[type].colors)[0];
   const file = assets.items[assetItem.id].types[type].colors[color].files[0];
   return {
     left: file.style.left,
@@ -46,9 +47,12 @@ class AssetsConfig extends Component {
 
     if ( ! assets.items) return <div />;
 
+    const getStylesFromAssetsItems = assetItem => fromPairs(map(assets.items[assetItem.id].types, type => [type.id, getStyle(assetItem, type.id, profile, assets)]));
+    // const getStylesFromAssetsConfig = assetItem => fromPairs(map(assetItem.styles, (style, type) => [type, getStyle(assetItem, type, profile, assets)]));
+
     const updatedAssetsConfig = map(assetsConfig, assetItem => ({
       ...assetItem,
-      styles: fromPairs(map(assetItem.styles, (style, type) => [type, getStyle(assetItem, type, profile, assets)])),
+      styles: getStylesFromAssetsItems(assetItem),
       sortOrder: assets.items[assetItem.id].sortOrder
     }));
 
