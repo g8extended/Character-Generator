@@ -9,7 +9,7 @@ export default (
           buy for 10$
         </Link>
       </div>
-      <p className="text">You buy only one character (svg, png) </p>
+      <p className="text">You buy only one character (svg, png)</p>
     </div>
   )
 );

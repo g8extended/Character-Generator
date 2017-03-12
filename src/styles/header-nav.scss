@@ -41,16 +41,16 @@
     .submenu {
       list-style: none;
       background-color: #38506C;
-      padding: .4em 1em .7em 1em;
+      padding: .7em .3em 1em .3em;
       margin-top: 0.6em;
       text-align: left;
       border-radius: 5px;
-      box-shadow: 0 0 0 rgba(9,26,45,0.95), 0 0 20px rgba(9,26,45,0.1) inset;
+      box-shadow: 0 0 0 rgba(9,26,45,1.95), 0 0 20px rgba(9,26,45,0.1) inset;
       position: absolute;
       height: auto;
 
       &:after {
-        box-shadow: rgba(9, 26, 45, 0.9) 0px 2px 36px;
+        box-shadow: rgba(27, 26, 39, 1) 0px 2px 96px;
         z-index: -1;
         left: 25%;
         bottom: 0px;

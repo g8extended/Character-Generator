@@ -27,7 +27,7 @@ body, #root, .app {
 }
 
 .footer {
-  padding: 3em 5em 2em;
+  padding: 3em 5em 3em;
   box-sizing: border-box;
 
   @include breakpoint(376px) {
@@ -144,7 +144,7 @@ body, #root, .app {
 
   .logo {
     flex: 0 0 auto;
-    width: 8.125em;
+    width: 8.55em;
   }
 
   .nav {
@@ -189,5 +189,6 @@ body, #root, .app {
     padding-top: .5vw;
     color: #aaa;
     font-size: 0.7em;
+    
   }
 }
