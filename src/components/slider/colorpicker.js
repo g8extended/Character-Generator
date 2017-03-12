@@ -14,9 +14,12 @@ const ColorPicker = ({ colors, current: { asset, type, color }, urlPrefix, onCli
           active: isActive
         });
 
+        const isEyes = asset === 'Eyes';
+        const isSpecialType = ! colorItem.id.indexOf('brown_') && type != '03';
+
         const file = colorItem.files[0];
-        const color1 = asset === 'Eyes' ? ! colorItem.id.indexOf('brown_') && type != '03' ? file.svgColors[2] : file.svgColors[2] : file.svgColors[0];
-        const color2 = asset === 'Eyes' ? ! colorItem.id.indexOf('brown_') && type != '03' ? file.svgColors[3] : file.svgColors[5] : file.svgColors[1];
+        const color1 = isEyes ? isSpecialType ? file.svgColors[2] : file.svgColors[2] : file.svgColors[0];
+        const color2 = isEyes ? isSpecialType ? file.svgColors[3] : file.svgColors[5] : file.svgColors[1];
         const borderColor = file.svgColors[file.svgColors.length - 1];
 
         const style = {
