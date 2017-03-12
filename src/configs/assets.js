@@ -7,6 +7,62 @@ export default keyBy([
     clickable: true,
     sortOrder: 10,
     styles: {
+      '10': {
+        left: 194,
+        top: 36
+      },
+      '11': {
+        left: 194,
+        top: 36
+      },
+      '12': {
+        left: 194,
+        top: 36
+      },
+      '13': {
+        left: 194,
+        top: 36
+      },
+      '14': {
+        left: 194,
+        top: 36
+      },
+      '15': {
+        left: 194,
+        top: 36
+      },
+      '16': {
+        left: 194,
+        top: 36
+      },
+      '17': {
+        left: 194,
+        top: 36
+      },
+      '18': {
+        left: 194,
+        top: 36
+      },
+      '19': {
+        left: 194,
+        top: 36
+      },
+      '20': {
+        left: 194,
+        top: 36
+      },
+      '21': {
+        left: 194,
+        top: 36
+      },
+      '22': {
+        left: 194,
+        top: 36
+      },
+      '23': {
+        left: 194,
+        top: 36
+      },
       '01': {
         left: 194,
         top: 36
@@ -26,6 +82,22 @@ export default keyBy([
       '05': {
         left: 193,
         top: 38
+      },
+      '06': {
+        left: 194,
+        top: 48
+      },
+      '07': {
+        left: 194,
+        top: 48
+      },
+      '08': {
+        left: 194,
+        top: 48
+      },
+      '09': {
+        left: 194,
+        top: 48
       }
     }
   },
@@ -35,6 +107,10 @@ export default keyBy([
     clickable: true,
     sortOrder: 50,
     styles: {
+      '10': {
+        left: 208,
+        top: 310
+      },
       '01': {
         left: 208,
         top: 310
@@ -66,6 +142,10 @@ export default keyBy([
       '08': {
         left: 209,
         top: 312
+      },
+      '09': {
+        left: 208,
+        top: 310
       }
     }
   },
@@ -282,6 +362,14 @@ export default keyBy([
       '04': {
         left: 111,
         top: 471
+      },
+      '05': {
+        left: 111,
+        top: 473
+      },
+      '06': {
+        left: 111,
+        top: 473
       }
     },
     menuItem: 'Clothes'
