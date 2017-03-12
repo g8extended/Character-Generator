@@ -78,6 +78,10 @@ body, #root, .app {
         transition: all 200ms ease-in-out;
       }
 
+      .colored {
+        color: red;
+      }
+
       &:active, &:focus {
         outline: none;
       }
