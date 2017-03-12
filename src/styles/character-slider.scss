@@ -90,17 +90,19 @@ $sliderWidth: 7 * $characterWidth + 2 * $arrow-width;
     background-color: rgba(255,255,255,0.8);
 
     .color {
-      width: 1.5em;
-      height: 1.5em;
+      width: 1.63em;
+      height: 1.63em;
       display: inline-block;
       border-radius: 1em;
       vertical-align: middle;
       
       margin: 0 .4em;
-      border: solid 0.13em transparent;
+      border: solid 0.13em none;
       cursor: pointer;
 
       &.active {
+        width: 1.5em;
+        height: 1.5em;
         border: solid 0.13em #472719;
       }
 
@@ -130,6 +132,54 @@ $sliderWidth: 7 * $characterWidth + 2 * $arrow-width;
 
       &.black {
         background-color: #000;
+      }
+
+      &.blue_blond {
+        background: linear-gradient(to right, #509CC7 0%, #509CC7 50%, #E5BB6D 50%, #E5BB6D 100%);
+      }
+
+      &.blue_brown {
+        background: linear-gradient(to right, #509CC7 0%, #509CC7 50%, #BB755A 50%, #BB755A 100%);
+      }
+
+      &.blue_brunet {
+        background: linear-gradient(to right, #509CC7 0%, #509CC7 50%, #383C45 50%, #383C45 100%);
+      }
+
+      &.blue_white {
+        background: linear-gradient(to right, #509CC7 0%, #509CC7 50%, #DDDDDD 50%, #DDDDDD 100%);
+      }
+
+      &.brown_blond {
+        background: linear-gradient(to right, #BB755A 0%, #BB755A 50%, #E5BB6D 50%, #E5BB6D 100%);
+      }
+
+      &.brown_brown {
+        background: linear-gradient(to right, #BB755A 0%, #BB755A 50%, #BB755A 50%, #BB755A 100%);
+      }
+
+      &.brown_brunet {
+        background: linear-gradient(to right, #BB755A 0%, #BB755A 50%, #383C45 50%, #383C45 100%);
+      }
+
+      &.brown_white {
+        background: linear-gradient(to right, #BB755A 0%, #BB755A 50%, #DDDDDD 50%, #DDDDDD 100%);
+      }
+
+      &.green_blond {
+        background: linear-gradient(to right, #85AA5E 0%, #85AA5E 50%, #E5BB6D 50%, #E5BB6D 100%);
+      }
+
+      &.green_brown {
+        background: linear-gradient(to right, #85AA5E 0%, #85AA5E 50%, #BB755A 50%, #BB755A 100%);
+      }
+
+      &.green_brunet {
+        background: linear-gradient(to right, #85AA5E 0%, #85AA5E 50%, #383C45 50%, #383C45 100%);
+      }
+
+      &.green_white {
+        background: linear-gradient(to right, #85AA5E 0%, #85AA5E 50%, #DDDDDD 50%, #DDDDDD 100%);
       }
     }
   }
