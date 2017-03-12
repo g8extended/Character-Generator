@@ -28,6 +28,7 @@ const Slider = ({ dispatch, assets, profile }) => {
 
   const colorPicker = (
     <ColorPicker
+        asset={assets.current.asset}
         colors={assets.items[assets.current.asset].types[assets.current.type].colors}
         current={assets.current.color}
         urlPrefix={`/assets/${assets.current.asset}/${assets.current.type}/`}
