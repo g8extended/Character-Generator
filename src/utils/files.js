@@ -13,11 +13,11 @@ const getComputedStyle = (asset, style) => {
   };
 };
 
-export const getIndexByOffset = (length, index, offset) => {
+const getIndexByOffset = (length, index, offset) => {
   return (length + index + offset % length) % length;
 };
 
-export const getFiles = (items, { asset, type, color }) => {
+const getFiles = (items, { asset, type, color }) => {
   const typeFiles = map(items[asset].types, typeItem => {
     const availableColor = typeItem.colors[color] ? color : Object.keys(typeItem.colors)[0];
     return {
@@ -26,17 +26,15 @@ export const getFiles = (items, { asset, type, color }) => {
       color: availableColor,
       src: `/svg/${asset}/${typeItem.id}/${availableColor}/${typeItem.colors[availableColor].files[0].id}`,
       url: `/assets/${asset}/${typeItem.id}/${availableColor}`,
-      fileType: 'type',
       computedStyle: getComputedStyle(asset, typeItem.colors[availableColor].files[0].style)
     };
   });
   return typeFiles;
 };
 
-export const getFile = (assetItem, profile, assets) => {
-  if ( ! profile[assetItem.id]) return;
-  const files = getFiles(assets.items, profile[assetItem.id]);
-
-  const index = profile[assetItem.id].index;
-  return files[index];
+export const getFile = (items, { asset, type, color }, offset = 0) => {
+  const files = getFiles(items, { asset, type, color });
+  const length = files.length;
+  const currentIndex = files.indexOf(files.find(file => file.type === type && file.color === color));
+  return files[getIndexByOffset(length, currentIndex, offset)];
 };

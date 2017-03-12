@@ -22,7 +22,6 @@ const reducer = (state = initialState, action) => {
         asset: asset.id,
         type: asset.items[0].id,
         color: asset.items[0].items[0].id,
-        index: 0,
         visible: assetsConfig[asset.id].required
       }
     }), {});

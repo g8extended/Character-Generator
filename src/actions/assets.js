@@ -15,27 +15,25 @@ export const fetchAssetsFulfilled = items => dispatch => {
   });
 };
 
-export const setRouter = (asset, type, color, index) => dispatch => {
+export const setRouter = (asset, type, color) => dispatch => {
   dispatch({
     type: SET_ROUTER,
     payload: {
       asset,
       type,
-      color,
-      index
+      color
     }
   });
-  dispatch(setCurrent(asset, type, color, index));
+  dispatch(setCurrent(asset, type, color));
 };
 
-export const setCurrent = (asset, type, color, index) => (dispatch, getState) => {
+export const setCurrent = (asset, type, color) => (dispatch, getState) => {
   const state = getState();
   const profile = state.profile[asset];
   const current = {
     asset,
     type: type || profile.type || Object.keys(state.assets.items[asset].types)[0],
-    color: color || profile.color || Object.keys(state.assets.items[asset].types[current.type].colors)[0],
-    index: index || profile.index || 0
+    color: color || profile.color || Object.keys(state.assets.items[asset].types[current.type].colors)[0]
   };
   dispatch({
     type: SET_CURRENT,

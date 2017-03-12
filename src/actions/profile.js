@@ -7,39 +7,33 @@ import {
   CHANGE_PROFILE_ASSET_TYPE_STYLE,
   CHANGE_PROFILE_ASSET_SORT_ORDER
 } from '../constants/profile';
-import { getFiles } from '../utils/files';
 import mapValues from 'lodash/mapValues';
 import filter from 'lodash/filter';
 import omit from 'lodash/omit';
 import axios from 'axios';
 
-const updateProfileAssetImmediately = ({ asset, type, color, index }) => dispatch => {
+const updateProfileAssetImmediately = ({ asset, type, color }) => dispatch => {
   dispatch({
     type: UPDATE_PROFILE_ASSET,
     asset,
     payload: {
       type: type,
       color: color,
-      index: index,
       visible: true
     }
   })
 };
 
-export const updateProfileAsset = ({ asset, type, color, index, transitionClassName }) => (dispatch, getState) => {
-  const { assets, profile } = getState();
-  const files = getFiles(assets.items, { asset, type, color });
-  const newIndex = files.fileType === 'type' ? files.indexOf(files.find(file => file.type === type && file.color === color)) : index;
-
+export const updateProfileAsset = ({ asset, type, color, transitionClassName }) => dispatch => {
   if ( ! transitionClassName) {
-    dispatch(updateProfileAssetImmediately({ asset, type, color, index }))
+    dispatch(updateProfileAssetImmediately({ asset, type, color }))
     return;
   }
 
   dispatch(updateProfileAssetTransitionClassName(asset, transitionClassName));
   setTimeout(() => {
     dispatch(updateProfileAssetTransitionClassName(asset, ''));
-    dispatch(updateProfileAssetImmediately({ asset, type, color, index }))
+    dispatch(updateProfileAssetImmediately({ asset, type, color }))
   }, 150)
 };
 

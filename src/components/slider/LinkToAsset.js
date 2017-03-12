@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { isConflicts } from '../../utils/conflicts';
 import { Link } from 'react-router';
-import { getIndexByOffset, getFiles } from '../../utils/files';
+import { getFile } from '../../utils/files';
 import { updateProfileAsset, toggleProfileAssetVisible } from '../../actions/profile';
 
 const LinkToAsset = (
@@ -14,12 +14,7 @@ const LinkToAsset = (
 
     const clickable = assets.items[current.asset].clickable;
     const required = assets.items[current.asset].required;
-    const files = getFiles(assets.items, current);
-    const profileIndex = profile[current.asset].index;
-    const index = getIndexByOffset(files.length, profileIndex, offset);
-    const file = files[index];
-    const baseUrl = file.url;
-    const url = file.fileType === 'color' ? `${baseUrl}/${index}` : baseUrl;
+    const file = getFile(assets.items, current, offset);
 
     let onClick = () => {};
 
@@ -27,7 +22,6 @@ const LinkToAsset = (
       onClick = () => dispatch(updateProfileAsset({
         ...current,
         type: file.type,
-        index,
         transitionClassName: offset < 0 ? 'slide-left' : 'slide-right'
       }));
     }
@@ -37,7 +31,7 @@ const LinkToAsset = (
     }
 
     return (
-      <Link to={clickable ? url : ''} className={classNames(className, profile[current.asset].transitionClassName, { disabled: files.length < 2 || conflict })} onClick={(e) => onClick() || (conflict || toggleVisible) && e.preventDefault()} onDoubleClick={() => required || dispatch(toggleProfileAssetVisible())}>
+      <Link to={clickable ? file.url : ''} className={classNames(className, profile[current.asset].transitionClassName, { disabled: conflict })} onClick={(e) => onClick() || (conflict || toggleVisible) && e.preventDefault()} onDoubleClick={() => required || dispatch(toggleProfileAssetVisible())}>
         {Children.map(children, child => cloneElement(child, { file }))}
       </Link>
     );  
