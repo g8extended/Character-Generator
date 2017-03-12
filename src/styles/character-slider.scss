@@ -29,6 +29,7 @@ $sliderWidth: 7 * $characterWidth + 2 * $arrow-width;
     }
   
     img {
+      transition: top 300ms ease-in-out;
       vertical-align: middle;
       display: inline-block;
       width: $arrow-image-width;
