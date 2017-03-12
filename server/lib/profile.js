@@ -17,9 +17,9 @@ export const generateSVG = (profileEncoded, payload) => {
     payload
   });
 
-  const items = map(assets.items);
+  const items = map(assets.items).filter(item => profile[item.id]);
   items.sort((a, b) => a.sortOrder - b.sortOrder);
-  const files = map(items, assetItem => getFile(assetItem, profile, assets)).filter(Boolean);
+  const files = map(items, assetItem => getFile(assetItem, profile[assetItem.id]));
   const resized = files.reduce((memo, file) => ({
     width: Math.max(memo.width || 0, file.style.width + file.style.left),
     height: Math.max(memo.height || 0, file.style.height + file.style.top),

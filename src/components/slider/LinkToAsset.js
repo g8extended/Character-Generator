@@ -14,7 +14,7 @@ const LinkToAsset = (
 
     const clickable = assets.items[current.asset].clickable;
     const required = assets.items[current.asset].required;
-    const file = getFile(assets.items, current, offset);
+    const file = getFile(assets.items[current.asset], current, offset);
 
     let onClick = () => {};
 

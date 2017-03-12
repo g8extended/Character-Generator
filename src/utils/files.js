@@ -17,8 +17,8 @@ const getIndexByOffset = (length, index, offset) => {
   return (length + index + offset % length) % length;
 };
 
-const getFiles = (items, { asset, type, color }) => {
-  const typeFiles = map(items[asset].types, typeItem => {
+const getFiles = (assetItem, { asset, type, color }) => {
+  const typeFiles = map(assetItem.types, typeItem => {
     const availableColor = typeItem.colors[color] ? color : Object.keys(typeItem.colors)[0];
     return {
       ...typeItem.colors[availableColor].files[0],
@@ -32,8 +32,8 @@ const getFiles = (items, { asset, type, color }) => {
   return typeFiles;
 };
 
-export const getFile = (items, { asset, type, color }, offset = 0) => {
-  const files = getFiles(items, { asset, type, color });
+export const getFile = (assetItem, { asset, type, color }, offset = 0) => {
+  const files = getFiles(assetItem, { asset, type, color });
   const length = files.length;
   const currentIndex = files.indexOf(files.find(file => file.type === type && file.color === color));
   return files[getIndexByOffset(length, currentIndex, offset)];
