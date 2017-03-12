@@ -9,8 +9,9 @@ import { updateProfileAssetType, updateProfileAssetColor } from '../../actions/p
 import { isConflicts, getConflictMessages } from '../../utils/conflicts';
 import map from 'lodash/map';
 import LinkToAsset from './LinkToAsset';
+import classNames from 'classnames';
 
-const Slider = ({ dispatch, assets, profile }) => {
+const Slider = ({ dispatch, assets, profile, colorpicker }) => {
   const conflicts = isConflicts(assets, profile);
 
   const conflictsMessages = conflicts && map(getConflictMessages(assets, profile), message => {
@@ -46,14 +47,17 @@ const Slider = ({ dispatch, assets, profile }) => {
     />
   );
 
-  const UnderProfileContainer = conflicts ? conflictsMessages : <div className="colorPickerContainer">
+  const animationClass = colorpicker.animationClassName;
+  const colorPickerContClass = classNames('colorPickerContainer', {fade: !!animationClass});
+
+  const UnderProfileContainer = conflicts ? conflictsMessages : <div className={colorPickerContClass}>
     {isColorPickerOnly ? colorPicker : typePicker}
     {visibilityButton}
   </div>
 
   return (
     <div>
-      <div className="colorPickerContainer">
+      <div className={colorPickerContClass}>
         {isColorPickerOnly || colorPicker}
       </div>
       <div className="character-slider">
@@ -71,5 +75,6 @@ const Slider = ({ dispatch, assets, profile }) => {
 
 export default connect(state => ({
   assets: state.assets,
-  profile: state.profile
+  profile: state.profile,
+  colorpicker: state.colorpicker
 }))(Slider);
