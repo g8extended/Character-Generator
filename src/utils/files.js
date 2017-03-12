@@ -18,27 +18,31 @@ export const getIndexByOffset = (length, index, offset) => {
 };
 
 export const getFiles = (items, { asset, type, color }) => {
-  const colorFiles = map(items[asset].types[type].colors[color].files, file => ({
+  const availableColor = items[asset].types[type].colors[color] ? color : Object.keys(items[asset].types[type].colors)[0];
+  const colorFiles = map(items[asset].types[type].colors[availableColor].files, file => ({
     ...file,
     asset,
     type,
-    color,
-    src: `/svg/${asset}/${type}/${color}/${file.id}`,
-    url: `/assets/${asset}/${type}/${color}`,
+    color: availableColor,
+    src: `/svg/${asset}/${type}/${availableColor}/${file.id}`,
+    url: `/assets/${asset}/${type}/${availableColor}`,
     fileType: 'color',
     computedStyle: getComputedStyle(asset, file.style)
   }));
 
   if (colorFiles.length < 2) {
-    const typeFiles = map(items[asset].types, typeItem => ({
-      ...typeItem.colors[color].files[0],
-      type: typeItem.id,
-      color,
-      src: `/svg/${asset}/${typeItem.id}/${color}/${typeItem.colors[color].files[0].id}`,
-      url: `/assets/${asset}/${typeItem.id}/${color}`,
-      fileType: 'type',
-      computedStyle: getComputedStyle(asset, typeItem.colors[color].files[0].style)
-    }));
+    const typeFiles = map(items[asset].types, typeItem => {
+      const availableColor = typeItem.colors[color] ? color : Object.keys(typeItem.colors)[0];
+      return {
+        ...typeItem.colors[availableColor].files[0],
+        type: typeItem.id,
+        color: availableColor,
+        src: `/svg/${asset}/${typeItem.id}/${availableColor}/${typeItem.colors[availableColor].files[0].id}`,
+        url: `/assets/${asset}/${typeItem.id}/${availableColor}`,
+        fileType: 'type',
+        computedStyle: getComputedStyle(asset, typeItem.colors[availableColor].files[0].style)
+      };
+    });
     return typeFiles;
   }
 
