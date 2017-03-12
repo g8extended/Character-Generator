@@ -8,7 +8,7 @@ export default (
       <ul className="links">
         <li>
           <a href="http://soryan.me" target="_blank">
-            Developed by <span>G8.extented</span>
+            Developed by <span className="colored">G8.extented</span>
           </a>
         </li>
         <li>
