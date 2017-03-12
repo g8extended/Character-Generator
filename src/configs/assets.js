@@ -9,59 +9,59 @@ export default keyBy([
     styles: {
       '10': {
         left: 194,
-        top: 36
+        top: 57
       },
       '11': {
-        left: 194,
-        top: 36
+        left: 197,
+        top: 65
       },
       '12': {
-        left: 194,
-        top: 36
+        left: 195,
+        top: 71
       },
       '13': {
-        left: 194,
-        top: 36
+        left: 195,
+        top: 71
       },
       '14': {
         left: 194,
-        top: 36
+        top: 76
       },
       '15': {
-        left: 194,
-        top: 36
+        left: 200,
+        top: 56
       },
       '16': {
         left: 194,
-        top: 36
+        top: 54
       },
       '17': {
-        left: 194,
-        top: 36
+        left: 195,
+        top: 65
       },
       '18': {
-        left: 194,
-        top: 36
+        left: 195,
+        top: 57
       },
       '19': {
         left: 194,
-        top: 36
+        top: 46
       },
       '20': {
-        left: 194,
-        top: 36
+        left: 195,
+        top: 56
       },
       '21': {
         left: 194,
-        top: 36
+        top: 56
       },
       '22': {
-        left: 194,
-        top: 36
+        left: 174,
+        top: 46
       },
       '23': {
-        left: 194,
-        top: 36
+        left: 193,
+        top: 39
       },
       '01': {
         left: 194,
@@ -89,15 +89,15 @@ export default keyBy([
       },
       '07': {
         left: 194,
-        top: 48
+        top: 47
       },
       '08': {
-        left: 194,
-        top: 48
+        left: 195,
+        top: 42
       },
       '09': {
-        left: 194,
-        top: 48
+        left: 196,
+        top: 39
       }
     }
   },
@@ -105,15 +105,15 @@ export default keyBy([
     id: 'Beards',
     required: false,
     clickable: true,
-    sortOrder: 50,
+    sortOrder: 43,
     styles: {
       '10': {
-        left: 208,
-        top: 310
+        left: 212,
+        top: 273
       },
       '01': {
-        left: 208,
-        top: 310
+        left: 207,
+        top: 309
       },
       '02': {
         left: 209,
@@ -144,8 +144,8 @@ export default keyBy([
         top: 312
       },
       '09': {
-        left: 208,
-        top: 310
+        left: 211,
+        top: 270
       }
     }
   },
@@ -201,16 +201,16 @@ export default keyBy([
     sortOrder: 80,
     styles: {
       '10': {
-        left: 228,
+        left: 226,
         top: 296
       },
       '01': {
-        left: 228,
-        top: 296
+        left: 226,
+        top: 299
       },
       '02': {
-        left: 227,
-        top: 296
+        left: 225,
+        top: 298
       },
       '03': {
         left: 228,
@@ -221,24 +221,24 @@ export default keyBy([
         top: 295
       },
       '05': {
-        left: 227,
-        top: 293
+        left: 225,
+        top: 295
       },
       '06': {
-        left: 228,
-        top: 293
+        left: 227,
+        top: 296
       },
       '07': {
-        left: 228,
-        top: 295
+        left: 226,
+        top: 296
       },
       '08': {
-        left: 227,
-        top: 293
+        left: 224,
+        top: 296
       },
       '09': {
-        left: 228,
-        top: 295
+        left: 227,
+        top: 297
       }
     },
     menuItem: 'Accessories'
@@ -335,7 +335,7 @@ export default keyBy([
         top: 451
       },
       '03': {
-        left: 117,
+        left: 116,
         top: 447
       }
     },
@@ -348,7 +348,7 @@ export default keyBy([
     sortOrder: 10,
     styles: {
       '01': {
-        left: 111,
+        left: 110,
         top: 473
       },
       '02': {
@@ -356,20 +356,12 @@ export default keyBy([
         top: 473
       },
       '03': {
-        left: 111,
-        top: 473
+        left: 110,
+        top: 472
       },
       '04': {
-        left: 111,
-        top: 471
-      },
-      '05': {
-        left: 111,
-        top: 473
-      },
-      '06': {
-        left: 111,
-        top: 473
+        left: 110,
+        top: 470
       }
     },
     menuItem: 'Clothes'
@@ -410,16 +402,16 @@ export default keyBy([
     sortOrder: 70,
     styles: {
       blue: {
-        left: 286,
-        top: 284
+        left: 285,
+        top: 291
       },
       brown: {
-        left: 286,
-        top: 284
+        left: 285,
+        top: 292
       },
       green: {
-        left: 286,
-        top: 284
+        left: 285,
+        top: 292
       }
     }
   },
