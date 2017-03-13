@@ -3,6 +3,23 @@ import { Link } from 'react-router';
 import map from 'lodash/map';
 import classNames from 'classnames';
 
+function getStyles(colors, isActive, isDoubleColor) {
+  return  {
+    background: isDoubleColor ? `linear-gradient(to right, ${colors[0]} 0%, ${colors[0]} 50%, ${colors[1]} 50%, ${colors[1]} 100%)` : undefined,
+    backgroundColor: isDoubleColor ? undefined : colors[1],
+    borderColor: isActive ? typeof colors[2] === 'string' ? colors[2] : colors[colors[2]] : undefined
+  };
+}
+
+const doubleColors = {
+  black_pink: ['#36516e', '#f93b58', 0],
+  pink_black: ['#f93b58', '#36516e', 1],
+  white_blue: ['#45c0e9', '#efefef', 0],
+  blue_white: ['#45c0e9', '#efefef', 1],
+  beige_black: ['#eadaca', '#433947', 1],
+  black_white: ['#433947', '#efefef', 0]
+};
+
 const ColorPicker = ({ colors, current: { asset, type, color }, urlPrefix, onClick }) => {
   if (Object.keys(colors).length < 2) return <div />;
 
@@ -19,51 +36,11 @@ const ColorPicker = ({ colors, current: { asset, type, color }, urlPrefix, onCli
         const isDoubleColor = colorItem.id.indexOf('_') !== -1;
 
         const file = colorItem.files[0];
-        let color1 = isEyes ? isSpecialType ? file.svgColors[2] : file.svgColors[2] : file.svgColors[0];
-        let color2 = isEyes ? isSpecialType ? file.svgColors[3] : file.svgColors[5] : file.svgColors[1];
-        let borderColor = file.svgColors[file.svgColors.length - 1];
-
-        if (colorItem.id === 'black_pink') {
-          color1 = '#36516e';
-          color2 = '#f93b58';
-          borderColor = color1;
-        }
-
-        if (colorItem.id === 'pink_black') {
-          color1 = '#f93b58';
-          color2 = '#36516e';
-          borderColor = color2;
-        }
-
-        if (colorItem.id === 'white_blue') {
-          color1 = '#45c0e9';
-          color2 = '#efefef';
-          borderColor = color1;
-        }
-
-        if (colorItem.id === 'blue_white') {
-          color1 = '#45c0e9';
-          color2 = '#efefef';
-          borderColor = color2;
-        }
-
-        if (colorItem.id === 'beige_black') {
-          color1 = '#eadaca';
-          color2 = '#433947';
-          borderColor = color2;
-        }
-
-        if (colorItem.id === 'black_white') {
-          color1 = '#433947';
-          color2 = '#efefef';
-          borderColor = color1;
-        }
-
-        const style = {
-          background: isDoubleColor ? `linear-gradient(to right, ${color1} 0%, ${color1} 50%, ${color2} 50%, ${color2} 100%)` : undefined,
-          backgroundColor: isDoubleColor ? undefined : color2,
-          borderColor: isActive ? borderColor : undefined
-        };
+        const color1 = isEyes ? isSpecialType ? file.svgColors[2] : file.svgColors[2] : file.svgColors[0];
+        const color2 = isEyes ? isSpecialType ? file.svgColors[3] : file.svgColors[5] : file.svgColors[1];
+        const borderColor = file.svgColors[file.svgColors.length - 1];
+        const colors = doubleColors[colorItem.id] || [color1, color2, borderColor];
+        const style  = getStyles(colors, isActive, isDoubleColor);
 
         return (
           <Link key={colorItem.id}
@@ -71,8 +48,7 @@ const ColorPicker = ({ colors, current: { asset, type, color }, urlPrefix, onCli
             style={style}
             className={className} activeClassName="active"
             onClick={() => onClick(colorItem.id)}
-          >
-          </Link>
+          />
         );
       })}
     </div>
