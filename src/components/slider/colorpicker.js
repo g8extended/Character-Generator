@@ -40,8 +40,8 @@ const ColorPicker = ({ colors, current: { asset, type, color }, urlPrefix, onCli
         const color2 = isEyes ? isSpecialType ? file.svgColors[3] : file.svgColors[5] : file.svgColors[1];
         const borderColor = file.svgColors[file.svgColors.length - 1];
 
-        const finded = find(doubleColors, {id: colorItem.id});
-        const colors = finded ? finded.colors : [color1, color2, borderColor];
+        const found = find(doubleColors, {id: colorItem.id});
+        const colors = found ? found.colors : [color1, color2, borderColor];
         const style  = getStyles(colors, isActive, isDoubleColor);
 
         return (
