@@ -61,7 +61,7 @@ const ColorPicker = ({ colors, current: { asset, type, color }, urlPrefix, onCli
 
         const style = {
           background: isDoubleColor ? `linear-gradient(to right, ${color1} 0%, ${color1} 50%, ${color2} 50%, ${color2} 100%)` : undefined,
-          backgroundColor: isDoubleColor || color2,
+          backgroundColor: isDoubleColor ? undefined : color2,
           borderColor: isActive ? borderColor : undefined
         };
 
