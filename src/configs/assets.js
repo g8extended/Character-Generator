@@ -277,7 +277,7 @@ export default keyBy([
     required: false,
     clickable: true,
     sortOrder: 10,
-    assetConflicts: ['T-shirts', 'Sweatshirts'],
+    replace: ['T-shirts', 'Sweatshirts'],
     styles: {
       '01': {
         left: 110,
@@ -326,7 +326,7 @@ export default keyBy([
     required: false,
     clickable: true,
     sortOrder: 30,
-    assetConflicts: ['T-shirts', 'Shirts'],
+    replace: ['T-shirts', 'Shirts'],
     styles: {
       '01': {
         left: 114,
@@ -348,7 +348,7 @@ export default keyBy([
     required: false,
     clickable: true,
     sortOrder: 10,
-    assetConflicts: ['Shirts', 'Sweatshirts'],
+    replace: ['Shirts', 'Sweatshirts'],
     styles: {
       '01': {
         left: 110,

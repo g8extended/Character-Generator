@@ -14,15 +14,15 @@ import axios from 'axios';
 import assetsConfig from '../configs/assets';
 
 const updateProfileAssetImmediately = ({ asset, type, color }) => (dispatch, getState) => {
-  const assetConflicts = assetsConfig[asset].assetConflicts;
+  const replace = assetsConfig[asset].replace;
 
-  if (assetConflicts) {
+  if (replace) {
     const { profile } = getState();
-    assetConflicts.map(conflictedAsset => {
-      if ( ! profile[conflictedAsset].visible) return;
+    replace.map(replacedAsset => {
+      if ( ! profile[replacedAsset].visible) return;
         dispatch({
           type: UPDATE_PROFILE_ASSET_VISIBILITY,
-          asset: conflictedAsset,
+          asset: replacedAsset,
           payload: {
             visible: false
           }
