@@ -6,7 +6,7 @@ import classNames from 'classnames';
 function getStyles(color, isActive, isDoubleColor) {
   return  {
     background: isDoubleColor ? `linear-gradient(to right, ${color[0]} 0%, ${color[0]} 50%, ${color[1]} 50%, ${color[1]} 100%)` : undefined,
-    backgroundColor: isDoubleColor || color[1],
+    backgroundColor: isDoubleColor ? undefined : color[1],
     borderColor: isActive ? typeof color[2] === 'string' ? color[2] : color[color[2]] : undefined
   };
 }
