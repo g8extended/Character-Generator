@@ -3,11 +3,11 @@ import { Link } from 'react-router';
 import { map, find } from 'lodash';
 import classNames from 'classnames';
 
-function getStyles(color, isActive, isDoubleColor) {
+function getStyles(colors, isActive, isDoubleColor) {
   return  {
-    background: isDoubleColor ? `linear-gradient(to right, ${color[0]} 0%, ${color[0]} 50%, ${color[1]} 50%, ${color[1]} 100%)` : undefined,
-    backgroundColor: isDoubleColor ? undefined : color[1],
-    borderColor: isActive ? typeof color[2] === 'string' ? color[2] : color[color[2]] : undefined
+    background: isDoubleColor ? `linear-gradient(to right, ${colors[0]} 0%, ${colors[0]} 50%, ${colors[1]} 50%, ${colors[1]} 100%)` : undefined,
+    backgroundColor: isDoubleColor ? undefined : colors[1],
+    borderColor: isActive ? typeof colors[2] === 'string' ? colors[2] : colors[colors[2]] : undefined
   };
 }
 
