@@ -10,8 +10,7 @@ import {
   CHANGE_PROFILE_ASSET_TYPE_STYLE,
   CHANGE_PROFILE_ASSET_SORT_ORDER
 } from '../constants/profile';
-import keyBy from 'lodash/keyBy';
-import map from 'lodash/map';
+import { keyBy, map } from 'lodash';
 import assetsConfig from '../configs/assets';
 
 const mergeStyle = style => file => {
