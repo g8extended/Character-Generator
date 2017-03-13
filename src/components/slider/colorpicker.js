@@ -15,7 +15,8 @@ const ColorPicker = ({ colors, current: { asset, type, color }, urlPrefix, onCli
         });
 
         const isEyes = asset === 'Eyes';
-        const isSpecialType = ! colorItem.id.indexOf('brown_') && type != '03';
+        const isSpecialType = ! colorItem.id.indexOf('brown_') && type !== '03';
+        const isDoubleColor = colorItem.id.indexOf('_') !== -1;
 
         const file = colorItem.files[0];
         const color1 = isEyes ? isSpecialType ? file.svgColors[2] : file.svgColors[2] : file.svgColors[0];
@@ -23,7 +24,8 @@ const ColorPicker = ({ colors, current: { asset, type, color }, urlPrefix, onCli
         const borderColor = file.svgColors[file.svgColors.length - 1];
 
         const style = {
-          background: `linear-gradient(to right, ${color1} 0%, ${color1} 50%, ${color2} 50%, ${color2} 100%)`,
+          background: isDoubleColor && `linear-gradient(to right, ${color1} 0%, ${color1} 50%, ${color2} 50%, ${color2} 100%)`,
+          backgroundColor: isDoubleColor || color2,
           borderColor: isActive ? borderColor : undefined
         };
 
