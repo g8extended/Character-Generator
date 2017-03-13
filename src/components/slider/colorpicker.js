@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import map from 'lodash/map';
 import classNames from 'classnames';
+import doubleColors from '../../configs/extra_colors'
 
 function getStyles(colors, isActive, isDoubleColor) {
   return  {
@@ -11,15 +12,6 @@ function getStyles(colors, isActive, isDoubleColor) {
   };
 }
 
-const doubleColors = {
-  black_pink: ['#36516e', '#f93b58', 0],
-  pink_black: ['#f93b58', '#36516e', 1],
-  white_blue: ['#45c0e9', '#efefef', 0],
-  blue_white: ['#45c0e9', '#efefef', 1],
-  beige_black: ['#eadaca', '#433947', 1],
-  black_white: ['#433947', '#efefef', 0]
-};
-
 const ColorPicker = ({ colors, current: { asset, type, color }, urlPrefix, onClick }) => {
   if (Object.keys(colors).length < 2) return <div />;
 
@@ -27,10 +19,7 @@ const ColorPicker = ({ colors, current: { asset, type, color }, urlPrefix, onCli
     <div className="colorPicker">
       {map(colors, colorItem => {
         const isActive = color === colorItem.id;
-        const className = classNames('color', colorItem.id, {
-          active: isActive
-        });
-
+        const className = classNames('color', colorItem.id, { active: isActive });
         const isEyes = asset === 'Eyes';
         const isSpecialType = ! colorItem.id.indexOf('brown_') && type !== '03';
         const isDoubleColor = colorItem.id.indexOf('_') !== -1;
