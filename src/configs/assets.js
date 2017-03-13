@@ -277,7 +277,22 @@ export default keyBy([
     required: false,
     clickable: true,
     sortOrder: 10,
-    replace: ['T-shirts', 'Sweatshirts'],
+    conflicts: {
+      replace: {
+        assets: ['T-shirts', 'Sweatshirts']
+      },
+      warning: {
+        types: [
+          '01',
+          '02',
+          '03'
+        ],
+        assets: [
+          'Ties'
+        ],
+        message: 'Sorry but you can\'t use ties with this shirt'
+      }
+    },
     styles: {
       '01': {
         left: 110,
@@ -308,25 +323,18 @@ export default keyBy([
         top: 465
       }
     },
-    menuItem: 'Clothes',
-    conflicts: {
-      types: [
-        '01',
-        '02',
-        '03'
-      ],
-      assets: [
-        'Ties'
-      ],
-      message: 'Sorry but you can\'t use ties with this shirt'
-    }
+    menuItem: 'Clothes'
   },
   {
     id: 'Sweatshirts',
     required: false,
     clickable: true,
     sortOrder: 30,
-    replace: ['T-shirts', 'Shirts'],
+    conflicts: {
+      replace: {
+        assets: ['T-shirts', 'Shirts']
+      }
+    },
     styles: {
       '01': {
         left: 114,
@@ -348,7 +356,11 @@ export default keyBy([
     required: false,
     clickable: true,
     sortOrder: 10,
-    replace: ['Shirts', 'Sweatshirts'],
+    conflicts: {
+      replace: {
+        assets: ['Shirts', 'Sweatshirts']
+      }
+    },
     styles: {
       '01': {
         left: 110,

@@ -12,23 +12,23 @@ import filter from 'lodash/filter';
 import omit from 'lodash/omit';
 import axios from 'axios';
 import assetsConfig from '../configs/assets';
+import { getConflictsReplaceAssets, isConflicts } from '../utils/conflicts';
 
 const updateProfileAssetImmediately = ({ asset, type, color }) => (dispatch, getState) => {
-  const replace = assetsConfig[asset].replace;
+  const { assets, profile } = getState();
 
-  if (replace) {
-    const { profile } = getState();
-    replace.map(replacedAsset => {
-      if ( ! profile[replacedAsset].visible) return;
-        dispatch({
-          type: UPDATE_PROFILE_ASSET_VISIBILITY,
-          asset: replacedAsset,
-          payload: {
-            visible: false
-          }
-        });
+  getConflictsReplaceAssets(assets.items[asset].conflicts).map(replaceAsset => {
+    if ( ! profile[replaceAsset].visible) return;
+    dispatch({
+      type: UPDATE_PROFILE_ASSET_VISIBILITY,
+      asset: replaceAsset,
+      payload: {
+        visible: false
+      }
     });
-  }
+  });
+
+  if (isConflicts(assets, profile)) return;
 
   dispatch({
     type: UPDATE_PROFILE_ASSET,
