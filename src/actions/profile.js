@@ -11,8 +11,25 @@ import mapValues from 'lodash/mapValues';
 import filter from 'lodash/filter';
 import omit from 'lodash/omit';
 import axios from 'axios';
+import assetsConfig from '../configs/assets';
 
-const updateProfileAssetImmediately = ({ asset, type, color }) => dispatch => {
+const updateProfileAssetImmediately = ({ asset, type, color }) => (dispatch, getState) => {
+  const assetConflicts = assetsConfig[asset].assetConflicts;
+
+  if (assetConflicts) {
+    const { profile } = getState();
+    assetConflicts.map(conflictedAsset => {
+      if ( ! profile[conflictedAsset].visible) return;
+        dispatch({
+          type: UPDATE_PROFILE_ASSET_VISIBILITY,
+          asset: conflictedAsset,
+          payload: {
+            visible: false
+          }
+        });
+    });
+  }
+
   dispatch({
     type: UPDATE_PROFILE_ASSET,
     asset,
