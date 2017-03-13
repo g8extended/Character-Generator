@@ -166,6 +166,11 @@ export default keyBy([
     required: false,
     clickable: true,
     sortOrder: 42,
+    conflicts: {
+      replace: {
+        assets: ['Jackets']
+      }
+    },
     styles: {
       '01': {
         left: 60,
@@ -435,6 +440,11 @@ export default keyBy([
     required: false,
     clickable: true,
     sortOrder: 40,
+    conflicts: {
+      replace: {
+        assets: ['Coats']
+      }
+    },
     styles: {
       '01': {
         left: 62,
