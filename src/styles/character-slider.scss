@@ -97,12 +97,11 @@ $sliderWidth: 7 * $characterWidth + 2 * $arrow-width;
       vertical-align: middle;
       
       margin: 0 .4em;
-      border: solid 0.13em none;
       cursor: pointer;
 
       &.active {
-        width: 1.5em;
-        height: 1.5em;
+        width: 1.37em;
+        height: 1.37em;
         border: solid 0.13em #472719;
       }
     }
