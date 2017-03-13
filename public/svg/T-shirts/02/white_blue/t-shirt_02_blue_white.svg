@@ -3,11 +3,11 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 530 300" style="enable-background:new 0 0 530 300;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#EFEFEF;}
-	.st1{fill:#45C0E9;}
-	.st2{fill:#BBBBBC;}
-	.st3{fill:#028FB5;}
-	.st4{fill:#7A7B7B;}
+	.st0{fill:#45C0E9;}
+	.st1{fill:#EFEFEF;}
+	.st2{opacity:0.7;fill:#0A8CBF;enable-background:new    ;}
+	.st3{fill:#7A7B7B;}
+	.st4{fill:#028FB5;}
 </style>
 <g>
 	<path class="st0" d="M484.9,149.9c-9.6-7.3-87.1-51.1-95.8-56.5c-2.4-1.5-13.4-5.6-23.3-12.2c-0.9-0.6,0.5-4.8-0.4-5.4
@@ -53,7 +53,7 @@
 				C473.6,148,472.1,145.4,470.5,146.6L470.5,146.6z"/>
 		</g>
 		<g>
-			<path class="st3" d="M246.2,143.7c1.9,0,1.9-3,0-3S244.3,143.7,246.2,143.7L246.2,143.7z"/>
+			<path class="st4" d="M246.2,143.7c1.9,0,1.9-3,0-3S244.3,143.7,246.2,143.7L246.2,143.7z"/>
 		</g>
 		<g>
 			<path class="st4" d="M246.2,143.5c9.6,0.4,18.8-1,27.9-4.1c1.8-0.6,1-3.5-0.8-2.9c-8.8,3-17.8,4.4-27.1,4
