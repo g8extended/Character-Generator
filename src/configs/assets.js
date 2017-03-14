@@ -526,7 +526,7 @@ export default keyBy([
     conflicts: {
       changeType: {
         assets: {
-          'Hairstyles': '05'
+          'Hairstyles': '14'
         }
       }
     },
