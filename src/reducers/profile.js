@@ -21,6 +21,7 @@ const reducer = (state = initialState, action) => {
       [asset.id]: {
         asset: asset.id,
         type: asset.items[0].id,
+        previousType: asset.items[0].id,
         color: asset.items[0].items[0].id,
         visible: assetsConfig[asset.id].required
       }
@@ -30,11 +31,15 @@ const reducer = (state = initialState, action) => {
   case UPDATE_PROFILE_ASSET_TYPE:
   case UPDATE_PROFILE_ASSET_COLOR:
   case UPDATE_PROFILE_ASSET_VISIBILITY:
+    const oldType = state[action.asset].type;
+    const newType = action.payload.type;
+    const previousType = newType && oldType !== newType ? oldType : state[action.asset].previousType;
     return {
       ...state,
       [action.asset]: {
         ...state[action.asset],
-        ...action.payload
+        ...action.payload,
+        previousType
       }
     };
   case UPDATE_PROFILE_ASSET_TRANSITION_CLASSNAME:

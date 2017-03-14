@@ -82,11 +82,20 @@ export const updateProfileAssetColor = color => (dispatch, getState) => {
 
 export const toggleProfileAssetVisible = () => (dispatch, getState) => {
   const { assets, profile } = getState();
+  const { visible } = profile[assets.current.asset];
+
+  if (visible) {
+    map(getConflictsChangeTypeAssets(assets.items[assets.current.asset].conflicts), (changeType, changeTypeAsset) => {
+      if ( ! profile[changeTypeAsset].visible) return;
+      dispatch(updateProfileAssetType({ asset: changeTypeAsset, type: profile[changeTypeAsset].previousType }));
+    });
+  }
+
   dispatch({
     type: UPDATE_PROFILE_ASSET_VISIBILITY,
     asset: assets.current.asset,
     payload: {
-      visible: ! profile[assets.current.asset].visible
+      visible: ! visible
     }
   });
 };
