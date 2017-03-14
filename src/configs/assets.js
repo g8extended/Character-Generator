@@ -523,6 +523,13 @@ export default keyBy([
     required: false,
     clickable: true,
     sortOrder: 80,
+    conflicts: {
+      changeType: {
+        assets: {
+          'Hairstyles': '05'
+        }
+      }
+    },
     styles: {
       '01': {
         left: 113,

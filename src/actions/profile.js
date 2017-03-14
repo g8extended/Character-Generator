@@ -7,12 +7,13 @@ import {
   CHANGE_PROFILE_ASSET_TYPE_STYLE,
   CHANGE_PROFILE_ASSET_SORT_ORDER
 } from '../constants/profile';
+import map from 'lodash/map';
 import mapValues from 'lodash/mapValues';
 import filter from 'lodash/filter';
 import omit from 'lodash/omit';
 import axios from 'axios';
 import assetsConfig from '../configs/assets';
-import { getConflictsReplaceAssets, isConflicts } from '../utils/conflicts';
+import { getConflictsReplaceAssets, getConflictsChangeTypeAssets, isConflicts } from '../utils/conflicts';
 
 const updateProfileAssetImmediately = ({ asset, type, color }) => (dispatch, getState) => {
   const { assets, profile } = getState();
@@ -28,6 +29,11 @@ const updateProfileAssetImmediately = ({ asset, type, color }) => (dispatch, get
     });
   });
 
+  map(getConflictsChangeTypeAssets(assets.items[asset].conflicts), (changeType, changeTypeAsset) => {
+    if ( ! profile[changeTypeAsset].visible) return;
+    dispatch(updateProfileAssetType({ asset: changeTypeAsset, type: changeType }));
+  });
+
   if (isConflicts(assets, profile)) return;
 
   dispatch({
@@ -38,7 +44,7 @@ const updateProfileAssetImmediately = ({ asset, type, color }) => (dispatch, get
       color: color,
       visible: true
     }
-  })
+  });
 };
 
 export const updateProfileAsset = ({ asset, type, color, transitionClassName }) => dispatch => {
@@ -54,10 +60,10 @@ export const updateProfileAsset = ({ asset, type, color, transitionClassName }) 
   }, 150)
 };
 
-export const updateProfileAssetType = type => (dispatch, getState) => {
+export const updateProfileAssetType = ({ asset, type }) => dispatch => {
   dispatch({
     type: UPDATE_PROFILE_ASSET_TYPE,
-    asset: getState().assets.current.asset,
+    asset,
     payload: {
       type
     }

@@ -5,7 +5,7 @@ import Profile from './profile';
 import Wheel   from   './wheel';
 import Arrow from './arrow';
 import ColorPicker from './colorpicker';
-import { updateProfileAssetType, updateProfileAssetColor } from '../../actions/profile';
+import { updateProfileAssetColor } from '../../actions/profile';
 import { isConflicts, getConflictMessages } from '../../utils/conflicts';
 import map from 'lodash/map';
 import LinkToAsset from './LinkToAsset';
