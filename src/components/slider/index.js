@@ -28,17 +28,21 @@ const Slider = ({ dispatch, assets, profile }) => {
 
   const colorPicker = (
     <ColorPicker
-        colors={assets.items[assets.current.asset].types[assets.current.type].colors}
-        current={assets.current}
-        urlPrefix={`/assets/${assets.current.asset}/${assets.current.type}/`}
-        onClick={color => dispatch(updateProfileAssetColor(color))}
+      colors={assets.items[assets.current.asset].types[assets.current.type].colors}
+      current={assets.current}
+      urlPrefix={`/assets/${assets.current.asset}/${assets.current.type}/`}
+      onClick={color => dispatch(updateProfileAssetColor(color))}
     />
   );
 
-  const UnderProfileContainer = conflicts ? conflictsMessages : <div className="colorPickerContainer">
-    {colorPicker}
-    {visibilityButton}
-  </div>
+  const colorPickerContainer = (
+    <div className="colorPickerContainer">
+      {colorPicker}
+      {visibilityButton}
+    </div>
+  );
+
+  const UnderProfileContainer = conflicts ? conflictsMessages : colorPickerContainer;
 
   return (
     <div>
