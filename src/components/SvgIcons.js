@@ -2,8 +2,8 @@ import React from 'react';
 
 export default (
   () => (
-    <svg style={{ display: 'none' }} version="1.1" id="icons" xmlns="http://www.w3.org/2000/svg" xmlnsxLink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-         viewBox="0 0 26 26" enable-background="new 0 0 26 26" xmlSpace="preserve">
+    <svg style={{ display: 'none' }} version="1.1" id="icons" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 26 26" enableBackground="new 0 0 26 26" xmlSpace="preserve">
       <path id="twitter-icon" d="M24.877,6.129c-0.873,0.362-1.811,0.604-2.796,0.714c1.005-0.562,1.777-1.451,2.141-2.51
         C23.28,4.852,22.239,5.23,21.13,5.434C20.242,4.551,18.977,4,17.576,4c-2.688,0-4.869,2.032-4.869,4.538
         c0,0.356,0.043,0.703,0.126,1.034C8.788,9.383,5.201,7.576,2.799,4.831C2.381,5.502,2.141,6.28,2.141,7.113
