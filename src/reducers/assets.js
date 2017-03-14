@@ -12,6 +12,7 @@ import {
 } from '../constants/profile';
 import keyBy from 'lodash/keyBy';
 import map from 'lodash/map';
+import omit from 'lodash/omit';
 import assetsConfig from '../configs/assets';
 
 const mergeStyle = style => file => {
@@ -64,10 +65,10 @@ const reducer = (state = initialState, action) => {
     };
   case FETCH_ASSETS_FULFILLED:
     const items = keyBy(action.payload.map(asset => ({
-      ...asset,
+      ...omit(asset, 'items'),
       ...assetsConfig[asset.id],
       types: keyBy(asset.items.map(type => ({
-        ...type,
+        ...omit(type, 'items'),
         colors: keyBy(type.items.map(color => ({
           id: color.id,
           files: color.items.map(mergeStyle(assetsConfig[asset.id].styles[type.id]))
