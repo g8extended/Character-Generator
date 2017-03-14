@@ -285,17 +285,6 @@ export default keyBy([
     conflicts: {
       replace: {
         assets: ['T-shirts', 'Sweatshirts']
-      },
-      warning: {
-        types: [
-          '01',
-          '02',
-          '03'
-        ],
-        assets: [
-          'Ties'
-        ],
-        message: 'Sorry but you can\'t use ties with this shirt'
       }
     },
     styles: {

@@ -13,7 +13,7 @@ import filter from 'lodash/filter';
 import omit from 'lodash/omit';
 import axios from 'axios';
 import assetsConfig from '../configs/assets';
-import { getConflictsReplaceAssets, getConflictsChangeTypeAssets, isConflicts } from '../utils/conflicts';
+import { getConflictsReplaceAssets, getConflictsChangeTypeAssets } from '../utils/conflicts';
 
 const updateProfileAssetImmediately = ({ asset, type, color }) => (dispatch, getState) => {
   const { assets, profile } = getState();
@@ -33,8 +33,6 @@ const updateProfileAssetImmediately = ({ asset, type, color }) => (dispatch, get
     if ( ! profile[changeTypeAsset].visible) return;
     dispatch(updateProfileAssetType({ asset: changeTypeAsset, type: changeType }));
   });
-
-  if (isConflicts(assets, profile)) return;
 
   dispatch({
     type: UPDATE_PROFILE_ASSET,
