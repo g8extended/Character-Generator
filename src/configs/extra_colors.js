@@ -62,12 +62,18 @@ const colors = {
   }
 };
 
-const getGlobalColors = color => {
-  return colors.global[color];
+const replaceIndexWithColor = colors => {
+  if ( ! colors) return;
+  return [
+    ...colors.slice(0, 2),
+    typeof colors[2] === 'string' ? colors[2] : colors[colors[2]]
+  ];
 };
+
+const getGlobalColors = color => replaceIndexWithColor(colors.global[color]);
 
 export const getAssetColors = (asset, color) => {
   const assetColors = colors.assets[asset];
   if ( ! assetColors) return getGlobalColors(color);
-  return assetColors[color] || getGlobalColors(color);
+  return replaceIndexWithColor(assetColors[color]) || getGlobalColors(color);
 };
