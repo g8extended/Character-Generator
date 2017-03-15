@@ -61,11 +61,21 @@ export const generateSVG = ({ profile, email, firstName, lastName }, payload) =>
     to: email,
     subject: 'Message',
     text: 'I hope this message gets delivered!',
-    html: fs.readFileSync('server/lib/mail.html', 'utf-8'),
+    html: fs.readFileSync('server/lib/mail.html', 'utf-8').replace(/\{downloadUrl\}/g, `http://char.soryan.me${zipFile}`),
     attachments: [
       {
         filename: 'character.zip',
         path: pathToZipFile
+      },
+      {
+        filename: 'character.png',
+        content: pngContent,
+        cid: 'unique@character.png'
+      },
+      {
+        filename: 'logo.png',
+        path: 'public/i/logo.png',
+        cid: 'unique@logo.png'
       }
     ]
   }, (err, info) => {
