@@ -1,13 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { downloadProfile } from '../actions/profile';
+import { Link } from 'react-router';
 
-const Download = ({ dispatch }) => (
-  <div>
-    <button className="button" onClick={() => dispatch(downloadProfile())}>
-      Download Character
-    </button>
-  </div>
-);
+const Download = ({ download }) => {
+  if ( ! download) return (
+    <div class="loading">
+      <p>Thank you for the payment!</p>
+      <p>please wait...</p>
+      <p>generating character for you</p>
+    </div>
+  );
 
-export default connect()(Download);
+  return (
+    <div className="content-wrapper">
+      <a className="button" href={download}>
+        Download Character
+      </a>
+      <p>
+        <Link to="/">Return to home</Link>
+      </p>
+    </div>
+  );
+};
+
+export default connect(({ download }) => ({ download }))(Download);

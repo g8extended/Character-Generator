@@ -114,6 +114,7 @@ body, #root, .app {
   border: transparent;
   padding: 1.3em 2.1em;
   cursor: pointer;
+  display: inline-block;
 
   &:active, &:focus {
     outline: none;
@@ -178,10 +179,6 @@ body, #root, .app {
     margin: auto;
     padding-top: 1.5625em;
     border-top: solid 1px #eee;
-
-    .button {
-      display: inline-block;
-    }
   }
 
   .text {

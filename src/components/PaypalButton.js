@@ -1,60 +1,53 @@
-import React, { Component, PropTypes } from 'react'
-import ReactDOM from 'react-dom'
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
-import scriptLoader from 'react-async-script-loader'
-import { downloadProfile } from '../actions/profile'
-
-const paymentAuthorized = payment => dispatch => {
-  dispatch(downloadProfile(payment));
-};
-
-const paymentCancelled = payment => dispatch => {
-  dispatch({
-    type: 'paymentCancelled',
-    payload: payment
-  });
-};
+import scriptLoader from 'react-async-script-loader';
+import { sendProfile } from '../actions/profile';
+import Download from './Download';
 
 class PayPalButton extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
-      showButton: false
-    }
+      loaded: false,
+      paid: false
+    };
     if (typeof window === 'undefined') return;
-    window.React = React
-    window.ReactDOM = ReactDOM
+    window.React = React;
+    window.ReactDOM = ReactDOM;
   }
 
-  componentWillReceiveProps ({ isScriptLoaded, isScriptLoadSucceed }) {
-    if (!this.state.show) {
-      if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
-        if (isScriptLoadSucceed) {
-          this.setState({ showButton: true })
-          console.log('alehop!!', window.paypal.Button.react)
-        }
-        else this.props.onError()
-      }
+  componentWillReceiveProps({ isScriptLoaded, isScriptLoadSucceed }) {
+    if (this.state.loaded) return;
+
+    if ( ! isScriptLoaded || this.props.isScriptLoaded) return;
+
+    if ( ! isScriptLoadSucceed) {
+      this.props.onError();
     }
+
+    this.setState({ loaded: true });
   }
 
-  componentDidMount () {
-    const { isScriptLoaded, isScriptLoadSucceed } = this.props
-    if (isScriptLoaded && isScriptLoadSucceed) {
-      this.setState({ showButton: true })
-    }
+  componentDidMount() {
+    if ( ! isScriptLoaded || ! isScriptLoadSucceed) return;
+    const { isScriptLoaded, isScriptLoadSucceed } = this.props;
+    this.setState({ loaded: true });
   }
 
   componentWillUnmount() {
-    delete window.React
-    delete window.ReactDOM
+    delete window.React;
+    delete window.ReactDOM;
   }
 
   render() {
+    const { dispatch } = this.props;
+
     const client = {
       sandbox:    'AdFXHbtY_eLcs2JdwBVyfYxXN4ZlnVwUuyCHMih6JQYCCgmhJHiwfEfLpVWqdMy7ANViK9uGQlYJUh5k',
       production: 'xxxxxx',
-    }
+    };
 
     const payment = () => {
       return paypal.rest.payment.create('sandbox', client,
@@ -63,46 +56,41 @@ class PayPalButton extends Component {
             { amount: { total: '1.00', currency: 'RUB' } },
           ],
         },
-      )
+      );
     }
 
     const onAuthorize = (data, actions) => {
-      return actions.payment.execute().then(() => {
-        console.log('The payment was completed!', this)
-        this.setState({ showButton: false })
-        const payment = Object.assign({}, this.props.payment)
-        payment.paid = true
-        payment.cancelled =  false
-        payment.payerID =  data.payerID
-        payment.paymentID =  data.paymentID
-        payment.paymentToken =  data.paymentToken
-        payment.returnUrl =  data.returnUrl
-        this.props.dispatch(paymentAuthorized(payment))
-      })
+      return actions.payment.execute().then(paymentData => {
+        const { email, first_name, last_name } = paymentData.payer.payer_info;
+        this.setState({ paid: true });
+        dispatch(sendProfile({
+          email,
+          firsrName: first_name,
+          lastName: last_name
+        }));
+      });
     }
 
-    const onCancel = (data) => {
-      console.log('The payment was cancelled!', data)
-      this.props.dispatch(paymentCancelled())
+    const onCancel = data => {
     }
 
-    if ( ! this.state.showButton) return <div>Loading paypal button...</div>;
+    if ( ! this.state.loaded) return <div />;
+
+    if (this.state.paid) return <Download />;
 
     return (
-        <paypal.Button.react
-          env={'sandbox'}
-          client={client}
-          payment={payment}
-          commit={true}
-          onAuthorize={onAuthorize}
-          onCancel={onCancel}
-        />
-    )
+      <paypal.Button.react
+        env={'sandbox'}
+        client={client}
+        payment={payment}
+        commit={true}
+        onAuthorize={onAuthorize}
+        onCancel={onCancel}
+      />
+    );
   }
 }
 
-const PayPalButtonRedux = connect(state => ({
-  payment: state.payment
-}))(PayPalButton)
+const PayPalButtonRedux = connect()(PayPalButton);
 
-export default scriptLoader('https://www.paypalobjects.com/api/checkout.js')(PayPalButtonRedux)
+export default scriptLoader('https://www.paypalobjects.com/api/checkout.js')(PayPalButtonRedux);

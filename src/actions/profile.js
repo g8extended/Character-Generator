@@ -14,6 +14,7 @@ import omit from 'lodash/omit';
 import axios from 'axios';
 import assetsConfig from '../configs/assets';
 import { getConflictsReplaceAssets, getConflictsChangeTypeAssets } from '../utils/conflicts';
+import { update as updateDownloadUrl } from '../actions/download';
 
 const updateProfileAssetImmediately = ({ asset, type, color }) => (dispatch, getState) => {
   const { assets, profile } = getState();
@@ -136,7 +137,7 @@ export const changeProfileAssetTypeSortOrder = (which, shift) => (dispatch, getS
   });
 };
 
-export const downloadProfile = () => (dispatch, getState) => {
+export const sendProfile = ({ email, firstName, lastName }) => (dispatch, getState) => {
   const { profile } = getState();
   const visibleProfile = filter(mapValues(profile, (item, asset) => ({
     ...item,
@@ -144,6 +145,9 @@ export const downloadProfile = () => (dispatch, getState) => {
   })), item => item.visible).map(item => omit(item, 'visible'));
 
   axios.post('/api/profile', {
+    email,
+    firstName,
+    lastName,
     profile: btoa(JSON.stringify(visibleProfile))
-  }).then(data => window.location.assign(`${data.data.url}`));
+  }).then(data => dispatch(updateDownloadUrl(data.data.url)));
 };
