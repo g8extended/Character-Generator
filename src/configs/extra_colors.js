@@ -9,9 +9,12 @@ const colors = {
   },
   assets: {
     'Jackets': {
-      brown_white: ['#EFEFEF', '#BC5B34', 1],
-      green_white: ['#EFEFEF', '#7fb539', 1],
       black: ['#433947', '#0f0814', 1],
+      brown_white: ['#efefef', '#bc5b34', 1],
+      green_white: ['#efefef', '#7fb539', 1],
+      pink_black: ['#f93b58', '#36516e', 1],
+      white: ['#efefef', '#7a7b7b', 1],
+      yellow_black: ['#FFC20E', '#433947', 1]
     },
     'Hairstyles': {
       blond: ['#F9BE72', '#9B581C', 1],
