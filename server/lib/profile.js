@@ -61,7 +61,7 @@ export const generateSVG = ({ profile, email, firstName, lastName }, payload) =>
     to: email,
     subject: 'Message',
     text: 'I hope this message gets delivered!',
-    html: '<h1>I hope this message gets delivered! header</h1>',
+    html: fs.readFileSync('server/lib/mail.html', 'utf-8'),
     attachments: [
       {
         filename: 'character.zip',
@@ -69,7 +69,6 @@ export const generateSVG = ({ profile, email, firstName, lastName }, payload) =>
       }
     ]
   }, (err, info) => {
-    console.log(error);
     console.log(info.envelope);
     console.log(info.messageId);
   });
