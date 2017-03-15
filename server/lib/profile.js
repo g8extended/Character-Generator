@@ -9,17 +9,18 @@ import fs from 'fs';
 import md5 from 'md5';
 import svg2png from 'svg2png';
 import Zip from 'node-zip';
+import nodemailer from 'nodemailer';
 
-export const generateSVG = (profileEncoded, payload) => {
-  const profile = keyBy(JSON.parse(atob(profileEncoded)), 'asset');
+export const generateSVG = ({ profile, email, firstName, lastName }, payload) => {
+  const profileDecoded = keyBy(JSON.parse(atob(profile)), 'asset');
   const assets = assetsReducer({}, {
     type: FETCH_ASSETS_FULFILLED,
     payload
   });
 
-  const items = map(assets.items).filter(item => profile[item.id]);
+  const items = map(assets.items).filter(item => profileDecoded[item.id]);
   items.sort((a, b) => a.sortOrder - b.sortOrder);
-  const files = map(items, assetItem => getFile(assetItem, profile[assetItem.id]));
+  const files = map(items, assetItem => getFile(assetItem, profileDecoded[assetItem.id]));
   const resized = files.reduce((memo, file) => ({
     width: Math.max(memo.width || 0, file.style.width + file.style.left),
     height: Math.max(memo.height || 0, file.style.height + file.style.top),
@@ -47,6 +48,31 @@ export const generateSVG = (profileEncoded, payload) => {
   zip.file('character.png', pngContent);
   const data = zip.generate({ base64: false, compression: 'DEFLATE' });
   const zipFile = `/files/${md5(svgContent)}.zip`;
-  fs.writeFileSync(path.join('public', zipFile), data, 'binary');
+  const pathToZipFile = path.join('public', zipFile);
+  fs.writeFileSync(pathToZipFile, data, 'binary');
+
+  const transporter = nodemailer.createTransport({
+    sendmail: true,
+    newline: 'unix',
+    path: '/usr/sbin/sendmail'
+  });
+  transporter.sendMail({
+    from: 'admin@soryan.me',
+    to: email,
+    subject: 'Message',
+    text: 'I hope this message gets delivered!',
+    html: '<h1>I hope this message gets delivered! header</h1>',
+    attachments: [
+      {
+        filename: 'character.zip',
+        path: pathToZipFile
+      }
+    ]
+  }, (err, info) => {
+    console.log(error);
+    console.log(info.envelope);
+    console.log(info.messageId);
+  });
+
   return zipFile;
 };

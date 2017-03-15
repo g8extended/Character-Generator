@@ -48,7 +48,7 @@ const securityMidleware = (req, res, next) => {
 app.post('/api/profile/', securityMidleware, function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify({
-    url: generateSVG(req.body.profile, files)
+    url: generateSVG(req.body, files)
   }));
 });
 
