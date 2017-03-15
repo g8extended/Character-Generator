@@ -16,6 +16,14 @@ const colors = {
       white: ['#efefef', '#7a7b7b', 1],
       yellow_black: ['#FFC20E', '#433947', 1]
     },
+    'Coats': {
+      beige: ['#eadaca', '#896E5B', 1],
+      black: ['#433947', '#0f0814', 1],
+      brown: ['#A06944', '#562f10', 1],
+      burgundy: ['#7B3F4E', '#000000', 1],
+      gray: ['#7f7f7f', '#636363', 1],
+      white: ['#efefef', '#7a7b7b', 1]
+    },
     'Hairstyles': {
       blond: ['#F9BE72', '#9B581C', 1],
       brown: ['#C47546', '#814927', 1],
