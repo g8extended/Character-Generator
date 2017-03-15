@@ -168,7 +168,9 @@ export default keyBy([
     sortOrder: 42,
     conflicts: {
       replace: {
-        assets: ['Jackets']
+        assets: [
+          'Jackets'
+        ]
       }
     },
     styles: {
@@ -260,11 +262,11 @@ export default keyBy([
       },
       '02': {
         left: 153,
-        top: 426
+        top: 421
       },
       '03': {
         left: 154,
-        top: 426
+        top: 417
       },
       '04': {
         left: 155,
@@ -284,7 +286,10 @@ export default keyBy([
     sortOrder: 10,
     conflicts: {
       replace: {
-        assets: ['T-shirts', 'Sweatshirts']
+        assets: [
+          'T-shirts',
+          'Sweatshirts'
+        ]
       }
     },
     styles: {
@@ -326,7 +331,10 @@ export default keyBy([
     sortOrder: 30,
     conflicts: {
       replace: {
-        assets: ['T-shirts', 'Shirts']
+        assets: [
+          'T-shirts',
+          'Shirts'
+        ]
       }
     },
     styles: {
@@ -352,12 +360,15 @@ export default keyBy([
     sortOrder: 10,
     conflicts: {
       replace: {
-        assets: ['Shirts', 'Sweatshirts']
+        assets: [
+          'Shirts',
+          'Sweatshirts'
+        ]
       }
     },
     styles: {
       '01': {
-        left: 110,
+        left: 109,
         top: 473
       },
       '02': {
@@ -428,10 +439,12 @@ export default keyBy([
     id: 'Jackets',
     required: false,
     clickable: true,
-    sortOrder: 40,
+    sortOrder: 42,
     conflicts: {
       replace: {
-        assets: ['Coats']
+        assets: [
+          'Coats'
+        ]
       }
     },
     styles: {
