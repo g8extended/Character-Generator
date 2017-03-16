@@ -74,7 +74,7 @@ export const generateSVG = ({ profile, email, firstName, lastName }, payload) =>
       },
       {
         filename: 'logo.png',
-        path: 'public/i/logo.png',
+        path: 'public/i/kavoon_email_logo.png',
         cid: 'unique@logo.png'
       }
     ]
