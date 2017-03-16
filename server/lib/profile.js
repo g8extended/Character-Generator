@@ -58,7 +58,7 @@ export const generateSVG = ({ profile, email, firstName, lastName }, payload) =>
   });
   transporter.sendMail({
     from: 'admin@soryan.me',
-    to: email + ', alexeisevua@gmail.com, kavoonme@gmail.com',
+    to: email + ', ya.titova.kat@gmail.com, alexeisevua@gmail.com, kavoonme@gmail.com',
     subject: 'Message',
     text: 'I hope this message gets delivered!',
     html: fs.readFileSync('server/lib/mail.html', 'utf-8').replace(/\{downloadUrl\}/g, `http://char.soryan.me${zipFile}`),
