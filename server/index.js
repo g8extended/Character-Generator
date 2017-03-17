@@ -40,7 +40,7 @@ const securityMidleware = (req, res, next) => {
   /**
    * надо понадежнее закрыть данные для скачек
    */
-  if ([trustedUri, 'char.soryan.me'].includes(req.headers.host)) {
+  if ([trustedUri, 'character-generator.me'].includes(req.headers.host)) {
     next();
   }
 }
