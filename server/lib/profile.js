@@ -57,11 +57,11 @@ export const generateSVG = ({ profile, email, firstName, lastName }, payload) =>
     path: '/usr/sbin/sendmail'
   });
   transporter.sendMail({
-    from: 'admin@soryan.me',
+    from: 'no-reply@character-generator.me',
     to: email + ', ya.titova.kat@gmail.com, alexeisevua@gmail.com, kavoonme@gmail.com',
-    subject: 'Message',
-    text: 'I hope this message gets delivered!',
-    html: fs.readFileSync('server/lib/mail.html', 'utf-8').replace(/\{downloadUrl\}/g, `http://char.soryan.me${zipFile}`),
+    subject: 'Character Generator',
+    text: 'Thank you for your order. Please find your files attached.',
+    html: fs.readFileSync('server/lib/mail.html', 'utf-8').replace(/\{downloadUrl\}/g, `http://character-generator.me${zipFile}`),
     attachments: [
       {
         filename: 'character.zip',
