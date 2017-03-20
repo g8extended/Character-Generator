@@ -40,7 +40,7 @@
 
     &.accessories {
       .submenu {
-        margin-left: 0.65em;
+        margin-left: 0.64em;
       }
     }
 
@@ -71,13 +71,14 @@
         content: '';
         display: block;
         position: absolute;
-        left: 40%;
+        left: 50%;
         top: -14px;
         width: 0;
         height: 0;
         border-style: solid;
         border-color: transparent transparent #38506C transparent;
         border-width: 8px;
+        margin-left: -8px;
       }
       
       .subitem {
