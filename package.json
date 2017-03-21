@@ -1,7 +1,7 @@
 {
-  "name": "react-hot-boilerplate",
+  "name": "chanarcter-generator",
   "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "description": "Character Generator",
   "scripts": {
     "start": "nodemon server/server.js -w server",
     "dev": "nodemon server/server.js -w server",
