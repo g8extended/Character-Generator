@@ -41,7 +41,7 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       loading: false,
-      paid: true
+      paid: action.payload
     };
   default:
     return state;

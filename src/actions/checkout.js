@@ -40,7 +40,10 @@ export const checkPayment = () => (dispatch, getState) => {
 
   axios.post('/api/checkout', {
     email
-  }).then(data => dispatch({
-    type: CHECK_PAYMENT_FULFILLED
-  }));
+  }).then(data => {
+    dispatch({
+      type: CHECK_PAYMENT_FULFILLED,
+      payload: data.data.paid
+    });
+  });
 };
