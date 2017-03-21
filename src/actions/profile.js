@@ -136,7 +136,7 @@ export const changeProfileAssetTypeSortOrder = (which, shift) => (dispatch, getS
   });
 };
 
-export const sendProfile = ({ email }) => (dispatch, getState) => {
+export const sendProfile = email => (dispatch, getState) => {
   const { profile } = getState();
   const visibleProfile = filter(mapValues(profile, (item, asset) => ({
     ...item,
