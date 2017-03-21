@@ -1,20 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { sendProfile } from '../actions/profile';
 
-const Download = ({ download }) => {
-  if ( ! download) return (
-    <div class="loading">
-      <p>Thank you for the payment!</p>
-      <p>please wait...</p>
-      <p>generating character for you</p>
-    </div>
-  );
-
+const Download = ({ dispatch, checkout }) => {
   return (
-    <div className="content-wrapper">
-      <a className="button" href={download}>
-        Download Character
+    <div>
+      <a className="button" href="#" onClick={e => e.preventDefault() || dispatch(sendProfile(checkout.email))}>
+        Download
       </a>
       <p>
         <Link to="/">Return to home</Link>
@@ -23,4 +16,4 @@ const Download = ({ download }) => {
   );
 };
 
-export default connect(({ download }) => ({ download }))(Download);
+export default connect(({ checkout }) => ({ checkout }))(Download);

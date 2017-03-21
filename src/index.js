@@ -8,6 +8,7 @@ import { persistStore, autoRehydrate } from 'redux-persist';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 import Router from './components/Router';
+import { checkPayment } from './actions/checkout';
 
 const preloadedState = window.__PRELOADED_STATE__;
 
@@ -24,8 +25,11 @@ const store = createStore(reducers, preloadedState, composeEnhancers(
 persistStore(store, {
   keyPrefix: 'v0.0.7:',
   whitelist: [
-    'profile'
+    'profile',
+    'checkout'
   ]
+}, () => {
+  store.dispatch(checkPayment());
 });
 
 const history = syncHistoryWithStore(browserHistory, store);

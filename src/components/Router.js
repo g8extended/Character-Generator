@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Router, Route, IndexRedirect } from 'react-router';
 import App from './App';
 import Assets from './Assets';
-import Payment from './Payment';
 import { setRouter } from '../actions/assets';
 
 export default connect()(
@@ -20,7 +19,6 @@ export default connect()(
             </Route>
           </Route>
         </Route>
-        <Route path="payment" component={Payment} onEnter={route => dispatch(setRouter('Hairstyles', null, null))} />
       </Route>
     </Router>
   )

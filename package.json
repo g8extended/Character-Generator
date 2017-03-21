@@ -65,6 +65,7 @@
     "axios": "^0.15.3",
     "body-parser": "^1.17.1",
     "classnames": "^2.2.5",
+    "gumroad-api": "^0.4.0",
     "lodash": "^4.17.4",
     "md5": "^2.2.1",
     "node-zip": "^1.1.1",

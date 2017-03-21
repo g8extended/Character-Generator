@@ -16,6 +16,7 @@ import { fetchAssetsFulfilled } from '../src/actions/assets';
 import Router from '../src/components/Router';
 import bodyParser from 'body-parser';
 import { generateSVG } from './lib/profile';
+import { checkPayment } from './lib/checkout';
 
 const app = express();
 const compiler = webpack(config);
@@ -50,6 +51,15 @@ app.post('/api/profile/', securityMidleware, function (req, res) {
   res.send(JSON.stringify({
     url: generateSVG(req.body, files)
   }));
+});
+
+app.post('/api/checkout/', securityMidleware, function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  checkPayment(req.body).then(paid => {
+    res.send(JSON.stringify({
+      paid
+    }));
+  });
 });
 
 const indexHtmlTemplate = fs.readFileSync('index.html', 'utf8');

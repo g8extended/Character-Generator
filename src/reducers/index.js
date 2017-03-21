@@ -3,14 +3,14 @@ import { routerReducer } from 'react-router-redux'
 import headerNav from './headerNav';
 import assets from './assets';
 import profile from './profile';
-import download from './download';
+import checkout from './checkout';
 
 const rootReducer = combineReducers({
   routing: routerReducer,
   headerNav,
   assets,
   profile,
-  download
+  checkout
 });
 
 export default rootReducer;
