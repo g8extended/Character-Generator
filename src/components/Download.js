@@ -5,14 +5,9 @@ import { sendProfile } from '../actions/profile';
 
 const Download = ({ dispatch, checkout }) => {
   return (
-    <div>
-      <a className="button" href="#" onClick={e => e.preventDefault() || dispatch(sendProfile(checkout.email))}>
-        Download
-      </a>
-      <p>
-        <Link to="/">Return to home</Link>
-      </p>
-    </div>
+    <a className="button" href="#" onClick={e => e.preventDefault() || dispatch(sendProfile(checkout.email))}>
+      Download
+    </a>
   );
 };
 
