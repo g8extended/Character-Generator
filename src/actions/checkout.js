@@ -25,7 +25,7 @@ export const submitForm = () => dispatch => {
     type: SUBMIT_FORM
   });
 
-  window.location.href = 'https://gumroad.com/l/vHTIL';
+  window.location.href = 'https://gumroad.com/l/IESIR';
 };
 
 export const checkPayment = () => (dispatch, getState) => {
