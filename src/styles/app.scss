@@ -189,3 +189,54 @@ body, #root, .app {
     
   }
 }
+
+.overlay {
+  background-color: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  
+  .bg {
+    width: 786px;
+    height: 438px;
+    position: absolute;
+    background: url('/i/popup_bg.png');
+    top: 50%; 
+    left: 50%;
+    margin-left: -383px;
+    margin-top: -170px;
+    box-sizing: border-box;
+    padding: 72px 97px;
+
+    .mailform {
+      padding: 55px 0;
+      text-align: center;
+      
+      input {
+        font-size: .7em;
+        padding: 1.3em 2.1em;
+        border-radius: 50px;
+        border: none;
+        width: 310px;
+        margin-right: 10px;
+        
+        &:active, &:focus {
+          outline: none;
+        }
+      }
+
+      .cross {
+        position: absolute;
+        background: url('/i/close_icon.svg');
+        top: 85px; 
+        right: 117px;
+        width: 10px;
+        height: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}

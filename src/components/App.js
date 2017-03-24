@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import Mailform from './Mailform';
 import '../styles/app.scss';
 
 function centurion () {
@@ -31,6 +32,7 @@ export default class HeaderNav extends Component {
           </div>
         </div>
         <Footer />
+        <Mailform />
       </div>
     );
   }
