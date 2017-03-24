@@ -23,6 +23,7 @@ const compiler = webpack(config);
 
 const port = 3000;
 const trustedUri = `localhost:${port}`;
+const trustedDomains = ['localhost', 'character-generator.me'];
 
 if (process.env.NODE_ENV !== 'production') {
   app.use(require('webpack-dev-middleware')(compiler, {
@@ -30,6 +31,14 @@ if (process.env.NODE_ENV !== 'production') {
   }));
   app.use(require('webpack-hot-middleware')(compiler));
 }
+
+app.use('/svg/**/*.svg', (req, res, next) => {
+  if ( ! trustedDomains.some(uri => req.headers.referer && req.headers.referer.indexOf(uri) !== -1)) {
+    res.status(403).send('Forbidden!');
+    return;
+  }
+  next();
+});
 
 app.use(express.static('public'));
 
@@ -41,7 +50,7 @@ const securityMidleware = (req, res, next) => {
   /**
    * надо понадежнее закрыть данные для скачек
    */
-  if ([trustedUri, 'character-generator.me'].includes(req.headers.host)) {
+  if (trustedDomains.includes(req.headers.host)) {
     next();
   }
 }
