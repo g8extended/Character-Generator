@@ -17,7 +17,6 @@ import Router from '../src/components/Router';
 import bodyParser from 'body-parser';
 import { generateSVG } from './lib/profile';
 import { checkPayment } from './lib/checkout';
-import FS from 'fs';
 
 const app = express();
 const compiler = webpack(config);
@@ -35,7 +34,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use('/svg/**/*.svg', (req, res, next) => {
   if ( ! trustedDomains.some(uri => req.headers.referer && req.headers.referer.indexOf(uri) !== -1)) {
-    res.status(403).end(FS.readFileSync(__dirname + '/lib/forbidden.html'))
+    res.status(403).end('<div id="root" style="width:620px;height:440px;text-align: center;position: absolute;top:50%;left:50%;margin-left:-310px;margin-top:-220px;"><img src="/i/403.svg" /></div>');
   }
   next();
 });
