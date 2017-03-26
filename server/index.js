@@ -34,7 +34,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use('/svg/**/*.svg', (req, res, next) => {
   if ( ! trustedDomains.some(uri => req.headers.referer && req.headers.referer.indexOf(uri) !== -1)) {
-    res.status(403).end('<div id="root" style="width:620px;height:440px;text-align: center;position: absolute;top:50%;left:50%;margin-left:-310px;margin-top:-220px;"><img src="/i/403.svg" /></div>');
+    res.status(403).end('<div style="width:620px;height:440px;text-align: center;position: absolute;top:50%;left:50%;margin-left:-310px;margin-top:-220px;"><img src="/i/403.svg" /></div>');
   }
   next();
 });
