@@ -1,5 +1,6 @@
 import {
   SHOW_FORM,
+  HIDE_FORM,
   SET_EMAIL,
   SUBMIT_FORM,
   CHECK_PAYMENT,
@@ -10,6 +11,12 @@ import axios from 'axios';
 export const showForm = () => dispatch => {
   dispatch({
     type: SHOW_FORM
+  });
+};
+
+export const hideForm = () => dispatch => {
+  dispatch({
+    type: HIDE_FORM
   });
 };
 

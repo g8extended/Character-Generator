@@ -1,5 +1,6 @@
 import {
   SHOW_FORM,
+  HIDE_FORM,
   SET_EMAIL,
   SUBMIT_FORM,
   CHECK_PAYMENT,
@@ -20,6 +21,11 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       formVisible: true
+    };
+  case HIDE_FORM:
+    return {
+      ...state,
+      formVisible: false
     };
   case SET_EMAIL:
     return {
