@@ -34,8 +34,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use('/svg/**/*.svg', (req, res, next) => {
   if ( ! trustedDomains.some(uri => req.headers.referer && req.headers.referer.indexOf(uri) !== -1)) {
-    res.status(403).send('Forbidden!');
-    return;
+    res.status(403).sendFile(__dirname + '/lib/forbidden.html');
   }
   next();
 });
