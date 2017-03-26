@@ -24,6 +24,7 @@ const compiler = webpack(config);
 const port = 3000;
 const trustedUri = `localhost:${port}`;
 const trustedDomains = ['localhost', 'character-generator.me'];
+const html403 = '<div style="width:620px;height:440px;text-align: center;position: absolute;top:50%;left:50%;margin-left:-310px;margin-top:-220px;"><div><img src="/i/403.svg" /></div><div><a href="/" style="background-color: #EE3C5D;color: #fff;border-radius: 55px;font-size: .7em;text-transform: uppercase;text-decoration: none;white-space: nowrap;border: transparent;padding: 1.3em 2.1em;cursor: pointer;display: inline-block; font-family:Arial;">BACK TO GENERATOR</a></div></div>';
 
 if (process.env.NODE_ENV !== 'production') {
   app.use(require('webpack-dev-middleware')(compiler, {
@@ -34,7 +35,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use('/svg/**/*.svg', (req, res, next) => {
   if ( ! trustedDomains.some(uri => req.headers.referer && req.headers.referer.indexOf(uri) !== -1)) {
-    res.status(403).end('<div style="width:620px;height:440px;text-align: center;position: absolute;top:50%;left:50%;margin-left:-310px;margin-top:-220px;"><img src="/i/403.svg" /></div>');
+    res.status(403).end(html403);
   }
   next();
 });
