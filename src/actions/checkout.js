@@ -32,7 +32,7 @@ export const submitForm = () => dispatch => {
     type: SUBMIT_FORM
   });
 
-  window.location.href = 'https://gumroad.com/l/IESIR';
+  window.location.href = 'https://gumroad.com/l/NljBD';
 };
 
 export const checkPayment = () => (dispatch, getState) => {
