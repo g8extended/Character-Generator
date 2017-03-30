@@ -77,14 +77,16 @@ app.post('/api/profile', securityMidleware, (req, res) => {
 app.post('/api/ping', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   db.serialize(() => {
-    db.get('SELECT rowid AS id, * FROM orders WHERE email = ? AND permalink = ? ORDER BY rowid DESC LIMIT 1', req.body.email, req.body.permalink, (err, row) => {
-      if ( ! row) {
+    db.get('SELECT count(*) as count FROM orders WHERE email = ? AND permalink = ?', req.body.email, req.body.permalink, (err, row) => {
+      if (row.count < 1) {
         res.status(200).end();
-        return;
       }
-      const download_url = generateSVG(row, files);
-      db.run('UPDATE orders SET sale_id = ?, download_url = ? WHERE rowid = ?', req.body.sale_id, download_url, row.id);
-      res.status(200).end();
+      const index = row.count;
+      db.get('SELECT rowid AS id, * FROM orders WHERE email = ? AND permalink = ? ORDER BY rowid DESC LIMIT 1', req.body.email, req.body.permalink, (err, row) => {
+        const download_url = generateSVG(row, files, index);
+        db.run('UPDATE orders SET sale_id = ?, download_url = ? WHERE rowid = ?', req.body.sale_id, download_url, row.id);
+        res.status(200).end();
+      });
     });
   });
 });

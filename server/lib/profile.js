@@ -11,7 +11,7 @@ import svg2png from 'svg2png';
 import Zip from 'node-zip';
 import nodemailer from 'nodemailer';
 
-export const generateSVG = ({ profile, email }, payload) => {
+export const generateSVG = ({ profile, email }, payload, suffix = '01') => {
   const profileDecoded = keyBy(JSON.parse(atob(profile)), 'asset');
   const assets = assetsReducer({}, {
     type: FETCH_ASSETS_FULFILLED,
@@ -47,8 +47,14 @@ export const generateSVG = ({ profile, email }, payload) => {
   zip.file('character.svg', svgContent);
   zip.file('character.png', pngContent);
   const data = zip.generate({ base64: false, compression: 'DEFLATE' });
-  const zipFile = `/files/${md5(svgContent)}.zip`;
+  const dirName = md5(email).substr(0, 8);
+  const dir = `/files/${dirName}`;
+  const zipFileName = `character_${suffix}.zip`;
+  const zipFile = `${dir}/${zipFileName}`;
   const pathToZipFile = path.join('public', zipFile);
+  if ( ! fs.existsSync(path.join('public', dir))) {
+      fs.mkdirSync(path.join('public', dir));
+  }
   fs.writeFileSync(pathToZipFile, data, 'binary');
 
   const transporter = nodemailer.createTransport({
@@ -69,7 +75,7 @@ export const generateSVG = ({ profile, email }, payload) => {
     html: fs.readFileSync('server/lib/mail.html', 'utf-8').replace(/\{downloadUrl\}/g, `http://${domainName}${zipFile}`),
     attachments: [
       {
-        filename: 'character.zip',
+        filename: zipFileName,
         path: pathToZipFile
       },
       {
