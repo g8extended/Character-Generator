@@ -56,16 +56,17 @@ export const generateSVG = ({ profile, email }, payload) => {
     newline: 'unix',
     path: '/usr/sbin/sendmail'
   });
+  const domainName = 'character-generator.me';
   transporter.use('stream', require('nodemailer-dkim').signer({
-      domainName: 'character-generator.me',
-      privateKey: fs.readFileSync('mail.private')
+    domainName: domainName,
+    privateKey: fs.readFileSync('mail.private')
   }));
   transporter.sendMail({
     from: 'no-reply@character-generator.me',
     to: email,
     subject: 'Character Generator',
-    text: fs.readFileSync('server/lib/mail.txt', 'utf-8').replace(/\{downloadUrl\}/g, `http://character-generator.me${zipFile}`),
-    html: fs.readFileSync('server/lib/mail.html', 'utf-8').replace(/\{downloadUrl\}/g, `http://character-generator.me${zipFile}`),
+    text: fs.readFileSync('server/lib/mail.txt', 'utf-8').replace(/\{downloadUrl\}/g, `http://${domainName}${zipFile}`),
+    html: fs.readFileSync('server/lib/mail.html', 'utf-8').replace(/\{downloadUrl\}/g, `http://${domainName}${zipFile}`),
     attachments: [
       {
         filename: 'character.zip',
