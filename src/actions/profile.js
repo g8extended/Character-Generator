@@ -136,7 +136,7 @@ export const changeProfileAssetTypeSortOrder = (which, shift) => (dispatch, getS
   });
 };
 
-export const sendProfile = email => (dispatch, getState) => {
+export const saveProfile = email => (dispatch, getState) => {
   const { profile } = getState();
   const visibleProfile = filter(mapValues(profile, (item, asset) => ({
     ...item,
@@ -147,6 +147,6 @@ export const sendProfile = email => (dispatch, getState) => {
     email,
     profile: btoa(JSON.stringify(visibleProfile))
   }).then(data => {
-    window.location.href = data.data.url;
+    window.location.href = 'https://gumroad.com/l/NljBD';
   });
 };

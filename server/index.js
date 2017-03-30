@@ -16,14 +16,13 @@ import { fetchAssetsFulfilled } from '../src/actions/assets';
 import Router from '../src/components/Router';
 import bodyParser from 'body-parser';
 import { generateSVG } from './lib/profile';
-import { checkPayment } from './lib/checkout';
 
 const app = express();
 const compiler = webpack(config);
 
 const port = 3000;
 const trustedUri = `localhost:${port}`;
-const trustedDomains = ['localhost', 'character-generator.me'];
+const trustedDomains = [trustedUri, 'localhost', 'character-generator.me'];
 const html403 = '<div style="width:620px;height:440px;text-align: center;position: absolute;top:50%;left:50%;margin-left:-310px;margin-top:-220px;"><div><img src="/i/403.svg" /></div><div><a href="/" style="background-color: #EE3C5D;color: #fff;border-radius: 55px;font-size: .7em;text-transform: uppercase;text-decoration: none;white-space: nowrap;border: transparent;padding: 1.3em 2.1em;cursor: pointer;display: inline-block; font-family:Arial;">BACK TO GENERATOR</a></div></div>';
 
 if (process.env.NODE_ENV !== 'production') {
@@ -55,19 +54,33 @@ const securityMidleware = (req, res, next) => {
   }
 }
 
-app.post('/api/profile/', securityMidleware, function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({
-    url: generateSVG(req.body, files)
-  }));
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./db.sqlite');
+
+db.serialize(() => {
+  db.run('CREATE TABLE IF NOT EXISTS orders (email TEXT, profile TEXT)');
 });
 
-app.post('/api/checkout/', securityMidleware, function (req, res) {
+app.post('/api/profile/', securityMidleware, function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  checkPayment(req.body).then(paid => {
-    res.send(JSON.stringify({
-      paid
-    }));
+
+  db.serialize(() => {
+    const stmt = db.prepare('INSERT INTO orders VALUES (?, ?)');
+    stmt.run(req.body.email, req.body.profile);
+    stmt.finalize();
+  });
+
+  res.status(200).end();
+});
+
+app.get('/api/download/:email', securityMidleware, function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  db.serialize(() => {
+    db.get('SELECT email, profile FROM orders WHERE email = ? ORDER BY rowid DESC', req.params.email, (err, row) => {
+      res.send(JSON.stringify({
+        url: generateSVG(row, files)
+      }));
+    });
   });
 });
 
@@ -111,7 +124,7 @@ app.use(['/:assets?/:asset?/:type?/:color?'], (req, res) => {
   );
 
   // Grab the initial state from our Redux store
-  const preloadedState = store.getState()
+  const preloadedState = store.getState();
 
   // Send the rendered page back to the client
   res.send(renderFullPage(html, preloadedState));
