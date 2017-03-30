@@ -11,7 +11,7 @@ import svg2png from 'svg2png';
 import Zip from 'node-zip';
 import nodemailer from 'nodemailer';
 
-export const generateSVG = ({ profile, email, firstName, lastName }, payload) => {
+export const generateSVG = ({ profile, email }, payload) => {
   const profileDecoded = keyBy(JSON.parse(atob(profile)), 'asset');
   const assets = assetsReducer({}, {
     type: FETCH_ASSETS_FULFILLED,

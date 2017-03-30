@@ -145,6 +145,7 @@ export const saveProfile = email => (dispatch, getState) => {
 
   axios.post('/api/profile', {
     email,
+    permalink: 'NljBD',
     profile: btoa(JSON.stringify(visibleProfile))
   }).then(data => {
     window.location.href = 'https://gumroad.com/l/NljBD';

@@ -42,6 +42,7 @@ app.use('/svg/**/*.svg', (req, res, next) => {
 app.use(express.static('public'));
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const files = getFiles();
 
@@ -58,28 +59,44 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db.sqlite');
 
 db.serialize(() => {
-  db.run('CREATE TABLE IF NOT EXISTS orders (email TEXT, profile TEXT)');
+  db.run('CREATE TABLE IF NOT EXISTS orders (email TEXT, permalink TEXT, profile TEXT, sale_id TEXT, download_url TEXT)');
 });
 
-app.post('/api/profile/', securityMidleware, function (req, res) {
+app.post('/api/profile', securityMidleware, (req, res) => {
   res.setHeader('Content-Type', 'application/json');
 
   db.serialize(() => {
-    const stmt = db.prepare('INSERT INTO orders VALUES (?, ?)');
-    stmt.run(req.body.email, req.body.profile);
+    const stmt = db.prepare('INSERT INTO orders (email, permalink, profile) VALUES (?, ?, ?)');
+    stmt.run(req.body.email, req.body.permalink, req.body.profile);
     stmt.finalize();
   });
 
   res.status(200).end();
 });
 
-app.get('/api/download/:email', securityMidleware, function (req, res) {
+app.post('/api/ping', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   db.serialize(() => {
-    db.get('SELECT email, profile FROM orders WHERE email = ? ORDER BY rowid DESC', req.params.email, (err, row) => {
-      res.send(JSON.stringify({
-        url: generateSVG(row, files)
-      }));
+    db.get('SELECT rowid AS id, * FROM orders WHERE email = ? AND permalink = ? ORDER BY rowid DESC LIMIT 1', req.body.email, req.body.permalink, (err, row) => {
+      if ( ! row) {
+        res.status(200).end();
+        return;
+      }
+      const download_url = generateSVG(row, files);
+      db.run('UPDATE orders SET sale_id = ?, download_url = ? WHERE rowid = ?', req.body.sale_id, download_url, row.id);
+      res.status(200).end();
+    });
+  });
+});
+
+app.get('/thank_you', securityMidleware, (req, res) => {
+  db.serialize(() => {
+    db.get('SELECT download_url FROM orders WHERE sale_id = ? LIMIT 1', req.query.sale_id, (err, row) => {
+      if ( ! row) {
+        res.status(403).end(html403);
+        return;
+      }
+      res.send(`<a href="${row.download_url}">download</a>`);
     });
   });
 });
