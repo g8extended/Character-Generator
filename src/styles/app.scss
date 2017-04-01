@@ -180,13 +180,51 @@ body, #root, .app {
     padding-top: 1.5625em;
     border-top: solid 1px #eee;
   }
+}
+
+.text {
+  margin-top: 2em;
+  padding-top: .5vw;
+  color: #aaa;
+  font-size: 0.7em;
+}
+
+.blue-header {
+  font-size: 22px; 
+  margin: 30px 0 0; 
+  font-weight: 800; 
+  color: #36516e;
+  letter-spacing: .05em;
+}
+
+.success-page {
+  text-align: center;
+  
+  .success-icon {
+    border: solid 2px #ccc;
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+    margin: auto;
+    line-height: 110px;
+    
+    img {
+      vertical-align: middle;
+    }
+  }
 
   .text {
-    margin-top: 2em;
-    padding-top: .5vw;
-    color: #aaa;
-    font-size: 0.7em;
-    
+    padding-top: 0px;
+    width: 205px;
+    margin: 16px auto 0;
+  }
+
+  .link {
+    display: block;
+    text-decoration: none;
+    margin-top: 32px;  
+    font-size: .7em;
+    color: #5E6366;
   }
 }
 
