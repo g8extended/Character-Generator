@@ -63,6 +63,6 @@ class AssetsConfig extends Component {
       </div>
     );
   }
-};
+}
 
 export default connect(({ profile, assets }) => ({ profile, assets }))(AssetsConfig);
