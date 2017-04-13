@@ -14,7 +14,7 @@ export default connect()((
         <HeaderNav />
       </div>
       <div className="part btn">
-        <button className="button" onClick={buyAll} >buy all for 28$</button>
+        {/*<button className="button" onClick={buyAll} >buy all for 28$</button>*/}
       </div>
     </div>
   )
