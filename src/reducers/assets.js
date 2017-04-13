@@ -52,6 +52,7 @@ const reducer = (state = initialState, action) => {
     if (profile && profile.color) {
       current.color = profile.color;
     }
+    if ( ! state.router) return state;
     if (state.router.asset === state.current.asset) {
       current.type = state.router.type || current.type;
       current.color = state.router.color || current.color;
