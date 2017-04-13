@@ -91,14 +91,16 @@ app.post('/api/ping', (req, res) => {
   });
 });
 
-app.get('/thank_you', securityMidleware, (req, res) => {
+app.post('/api/check', securityMidleware, (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+
   db.serialize(() => {
-    db.get('SELECT download_url FROM orders WHERE sale_id = ? LIMIT 1', req.query.sale_id, (err, row) => {
+    db.get('SELECT download_url FROM orders WHERE sale_id = ? LIMIT 1', req.body.sale_id, (err, row) => {
       if ( ! row) {
-        res.status(403).end(html403);
+        res.status(500).end();
         return;
       }
-      res.send(`<a href="${row.download_url}">download</a>`);
+      res.send(JSON.stringify(row));
     });
   });
 });
