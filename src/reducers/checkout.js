@@ -1,12 +1,14 @@
 import {
   SHOW_FORM,
   HIDE_FORM,
-  SET_EMAIL
+  SET_EMAIL,
+  SET_DOWNLOAD_URL
 } from '../constants/checkout';
 
 const initialState = {
   formVisible: false,
-  email: null
+  email: null,
+  downloadUrl: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +27,11 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       email: action.payload
+    };
+  case SET_DOWNLOAD_URL:
+    return {
+      ...state,
+      downloadUrl: action.payload
     };
   default:
     return state;
