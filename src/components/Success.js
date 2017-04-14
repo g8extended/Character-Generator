@@ -19,7 +19,7 @@ class Success extends Component {
     return (
       <div className="success-page">
         <div className="success-icon">
-          <img src="http://placehold.it/33x33" alt="success icon" />
+          <img src="/i/check.svg" alt="success icon" />
         </div>
         <h2 className="blue-header">PAYMENT COMPLETE</h2>
         <div className="text">
@@ -30,7 +30,7 @@ class Success extends Component {
         </div> 
         <div>
           {downloadUrl && <a href={`${downloadUrl}`} className="button">Download character</a>}
-          <Link to="/" className="link">GO TO HOME PAGE</Link>
+          <Link to="/" className="link">GO GENERATE MORE</Link>
         </div>
       </div>
     );
