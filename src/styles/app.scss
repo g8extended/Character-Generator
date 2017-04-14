@@ -30,10 +30,6 @@ body, #root, .app {
   padding: 3em 5em 3em;
   box-sizing: border-box;
 
-  @include breakpoint(376px) {
-    padding: 0;
-  }
-
   .links {
     list-style: none;
     margin: auto;
@@ -48,10 +44,8 @@ body, #root, .app {
       padding: 2em;
     }
 
-    @include breakpoint(376px) {
-      display: block;
-      font-size: .5em;
-      max-width: none;
+    @include breakpoint(640px) {
+      display: none;
     }
 
     a {
@@ -137,12 +131,6 @@ body, #root, .app {
     padding: 2em;
   }
 
-  @include breakpoint(376px) {
-    display: block;
-    font-size: .5em;
-    max-width: none;
-  }
-
   .logo {
     flex: 0 0 auto;
     width: 8.55em;
@@ -159,9 +147,10 @@ body, #root, .app {
       min-width: 25em;
     }
 
-    @include breakpoint(376px) {
-      min-width: auto;
+    @include breakpoint(640px) {
+      display: none;
     }
+
   }
 
   .btn {
