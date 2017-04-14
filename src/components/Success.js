@@ -18,19 +18,14 @@ class Success extends Component {
     const { downloadUrl } = this.props;
     return (
       <div className="success-page">
-        <div className="success-icon">
-          <img src="/i/check.svg" alt="success icon" />
-        </div>
-        <h2 className="blue-header">PAYMENT COMPLETE</h2>
-        <div className="text">
-          You can download your character here or in email
-        </div>
         <div className="character-slider">
           <Profile />
         </div> 
         <div>
-          {downloadUrl && <a href={`${downloadUrl}`} className="button">Download character</a>}
-          <Link to="/" className="link">GO TO GENERATE MORE</Link>
+          <a href={`${downloadUrl}`} className="button">Download character</a>
+        </div>
+        <div className="text">
+          You can download your character here or in email
         </div>
       </div>
     );
