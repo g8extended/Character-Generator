@@ -42,10 +42,14 @@ body, #root, .app {
     @include breakpoint(769px) {
       font-size: 1em;
       padding: 2.9em 1em 5.3em 1em;
-    }
-
-    @include breakpoint(640px) {
-      display: none;
+      
+      a {
+        font-size: 1em !important;
+        
+        .icon-label {
+          display: none;
+        }
+      }
     }
 
     a {

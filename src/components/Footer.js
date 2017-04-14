@@ -8,7 +8,8 @@ export default (
       <ul className="links">
         <li>
           <a href="http://soryan.me" target="_blank">
-            Developed by <span className="colored">G8.extented</span>
+            <span className="icon-label">Developed by </span>
+            <span className="colored">G8.extented</span>
           </a>
         </li>
         <li>
@@ -16,7 +17,7 @@ export default (
             <svg className="icon twitter">
               <use xlinkHref="#twitter-icon"></use>
             </svg>
-            Twitter
+            <span className="icon-label">Twitter</span>
           </a>
         </li>
         <li>
@@ -24,7 +25,7 @@ export default (
           <svg className="icon facebook">
             <use xlinkHref="#facebook-icon"></use>
           </svg>
-          Facebook
+          <span className="icon-label">Facebook</span>
         </a>
         </li>
         <li>
@@ -32,7 +33,7 @@ export default (
             <svg className="icon creativemarket">
               <use xlinkHref="#creativemarket-icon"></use>
             </svg>
-            CreativeMarket
+            <span className="icon-label">CreativeMarket</span>
           </a>
         </li>
         <li>
@@ -40,7 +41,7 @@ export default (
             <svg className="icon behance">
               <use xlinkHref="#behance-icon"></use>
             </svg>
-            Behance
+            <span className="icon-label">Behance</span>
           </a>
         </li>
         <li>
@@ -48,7 +49,7 @@ export default (
             <svg className="icon dribbble">
               <use xlinkHref="#dribbble-icon"></use>
             </svg>
-            Dribbble
+            <span className="icon-label">Dribbble</span>
           </a>
         </li>
         <li>
@@ -56,7 +57,7 @@ export default (
             <svg className="icon mail">
               <use xlinkHref="#mail-icon"></use>
             </svg>
-            kavoon.me
+            <span className="icon-label">kavoon.me</span>
           </a>
         </li>
       </ul>

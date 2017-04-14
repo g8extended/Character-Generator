@@ -94,6 +94,28 @@
   @include styling($base-width: 280px);
 }
 
+@include breakpoint(769px) {
+  .character-slider {
+    .arrow.left {
+      .character {
+        text-align: right;
+        img {
+          right: 0;
+        }
+      }
+    }
+
+    .arrow.right {
+      .character {
+        text-align: left;
+        img {
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
 .colorPickerContainer {
   min-height: 1.7em;
   position:relative;
@@ -135,3 +157,10 @@
     vertical-align: middle;
   }
 }
+
+.success-page {
+  .character-slider {
+    margin-top: -47px;
+  }
+}
+
