@@ -27,10 +27,10 @@ body, #root, .app {
 }
 
 .footer {
-  padding: 3em 5em 3em;
   box-sizing: border-box;
 
   .links {
+    padding: 2.9em 5em 5.3em 5em;
     list-style: none;
     margin: auto;
     max-width: 75em;
@@ -40,8 +40,8 @@ body, #root, .app {
     justify-content: space-between;
 
     @include breakpoint(769px) {
-      font-size: .7em;
-      padding: 2em;
+      font-size: 1em;
+      padding: 2.9em 1em 5.3em 1em;
     }
 
     @include breakpoint(640px) {
@@ -55,6 +55,7 @@ body, #root, .app {
       font-size: .65em;
       color: #36516e;
       line-height: 1.5em;
+      padding: 1em;
 
       * {
         vertical-align: middle;
@@ -123,7 +124,7 @@ body, #root, .app {
   max-width: 75em;
   margin: auto;
   display: flex;
-  padding: 2.9em 5em 5.3em 5em;
+  padding: 2.9em 2.4em 5.3em 5em;
   flex-wrap: nowrap;
   
   @include breakpoint(769px) {
@@ -133,7 +134,11 @@ body, #root, .app {
 
   .logo {
     flex: 0 0 auto;
-    width: 8.55em;
+    width: 8em;
+
+    @include breakpoint(640px) {
+        display: none;
+    }
   }
 
   .nav {
@@ -143,14 +148,13 @@ body, #root, .app {
     min-width: 30em;
     z-index: 9999;
 
+    @include breakpoint(640px) {
+      text-align: center;
+    }
+
     @include breakpoint(769px) {
       min-width: 25em;
     }
-
-    @include breakpoint(640px) {
-      display: none;
-    }
-
   }
 
   .btn {
@@ -207,6 +211,7 @@ body, #root, .app {
   .text {
     padding-top: 0px;
     margin: 16px auto 0;
+    line-height: 1.7em;
   }
 
   .link {

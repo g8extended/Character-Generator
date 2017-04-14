@@ -4,8 +4,15 @@
 
 .header-nav {
   list-style: none;
+  padding-top: 1em;
+
   .item {
     display: inline-block;
+
+    @include breakpoint(640px) {
+      font-size: 1.8em;
+      line-height: 2em;
+    }
 
     @include breakpoint(376px) {
       display: block;
@@ -21,6 +28,10 @@
       position: relative;
       text-transform: uppercase;
       text-decoration: none;
+
+      @include breakpoint(640px) {
+        border-bottom: none;
+      }
 
       &:hover {
         color: red;
@@ -54,6 +65,7 @@
       box-shadow: 0 0 0 rgba(9,26,45,1.95), 0 0 20px rgba(9,26,45,0.1) inset;
       position: absolute;
       height: auto;
+      line-height: 1em;
 
       &:after {
         box-shadow: rgba(27, 26, 39, 1) 0px 2px 96px;

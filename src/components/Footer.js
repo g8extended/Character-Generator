@@ -52,11 +52,11 @@ export default (
           </a>
         </li>
         <li>
-          <a href="mailto:kavoonme@gmail.com" target="_blank">
+          <a href="http://kavoon.me" target="_blank">
             <svg className="icon mail">
               <use xlinkHref="#mail-icon"></use>
             </svg>
-            kavoon@gmail.com
+            kavoon.me
           </a>
         </li>
       </ul>
