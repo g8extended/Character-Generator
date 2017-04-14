@@ -30,7 +30,7 @@ class Success extends Component {
         </div> 
         <div>
           {downloadUrl && <a href={`${downloadUrl}`} className="button">Download character</a>}
-          <Link to="/" className="link">GO GENERATE MORE</Link>
+          <Link to="/" className="link">GO TO GENERATE MORE</Link>
         </div>
       </div>
     );
