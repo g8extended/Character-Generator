@@ -10,8 +10,8 @@
     display: inline-block;
 
     @include breakpoint(640px) {
-      font-size: 1.8em;
-      line-height: 2em;
+      font-size: 1.5em;
+      line-height: 1.6em;
     }
 
     @include breakpoint(376px) {
@@ -34,11 +34,11 @@
       }
 
       &:hover {
-        color: red;
+        color: #ee3c5d;
       }
 
       &.active {
-        color: red;
+        color: #ee3c5d;
         border-bottom-color: #36516e;
       }
     }

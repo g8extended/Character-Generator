@@ -30,7 +30,7 @@ body, #root, .app {
   box-sizing: border-box;
 
   .links {
-    padding: 2.9em 5em 5.3em 5em;
+    padding: 2.9em 5em 2.9em 5em;
     list-style: none;
     margin: auto;
     max-width: 75em;
@@ -41,7 +41,7 @@ body, #root, .app {
 
     @include breakpoint(769px) {
       font-size: 1em;
-      padding: 2.9em 1em 5.3em 1em;
+      padding: 2.9em 1em 2.3em;
       
       a {
         font-size: 1em !important;
@@ -78,7 +78,8 @@ body, #root, .app {
       }
 
       .colored {
-        color: red;
+        color: #ee3c5d;
+        font-size: .7em;
       }
 
       &:active, &:focus {
