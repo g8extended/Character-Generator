@@ -6,7 +6,7 @@ export default (
     <div className="footer">
       <SvgIcons />
       <ul className="links">
-        <li>
+        <li className="g8">
           <a href="http://soryan.me" target="_blank">
             <span className="icon-label">Developed by </span>
             <span className="colored">G8.extented</span>

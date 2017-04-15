@@ -14,10 +14,6 @@
       line-height: 1.6em;
     }
 
-    @include breakpoint(376px) {
-      display: block;
-    }
-
     a {
       color: #36516e;
       padding: 0 0 1em 0;

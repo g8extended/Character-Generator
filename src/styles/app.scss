@@ -40,15 +40,28 @@ body, #root, .app {
     justify-content: space-between;
 
     @include breakpoint(769px) {
+      flex-flow: row wrap;
+      justify-content: space-between;
       font-size: 1em;
       padding: 2.9em 1em 2.3em;
       
       a {
         font-size: 1em !important;
+        padding: 0 !important;
         
+        .icon {
+          margin-right: 0 !important;
+        }
+
         .icon-label {
           display: none;
         }
+      }
+
+      .g8 {
+        text-align: center;
+        flex: 1 100%;
+        margin-bottom: 1em;
       }
     }
 
@@ -79,7 +92,6 @@ body, #root, .app {
 
       .colored {
         color: #ee3c5d;
-        font-size: .7em;
       }
 
       &:active, &:focus {
