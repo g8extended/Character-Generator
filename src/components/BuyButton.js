@@ -17,7 +17,7 @@ export default connect(({ checkout }) => ({ checkout }))(
           checkout.paid ?
           <Download /> :
           <a href="#" className="button" onClick={handleBuyClick(dispatch)}>
-            buy for 10$
+            buy for 3$
           </a>
         }
       </div>
