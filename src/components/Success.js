@@ -25,7 +25,7 @@ class Success extends Component {
           <a href={`${downloadUrl}`} className="button">Download character</a>
         </div>
         <div className="text">
-          You can download your character here <br />or in email
+          You can download your character here<br /> or via link in your inbox
         </div>
       </div>
     );

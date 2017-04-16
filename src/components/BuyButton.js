@@ -21,7 +21,7 @@ export default connect(({ checkout }) => ({ checkout }))(
           </a>
         }
       </div>
-      {checkout.paid || <p className="text">You buy only one character (svg, png)</p>}
+      {checkout.paid || <p className="text">You're buying only one character (svg, png)</p>}
       {checkout.formVisible && <Mailform />}
     </div>
   )
