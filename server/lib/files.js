@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 
-const getViewBoxDimensions = dir => file => {
+export const getViewBoxDimensions = dir => file => {
   const fileContent = fs.readFileSync(path.join(dir, file), 'utf-8');
   const matches = fileContent.match(/viewBox=\"(\d+(?:\.\d+)?) (\d+(?:\.\d+)?) (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)\"/);
   if ( ! matches) return;

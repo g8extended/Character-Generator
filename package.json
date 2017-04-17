@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Character Generator",
   "scripts": {
+    "svg2png": "node server/svg2png | sh",
     "start": "nodemon server/server.js -w server",
     "dev": "nodemon server/server.js -w server",
     "build:client": "NODE_ENV=production webpack --config webpack-client.config.js --progress --colors -p",
