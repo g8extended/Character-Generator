@@ -26,6 +26,7 @@ const trustedUri = `localhost:${port}`;
 const trustedDomains = [trustedUri, 'localhost', 'character-generator.me'];
 const html403 = '<div style="width:620px;height:440px;text-align: center;position: absolute;top:50%;left:50%;margin-left:-310px;margin-top:-220px;"><div><img src="/i/403.svg" /></div><div><a href="/" style="background-color: #EE3C5D;color: #fff;border-radius: 55px;font-size: .7em;text-transform: uppercase;text-decoration: none;white-space: nowrap;border: transparent;padding: 1.3em 2.1em;cursor: pointer;display: inline-block; font-family:Arial;">BACK TO GENERATOR</a></div></div>';
 
+app.enable('trust proxy', true);
 app.use(morgan('combined'));
 
 if (process.env.NODE_ENV !== 'production') {
