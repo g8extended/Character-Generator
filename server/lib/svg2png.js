@@ -15,7 +15,7 @@ const walkSync = function(dir) {
       const png = svg.replace(/svg/g, 'png');
       const dim = getViewBoxDimensions(dir)(file);
       console.log(`rm -rf ${png}`);
-      console.log(`${svg2png} ${svg} --output=${png} --width=${dim.width} --height=${dim.height}`);
+      console.log(`${svg2png} ${svg} --output=${png} --width=${dim.width*4} --height=${dim.height*4}`);
     }
   });
 };
