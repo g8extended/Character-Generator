@@ -132,6 +132,14 @@ body, #root, .app {
     outline: none;
   }
 
+  &[disabled] {
+    background: #999;
+  }
+
+  &[disabled]:hover {
+    background: #999;
+  }
+
   &:hover {
     background-color:#e8304d;
   }
