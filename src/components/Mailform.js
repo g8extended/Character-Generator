@@ -17,13 +17,18 @@ const handleSubmitClick = (dispatch, email) => e => {
   dispatch(hideForm());
 };
 
+const isValidEmail = (email) => {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+};
+
 export default connect(({ checkout }) => ({ checkout }))(
   ({ dispatch, checkout }) => (
     <div className="overlay">
       <div className="bg">
         <div className="mailform">
           <input type="email" value={checkout.email} onChange={handleEmailChange(dispatch)} placeholder="Enter Your Email" />
-          <button className="button" onClick={handleSubmitClick(dispatch, checkout.email)}>
+          <button className="button" onClick={handleSubmitClick(dispatch, checkout.email)} disabled={!isValidEmail(checkout.email)}>
             SUMBIT
           </button>
           <a className="cross" onClick={handleEmailFormCloseClick(dispatch)}></a>
