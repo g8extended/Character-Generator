@@ -2,11 +2,21 @@ import keyBy from 'lodash/keyBy';
 
 export default keyBy([
   {
+    title: 'Body'
+  },
+  {
     title: 'Hairstyles'
   },
   {
     title: 'Eyes',
-    path: 'Eyes'
+    items: [
+      {
+        title: 'Eyebrows'
+      },
+      {
+        title: 'Eyes'
+      }
+    ]
   },
   {
     title: 'Mouth',

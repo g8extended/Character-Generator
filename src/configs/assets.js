@@ -152,7 +152,7 @@ export default keyBy([
   {
     id: 'Body',
     required: true,
-    clickable: false,
+    clickable: true,
     sortOrder: 0,
     styles: {
       '01': {
@@ -423,17 +423,35 @@ export default keyBy([
     styles: {
       '01': {
         left: 286,
+        top: 310
+      },
+      '02': {
+        left: 286,
+        top: 310
+      },
+      '03': {
+        left: 286,
+        top: 310
+      }
+    },
+    menuItem: 'Eyes'
+  },
+  {
+    id: 'Eyebrows',
+    required: true,
+    clickable: true,
+    sortOrder: 75,
+    styles: {
+      '01': {
+        left: 286,
         top: 288
       },
       '02': {
         left: 286,
         top: 285
-      },
-      '03': {
-        left: 284,
-        top: 294
       }
-    }
+    },
+    menuItem: 'Eyes'
   },
   {
     id: 'Jackets',
@@ -490,6 +508,14 @@ export default keyBy([
         top: 407
       },
       '03': {
+        left: 311,
+        top: 407
+      },
+      '04': {
+        left: 311,
+        top: 407
+      },
+      '05': {
         left: 311,
         top: 407
       }

@@ -57,18 +57,16 @@ const colors = {
       white: ['#efefef', '#7a7b7b', 1],
     },
     'Eyes': {
-      blue_blond: ['#509CC7', '#D88A3D', '#006891'],
-      blue_brown: ['#509cc7', '#814927', 1],
-      blue_brunet: ['#509cc7', '#4f5559', '#1a1e21'],
-      blue_white: ['#509cc7', '#BBBBBC', '#006891'],
-      brown_blond: ['#3a291d', '#d88a3d', 1],
-      brown_brown: ['#3a291d', '#814927', 1],
-      brown_brunet: ['#3a291d', '#4f5559', 1],
-      brown_white: ['#BBBBBC', '#3a291d', 1],
-      green_blond: ['#648b5c', '#d88a3d', '#4C5F2B'],
-      green_brown: ['#648b5c', '#d88a3d', '#3a291d'],
-      green_brunet: ['#648b5c', '#4f5559', '#1a1e21'],
-      green_white: ['#648b5c', '#bbbbbc', '#4C5F2B'],
+      'blue-white': ['#509CC7', '#D88A3D', 1],
+      'brown-white': ['#3a291d', '#d88a3d', 1],
+      'green-white': ['#648b5c', '#d88a3d', 1],
+      'blue-black': ['#509CC7', '#D88A3D', 1],
+      'brown-black': ['#3a291d', '#d88a3d', 1],
+      'green-black': ['#648b5c', '#d88a3d', 1],
+    },
+    'Eyebrows': {
+      blond: ['#F9BE72', '#9B581C', 1],
+      brown: ['#C47546', '#814927', 1],
     },
   }
 };
