@@ -6,12 +6,14 @@ import { getFile } from '../../utils/files';
 import { updateProfileAsset, toggleProfileAssetVisible } from '../../actions/profile';
 
 const LinkToAsset = (
-  ({ dispatch, current, assets, profile, offset, children, className, apply, toggleVisible }) => {
+  ({ dispatch, current, assets, profile, offset, children, className, apply, toggleVisible, doNotShowIfOnlyOne }) => {
     current = current || assets.current;
 
     const clickable = assets.items[current.asset].clickable;
     const required = assets.items[current.asset].required;
     const file = getFile(assets.items[current.asset], current, offset);
+
+    if (doNotShowIfOnlyOne && Object.keys(assets.items[current.asset].types).length === 1) return null;
 
     let onClick = () => {};
 

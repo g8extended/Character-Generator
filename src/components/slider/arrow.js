@@ -10,7 +10,7 @@ const Arrow = (
       <div className={`arrow ${type}`}>
         <div className="character-wrapper">
           <div className="character">
-            <LinkToAsset offset={offset} apply={true}>
+            <LinkToAsset offset={offset} apply doNotShowIfOnlyOne>
               <ArrowImage type={type} />
             </LinkToAsset>
           </div>

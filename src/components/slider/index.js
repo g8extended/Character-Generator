@@ -8,6 +8,7 @@ import ColorPicker from './colorpicker';
 import { updateProfileAssetColor } from '../../actions/profile';
 import map from 'lodash/map';
 import LinkToAsset from './LinkToAsset';
+import { filterColors } from '../../utils/filters';
 
 const Slider = ({ dispatch, assets, profile }) => {
   const required = assets.items[assets.current.asset].required;
@@ -21,7 +22,7 @@ const Slider = ({ dispatch, assets, profile }) => {
 
   const colorPicker = (
     <ColorPicker
-      colors={assets.items[assets.current.asset].types[assets.current.type].colors}
+      colors={filterColors(profile, assets.current.asset, assets.items[assets.current.asset].types[assets.current.type].colors)}
       current={assets.current}
       urlPrefix={`/assets/${assets.current.asset}/${assets.current.type}/`}
       onClick={color => dispatch(updateProfileAssetColor(color))}
