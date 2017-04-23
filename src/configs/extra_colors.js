@@ -27,6 +27,7 @@ const colors = {
     'Hairstyles': {
       blond: ['#F9BE72', '#9B581C', 1],
       brown: ['#C47546', '#814927', 1],
+      white: ['#bbbbbc', '#7a7b7b', 1],
     },
     'Beards': {
       blond: ['#F9BE72', '#9B581C', 1],
@@ -57,16 +58,17 @@ const colors = {
       white: ['#efefef', '#7a7b7b', 1],
     },
     'Eyes': {
-      'blue-white': ['#509CC7', '#D88A3D', 1],
-      'brown-white': ['#3a291d', '#d88a3d', 1],
-      'green-white': ['#648b5c', '#d88a3d', 1],
-      'blue-black': ['#509CC7', '#D88A3D', 1],
-      'brown-black': ['#3a291d', '#d88a3d', 1],
-      'green-black': ['#648b5c', '#d88a3d', 1],
+      'blue-white': ['#509CC7', '#006891', 1],
+      'brown-white': ['#3a291d', '#814927', 1],
+      'green-white': ['#648b5c', '#4C5F2B', 1],
+      'blue-black': ['#509CC7', '#006891', 1],
+      'brown-black': ['#3a291d', '#814927', 1],
+      'green-black': ['#648b5c', '#4C5F2B', 1],
     },
     'Eyebrows': {
       blond: ['#F9BE72', '#9B581C', 1],
       brown: ['#C47546', '#814927', 1],
+      white: ['#bbbbbc', '#7a7b7b', 1],
     },
   }
 };
